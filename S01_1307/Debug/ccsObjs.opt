@@ -1,0 +1,1 @@
+"./main.obj" -l"libc.a" "../lm4f232h5qd.cmd" 
