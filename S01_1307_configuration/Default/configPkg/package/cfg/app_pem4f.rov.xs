@@ -1154,139 +1154,141 @@ __obj = [
     {},    // #1151 ti.sysbios.knl.Task.Instance#9/instance
     {},    // #1152 ti.sysbios.knl.Task.Instance#10
     {},    // #1153 ti.sysbios.knl.Task.Instance#10/instance
-    {},    // #1154 xdc.runtime.Assert.Desc#31
-    {},    // #1155 xdc.runtime.Assert.Desc#29
-    {},    // #1156 xdc.runtime.Assert.Desc#26
-    {},    // #1157 xdc.runtime.Assert.Desc#25
-    {},    // #1158 xdc.runtime.Assert.Desc#30
-    {},    // #1159 xdc.runtime.Assert.Desc#27
-    {},    // #1160 xdc.runtime.Assert.Desc#32
-    {},    // #1161 xdc.runtime.Assert.Desc#28
-    {},    // #1162 xdc.runtime.Error.Desc#11
-    {},    // #1163 xdc.runtime.Error.Desc#10
-    {},    // #1164 xdc.runtime.Error.Desc#9
-    {},    // #1165 xdc.runtime.Log.EventDesc#26
-    {},    // #1166 xdc.runtime.Log.EventDesc#29
-    {},    // #1167 xdc.runtime.Log.EventDesc#25
-    {},    // #1168 xdc.runtime.Log.EventDesc#32
-    {},    // #1169 xdc.runtime.Log.EventDesc#31
-    {},    // #1170 xdc.runtime.Log.EventDesc#30
-    {},    // #1171 xdc.runtime.Log.EventDesc#28
-    {},    // #1172 xdc.runtime.Log.EventDesc#24
-    {},    // #1173 xdc.runtime.Log.EventDesc#23
-    {},    // #1174 xdc.runtime.Log.EventDesc#27
-    {},    // #1175 ti.sysbios.family.arm.m3.TaskSupport
-    [],    // #1176 ti.sysbios.family.arm.m3.TaskSupport/$instances
-    {},    // #1177 ti.sysbios.family.arm.m3.TaskSupport/common$
-    [],    // #1178 ti.sysbios.family.arm.m3.TaskSupport/configNameMap$
-    {},    // #1179 ti.sysbios.family.arm.m3.TaskSupport/configNameMap$/'xdc.runtime/Memory'
-    [],    // #1180 ti.sysbios.family.arm.m3.TaskSupport/configNameMap$/'xdc.runtime/Memory'/fields
-    {},    // #1181 ti.sysbios.family.arm.m3.TaskSupport/configNameMap$/'xdc.runtime/Diagnostics'
-    [],    // #1182 ti.sysbios.family.arm.m3.TaskSupport/configNameMap$/'xdc.runtime/Diagnostics'/fields
-    {},    // #1183 ti.sysbios.family.arm.m3.TaskSupport/configNameMap$/'xdc.runtime/Concurrency'
-    [],    // #1184 ti.sysbios.family.arm.m3.TaskSupport/configNameMap$/'xdc.runtime/Concurrency'/fields
-    {},    // #1185 ti.sysbios.family.arm.m3.TaskSupport/configNameMap$/'xdc.runtime/Log Events'
-    [],    // #1186 ti.sysbios.family.arm.m3.TaskSupport/configNameMap$/'xdc.runtime/Log Events'/fields
-    {},    // #1187 ti.sysbios.family.arm.m3.TaskSupport/configNameMap$/'xdc.runtime/Asserts'
-    [],    // #1188 ti.sysbios.family.arm.m3.TaskSupport/configNameMap$/'xdc.runtime/Asserts'/fields
-    {},    // #1189 ti.sysbios.family.arm.m3.TaskSupport/configNameMap$/'xdc.runtime/Errors'
-    [],    // #1190 ti.sysbios.family.arm.m3.TaskSupport/configNameMap$/'xdc.runtime/Errors'/fields
-    [],    // #1191 ti.sysbios.family.arm.m3.TaskSupport/viewNameMap$
-    {},    // #1192 ti.sysbios.knl.Task/common$
-    [],    // #1193 ti.sysbios.knl.Task/configNameMap$
-    {},    // #1194 ti.sysbios.knl.Task/configNameMap$/'xdc.runtime/Memory'
-    [],    // #1195 ti.sysbios.knl.Task/configNameMap$/'xdc.runtime/Memory'/fields
-    {},    // #1196 ti.sysbios.knl.Task/configNameMap$/'xdc.runtime/Diagnostics'
-    [],    // #1197 ti.sysbios.knl.Task/configNameMap$/'xdc.runtime/Diagnostics'/fields
-    {},    // #1198 ti.sysbios.knl.Task/configNameMap$/'xdc.runtime/Concurrency'
-    [],    // #1199 ti.sysbios.knl.Task/configNameMap$/'xdc.runtime/Concurrency'/fields
-    {},    // #1200 ti.sysbios.knl.Task/configNameMap$/'xdc.runtime/Log Events'
-    [],    // #1201 ti.sysbios.knl.Task/configNameMap$/'xdc.runtime/Log Events'/fields
-    {},    // #1202 ti.sysbios.knl.Task/configNameMap$/'xdc.runtime/Asserts'
-    [],    // #1203 ti.sysbios.knl.Task/configNameMap$/'xdc.runtime/Asserts'/fields
-    {},    // #1204 ti.sysbios.knl.Task/configNameMap$/'xdc.runtime/Errors'
-    [],    // #1205 ti.sysbios.knl.Task/configNameMap$/'xdc.runtime/Errors'/fields
-    [],    // #1206 ti.sysbios.knl.Task/hooks
-    {},    // #1207 ti.sysbios.knl.Task/hooks/0
-    [],    // #1208 ti.sysbios.knl.Task/viewNameMap$
-    {},    // #1209 
-    {},    // #1210 
+    {},    // #1154 ti.sysbios.knl.Task.Instance#11
+    {},    // #1155 ti.sysbios.knl.Task.Instance#11/instance
+    {},    // #1156 xdc.runtime.Assert.Desc#31
+    {},    // #1157 xdc.runtime.Assert.Desc#29
+    {},    // #1158 xdc.runtime.Assert.Desc#26
+    {},    // #1159 xdc.runtime.Assert.Desc#25
+    {},    // #1160 xdc.runtime.Assert.Desc#30
+    {},    // #1161 xdc.runtime.Assert.Desc#27
+    {},    // #1162 xdc.runtime.Assert.Desc#32
+    {},    // #1163 xdc.runtime.Assert.Desc#28
+    {},    // #1164 xdc.runtime.Error.Desc#11
+    {},    // #1165 xdc.runtime.Error.Desc#10
+    {},    // #1166 xdc.runtime.Error.Desc#9
+    {},    // #1167 xdc.runtime.Log.EventDesc#26
+    {},    // #1168 xdc.runtime.Log.EventDesc#29
+    {},    // #1169 xdc.runtime.Log.EventDesc#25
+    {},    // #1170 xdc.runtime.Log.EventDesc#32
+    {},    // #1171 xdc.runtime.Log.EventDesc#31
+    {},    // #1172 xdc.runtime.Log.EventDesc#30
+    {},    // #1173 xdc.runtime.Log.EventDesc#28
+    {},    // #1174 xdc.runtime.Log.EventDesc#24
+    {},    // #1175 xdc.runtime.Log.EventDesc#23
+    {},    // #1176 xdc.runtime.Log.EventDesc#27
+    {},    // #1177 ti.sysbios.family.arm.m3.TaskSupport
+    [],    // #1178 ti.sysbios.family.arm.m3.TaskSupport/$instances
+    {},    // #1179 ti.sysbios.family.arm.m3.TaskSupport/common$
+    [],    // #1180 ti.sysbios.family.arm.m3.TaskSupport/configNameMap$
+    {},    // #1181 ti.sysbios.family.arm.m3.TaskSupport/configNameMap$/'xdc.runtime/Memory'
+    [],    // #1182 ti.sysbios.family.arm.m3.TaskSupport/configNameMap$/'xdc.runtime/Memory'/fields
+    {},    // #1183 ti.sysbios.family.arm.m3.TaskSupport/configNameMap$/'xdc.runtime/Diagnostics'
+    [],    // #1184 ti.sysbios.family.arm.m3.TaskSupport/configNameMap$/'xdc.runtime/Diagnostics'/fields
+    {},    // #1185 ti.sysbios.family.arm.m3.TaskSupport/configNameMap$/'xdc.runtime/Concurrency'
+    [],    // #1186 ti.sysbios.family.arm.m3.TaskSupport/configNameMap$/'xdc.runtime/Concurrency'/fields
+    {},    // #1187 ti.sysbios.family.arm.m3.TaskSupport/configNameMap$/'xdc.runtime/Log Events'
+    [],    // #1188 ti.sysbios.family.arm.m3.TaskSupport/configNameMap$/'xdc.runtime/Log Events'/fields
+    {},    // #1189 ti.sysbios.family.arm.m3.TaskSupport/configNameMap$/'xdc.runtime/Asserts'
+    [],    // #1190 ti.sysbios.family.arm.m3.TaskSupport/configNameMap$/'xdc.runtime/Asserts'/fields
+    {},    // #1191 ti.sysbios.family.arm.m3.TaskSupport/configNameMap$/'xdc.runtime/Errors'
+    [],    // #1192 ti.sysbios.family.arm.m3.TaskSupport/configNameMap$/'xdc.runtime/Errors'/fields
+    [],    // #1193 ti.sysbios.family.arm.m3.TaskSupport/viewNameMap$
+    {},    // #1194 ti.sysbios.knl.Task/common$
+    [],    // #1195 ti.sysbios.knl.Task/configNameMap$
+    {},    // #1196 ti.sysbios.knl.Task/configNameMap$/'xdc.runtime/Memory'
+    [],    // #1197 ti.sysbios.knl.Task/configNameMap$/'xdc.runtime/Memory'/fields
+    {},    // #1198 ti.sysbios.knl.Task/configNameMap$/'xdc.runtime/Diagnostics'
+    [],    // #1199 ti.sysbios.knl.Task/configNameMap$/'xdc.runtime/Diagnostics'/fields
+    {},    // #1200 ti.sysbios.knl.Task/configNameMap$/'xdc.runtime/Concurrency'
+    [],    // #1201 ti.sysbios.knl.Task/configNameMap$/'xdc.runtime/Concurrency'/fields
+    {},    // #1202 ti.sysbios.knl.Task/configNameMap$/'xdc.runtime/Log Events'
+    [],    // #1203 ti.sysbios.knl.Task/configNameMap$/'xdc.runtime/Log Events'/fields
+    {},    // #1204 ti.sysbios.knl.Task/configNameMap$/'xdc.runtime/Asserts'
+    [],    // #1205 ti.sysbios.knl.Task/configNameMap$/'xdc.runtime/Asserts'/fields
+    {},    // #1206 ti.sysbios.knl.Task/configNameMap$/'xdc.runtime/Errors'
+    [],    // #1207 ti.sysbios.knl.Task/configNameMap$/'xdc.runtime/Errors'/fields
+    [],    // #1208 ti.sysbios.knl.Task/hooks
+    {},    // #1209 ti.sysbios.knl.Task/hooks/0
+    [],    // #1210 ti.sysbios.knl.Task/viewNameMap$
     {},    // #1211 
     {},    // #1212 
     {},    // #1213 
     {},    // #1214 
-    {},    // #1215 ti.targets.arm.elf.M4F
-    [],    // #1216 ti.targets.arm.elf.M4F/$instances
-    {},    // #1217 ti.targets.arm.elf.M4F/ar
-    {},    // #1218 ti.targets.arm.elf.M4F/arOpts
-    {},    // #1219 ti.targets.arm.elf.M4F/asm
-    {},    // #1220 ti.targets.arm.elf.M4F/asmOpts
-    {},    // #1221 ti.targets.arm.elf.M4F/cc
-    {},    // #1222 ti.targets.arm.elf.M4F/ccConfigOpts
-    {},    // #1223 ti.targets.arm.elf.M4F/ccOpts
-    [],    // #1224 ti.targets.arm.elf.M4F/compatibleSuffixes
-    {},    // #1225 ti.targets.arm.elf.M4F/debugGen
-    [],    // #1226 ti.targets.arm.elf.M4F/extensions
-    {},    // #1227 ti.targets.arm.elf.M4F/extensions/'.sem4fe'
-    {},    // #1228 ti.targets.arm.elf.M4F/extensions/'.sem4f'
-    {},    // #1229 ti.targets.arm.elf.M4F/extensions/'.sv7M4'
-    {},    // #1230 ti.targets.arm.elf.M4F/extensions/'.sv7M'
-    {},    // #1231 ti.targets.arm.elf.M4F/extensions/'.asm'
-    {},    // #1232 ti.targets.arm.elf.M4F/extensions/'.c'
-    {},    // #1233 ti.targets.arm.elf.M4F/extensions/'.cpp'
-    {},    // #1234 ti.targets.arm.elf.M4F/extensions/'.cxx'
-    {},    // #1235 ti.targets.arm.elf.M4F/extensions/'.C'
-    {},    // #1236 ti.targets.arm.elf.M4F/extensions/'.cc'
-    {},    // #1237 ti.targets.arm.elf.M4F/lnk
-    {},    // #1238 ti.targets.arm.elf.M4F/lnkOpts
-    {},    // #1239 ti.targets.arm.elf.M4F/model
-    [],    // #1240 ti.targets.arm.elf.M4F/platforms
-    [],    // #1241 ti.targets.arm.elf.M4F/profiles
-    {},    // #1242 ti.targets.arm.elf.M4F/profiles/'debug'
-    {},    // #1243 ti.targets.arm.elf.M4F/profiles/'debug'/compileOpts
-    [],    // #1244 ti.targets.arm.elf.M4F/profiles/'debug'/filters
-    {},    // #1245 ti.targets.arm.elf.M4F/profiles/'release'
-    {},    // #1246 ti.targets.arm.elf.M4F/profiles/'release'/compileOpts
-    [],    // #1247 ti.targets.arm.elf.M4F/profiles/'release'/filters
-    {},    // #1248 ti.targets.arm.elf.M4F/profiles/'profile'
-    {},    // #1249 ti.targets.arm.elf.M4F/profiles/'profile'/compileOpts
-    [],    // #1250 ti.targets.arm.elf.M4F/profiles/'profile'/filters
-    {},    // #1251 ti.targets.arm.elf.M4F/profiles/'coverage'
-    {},    // #1252 ti.targets.arm.elf.M4F/profiles/'coverage'/compileOpts
-    [],    // #1253 ti.targets.arm.elf.M4F/profiles/'coverage'/filters
-    {},    // #1254 ti.targets.arm.elf.M4F/profiles/'whole_program'
-    {},    // #1255 ti.targets.arm.elf.M4F/profiles/'whole_program'/compileOpts
-    [],    // #1256 ti.targets.arm.elf.M4F/profiles/'whole_program'/filters
-    {},    // #1257 ti.targets.arm.elf.M4F/profiles/'whole_program_debug'
-    {},    // #1258 ti.targets.arm.elf.M4F/profiles/'whole_program_debug'/compileOpts
-    [],    // #1259 ti.targets.arm.elf.M4F/profiles/'whole_program_debug'/filters
-    [],    // #1260 ti.targets.arm.elf.M4F/sectMap
-    [],    // #1261 ti.targets.arm.elf.M4F/splitMap
-    {},    // #1262 ti.targets.arm.elf.M4F/stdTypes
-    {},    // #1263 ti.targets.arm.elf.M4F/stdTypes/t_Char
-    {},    // #1264 ti.targets.arm.elf.M4F/stdTypes/t_Double
-    {},    // #1265 ti.targets.arm.elf.M4F/stdTypes/t_Float
-    {},    // #1266 ti.targets.arm.elf.M4F/stdTypes/t_Fxn
-    {},    // #1267 ti.targets.arm.elf.M4F/stdTypes/t_IArg
-    {},    // #1268 ti.targets.arm.elf.M4F/stdTypes/t_Int
-    {},    // #1269 ti.targets.arm.elf.M4F/stdTypes/t_Int16
-    {},    // #1270 ti.targets.arm.elf.M4F/stdTypes/t_Int32
-    {},    // #1271 ti.targets.arm.elf.M4F/stdTypes/t_Int40
-    {},    // #1272 ti.targets.arm.elf.M4F/stdTypes/t_Int64
-    {},    // #1273 ti.targets.arm.elf.M4F/stdTypes/t_Int8
-    {},    // #1274 ti.targets.arm.elf.M4F/stdTypes/t_LDouble
-    {},    // #1275 ti.targets.arm.elf.M4F/stdTypes/t_LLong
-    {},    // #1276 ti.targets.arm.elf.M4F/stdTypes/t_Long
-    {},    // #1277 ti.targets.arm.elf.M4F/stdTypes/t_Ptr
-    {},    // #1278 ti.targets.arm.elf.M4F/stdTypes/t_Short
-    {},    // #1279 ti.targets.arm.elf.M4F/stdTypes/t_Size
-    {},    // #1280 ti.targets.arm.elf.M4F/vers
-    [],    // #1281 ti.targets.arm.elf.M4F/versionMap
+    {},    // #1215 
+    {},    // #1216 
+    {},    // #1217 ti.targets.arm.elf.M4F
+    [],    // #1218 ti.targets.arm.elf.M4F/$instances
+    {},    // #1219 ti.targets.arm.elf.M4F/ar
+    {},    // #1220 ti.targets.arm.elf.M4F/arOpts
+    {},    // #1221 ti.targets.arm.elf.M4F/asm
+    {},    // #1222 ti.targets.arm.elf.M4F/asmOpts
+    {},    // #1223 ti.targets.arm.elf.M4F/cc
+    {},    // #1224 ti.targets.arm.elf.M4F/ccConfigOpts
+    {},    // #1225 ti.targets.arm.elf.M4F/ccOpts
+    [],    // #1226 ti.targets.arm.elf.M4F/compatibleSuffixes
+    {},    // #1227 ti.targets.arm.elf.M4F/debugGen
+    [],    // #1228 ti.targets.arm.elf.M4F/extensions
+    {},    // #1229 ti.targets.arm.elf.M4F/extensions/'.sem4fe'
+    {},    // #1230 ti.targets.arm.elf.M4F/extensions/'.sem4f'
+    {},    // #1231 ti.targets.arm.elf.M4F/extensions/'.sv7M4'
+    {},    // #1232 ti.targets.arm.elf.M4F/extensions/'.sv7M'
+    {},    // #1233 ti.targets.arm.elf.M4F/extensions/'.asm'
+    {},    // #1234 ti.targets.arm.elf.M4F/extensions/'.c'
+    {},    // #1235 ti.targets.arm.elf.M4F/extensions/'.cpp'
+    {},    // #1236 ti.targets.arm.elf.M4F/extensions/'.cxx'
+    {},    // #1237 ti.targets.arm.elf.M4F/extensions/'.C'
+    {},    // #1238 ti.targets.arm.elf.M4F/extensions/'.cc'
+    {},    // #1239 ti.targets.arm.elf.M4F/lnk
+    {},    // #1240 ti.targets.arm.elf.M4F/lnkOpts
+    {},    // #1241 ti.targets.arm.elf.M4F/model
+    [],    // #1242 ti.targets.arm.elf.M4F/platforms
+    [],    // #1243 ti.targets.arm.elf.M4F/profiles
+    {},    // #1244 ti.targets.arm.elf.M4F/profiles/'debug'
+    {},    // #1245 ti.targets.arm.elf.M4F/profiles/'debug'/compileOpts
+    [],    // #1246 ti.targets.arm.elf.M4F/profiles/'debug'/filters
+    {},    // #1247 ti.targets.arm.elf.M4F/profiles/'release'
+    {},    // #1248 ti.targets.arm.elf.M4F/profiles/'release'/compileOpts
+    [],    // #1249 ti.targets.arm.elf.M4F/profiles/'release'/filters
+    {},    // #1250 ti.targets.arm.elf.M4F/profiles/'profile'
+    {},    // #1251 ti.targets.arm.elf.M4F/profiles/'profile'/compileOpts
+    [],    // #1252 ti.targets.arm.elf.M4F/profiles/'profile'/filters
+    {},    // #1253 ti.targets.arm.elf.M4F/profiles/'coverage'
+    {},    // #1254 ti.targets.arm.elf.M4F/profiles/'coverage'/compileOpts
+    [],    // #1255 ti.targets.arm.elf.M4F/profiles/'coverage'/filters
+    {},    // #1256 ti.targets.arm.elf.M4F/profiles/'whole_program'
+    {},    // #1257 ti.targets.arm.elf.M4F/profiles/'whole_program'/compileOpts
+    [],    // #1258 ti.targets.arm.elf.M4F/profiles/'whole_program'/filters
+    {},    // #1259 ti.targets.arm.elf.M4F/profiles/'whole_program_debug'
+    {},    // #1260 ti.targets.arm.elf.M4F/profiles/'whole_program_debug'/compileOpts
+    [],    // #1261 ti.targets.arm.elf.M4F/profiles/'whole_program_debug'/filters
+    [],    // #1262 ti.targets.arm.elf.M4F/sectMap
+    [],    // #1263 ti.targets.arm.elf.M4F/splitMap
+    {},    // #1264 ti.targets.arm.elf.M4F/stdTypes
+    {},    // #1265 ti.targets.arm.elf.M4F/stdTypes/t_Char
+    {},    // #1266 ti.targets.arm.elf.M4F/stdTypes/t_Double
+    {},    // #1267 ti.targets.arm.elf.M4F/stdTypes/t_Float
+    {},    // #1268 ti.targets.arm.elf.M4F/stdTypes/t_Fxn
+    {},    // #1269 ti.targets.arm.elf.M4F/stdTypes/t_IArg
+    {},    // #1270 ti.targets.arm.elf.M4F/stdTypes/t_Int
+    {},    // #1271 ti.targets.arm.elf.M4F/stdTypes/t_Int16
+    {},    // #1272 ti.targets.arm.elf.M4F/stdTypes/t_Int32
+    {},    // #1273 ti.targets.arm.elf.M4F/stdTypes/t_Int40
+    {},    // #1274 ti.targets.arm.elf.M4F/stdTypes/t_Int64
+    {},    // #1275 ti.targets.arm.elf.M4F/stdTypes/t_Int8
+    {},    // #1276 ti.targets.arm.elf.M4F/stdTypes/t_LDouble
+    {},    // #1277 ti.targets.arm.elf.M4F/stdTypes/t_LLong
+    {},    // #1278 ti.targets.arm.elf.M4F/stdTypes/t_Long
+    {},    // #1279 ti.targets.arm.elf.M4F/stdTypes/t_Ptr
+    {},    // #1280 ti.targets.arm.elf.M4F/stdTypes/t_Short
+    {},    // #1281 ti.targets.arm.elf.M4F/stdTypes/t_Size
+    {},    // #1282 ti.targets.arm.elf.M4F/vers
+    [],    // #1283 ti.targets.arm.elf.M4F/versionMap
 ]
 
 __o = __obj[0]  
     __o['$modules'] = __obj[1.0]
-    __o['build'] = __obj[1209.0]
+    __o['build'] = __obj[1211.0]
 
 __o = __obj[1]  
     __o['#32770'] = __obj[2.0]
@@ -1317,7 +1319,7 @@ __o = __obj[1]
     __o['#32803'] = __obj[1130.0]
     __o['#32807'] = __obj[620.0]
     __o['#32808'] = __obj[1010.0]
-    __o['#32809'] = __obj[1175.0]
+    __o['#32809'] = __obj[1177.0]
     __o['#32811'] = __obj[13.0]
     __o['#32812'] = __obj[646.0]
     __o['#32814'] = __obj[7.0]
@@ -1329,7 +1331,7 @@ __o = __obj[1]
     __o['ti.sysbios.family.arm.lm4.TimestampProvider'] = __obj[13.0]
     __o['ti.sysbios.family.arm.m3.Hwi'] = __obj[620.0]
     __o['ti.sysbios.family.arm.m3.IntrinsicsSupport'] = __obj[1010.0]
-    __o['ti.sysbios.family.arm.m3.TaskSupport'] = __obj[1175.0]
+    __o['ti.sysbios.family.arm.m3.TaskSupport'] = __obj[1177.0]
     __o['ti.sysbios.gates.GateHwi'] = __obj[7.0]
     __o['ti.sysbios.gates.GateMutex'] = __obj[362.0]
     __o['ti.sysbios.hal.Hwi'] = __obj[595.0]
@@ -5899,7 +5901,7 @@ __o = __obj[488]  // xdc.runtime.Text
     __o['Object__heap'] = null
     __o['Object__sizeof'] = 0
     __o['Object__table'] = null
-    __o['charCnt'] = 6328
+    __o['charCnt'] = 6346
     __o['charTab'] = __obj[490.0]
     __o['common$'] = __obj[491.0]
     __o['configNameMap$'] = __obj[492.0]
@@ -12223,34 +12225,52 @@ __o = __obj[490]  // xdc.runtime.Text/charTab
     __o['6297'] = 101
     __o['6298'] = 0
     __o['6299'] = 116
-    __o['6300'] = 105
-    __o['6301'] = 46
-    __o['6302'] = 115
-    __o['6303'] = 121
-    __o['6304'] = 115
-    __o['6305'] = 98
-    __o['6306'] = 105
-    __o['6307'] = 111
-    __o['6308'] = 115
-    __o['6309'] = 46
-    __o['6310'] = 107
-    __o['6311'] = 110
-    __o['6312'] = 108
-    __o['6313'] = 46
-    __o['6314'] = 84
-    __o['6315'] = 97
-    __o['6316'] = 115
-    __o['6317'] = 107
-    __o['6318'] = 46
-    __o['6319'] = 73
-    __o['6320'] = 100
-    __o['6321'] = 108
-    __o['6322'] = 101
-    __o['6323'] = 84
-    __o['6324'] = 97
-    __o['6325'] = 115
-    __o['6326'] = 107
-    __o['6327'] = 0
+    __o['6300'] = 115
+    __o['6301'] = 107
+    __o['6302'] = 95
+    __o['6303'] = 109
+    __o['6304'] = 97
+    __o['6305'] = 110
+    __o['6306'] = 97
+    __o['6307'] = 103
+    __o['6308'] = 101
+    __o['6309'] = 95
+    __o['6310'] = 104
+    __o['6311'] = 97
+    __o['6312'] = 110
+    __o['6313'] = 100
+    __o['6314'] = 108
+    __o['6315'] = 101
+    __o['6316'] = 0
+    __o['6317'] = 116
+    __o['6318'] = 105
+    __o['6319'] = 46
+    __o['6320'] = 115
+    __o['6321'] = 121
+    __o['6322'] = 115
+    __o['6323'] = 98
+    __o['6324'] = 105
+    __o['6325'] = 111
+    __o['6326'] = 115
+    __o['6327'] = 46
+    __o['6328'] = 107
+    __o['6329'] = 110
+    __o['6330'] = 108
+    __o['6331'] = 46
+    __o['6332'] = 84
+    __o['6333'] = 97
+    __o['6334'] = 115
+    __o['6335'] = 107
+    __o['6336'] = 46
+    __o['6337'] = 73
+    __o['6338'] = 100
+    __o['6339'] = 108
+    __o['6340'] = 101
+    __o['6341'] = 84
+    __o['6342'] = 97
+    __o['6343'] = 115
+    __o['6344'] = 107
+    __o['6345'] = 0
 
 __o = __obj[491]  // xdc.runtime.Text/common$
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
@@ -18544,27 +18564,27 @@ __o = __obj[1130]  // ti.sysbios.knl.Task
     __o['$instances'] = __obj[1131.0]
     __o['$name'] = String(java.net.URLDecoder.decode('ti.sysbios.knl.Task', 'UTF-8'))
     __o['AFFINITY_NONE'] = -1
-    __o['A_badAffinity'] = __obj[1154.0]
-    __o['A_badPriority'] = __obj[1155.0]
-    __o['A_badTaskState'] = __obj[1156.0]
-    __o['A_badThreadType'] = __obj[1157.0]
-    __o['A_badTimeout'] = __obj[1158.0]
-    __o['A_noPendElem'] = __obj[1159.0]
-    __o['A_sleepTaskDisabled'] = __obj[1160.0]
-    __o['A_taskDisabled'] = __obj[1161.0]
-    __o['E_deleteNotAllowed'] = __obj[1162.0]
-    __o['E_spOutOfBounds'] = __obj[1163.0]
-    __o['E_stackOverflow'] = __obj[1164.0]
-    __o['LD_block'] = __obj[1165.0]
-    __o['LD_exit'] = __obj[1166.0]
-    __o['LD_ready'] = __obj[1167.0]
-    __o['LM_noWork'] = __obj[1168.0]
-    __o['LM_schedule'] = __obj[1169.0]
-    __o['LM_setAffinity'] = __obj[1170.0]
-    __o['LM_setPri'] = __obj[1171.0]
-    __o['LM_sleep'] = __obj[1172.0]
-    __o['LM_switch'] = __obj[1173.0]
-    __o['LM_yield'] = __obj[1174.0]
+    __o['A_badAffinity'] = __obj[1156.0]
+    __o['A_badPriority'] = __obj[1157.0]
+    __o['A_badTaskState'] = __obj[1158.0]
+    __o['A_badThreadType'] = __obj[1159.0]
+    __o['A_badTimeout'] = __obj[1160.0]
+    __o['A_noPendElem'] = __obj[1161.0]
+    __o['A_sleepTaskDisabled'] = __obj[1162.0]
+    __o['A_taskDisabled'] = __obj[1163.0]
+    __o['E_deleteNotAllowed'] = __obj[1164.0]
+    __o['E_spOutOfBounds'] = __obj[1165.0]
+    __o['E_stackOverflow'] = __obj[1166.0]
+    __o['LD_block'] = __obj[1167.0]
+    __o['LD_exit'] = __obj[1168.0]
+    __o['LD_ready'] = __obj[1169.0]
+    __o['LM_noWork'] = __obj[1170.0]
+    __o['LM_schedule'] = __obj[1171.0]
+    __o['LM_setAffinity'] = __obj[1172.0]
+    __o['LM_setPri'] = __obj[1173.0]
+    __o['LM_sleep'] = __obj[1174.0]
+    __o['LM_switch'] = __obj[1175.0]
+    __o['LM_yield'] = __obj[1176.0]
     __o['Module__diagsEnabled'] = 144
     __o['Module__diagsIncluded'] = 144
     __o['Module__diagsMask'] = null
@@ -18583,18 +18603,18 @@ __o = __obj[1130]  // ti.sysbios.knl.Task
     __o['Object__heap'] = null
     __o['Object__sizeof'] = 0
     __o['Object__table'] = null
-    __o['SupportProxy'] = __obj[1175.0]
+    __o['SupportProxy'] = __obj[1177.0]
     __o['allBlockedFunc'] = null
     __o['checkStackFlag'] = true
-    __o['common$'] = __obj[1192.0]
-    __o['configNameMap$'] = __obj[1193.0]
+    __o['common$'] = __obj[1194.0]
+    __o['configNameMap$'] = __obj[1195.0]
     __o['defaultAffinity'] = 0
     __o['defaultStackHeap'] = null
     __o['defaultStackSection'] = String(java.net.URLDecoder.decode('.bss%3AtaskStackSection', 'UTF-8'))
     __o['defaultStackSize'] = 2048
     __o['deleteTerminatedTasks'] = false
     __o['enableIdleTask'] = true
-    __o['hooks'] = __obj[1206.0]
+    __o['hooks'] = __obj[1208.0]
     __o['idleTaskStackSection'] = String(java.net.URLDecoder.decode('.bss%3AtaskStackSection', 'UTF-8'))
     __o['idleTaskStackSize'] = 2048
     __o['idleTaskVitalTaskFlag'] = true
@@ -18604,7 +18624,7 @@ __o = __obj[1130]  // ti.sysbios.knl.Task
     __o['rovShowRawTab$'] = true
     __o['rovViewInfo'] = __obj[97.0]
     __o['startupHookFunc'] = null
-    __o['viewNameMap$'] = __obj[1208.0]
+    __o['viewNameMap$'] = __obj[1210.0]
 
 __o = __obj[1131]  // ti.sysbios.knl.Task/$instances
     __o['$category'] = String(java.net.URLDecoder.decode('Vector', 'UTF-8'))
@@ -18620,6 +18640,7 @@ __o = __obj[1131]  // ti.sysbios.knl.Task/$instances
     __o['8'] = __obj[1148.0]
     __o['9'] = __obj[1150.0]
     __o['10'] = __obj[1152.0]
+    __o['11'] = __obj[1154.0]
 
 __o = __obj[1132]  // ti.sysbios.knl.Task.Instance#0
     __o['$category'] = String(java.net.URLDecoder.decode('Instance', 'UTF-8'))
@@ -18851,6 +18872,28 @@ __o = __obj[1152]  // ti.sysbios.knl.Task.Instance#10
     __o['arg1'] = 0
     __o['env'] = null
     __o['instance'] = __obj[1153.0]
+    __o['priority'] = 1
+    __o['stack'] = null
+    __o['stackHeap'] = null
+    __o['stackSection'] = String(java.net.URLDecoder.decode('.bss%3AtaskStackSection', 'UTF-8'))
+    __o['stackSize'] = 1024
+    __o['vitalTaskFlag'] = true
+
+__o = __obj[1153]  // ti.sysbios.knl.Task.Instance#10/instance
+    __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
+    __o['$name'] = String(java.net.URLDecoder.decode('ti.sysbios.knl.Task.Instance%2310%2Finstance', 'UTF-8'))
+    __o['name'] = String(java.net.URLDecoder.decode('tsk_manage_handle', 'UTF-8'))
+
+__o = __obj[1154]  // ti.sysbios.knl.Task.Instance#11
+    __o['$category'] = String(java.net.URLDecoder.decode('Instance', 'UTF-8'))
+    __o['$module'] = __obj[1130.0]
+    __o['$name'] = String(java.net.URLDecoder.decode('ti.sysbios.knl.Task.Instance%2311', 'UTF-8'))
+    __o['AFFINITY_NONE'] = -1
+    __o['affinity'] = 0
+    __o['arg0'] = 0
+    __o['arg1'] = 0
+    __o['env'] = null
+    __o['instance'] = __obj[1155.0]
     __o['priority'] = 0
     __o['stack'] = null
     __o['stackHeap'] = null
@@ -18858,150 +18901,150 @@ __o = __obj[1152]  // ti.sysbios.knl.Task.Instance#10
     __o['stackSize'] = 2048
     __o['vitalTaskFlag'] = true
 
-__o = __obj[1153]  // ti.sysbios.knl.Task.Instance#10/instance
+__o = __obj[1155]  // ti.sysbios.knl.Task.Instance#11/instance
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
-    __o['$name'] = String(java.net.URLDecoder.decode('ti.sysbios.knl.Task.Instance%2310%2Finstance', 'UTF-8'))
+    __o['$name'] = String(java.net.URLDecoder.decode('ti.sysbios.knl.Task.Instance%2311%2Finstance', 'UTF-8'))
     __o['name'] = String(java.net.URLDecoder.decode('ti.sysbios.knl.Task.IdleTask', 'UTF-8'))
 
-__o = __obj[1154]  // xdc.runtime.Assert.Desc#31
+__o = __obj[1156]  // xdc.runtime.Assert.Desc#31
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('xdc.runtime.Assert.Desc%2331', 'UTF-8'))
     __o['mask'] = 16
     __o['msg'] = String(java.net.URLDecoder.decode('A_badAffinity%3A+Invalid+affinity.', 'UTF-8'))
 
-__o = __obj[1155]  // xdc.runtime.Assert.Desc#29
+__o = __obj[1157]  // xdc.runtime.Assert.Desc#29
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('xdc.runtime.Assert.Desc%2329', 'UTF-8'))
     __o['mask'] = 16
     __o['msg'] = String(java.net.URLDecoder.decode('A_badPriority%3A+An+invalid+task+priority+was+used.', 'UTF-8'))
 
-__o = __obj[1156]  // xdc.runtime.Assert.Desc#26
+__o = __obj[1158]  // xdc.runtime.Assert.Desc#26
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('xdc.runtime.Assert.Desc%2326', 'UTF-8'))
     __o['mask'] = 16
     __o['msg'] = String(java.net.URLDecoder.decode('A_badTaskState%3A+Can%27t+delete+a+task+in+RUNNING+state.', 'UTF-8'))
 
-__o = __obj[1157]  // xdc.runtime.Assert.Desc#25
+__o = __obj[1159]  // xdc.runtime.Assert.Desc#25
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('xdc.runtime.Assert.Desc%2325', 'UTF-8'))
     __o['mask'] = 16
     __o['msg'] = String(java.net.URLDecoder.decode('A_badThreadType%3A+Cannot+create%2Fdelete+a+task+from+Hwi+or+Swi+thread.', 'UTF-8'))
 
-__o = __obj[1158]  // xdc.runtime.Assert.Desc#30
+__o = __obj[1160]  // xdc.runtime.Assert.Desc#30
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('xdc.runtime.Assert.Desc%2330', 'UTF-8'))
     __o['mask'] = 16
     __o['msg'] = String(java.net.URLDecoder.decode('A_badTimeout%3A+Can%27t+sleep+FOREVER.', 'UTF-8'))
 
-__o = __obj[1159]  // xdc.runtime.Assert.Desc#27
+__o = __obj[1161]  // xdc.runtime.Assert.Desc#27
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('xdc.runtime.Assert.Desc%2327', 'UTF-8'))
     __o['mask'] = 16
     __o['msg'] = String(java.net.URLDecoder.decode('A_noPendElem%3A+Not+enough+info+to+delete+BLOCKED+task.', 'UTF-8'))
 
-__o = __obj[1160]  // xdc.runtime.Assert.Desc#32
+__o = __obj[1162]  // xdc.runtime.Assert.Desc#32
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('xdc.runtime.Assert.Desc%2332', 'UTF-8'))
     __o['mask'] = 16
     __o['msg'] = String(java.net.URLDecoder.decode('A_sleepTaskDisabled%3A+Cannot+call+Task_sleep%28%29+while+the+Task+scheduler+is+disabled.', 'UTF-8'))
 
-__o = __obj[1161]  // xdc.runtime.Assert.Desc#28
+__o = __obj[1163]  // xdc.runtime.Assert.Desc#28
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('xdc.runtime.Assert.Desc%2328', 'UTF-8'))
     __o['mask'] = 16
     __o['msg'] = String(java.net.URLDecoder.decode('A_taskDisabled%3A+Cannot+create+a+task+when+tasking+is+disabled.', 'UTF-8'))
 
-__o = __obj[1162]  // xdc.runtime.Error.Desc#11
+__o = __obj[1164]  // xdc.runtime.Error.Desc#11
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('xdc.runtime.Error.Desc%2311', 'UTF-8'))
     __o['code'] = 0
     __o['msg'] = String(java.net.URLDecoder.decode('E_deleteNotAllowed%3A+Task+0x%25x.', 'UTF-8'))
 
-__o = __obj[1163]  // xdc.runtime.Error.Desc#10
+__o = __obj[1165]  // xdc.runtime.Error.Desc#10
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('xdc.runtime.Error.Desc%2310', 'UTF-8'))
     __o['code'] = 0
     __o['msg'] = String(java.net.URLDecoder.decode('E_spOutOfBounds%3A+Task+0x%25x+stack+error%2C+SP+%3D+0x%25x.', 'UTF-8'))
 
-__o = __obj[1164]  // xdc.runtime.Error.Desc#9
+__o = __obj[1166]  // xdc.runtime.Error.Desc#9
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('xdc.runtime.Error.Desc%239', 'UTF-8'))
     __o['code'] = 0
     __o['msg'] = String(java.net.URLDecoder.decode('E_stackOverflow%3A+Task+0x%25x+stack+overflow.', 'UTF-8'))
 
-__o = __obj[1165]  // xdc.runtime.Log.EventDesc#26
+__o = __obj[1167]  // xdc.runtime.Log.EventDesc#26
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('xdc.runtime.Log.EventDesc%2326', 'UTF-8'))
     __o['level'] = undefined
     __o['mask'] = 512
     __o['msg'] = String(java.net.URLDecoder.decode('LD_block%3A+tsk%3A+0x%25x%2C+func%3A+0x%25x', 'UTF-8'))
 
-__o = __obj[1166]  // xdc.runtime.Log.EventDesc#29
+__o = __obj[1168]  // xdc.runtime.Log.EventDesc#29
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('xdc.runtime.Log.EventDesc%2329', 'UTF-8'))
     __o['level'] = undefined
     __o['mask'] = 512
     __o['msg'] = String(java.net.URLDecoder.decode('LD_exit%3A+tsk%3A+0x%25x%2C+func%3A+0x%25x', 'UTF-8'))
 
-__o = __obj[1167]  // xdc.runtime.Log.EventDesc#25
+__o = __obj[1169]  // xdc.runtime.Log.EventDesc#25
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('xdc.runtime.Log.EventDesc%2325', 'UTF-8'))
     __o['level'] = undefined
     __o['mask'] = 512
     __o['msg'] = String(java.net.URLDecoder.decode('LD_ready%3A+tsk%3A+0x%25x%2C+func%3A+0x%25x%2C+pri%3A+%25d', 'UTF-8'))
 
-__o = __obj[1168]  // xdc.runtime.Log.EventDesc#32
+__o = __obj[1170]  // xdc.runtime.Log.EventDesc#32
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('xdc.runtime.Log.EventDesc%2332', 'UTF-8'))
     __o['level'] = undefined
     __o['mask'] = 1024
     __o['msg'] = String(java.net.URLDecoder.decode('LD_noWork%3A+coreId%3A+%25d%2C+curSetLocal%3A+%25d%2C+curSetX%3A+%25d%2C+curMaskLocal%3A+%25d', 'UTF-8'))
 
-__o = __obj[1169]  // xdc.runtime.Log.EventDesc#31
+__o = __obj[1171]  // xdc.runtime.Log.EventDesc#31
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('xdc.runtime.Log.EventDesc%2331', 'UTF-8'))
     __o['level'] = undefined
     __o['mask'] = 1024
     __o['msg'] = String(java.net.URLDecoder.decode('LD_schedule%3A+coreId%3A+%25d%2C+workFlag%3A+%25d%2C+curSetLocal%3A+%25d%2C+curSetX%3A+%25d%2C+curMaskLocal%3A+%25d', 'UTF-8'))
 
-__o = __obj[1170]  // xdc.runtime.Log.EventDesc#30
+__o = __obj[1172]  // xdc.runtime.Log.EventDesc#30
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('xdc.runtime.Log.EventDesc%2330', 'UTF-8'))
     __o['level'] = undefined
     __o['mask'] = 768
     __o['msg'] = String(java.net.URLDecoder.decode('LM_setAffinity%3A+tsk%3A+0x%25x%2C+func%3A+0x%25x%2C+oldCore%3A+%25d%2C+oldAffinity+%25d%2C+newAffinity+%25d', 'UTF-8'))
 
-__o = __obj[1171]  // xdc.runtime.Log.EventDesc#28
+__o = __obj[1173]  // xdc.runtime.Log.EventDesc#28
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('xdc.runtime.Log.EventDesc%2328', 'UTF-8'))
     __o['level'] = undefined
     __o['mask'] = 768
     __o['msg'] = String(java.net.URLDecoder.decode('LM_setPri%3A+tsk%3A+0x%25x%2C+func%3A+0x%25x%2C+oldPri%3A+%25d%2C+newPri+%25d', 'UTF-8'))
 
-__o = __obj[1172]  // xdc.runtime.Log.EventDesc#24
+__o = __obj[1174]  // xdc.runtime.Log.EventDesc#24
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('xdc.runtime.Log.EventDesc%2324', 'UTF-8'))
     __o['level'] = undefined
     __o['mask'] = 768
     __o['msg'] = String(java.net.URLDecoder.decode('LM_sleep%3A+tsk%3A+0x%25x%2C+func%3A+0x%25x%2C+timeout%3A+%25d', 'UTF-8'))
 
-__o = __obj[1173]  // xdc.runtime.Log.EventDesc#23
+__o = __obj[1175]  // xdc.runtime.Log.EventDesc#23
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('xdc.runtime.Log.EventDesc%2323', 'UTF-8'))
     __o['level'] = undefined
     __o['mask'] = 768
     __o['msg'] = String(java.net.URLDecoder.decode('LM_switch%3A+oldtsk%3A+0x%25x%2C+oldfunc%3A+0x%25x%2C+newtsk%3A+0x%25x%2C+newfunc%3A+0x%25x', 'UTF-8'))
 
-__o = __obj[1174]  // xdc.runtime.Log.EventDesc#27
+__o = __obj[1176]  // xdc.runtime.Log.EventDesc#27
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('xdc.runtime.Log.EventDesc%2327', 'UTF-8'))
     __o['level'] = undefined
     __o['mask'] = 768
     __o['msg'] = String(java.net.URLDecoder.decode('LM_yield%3A+tsk%3A+0x%25x%2C+func%3A+0x%25x%2C+currThread%3A+%25d', 'UTF-8'))
 
-__o = __obj[1175]  // ti.sysbios.family.arm.m3.TaskSupport
+__o = __obj[1177]  // ti.sysbios.family.arm.m3.TaskSupport
     __o['$category'] = String(java.net.URLDecoder.decode('Module', 'UTF-8'))
-    __o['$instances'] = __obj[1176.0]
+    __o['$instances'] = __obj[1178.0]
     __o['$name'] = String(java.net.URLDecoder.decode('ti.sysbios.family.arm.m3.TaskSupport', 'UTF-8'))
     __o['Module__diagsEnabled'] = 144
     __o['Module__diagsIncluded'] = 144
@@ -19021,18 +19064,18 @@ __o = __obj[1175]  // ti.sysbios.family.arm.m3.TaskSupport
     __o['Object__heap'] = null
     __o['Object__sizeof'] = 0
     __o['Object__table'] = null
-    __o['common$'] = __obj[1177.0]
-    __o['configNameMap$'] = __obj[1178.0]
+    __o['common$'] = __obj[1179.0]
+    __o['configNameMap$'] = __obj[1180.0]
     __o['defaultStackSize'] = 2048
     __o['rovShowRawTab$'] = true
     __o['stackAlignment'] = 8
-    __o['viewNameMap$'] = __obj[1191.0]
+    __o['viewNameMap$'] = __obj[1193.0]
 
-__o = __obj[1176]  // ti.sysbios.family.arm.m3.TaskSupport/$instances
+__o = __obj[1178]  // ti.sysbios.family.arm.m3.TaskSupport/$instances
     __o['$category'] = String(java.net.URLDecoder.decode('Vector', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.sysbios.family.arm.m3.TaskSupport%2F%24instances', 'UTF-8'))
 
-__o = __obj[1177]  // ti.sysbios.family.arm.m3.TaskSupport/common$
+__o = __obj[1179]  // ti.sysbios.family.arm.m3.TaskSupport/common$
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.sysbios.family.arm.m3.TaskSupport%2Fcommon%24', 'UTF-8'))
     __o['diags_ANALYSIS'] = String(java.net.URLDecoder.decode('xdc.runtime.Diags.ALWAYS_OFF', 'UTF-8'))
@@ -19062,25 +19105,25 @@ __o = __obj[1177]  // ti.sysbios.family.arm.m3.TaskSupport/common$
     __o['namedModule'] = true
     __o['romPatchTable'] = false
 
-__o = __obj[1178]  // ti.sysbios.family.arm.m3.TaskSupport/configNameMap$
+__o = __obj[1180]  // ti.sysbios.family.arm.m3.TaskSupport/configNameMap$
     __o.$keys = []
-    __o.push(__o['xdc.runtime/Memory'] = __obj[1179.0]); __o.$keys.push('xdc.runtime/Memory')
-    __o.push(__o['xdc.runtime/Diagnostics'] = __obj[1181.0]); __o.$keys.push('xdc.runtime/Diagnostics')
-    __o.push(__o['xdc.runtime/Concurrency'] = __obj[1183.0]); __o.$keys.push('xdc.runtime/Concurrency')
-    __o.push(__o['xdc.runtime/Log Events'] = __obj[1185.0]); __o.$keys.push('xdc.runtime/Log Events')
-    __o.push(__o['xdc.runtime/Asserts'] = __obj[1187.0]); __o.$keys.push('xdc.runtime/Asserts')
-    __o.push(__o['xdc.runtime/Errors'] = __obj[1189.0]); __o.$keys.push('xdc.runtime/Errors')
+    __o.push(__o['xdc.runtime/Memory'] = __obj[1181.0]); __o.$keys.push('xdc.runtime/Memory')
+    __o.push(__o['xdc.runtime/Diagnostics'] = __obj[1183.0]); __o.$keys.push('xdc.runtime/Diagnostics')
+    __o.push(__o['xdc.runtime/Concurrency'] = __obj[1185.0]); __o.$keys.push('xdc.runtime/Concurrency')
+    __o.push(__o['xdc.runtime/Log Events'] = __obj[1187.0]); __o.$keys.push('xdc.runtime/Log Events')
+    __o.push(__o['xdc.runtime/Asserts'] = __obj[1189.0]); __o.$keys.push('xdc.runtime/Asserts')
+    __o.push(__o['xdc.runtime/Errors'] = __obj[1191.0]); __o.$keys.push('xdc.runtime/Errors')
     __o['$category'] = String(java.net.URLDecoder.decode('Map', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.sysbios.family.arm.m3.TaskSupport%2FconfigNameMap%24', 'UTF-8'))
 
-__o = __obj[1179]  // ti.sysbios.family.arm.m3.TaskSupport/configNameMap$/'xdc.runtime/Memory'
+__o = __obj[1181]  // ti.sysbios.family.arm.m3.TaskSupport/configNameMap$/'xdc.runtime/Memory'
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.sysbios.family.arm.m3.TaskSupport%2FconfigNameMap%24%2F%27xdc.runtime%2FMemory%27', 'UTF-8'))
-    __o['fields'] = __obj[1180.0]
+    __o['fields'] = __obj[1182.0]
     __o['viewFxn'] = undefined
     __o['viewType'] = String(java.net.URLDecoder.decode('module', 'UTF-8'))
 
-__o = __obj[1180]  // ti.sysbios.family.arm.m3.TaskSupport/configNameMap$/'xdc.runtime/Memory'/fields
+__o = __obj[1182]  // ti.sysbios.family.arm.m3.TaskSupport/configNameMap$/'xdc.runtime/Memory'/fields
     __o['$category'] = String(java.net.URLDecoder.decode('Vector', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.sysbios.family.arm.m3.TaskSupport%2FconfigNameMap%24%2F%27xdc.runtime%2FMemory%27%2Ffields', 'UTF-8'))
     __o['0'] = String(java.net.URLDecoder.decode('common%24.instanceHeap', 'UTF-8'))
@@ -19091,14 +19134,14 @@ __o = __obj[1180]  // ti.sysbios.family.arm.m3.TaskSupport/configNameMap$/'xdc.r
     __o['5'] = String(java.net.URLDecoder.decode('common%24.fxntab', 'UTF-8'))
     __o['6'] = String(java.net.URLDecoder.decode('common%24.romPatchTable', 'UTF-8'))
 
-__o = __obj[1181]  // ti.sysbios.family.arm.m3.TaskSupport/configNameMap$/'xdc.runtime/Diagnostics'
+__o = __obj[1183]  // ti.sysbios.family.arm.m3.TaskSupport/configNameMap$/'xdc.runtime/Diagnostics'
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.sysbios.family.arm.m3.TaskSupport%2FconfigNameMap%24%2F%27xdc.runtime%2FDiagnostics%27', 'UTF-8'))
-    __o['fields'] = __obj[1182.0]
+    __o['fields'] = __obj[1184.0]
     __o['viewFxn'] = undefined
     __o['viewType'] = String(java.net.URLDecoder.decode('module', 'UTF-8'))
 
-__o = __obj[1182]  // ti.sysbios.family.arm.m3.TaskSupport/configNameMap$/'xdc.runtime/Diagnostics'/fields
+__o = __obj[1184]  // ti.sysbios.family.arm.m3.TaskSupport/configNameMap$/'xdc.runtime/Diagnostics'/fields
     __o['$category'] = String(java.net.URLDecoder.decode('Vector', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.sysbios.family.arm.m3.TaskSupport%2FconfigNameMap%24%2F%27xdc.runtime%2FDiagnostics%27%2Ffields', 'UTF-8'))
     __o['0'] = String(java.net.URLDecoder.decode('common%24.logger', 'UTF-8'))
@@ -19117,61 +19160,61 @@ __o = __obj[1182]  // ti.sysbios.family.arm.m3.TaskSupport/configNameMap$/'xdc.r
     __o['13'] = String(java.net.URLDecoder.decode('common%24.diags_INFO', 'UTF-8'))
     __o['14'] = String(java.net.URLDecoder.decode('common%24.diags_ANALYSIS', 'UTF-8'))
 
-__o = __obj[1183]  // ti.sysbios.family.arm.m3.TaskSupport/configNameMap$/'xdc.runtime/Concurrency'
+__o = __obj[1185]  // ti.sysbios.family.arm.m3.TaskSupport/configNameMap$/'xdc.runtime/Concurrency'
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.sysbios.family.arm.m3.TaskSupport%2FconfigNameMap%24%2F%27xdc.runtime%2FConcurrency%27', 'UTF-8'))
-    __o['fields'] = __obj[1184.0]
+    __o['fields'] = __obj[1186.0]
     __o['viewFxn'] = undefined
     __o['viewType'] = String(java.net.URLDecoder.decode('module', 'UTF-8'))
 
-__o = __obj[1184]  // ti.sysbios.family.arm.m3.TaskSupport/configNameMap$/'xdc.runtime/Concurrency'/fields
+__o = __obj[1186]  // ti.sysbios.family.arm.m3.TaskSupport/configNameMap$/'xdc.runtime/Concurrency'/fields
     __o['$category'] = String(java.net.URLDecoder.decode('Vector', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.sysbios.family.arm.m3.TaskSupport%2FconfigNameMap%24%2F%27xdc.runtime%2FConcurrency%27%2Ffields', 'UTF-8'))
     __o['0'] = String(java.net.URLDecoder.decode('common%24.gate', 'UTF-8'))
     __o['1'] = String(java.net.URLDecoder.decode('common%24.gateParams', 'UTF-8'))
 
-__o = __obj[1185]  // ti.sysbios.family.arm.m3.TaskSupport/configNameMap$/'xdc.runtime/Log Events'
+__o = __obj[1187]  // ti.sysbios.family.arm.m3.TaskSupport/configNameMap$/'xdc.runtime/Log Events'
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.sysbios.family.arm.m3.TaskSupport%2FconfigNameMap%24%2F%27xdc.runtime%2FLog+Events%27', 'UTF-8'))
-    __o['fields'] = __obj[1186.0]
-    __o['viewFxn'] = undefined
-    __o['viewType'] = String(java.net.URLDecoder.decode('instance', 'UTF-8'))
-
-__o = __obj[1186]  // ti.sysbios.family.arm.m3.TaskSupport/configNameMap$/'xdc.runtime/Log Events'/fields
-    __o['$category'] = String(java.net.URLDecoder.decode('Vector', 'UTF-8'))
-    __o['$name'] = String(java.net.URLDecoder.decode('ti.sysbios.family.arm.m3.TaskSupport%2FconfigNameMap%24%2F%27xdc.runtime%2FLog+Events%27%2Ffields', 'UTF-8'))
-    __o['0'] = String(java.net.URLDecoder.decode('Log.Event', 'UTF-8'))
-
-__o = __obj[1187]  // ti.sysbios.family.arm.m3.TaskSupport/configNameMap$/'xdc.runtime/Asserts'
-    __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
-    __o['$name'] = String(java.net.URLDecoder.decode('ti.sysbios.family.arm.m3.TaskSupport%2FconfigNameMap%24%2F%27xdc.runtime%2FAsserts%27', 'UTF-8'))
     __o['fields'] = __obj[1188.0]
     __o['viewFxn'] = undefined
     __o['viewType'] = String(java.net.URLDecoder.decode('instance', 'UTF-8'))
 
-__o = __obj[1188]  // ti.sysbios.family.arm.m3.TaskSupport/configNameMap$/'xdc.runtime/Asserts'/fields
+__o = __obj[1188]  // ti.sysbios.family.arm.m3.TaskSupport/configNameMap$/'xdc.runtime/Log Events'/fields
     __o['$category'] = String(java.net.URLDecoder.decode('Vector', 'UTF-8'))
-    __o['$name'] = String(java.net.URLDecoder.decode('ti.sysbios.family.arm.m3.TaskSupport%2FconfigNameMap%24%2F%27xdc.runtime%2FAsserts%27%2Ffields', 'UTF-8'))
-    __o['0'] = String(java.net.URLDecoder.decode('Assert.Id', 'UTF-8'))
+    __o['$name'] = String(java.net.URLDecoder.decode('ti.sysbios.family.arm.m3.TaskSupport%2FconfigNameMap%24%2F%27xdc.runtime%2FLog+Events%27%2Ffields', 'UTF-8'))
+    __o['0'] = String(java.net.URLDecoder.decode('Log.Event', 'UTF-8'))
 
-__o = __obj[1189]  // ti.sysbios.family.arm.m3.TaskSupport/configNameMap$/'xdc.runtime/Errors'
+__o = __obj[1189]  // ti.sysbios.family.arm.m3.TaskSupport/configNameMap$/'xdc.runtime/Asserts'
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
-    __o['$name'] = String(java.net.URLDecoder.decode('ti.sysbios.family.arm.m3.TaskSupport%2FconfigNameMap%24%2F%27xdc.runtime%2FErrors%27', 'UTF-8'))
+    __o['$name'] = String(java.net.URLDecoder.decode('ti.sysbios.family.arm.m3.TaskSupport%2FconfigNameMap%24%2F%27xdc.runtime%2FAsserts%27', 'UTF-8'))
     __o['fields'] = __obj[1190.0]
     __o['viewFxn'] = undefined
     __o['viewType'] = String(java.net.URLDecoder.decode('instance', 'UTF-8'))
 
-__o = __obj[1190]  // ti.sysbios.family.arm.m3.TaskSupport/configNameMap$/'xdc.runtime/Errors'/fields
+__o = __obj[1190]  // ti.sysbios.family.arm.m3.TaskSupport/configNameMap$/'xdc.runtime/Asserts'/fields
+    __o['$category'] = String(java.net.URLDecoder.decode('Vector', 'UTF-8'))
+    __o['$name'] = String(java.net.URLDecoder.decode('ti.sysbios.family.arm.m3.TaskSupport%2FconfigNameMap%24%2F%27xdc.runtime%2FAsserts%27%2Ffields', 'UTF-8'))
+    __o['0'] = String(java.net.URLDecoder.decode('Assert.Id', 'UTF-8'))
+
+__o = __obj[1191]  // ti.sysbios.family.arm.m3.TaskSupport/configNameMap$/'xdc.runtime/Errors'
+    __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
+    __o['$name'] = String(java.net.URLDecoder.decode('ti.sysbios.family.arm.m3.TaskSupport%2FconfigNameMap%24%2F%27xdc.runtime%2FErrors%27', 'UTF-8'))
+    __o['fields'] = __obj[1192.0]
+    __o['viewFxn'] = undefined
+    __o['viewType'] = String(java.net.URLDecoder.decode('instance', 'UTF-8'))
+
+__o = __obj[1192]  // ti.sysbios.family.arm.m3.TaskSupport/configNameMap$/'xdc.runtime/Errors'/fields
     __o['$category'] = String(java.net.URLDecoder.decode('Vector', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.sysbios.family.arm.m3.TaskSupport%2FconfigNameMap%24%2F%27xdc.runtime%2FErrors%27%2Ffields', 'UTF-8'))
     __o['0'] = String(java.net.URLDecoder.decode('Error.Id', 'UTF-8'))
 
-__o = __obj[1191]  // ti.sysbios.family.arm.m3.TaskSupport/viewNameMap$
+__o = __obj[1193]  // ti.sysbios.family.arm.m3.TaskSupport/viewNameMap$
     __o.$keys = []
     __o['$category'] = String(java.net.URLDecoder.decode('Map', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.sysbios.family.arm.m3.TaskSupport%2FviewNameMap%24', 'UTF-8'))
 
-__o = __obj[1192]  // ti.sysbios.knl.Task/common$
+__o = __obj[1194]  // ti.sysbios.knl.Task/common$
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.sysbios.knl.Task%2Fcommon%24', 'UTF-8'))
     __o['diags_ANALYSIS'] = String(java.net.URLDecoder.decode('xdc.runtime.Diags.ALWAYS_OFF', 'UTF-8'))
@@ -19201,25 +19244,25 @@ __o = __obj[1192]  // ti.sysbios.knl.Task/common$
     __o['namedModule'] = true
     __o['romPatchTable'] = false
 
-__o = __obj[1193]  // ti.sysbios.knl.Task/configNameMap$
+__o = __obj[1195]  // ti.sysbios.knl.Task/configNameMap$
     __o.$keys = []
-    __o.push(__o['xdc.runtime/Memory'] = __obj[1194.0]); __o.$keys.push('xdc.runtime/Memory')
-    __o.push(__o['xdc.runtime/Diagnostics'] = __obj[1196.0]); __o.$keys.push('xdc.runtime/Diagnostics')
-    __o.push(__o['xdc.runtime/Concurrency'] = __obj[1198.0]); __o.$keys.push('xdc.runtime/Concurrency')
-    __o.push(__o['xdc.runtime/Log Events'] = __obj[1200.0]); __o.$keys.push('xdc.runtime/Log Events')
-    __o.push(__o['xdc.runtime/Asserts'] = __obj[1202.0]); __o.$keys.push('xdc.runtime/Asserts')
-    __o.push(__o['xdc.runtime/Errors'] = __obj[1204.0]); __o.$keys.push('xdc.runtime/Errors')
+    __o.push(__o['xdc.runtime/Memory'] = __obj[1196.0]); __o.$keys.push('xdc.runtime/Memory')
+    __o.push(__o['xdc.runtime/Diagnostics'] = __obj[1198.0]); __o.$keys.push('xdc.runtime/Diagnostics')
+    __o.push(__o['xdc.runtime/Concurrency'] = __obj[1200.0]); __o.$keys.push('xdc.runtime/Concurrency')
+    __o.push(__o['xdc.runtime/Log Events'] = __obj[1202.0]); __o.$keys.push('xdc.runtime/Log Events')
+    __o.push(__o['xdc.runtime/Asserts'] = __obj[1204.0]); __o.$keys.push('xdc.runtime/Asserts')
+    __o.push(__o['xdc.runtime/Errors'] = __obj[1206.0]); __o.$keys.push('xdc.runtime/Errors')
     __o['$category'] = String(java.net.URLDecoder.decode('Map', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.sysbios.knl.Task%2FconfigNameMap%24', 'UTF-8'))
 
-__o = __obj[1194]  // ti.sysbios.knl.Task/configNameMap$/'xdc.runtime/Memory'
+__o = __obj[1196]  // ti.sysbios.knl.Task/configNameMap$/'xdc.runtime/Memory'
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.sysbios.knl.Task%2FconfigNameMap%24%2F%27xdc.runtime%2FMemory%27', 'UTF-8'))
-    __o['fields'] = __obj[1195.0]
+    __o['fields'] = __obj[1197.0]
     __o['viewFxn'] = undefined
     __o['viewType'] = String(java.net.URLDecoder.decode('module', 'UTF-8'))
 
-__o = __obj[1195]  // ti.sysbios.knl.Task/configNameMap$/'xdc.runtime/Memory'/fields
+__o = __obj[1197]  // ti.sysbios.knl.Task/configNameMap$/'xdc.runtime/Memory'/fields
     __o['$category'] = String(java.net.URLDecoder.decode('Vector', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.sysbios.knl.Task%2FconfigNameMap%24%2F%27xdc.runtime%2FMemory%27%2Ffields', 'UTF-8'))
     __o['0'] = String(java.net.URLDecoder.decode('common%24.instanceHeap', 'UTF-8'))
@@ -19230,14 +19273,14 @@ __o = __obj[1195]  // ti.sysbios.knl.Task/configNameMap$/'xdc.runtime/Memory'/fi
     __o['5'] = String(java.net.URLDecoder.decode('common%24.fxntab', 'UTF-8'))
     __o['6'] = String(java.net.URLDecoder.decode('common%24.romPatchTable', 'UTF-8'))
 
-__o = __obj[1196]  // ti.sysbios.knl.Task/configNameMap$/'xdc.runtime/Diagnostics'
+__o = __obj[1198]  // ti.sysbios.knl.Task/configNameMap$/'xdc.runtime/Diagnostics'
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.sysbios.knl.Task%2FconfigNameMap%24%2F%27xdc.runtime%2FDiagnostics%27', 'UTF-8'))
-    __o['fields'] = __obj[1197.0]
+    __o['fields'] = __obj[1199.0]
     __o['viewFxn'] = undefined
     __o['viewType'] = String(java.net.URLDecoder.decode('module', 'UTF-8'))
 
-__o = __obj[1197]  // ti.sysbios.knl.Task/configNameMap$/'xdc.runtime/Diagnostics'/fields
+__o = __obj[1199]  // ti.sysbios.knl.Task/configNameMap$/'xdc.runtime/Diagnostics'/fields
     __o['$category'] = String(java.net.URLDecoder.decode('Vector', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.sysbios.knl.Task%2FconfigNameMap%24%2F%27xdc.runtime%2FDiagnostics%27%2Ffields', 'UTF-8'))
     __o['0'] = String(java.net.URLDecoder.decode('common%24.logger', 'UTF-8'))
@@ -19256,61 +19299,61 @@ __o = __obj[1197]  // ti.sysbios.knl.Task/configNameMap$/'xdc.runtime/Diagnostic
     __o['13'] = String(java.net.URLDecoder.decode('common%24.diags_INFO', 'UTF-8'))
     __o['14'] = String(java.net.URLDecoder.decode('common%24.diags_ANALYSIS', 'UTF-8'))
 
-__o = __obj[1198]  // ti.sysbios.knl.Task/configNameMap$/'xdc.runtime/Concurrency'
+__o = __obj[1200]  // ti.sysbios.knl.Task/configNameMap$/'xdc.runtime/Concurrency'
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.sysbios.knl.Task%2FconfigNameMap%24%2F%27xdc.runtime%2FConcurrency%27', 'UTF-8'))
-    __o['fields'] = __obj[1199.0]
+    __o['fields'] = __obj[1201.0]
     __o['viewFxn'] = undefined
     __o['viewType'] = String(java.net.URLDecoder.decode('module', 'UTF-8'))
 
-__o = __obj[1199]  // ti.sysbios.knl.Task/configNameMap$/'xdc.runtime/Concurrency'/fields
+__o = __obj[1201]  // ti.sysbios.knl.Task/configNameMap$/'xdc.runtime/Concurrency'/fields
     __o['$category'] = String(java.net.URLDecoder.decode('Vector', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.sysbios.knl.Task%2FconfigNameMap%24%2F%27xdc.runtime%2FConcurrency%27%2Ffields', 'UTF-8'))
     __o['0'] = String(java.net.URLDecoder.decode('common%24.gate', 'UTF-8'))
     __o['1'] = String(java.net.URLDecoder.decode('common%24.gateParams', 'UTF-8'))
 
-__o = __obj[1200]  // ti.sysbios.knl.Task/configNameMap$/'xdc.runtime/Log Events'
+__o = __obj[1202]  // ti.sysbios.knl.Task/configNameMap$/'xdc.runtime/Log Events'
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.sysbios.knl.Task%2FconfigNameMap%24%2F%27xdc.runtime%2FLog+Events%27', 'UTF-8'))
-    __o['fields'] = __obj[1201.0]
-    __o['viewFxn'] = undefined
-    __o['viewType'] = String(java.net.URLDecoder.decode('instance', 'UTF-8'))
-
-__o = __obj[1201]  // ti.sysbios.knl.Task/configNameMap$/'xdc.runtime/Log Events'/fields
-    __o['$category'] = String(java.net.URLDecoder.decode('Vector', 'UTF-8'))
-    __o['$name'] = String(java.net.URLDecoder.decode('ti.sysbios.knl.Task%2FconfigNameMap%24%2F%27xdc.runtime%2FLog+Events%27%2Ffields', 'UTF-8'))
-    __o['0'] = String(java.net.URLDecoder.decode('Log.Event', 'UTF-8'))
-
-__o = __obj[1202]  // ti.sysbios.knl.Task/configNameMap$/'xdc.runtime/Asserts'
-    __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
-    __o['$name'] = String(java.net.URLDecoder.decode('ti.sysbios.knl.Task%2FconfigNameMap%24%2F%27xdc.runtime%2FAsserts%27', 'UTF-8'))
     __o['fields'] = __obj[1203.0]
     __o['viewFxn'] = undefined
     __o['viewType'] = String(java.net.URLDecoder.decode('instance', 'UTF-8'))
 
-__o = __obj[1203]  // ti.sysbios.knl.Task/configNameMap$/'xdc.runtime/Asserts'/fields
+__o = __obj[1203]  // ti.sysbios.knl.Task/configNameMap$/'xdc.runtime/Log Events'/fields
     __o['$category'] = String(java.net.URLDecoder.decode('Vector', 'UTF-8'))
-    __o['$name'] = String(java.net.URLDecoder.decode('ti.sysbios.knl.Task%2FconfigNameMap%24%2F%27xdc.runtime%2FAsserts%27%2Ffields', 'UTF-8'))
-    __o['0'] = String(java.net.URLDecoder.decode('Assert.Id', 'UTF-8'))
+    __o['$name'] = String(java.net.URLDecoder.decode('ti.sysbios.knl.Task%2FconfigNameMap%24%2F%27xdc.runtime%2FLog+Events%27%2Ffields', 'UTF-8'))
+    __o['0'] = String(java.net.URLDecoder.decode('Log.Event', 'UTF-8'))
 
-__o = __obj[1204]  // ti.sysbios.knl.Task/configNameMap$/'xdc.runtime/Errors'
+__o = __obj[1204]  // ti.sysbios.knl.Task/configNameMap$/'xdc.runtime/Asserts'
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
-    __o['$name'] = String(java.net.URLDecoder.decode('ti.sysbios.knl.Task%2FconfigNameMap%24%2F%27xdc.runtime%2FErrors%27', 'UTF-8'))
+    __o['$name'] = String(java.net.URLDecoder.decode('ti.sysbios.knl.Task%2FconfigNameMap%24%2F%27xdc.runtime%2FAsserts%27', 'UTF-8'))
     __o['fields'] = __obj[1205.0]
     __o['viewFxn'] = undefined
     __o['viewType'] = String(java.net.URLDecoder.decode('instance', 'UTF-8'))
 
-__o = __obj[1205]  // ti.sysbios.knl.Task/configNameMap$/'xdc.runtime/Errors'/fields
+__o = __obj[1205]  // ti.sysbios.knl.Task/configNameMap$/'xdc.runtime/Asserts'/fields
+    __o['$category'] = String(java.net.URLDecoder.decode('Vector', 'UTF-8'))
+    __o['$name'] = String(java.net.URLDecoder.decode('ti.sysbios.knl.Task%2FconfigNameMap%24%2F%27xdc.runtime%2FAsserts%27%2Ffields', 'UTF-8'))
+    __o['0'] = String(java.net.URLDecoder.decode('Assert.Id', 'UTF-8'))
+
+__o = __obj[1206]  // ti.sysbios.knl.Task/configNameMap$/'xdc.runtime/Errors'
+    __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
+    __o['$name'] = String(java.net.URLDecoder.decode('ti.sysbios.knl.Task%2FconfigNameMap%24%2F%27xdc.runtime%2FErrors%27', 'UTF-8'))
+    __o['fields'] = __obj[1207.0]
+    __o['viewFxn'] = undefined
+    __o['viewType'] = String(java.net.URLDecoder.decode('instance', 'UTF-8'))
+
+__o = __obj[1207]  // ti.sysbios.knl.Task/configNameMap$/'xdc.runtime/Errors'/fields
     __o['$category'] = String(java.net.URLDecoder.decode('Vector', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.sysbios.knl.Task%2FconfigNameMap%24%2F%27xdc.runtime%2FErrors%27%2Ffields', 'UTF-8'))
     __o['0'] = String(java.net.URLDecoder.decode('Error.Id', 'UTF-8'))
 
-__o = __obj[1206]  // ti.sysbios.knl.Task/hooks
+__o = __obj[1208]  // ti.sysbios.knl.Task/hooks
     __o['$category'] = String(java.net.URLDecoder.decode('Vector', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.sysbios.knl.Task%2Fhooks', 'UTF-8'))
-    __o['0'] = __obj[1207.0]
+    __o['0'] = __obj[1209.0]
 
-__o = __obj[1207]  // ti.sysbios.knl.Task/hooks/0
+__o = __obj[1209]  // ti.sysbios.knl.Task/hooks/0
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.sysbios.knl.Task%2Fhooks%2F0', 'UTF-8'))
     __o['createFxn'] = null
@@ -19320,134 +19363,134 @@ __o = __obj[1207]  // ti.sysbios.knl.Task/hooks/0
     __o['registerFxn'] = null
     __o['switchFxn'] = String(java.net.URLDecoder.decode('%26ti_sysbios_knl_Task_checkStacks', 'UTF-8'))
 
-__o = __obj[1208]  // ti.sysbios.knl.Task/viewNameMap$
+__o = __obj[1210]  // ti.sysbios.knl.Task/viewNameMap$
     __o.$keys = []
     __o['$category'] = String(java.net.URLDecoder.decode('Map', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.sysbios.knl.Task%2FviewNameMap%24', 'UTF-8'))
 
-__o = __obj[1209]  
+__o = __obj[1211]  
     __o['cfgArgs'] = null
     __o['cfgArgsEncoded'] = true
     __o['cfgHome'] = String(java.net.URLDecoder.decode('configPkg', 'UTF-8'))
     __o['cfgScript'] = String(java.net.URLDecoder.decode('J%3A%2FWorkHouse2013%2FSW2013%2FS01_1307_VTDR_Stellaris%2FS01_1307_configuration%2Fapp.cfg', 'UTF-8'))
     __o['prelink'] = false
     __o['profile'] = String(java.net.URLDecoder.decode('release', 'UTF-8'))
-    __o['releases'] = __obj[1210.0]
-    __o['target'] = __obj[1215.0]
-
-__o = __obj[1210]  
-    __o['0'] = __obj[1211.0]
-
-__o = __obj[1211]  
-    __o['attrs'] = __obj[1212.0]
-    __o['excludeDirs'] = __obj[1213.0]
-    __o['name'] = String(java.net.URLDecoder.decode('configPkg', 'UTF-8'))
-    __o['otherFiles'] = __obj[1214.0]
+    __o['releases'] = __obj[1212.0]
+    __o['target'] = __obj[1217.0]
 
 __o = __obj[1212]  
+    __o['0'] = __obj[1213.0]
+
+__o = __obj[1213]  
+    __o['attrs'] = __obj[1214.0]
+    __o['excludeDirs'] = __obj[1215.0]
+    __o['name'] = String(java.net.URLDecoder.decode('configPkg', 'UTF-8'))
+    __o['otherFiles'] = __obj[1216.0]
+
+__o = __obj[1214]  
     __o['label'] = String(java.net.URLDecoder.decode('default', 'UTF-8'))
     __o['prefix'] = String(java.net.URLDecoder.decode('', 'UTF-8'))
 
-__o = __obj[1213]  
+__o = __obj[1215]  
 
-__o = __obj[1214]  
+__o = __obj[1216]  
 
-__o = __obj[1215]  // ti.targets.arm.elf.M4F
+__o = __obj[1217]  // ti.targets.arm.elf.M4F
     __o['$category'] = String(java.net.URLDecoder.decode('Module', 'UTF-8'))
-    __o['$instances'] = __obj[1216.0]
+    __o['$instances'] = __obj[1218.0]
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F', 'UTF-8'))
     __o['alignDirectiveSupported'] = true
-    __o['ar'] = __obj[1217.0]
-    __o['arOpts'] = __obj[1218.0]
-    __o['asm'] = __obj[1219.0]
-    __o['asmOpts'] = __obj[1220.0]
+    __o['ar'] = __obj[1219.0]
+    __o['arOpts'] = __obj[1220.0]
+    __o['asm'] = __obj[1221.0]
+    __o['asmOpts'] = __obj[1222.0]
     __o['base'] = undefined
     __o['binDir'] = String(java.net.URLDecoder.decode('%24%28rootDir%29%2Fbin%2F', 'UTF-8'))
     __o['binaryParser'] = String(java.net.URLDecoder.decode('ti.targets.omf.elf.Elf32', 'UTF-8'))
     __o['bitsPerChar'] = 8
-    __o['cc'] = __obj[1221.0]
-    __o['ccConfigOpts'] = __obj[1222.0]
-    __o['ccOpts'] = __obj[1223.0]
-    __o['compatibleSuffixes'] = __obj[1224.0]
-    __o['debugGen'] = __obj[1225.0]
+    __o['cc'] = __obj[1223.0]
+    __o['ccConfigOpts'] = __obj[1224.0]
+    __o['ccOpts'] = __obj[1225.0]
+    __o['compatibleSuffixes'] = __obj[1226.0]
+    __o['debugGen'] = __obj[1227.0]
     __o['dllExt'] = undefined
     __o['execExt'] = undefined
-    __o['extensions'] = __obj[1226.0]
+    __o['extensions'] = __obj[1228.0]
     __o['includeOpts'] = String(java.net.URLDecoder.decode('-I%24%28rootDir%29%2Finclude%2Frts+-I%24%28rootDir%29%2Finclude+', 'UTF-8'))
     __o['isa'] = String(java.net.URLDecoder.decode('v7M4', 'UTF-8'))
-    __o['lnk'] = __obj[1237.0]
-    __o['lnkOpts'] = __obj[1238.0]
-    __o['model'] = __obj[1239.0]
+    __o['lnk'] = __obj[1239.0]
+    __o['lnkOpts'] = __obj[1240.0]
+    __o['model'] = __obj[1241.0]
     __o['name'] = String(java.net.URLDecoder.decode('M4F', 'UTF-8'))
     __o['os'] = undefined
     __o['pathPrefix'] = String(java.net.URLDecoder.decode('', 'UTF-8'))
     __o['platform'] = String(java.net.URLDecoder.decode('ti.platforms.stellaris%3ALM4FSXLH5BB%3A1', 'UTF-8'))
-    __o['platforms'] = __obj[1240.0]
-    __o['profiles'] = __obj[1241.0]
+    __o['platforms'] = __obj[1242.0]
+    __o['profiles'] = __obj[1243.0]
     __o['rawVersion'] = String(java.net.URLDecoder.decode('5.0.4', 'UTF-8'))
     __o['rootDir'] = String(java.net.URLDecoder.decode('C%3A%2FPROGRA%7E1%2FTEXASI%7E1%2Fccsv5%2Ftools%2Fcompiler%2Farm_5.0.4', 'UTF-8'))
     __o['rts'] = String(java.net.URLDecoder.decode('ti.targets.arm.rtsarm', 'UTF-8'))
-    __o['sectMap'] = __obj[1260.0]
-    __o['splitMap'] = __obj[1261.0]
+    __o['sectMap'] = __obj[1262.0]
+    __o['splitMap'] = __obj[1263.0]
     __o['stdInclude'] = String(java.net.URLDecoder.decode('ti%2Ftargets%2Farm%2Felf%2Fstd.h', 'UTF-8'))
-    __o['stdTypes'] = __obj[1262.0]
+    __o['stdTypes'] = __obj[1264.0]
     __o['suffix'] = String(java.net.URLDecoder.decode('em4f', 'UTF-8'))
-    __o['vers'] = __obj[1280.0]
+    __o['vers'] = __obj[1282.0]
     __o['version'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%7B1%2C0%2C5.0%2C4', 'UTF-8'))
-    __o['versionMap'] = __obj[1281.0]
+    __o['versionMap'] = __obj[1283.0]
     __o['versionRaw'] = undefined
 
-__o = __obj[1216]  // ti.targets.arm.elf.M4F/$instances
+__o = __obj[1218]  // ti.targets.arm.elf.M4F/$instances
     __o['$category'] = String(java.net.URLDecoder.decode('Vector', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2F%24instances', 'UTF-8'))
 
-__o = __obj[1217]  // ti.targets.arm.elf.M4F/ar
+__o = __obj[1219]  // ti.targets.arm.elf.M4F/ar
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2Far', 'UTF-8'))
     __o['cmd'] = String(java.net.URLDecoder.decode('armar', 'UTF-8'))
     __o['opts'] = String(java.net.URLDecoder.decode('rq', 'UTF-8'))
 
-__o = __obj[1218]  // ti.targets.arm.elf.M4F/arOpts
+__o = __obj[1220]  // ti.targets.arm.elf.M4F/arOpts
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2FarOpts', 'UTF-8'))
     __o['prefix'] = String(java.net.URLDecoder.decode('', 'UTF-8'))
     __o['suffix'] = String(java.net.URLDecoder.decode('', 'UTF-8'))
 
-__o = __obj[1219]  // ti.targets.arm.elf.M4F/asm
+__o = __obj[1221]  // ti.targets.arm.elf.M4F/asm
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2Fasm', 'UTF-8'))
     __o['cmd'] = String(java.net.URLDecoder.decode('armcl+-c', 'UTF-8'))
     __o['opts'] = String(java.net.URLDecoder.decode('--endian%3Dlittle+-mv7M4+--abi%3Deabi+--float_support%3Dfpv4spd16', 'UTF-8'))
 
-__o = __obj[1220]  // ti.targets.arm.elf.M4F/asmOpts
+__o = __obj[1222]  // ti.targets.arm.elf.M4F/asmOpts
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2FasmOpts', 'UTF-8'))
     __o['prefix'] = String(java.net.URLDecoder.decode('-qq', 'UTF-8'))
     __o['suffix'] = String(java.net.URLDecoder.decode('', 'UTF-8'))
 
-__o = __obj[1221]  // ti.targets.arm.elf.M4F/cc
+__o = __obj[1223]  // ti.targets.arm.elf.M4F/cc
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2Fcc', 'UTF-8'))
     __o['cmd'] = String(java.net.URLDecoder.decode('armcl+-c', 'UTF-8'))
     __o['opts'] = String(java.net.URLDecoder.decode('--endian%3Dlittle+-mv7M4+--abi%3Deabi+--float_support%3Dfpv4spd16', 'UTF-8'))
 
-__o = __obj[1222]  // ti.targets.arm.elf.M4F/ccConfigOpts
+__o = __obj[1224]  // ti.targets.arm.elf.M4F/ccConfigOpts
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2FccConfigOpts', 'UTF-8'))
     __o['prefix'] = String(java.net.URLDecoder.decode('%24%28ccOpts.prefix%29+-ms+--fp_mode%3Dstrict', 'UTF-8'))
     __o['suffix'] = String(java.net.URLDecoder.decode('%24%28ccOpts.suffix%29', 'UTF-8'))
 
-__o = __obj[1223]  // ti.targets.arm.elf.M4F/ccOpts
+__o = __obj[1225]  // ti.targets.arm.elf.M4F/ccOpts
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2FccOpts', 'UTF-8'))
     __o['prefix'] = String(java.net.URLDecoder.decode('-g+--optimize_with_debug+-qq+-pdsw225', 'UTF-8'))
     __o['suffix'] = String(java.net.URLDecoder.decode('', 'UTF-8'))
 
-__o = __obj[1224]  // ti.targets.arm.elf.M4F/compatibleSuffixes
+__o = __obj[1226]  // ti.targets.arm.elf.M4F/compatibleSuffixes
     __o['$category'] = String(java.net.URLDecoder.decode('Vector', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2FcompatibleSuffixes', 'UTF-8'))
 
-__o = __obj[1225]  // ti.targets.arm.elf.M4F/debugGen
+__o = __obj[1227]  // ti.targets.arm.elf.M4F/debugGen
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2FdebugGen', 'UTF-8'))
     __o['execPattern'] = String(java.net.URLDecoder.decode('%24%28cfgDir%29%24%28cfgName%29.pjt', 'UTF-8'))
@@ -19455,94 +19498,94 @@ __o = __obj[1225]  // ti.targets.arm.elf.M4F/debugGen
     __o['packagePattern'] = String(java.net.URLDecoder.decode('package%2F%24%28pkgName%29.pjt', 'UTF-8'))
     __o['packageTemplate'] = String(java.net.URLDecoder.decode('ti%2Ftargets%2Fccs_package.xdt', 'UTF-8'))
 
-__o = __obj[1226]  // ti.targets.arm.elf.M4F/extensions
+__o = __obj[1228]  // ti.targets.arm.elf.M4F/extensions
     __o.$keys = []
-    __o.push(__o['.sem4fe'] = __obj[1227.0]); __o.$keys.push('.sem4fe')
-    __o.push(__o['.sem4f'] = __obj[1228.0]); __o.$keys.push('.sem4f')
-    __o.push(__o['.sv7M4'] = __obj[1229.0]); __o.$keys.push('.sv7M4')
-    __o.push(__o['.sv7M'] = __obj[1230.0]); __o.$keys.push('.sv7M')
-    __o.push(__o['.asm'] = __obj[1231.0]); __o.$keys.push('.asm')
-    __o.push(__o['.c'] = __obj[1232.0]); __o.$keys.push('.c')
-    __o.push(__o['.cpp'] = __obj[1233.0]); __o.$keys.push('.cpp')
-    __o.push(__o['.cxx'] = __obj[1234.0]); __o.$keys.push('.cxx')
-    __o.push(__o['.C'] = __obj[1235.0]); __o.$keys.push('.C')
-    __o.push(__o['.cc'] = __obj[1236.0]); __o.$keys.push('.cc')
+    __o.push(__o['.sem4fe'] = __obj[1229.0]); __o.$keys.push('.sem4fe')
+    __o.push(__o['.sem4f'] = __obj[1230.0]); __o.$keys.push('.sem4f')
+    __o.push(__o['.sv7M4'] = __obj[1231.0]); __o.$keys.push('.sv7M4')
+    __o.push(__o['.sv7M'] = __obj[1232.0]); __o.$keys.push('.sv7M')
+    __o.push(__o['.asm'] = __obj[1233.0]); __o.$keys.push('.asm')
+    __o.push(__o['.c'] = __obj[1234.0]); __o.$keys.push('.c')
+    __o.push(__o['.cpp'] = __obj[1235.0]); __o.$keys.push('.cpp')
+    __o.push(__o['.cxx'] = __obj[1236.0]); __o.$keys.push('.cxx')
+    __o.push(__o['.C'] = __obj[1237.0]); __o.$keys.push('.C')
+    __o.push(__o['.cc'] = __obj[1238.0]); __o.$keys.push('.cc')
     __o['$category'] = String(java.net.URLDecoder.decode('Map', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2Fextensions', 'UTF-8'))
 
-__o = __obj[1227]  // ti.targets.arm.elf.M4F/extensions/'.sem4fe'
+__o = __obj[1229]  // ti.targets.arm.elf.M4F/extensions/'.sem4fe'
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2Fextensions%2F%27.sem4fe%27', 'UTF-8'))
     __o['suf'] = String(java.net.URLDecoder.decode('.sem4fe', 'UTF-8'))
     __o['typ'] = String(java.net.URLDecoder.decode('asm', 'UTF-8'))
 
-__o = __obj[1228]  // ti.targets.arm.elf.M4F/extensions/'.sem4f'
+__o = __obj[1230]  // ti.targets.arm.elf.M4F/extensions/'.sem4f'
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2Fextensions%2F%27.sem4f%27', 'UTF-8'))
     __o['suf'] = String(java.net.URLDecoder.decode('.sem4f', 'UTF-8'))
     __o['typ'] = String(java.net.URLDecoder.decode('asm', 'UTF-8'))
 
-__o = __obj[1229]  // ti.targets.arm.elf.M4F/extensions/'.sv7M4'
+__o = __obj[1231]  // ti.targets.arm.elf.M4F/extensions/'.sv7M4'
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2Fextensions%2F%27.sv7M4%27', 'UTF-8'))
     __o['suf'] = String(java.net.URLDecoder.decode('.sv7M4', 'UTF-8'))
     __o['typ'] = String(java.net.URLDecoder.decode('asm', 'UTF-8'))
 
-__o = __obj[1230]  // ti.targets.arm.elf.M4F/extensions/'.sv7M'
+__o = __obj[1232]  // ti.targets.arm.elf.M4F/extensions/'.sv7M'
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2Fextensions%2F%27.sv7M%27', 'UTF-8'))
     __o['suf'] = String(java.net.URLDecoder.decode('.sv7M', 'UTF-8'))
     __o['typ'] = String(java.net.URLDecoder.decode('asm', 'UTF-8'))
 
-__o = __obj[1231]  // ti.targets.arm.elf.M4F/extensions/'.asm'
+__o = __obj[1233]  // ti.targets.arm.elf.M4F/extensions/'.asm'
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2Fextensions%2F%27.asm%27', 'UTF-8'))
     __o['suf'] = String(java.net.URLDecoder.decode('.asm', 'UTF-8'))
     __o['typ'] = String(java.net.URLDecoder.decode('asm', 'UTF-8'))
 
-__o = __obj[1232]  // ti.targets.arm.elf.M4F/extensions/'.c'
+__o = __obj[1234]  // ti.targets.arm.elf.M4F/extensions/'.c'
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2Fextensions%2F%27.c%27', 'UTF-8'))
     __o['suf'] = String(java.net.URLDecoder.decode('.c', 'UTF-8'))
     __o['typ'] = String(java.net.URLDecoder.decode('c', 'UTF-8'))
 
-__o = __obj[1233]  // ti.targets.arm.elf.M4F/extensions/'.cpp'
+__o = __obj[1235]  // ti.targets.arm.elf.M4F/extensions/'.cpp'
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2Fextensions%2F%27.cpp%27', 'UTF-8'))
     __o['suf'] = String(java.net.URLDecoder.decode('.cpp', 'UTF-8'))
     __o['typ'] = String(java.net.URLDecoder.decode('cpp', 'UTF-8'))
 
-__o = __obj[1234]  // ti.targets.arm.elf.M4F/extensions/'.cxx'
+__o = __obj[1236]  // ti.targets.arm.elf.M4F/extensions/'.cxx'
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2Fextensions%2F%27.cxx%27', 'UTF-8'))
     __o['suf'] = String(java.net.URLDecoder.decode('.cxx', 'UTF-8'))
     __o['typ'] = String(java.net.URLDecoder.decode('cpp', 'UTF-8'))
 
-__o = __obj[1235]  // ti.targets.arm.elf.M4F/extensions/'.C'
+__o = __obj[1237]  // ti.targets.arm.elf.M4F/extensions/'.C'
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2Fextensions%2F%27.C%27', 'UTF-8'))
     __o['suf'] = String(java.net.URLDecoder.decode('.C', 'UTF-8'))
     __o['typ'] = String(java.net.URLDecoder.decode('cpp', 'UTF-8'))
 
-__o = __obj[1236]  // ti.targets.arm.elf.M4F/extensions/'.cc'
+__o = __obj[1238]  // ti.targets.arm.elf.M4F/extensions/'.cc'
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2Fextensions%2F%27.cc%27', 'UTF-8'))
     __o['suf'] = String(java.net.URLDecoder.decode('.cc', 'UTF-8'))
     __o['typ'] = String(java.net.URLDecoder.decode('cpp', 'UTF-8'))
 
-__o = __obj[1237]  // ti.targets.arm.elf.M4F/lnk
+__o = __obj[1239]  // ti.targets.arm.elf.M4F/lnk
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2Flnk', 'UTF-8'))
     __o['cmd'] = String(java.net.URLDecoder.decode('armlnk', 'UTF-8'))
     __o['opts'] = String(java.net.URLDecoder.decode('--silicon_version%3D7M4+--strict_compatibility%3Don', 'UTF-8'))
 
-__o = __obj[1238]  // ti.targets.arm.elf.M4F/lnkOpts
+__o = __obj[1240]  // ti.targets.arm.elf.M4F/lnkOpts
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2FlnkOpts', 'UTF-8'))
     __o['prefix'] = String(java.net.URLDecoder.decode('-w+-q+-u+_c_int00', 'UTF-8'))
     __o['suffix'] = String(java.net.URLDecoder.decode('-c+-m+%24%28XDCCFGDIR%29%2F%24%40.map+-l+%24%28rootDir%29%2Flib%2Flibc.a', 'UTF-8'))
 
-__o = __obj[1239]  // ti.targets.arm.elf.M4F/model
+__o = __obj[1241]  // ti.targets.arm.elf.M4F/model
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2Fmodel', 'UTF-8'))
     __o['codeModel'] = String(java.net.URLDecoder.decode('thumb2', 'UTF-8'))
@@ -19550,31 +19593,31 @@ __o = __obj[1239]  // ti.targets.arm.elf.M4F/model
     __o['endian'] = String(java.net.URLDecoder.decode('little', 'UTF-8'))
     __o['shortEnums'] = true
 
-__o = __obj[1240]  // ti.targets.arm.elf.M4F/platforms
+__o = __obj[1242]  // ti.targets.arm.elf.M4F/platforms
     __o['$category'] = String(java.net.URLDecoder.decode('Vector', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2Fplatforms', 'UTF-8'))
     __o['0'] = String(java.net.URLDecoder.decode('ti.platforms.stellaris%3ALM4FSXLH5BB%3A1', 'UTF-8'))
 
-__o = __obj[1241]  // ti.targets.arm.elf.M4F/profiles
+__o = __obj[1243]  // ti.targets.arm.elf.M4F/profiles
     __o.$keys = []
-    __o.push(__o['debug'] = __obj[1242.0]); __o.$keys.push('debug')
-    __o.push(__o['release'] = __obj[1245.0]); __o.$keys.push('release')
-    __o.push(__o['profile'] = __obj[1248.0]); __o.$keys.push('profile')
-    __o.push(__o['coverage'] = __obj[1251.0]); __o.$keys.push('coverage')
-    __o.push(__o['whole_program'] = __obj[1254.0]); __o.$keys.push('whole_program')
-    __o.push(__o['whole_program_debug'] = __obj[1257.0]); __o.$keys.push('whole_program_debug')
+    __o.push(__o['debug'] = __obj[1244.0]); __o.$keys.push('debug')
+    __o.push(__o['release'] = __obj[1247.0]); __o.$keys.push('release')
+    __o.push(__o['profile'] = __obj[1250.0]); __o.$keys.push('profile')
+    __o.push(__o['coverage'] = __obj[1253.0]); __o.$keys.push('coverage')
+    __o.push(__o['whole_program'] = __obj[1256.0]); __o.$keys.push('whole_program')
+    __o.push(__o['whole_program_debug'] = __obj[1259.0]); __o.$keys.push('whole_program_debug')
     __o['$category'] = String(java.net.URLDecoder.decode('Map', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2Fprofiles', 'UTF-8'))
 
-__o = __obj[1242]  // ti.targets.arm.elf.M4F/profiles/'debug'
+__o = __obj[1244]  // ti.targets.arm.elf.M4F/profiles/'debug'
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2Fprofiles%2F%27debug%27', 'UTF-8'))
     __o['archiveOpts'] = undefined
-    __o['compileOpts'] = __obj[1243.0]
-    __o['filters'] = __obj[1244.0]
+    __o['compileOpts'] = __obj[1245.0]
+    __o['filters'] = __obj[1246.0]
     __o['linkOpts'] = undefined
 
-__o = __obj[1243]  // ti.targets.arm.elf.M4F/profiles/'debug'/compileOpts
+__o = __obj[1245]  // ti.targets.arm.elf.M4F/profiles/'debug'/compileOpts
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2Fprofiles%2F%27debug%27%2FcompileOpts', 'UTF-8'))
     __o['aopts'] = undefined
@@ -19583,19 +19626,19 @@ __o = __obj[1243]  // ti.targets.arm.elf.M4F/profiles/'debug'/compileOpts
     __o['defs'] = String(java.net.URLDecoder.decode('-D_DEBUG_%3D1', 'UTF-8'))
     __o['incs'] = undefined
 
-__o = __obj[1244]  // ti.targets.arm.elf.M4F/profiles/'debug'/filters
+__o = __obj[1246]  // ti.targets.arm.elf.M4F/profiles/'debug'/filters
     __o['$category'] = String(java.net.URLDecoder.decode('Vector', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2Fprofiles%2F%27debug%27%2Ffilters', 'UTF-8'))
 
-__o = __obj[1245]  // ti.targets.arm.elf.M4F/profiles/'release'
+__o = __obj[1247]  // ti.targets.arm.elf.M4F/profiles/'release'
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2Fprofiles%2F%27release%27', 'UTF-8'))
     __o['archiveOpts'] = undefined
-    __o['compileOpts'] = __obj[1246.0]
-    __o['filters'] = __obj[1247.0]
+    __o['compileOpts'] = __obj[1248.0]
+    __o['filters'] = __obj[1249.0]
     __o['linkOpts'] = undefined
 
-__o = __obj[1246]  // ti.targets.arm.elf.M4F/profiles/'release'/compileOpts
+__o = __obj[1248]  // ti.targets.arm.elf.M4F/profiles/'release'/compileOpts
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2Fprofiles%2F%27release%27%2FcompileOpts', 'UTF-8'))
     __o['aopts'] = undefined
@@ -19604,19 +19647,19 @@ __o = __obj[1246]  // ti.targets.arm.elf.M4F/profiles/'release'/compileOpts
     __o['defs'] = undefined
     __o['incs'] = undefined
 
-__o = __obj[1247]  // ti.targets.arm.elf.M4F/profiles/'release'/filters
+__o = __obj[1249]  // ti.targets.arm.elf.M4F/profiles/'release'/filters
     __o['$category'] = String(java.net.URLDecoder.decode('Vector', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2Fprofiles%2F%27release%27%2Ffilters', 'UTF-8'))
 
-__o = __obj[1248]  // ti.targets.arm.elf.M4F/profiles/'profile'
+__o = __obj[1250]  // ti.targets.arm.elf.M4F/profiles/'profile'
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2Fprofiles%2F%27profile%27', 'UTF-8'))
     __o['archiveOpts'] = undefined
-    __o['compileOpts'] = __obj[1249.0]
-    __o['filters'] = __obj[1250.0]
+    __o['compileOpts'] = __obj[1251.0]
+    __o['filters'] = __obj[1252.0]
     __o['linkOpts'] = undefined
 
-__o = __obj[1249]  // ti.targets.arm.elf.M4F/profiles/'profile'/compileOpts
+__o = __obj[1251]  // ti.targets.arm.elf.M4F/profiles/'profile'/compileOpts
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2Fprofiles%2F%27profile%27%2FcompileOpts', 'UTF-8'))
     __o['aopts'] = undefined
@@ -19625,19 +19668,19 @@ __o = __obj[1249]  // ti.targets.arm.elf.M4F/profiles/'profile'/compileOpts
     __o['defs'] = undefined
     __o['incs'] = undefined
 
-__o = __obj[1250]  // ti.targets.arm.elf.M4F/profiles/'profile'/filters
+__o = __obj[1252]  // ti.targets.arm.elf.M4F/profiles/'profile'/filters
     __o['$category'] = String(java.net.URLDecoder.decode('Vector', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2Fprofiles%2F%27profile%27%2Ffilters', 'UTF-8'))
 
-__o = __obj[1251]  // ti.targets.arm.elf.M4F/profiles/'coverage'
+__o = __obj[1253]  // ti.targets.arm.elf.M4F/profiles/'coverage'
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2Fprofiles%2F%27coverage%27', 'UTF-8'))
     __o['archiveOpts'] = undefined
-    __o['compileOpts'] = __obj[1252.0]
-    __o['filters'] = __obj[1253.0]
+    __o['compileOpts'] = __obj[1254.0]
+    __o['filters'] = __obj[1255.0]
     __o['linkOpts'] = undefined
 
-__o = __obj[1252]  // ti.targets.arm.elf.M4F/profiles/'coverage'/compileOpts
+__o = __obj[1254]  // ti.targets.arm.elf.M4F/profiles/'coverage'/compileOpts
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2Fprofiles%2F%27coverage%27%2FcompileOpts', 'UTF-8'))
     __o['aopts'] = undefined
@@ -19646,19 +19689,19 @@ __o = __obj[1252]  // ti.targets.arm.elf.M4F/profiles/'coverage'/compileOpts
     __o['defs'] = undefined
     __o['incs'] = undefined
 
-__o = __obj[1253]  // ti.targets.arm.elf.M4F/profiles/'coverage'/filters
+__o = __obj[1255]  // ti.targets.arm.elf.M4F/profiles/'coverage'/filters
     __o['$category'] = String(java.net.URLDecoder.decode('Vector', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2Fprofiles%2F%27coverage%27%2Ffilters', 'UTF-8'))
 
-__o = __obj[1254]  // ti.targets.arm.elf.M4F/profiles/'whole_program'
+__o = __obj[1256]  // ti.targets.arm.elf.M4F/profiles/'whole_program'
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2Fprofiles%2F%27whole_program%27', 'UTF-8'))
     __o['archiveOpts'] = undefined
-    __o['compileOpts'] = __obj[1255.0]
-    __o['filters'] = __obj[1256.0]
+    __o['compileOpts'] = __obj[1257.0]
+    __o['filters'] = __obj[1258.0]
     __o['linkOpts'] = undefined
 
-__o = __obj[1255]  // ti.targets.arm.elf.M4F/profiles/'whole_program'/compileOpts
+__o = __obj[1257]  // ti.targets.arm.elf.M4F/profiles/'whole_program'/compileOpts
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2Fprofiles%2F%27whole_program%27%2FcompileOpts', 'UTF-8'))
     __o['aopts'] = undefined
@@ -19667,19 +19710,19 @@ __o = __obj[1255]  // ti.targets.arm.elf.M4F/profiles/'whole_program'/compileOpt
     __o['defs'] = undefined
     __o['incs'] = undefined
 
-__o = __obj[1256]  // ti.targets.arm.elf.M4F/profiles/'whole_program'/filters
+__o = __obj[1258]  // ti.targets.arm.elf.M4F/profiles/'whole_program'/filters
     __o['$category'] = String(java.net.URLDecoder.decode('Vector', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2Fprofiles%2F%27whole_program%27%2Ffilters', 'UTF-8'))
 
-__o = __obj[1257]  // ti.targets.arm.elf.M4F/profiles/'whole_program_debug'
+__o = __obj[1259]  // ti.targets.arm.elf.M4F/profiles/'whole_program_debug'
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2Fprofiles%2F%27whole_program_debug%27', 'UTF-8'))
     __o['archiveOpts'] = undefined
-    __o['compileOpts'] = __obj[1258.0]
-    __o['filters'] = __obj[1259.0]
+    __o['compileOpts'] = __obj[1260.0]
+    __o['filters'] = __obj[1261.0]
     __o['linkOpts'] = undefined
 
-__o = __obj[1258]  // ti.targets.arm.elf.M4F/profiles/'whole_program_debug'/compileOpts
+__o = __obj[1260]  // ti.targets.arm.elf.M4F/profiles/'whole_program_debug'/compileOpts
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2Fprofiles%2F%27whole_program_debug%27%2FcompileOpts', 'UTF-8'))
     __o['aopts'] = undefined
@@ -19688,11 +19731,11 @@ __o = __obj[1258]  // ti.targets.arm.elf.M4F/profiles/'whole_program_debug'/comp
     __o['defs'] = undefined
     __o['incs'] = undefined
 
-__o = __obj[1259]  // ti.targets.arm.elf.M4F/profiles/'whole_program_debug'/filters
+__o = __obj[1261]  // ti.targets.arm.elf.M4F/profiles/'whole_program_debug'/filters
     __o['$category'] = String(java.net.URLDecoder.decode('Vector', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2Fprofiles%2F%27whole_program_debug%27%2Ffilters', 'UTF-8'))
 
-__o = __obj[1260]  // ti.targets.arm.elf.M4F/sectMap
+__o = __obj[1262]  // ti.targets.arm.elf.M4F/sectMap
     __o.$keys = []
     __o.push(__o['.text'] = String(java.net.URLDecoder.decode('code', 'UTF-8'))); __o.$keys.push('.text')
     __o.push(__o['.stack'] = String(java.net.URLDecoder.decode('stack', 'UTF-8'))); __o.$keys.push('.stack')
@@ -19715,7 +19758,7 @@ __o = __obj[1260]  // ti.targets.arm.elf.M4F/sectMap
     __o['$category'] = String(java.net.URLDecoder.decode('Map', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2FsectMap', 'UTF-8'))
 
-__o = __obj[1261]  // ti.targets.arm.elf.M4F/splitMap
+__o = __obj[1263]  // ti.targets.arm.elf.M4F/splitMap
     __o.$keys = []
     __o.push(__o['.text'] = true); __o.$keys.push('.text')
     __o.push(__o['.const'] = true); __o.$keys.push('.const')
@@ -19729,136 +19772,136 @@ __o = __obj[1261]  // ti.targets.arm.elf.M4F/splitMap
     __o['$category'] = String(java.net.URLDecoder.decode('Map', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2FsplitMap', 'UTF-8'))
 
-__o = __obj[1262]  // ti.targets.arm.elf.M4F/stdTypes
+__o = __obj[1264]  // ti.targets.arm.elf.M4F/stdTypes
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2FstdTypes', 'UTF-8'))
-    __o['t_Char'] = __obj[1263.0]
-    __o['t_Double'] = __obj[1264.0]
-    __o['t_Float'] = __obj[1265.0]
-    __o['t_Fxn'] = __obj[1266.0]
-    __o['t_IArg'] = __obj[1267.0]
-    __o['t_Int'] = __obj[1268.0]
-    __o['t_Int16'] = __obj[1269.0]
-    __o['t_Int32'] = __obj[1270.0]
-    __o['t_Int40'] = __obj[1271.0]
-    __o['t_Int64'] = __obj[1272.0]
-    __o['t_Int8'] = __obj[1273.0]
-    __o['t_LDouble'] = __obj[1274.0]
-    __o['t_LLong'] = __obj[1275.0]
-    __o['t_Long'] = __obj[1276.0]
-    __o['t_Ptr'] = __obj[1277.0]
-    __o['t_Short'] = __obj[1278.0]
-    __o['t_Size'] = __obj[1279.0]
+    __o['t_Char'] = __obj[1265.0]
+    __o['t_Double'] = __obj[1266.0]
+    __o['t_Float'] = __obj[1267.0]
+    __o['t_Fxn'] = __obj[1268.0]
+    __o['t_IArg'] = __obj[1269.0]
+    __o['t_Int'] = __obj[1270.0]
+    __o['t_Int16'] = __obj[1271.0]
+    __o['t_Int32'] = __obj[1272.0]
+    __o['t_Int40'] = __obj[1273.0]
+    __o['t_Int64'] = __obj[1274.0]
+    __o['t_Int8'] = __obj[1275.0]
+    __o['t_LDouble'] = __obj[1276.0]
+    __o['t_LLong'] = __obj[1277.0]
+    __o['t_Long'] = __obj[1278.0]
+    __o['t_Ptr'] = __obj[1279.0]
+    __o['t_Short'] = __obj[1280.0]
+    __o['t_Size'] = __obj[1281.0]
 
-__o = __obj[1263]  // ti.targets.arm.elf.M4F/stdTypes/t_Char
+__o = __obj[1265]  // ti.targets.arm.elf.M4F/stdTypes/t_Char
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2FstdTypes%2Ft_Char', 'UTF-8'))
     __o['align'] = 1
     __o['size'] = 1
 
-__o = __obj[1264]  // ti.targets.arm.elf.M4F/stdTypes/t_Double
+__o = __obj[1266]  // ti.targets.arm.elf.M4F/stdTypes/t_Double
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2FstdTypes%2Ft_Double', 'UTF-8'))
     __o['align'] = 8
     __o['size'] = 8
 
-__o = __obj[1265]  // ti.targets.arm.elf.M4F/stdTypes/t_Float
+__o = __obj[1267]  // ti.targets.arm.elf.M4F/stdTypes/t_Float
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2FstdTypes%2Ft_Float', 'UTF-8'))
     __o['align'] = 4
     __o['size'] = 4
 
-__o = __obj[1266]  // ti.targets.arm.elf.M4F/stdTypes/t_Fxn
+__o = __obj[1268]  // ti.targets.arm.elf.M4F/stdTypes/t_Fxn
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2FstdTypes%2Ft_Fxn', 'UTF-8'))
     __o['align'] = 4
     __o['size'] = 4
 
-__o = __obj[1267]  // ti.targets.arm.elf.M4F/stdTypes/t_IArg
+__o = __obj[1269]  // ti.targets.arm.elf.M4F/stdTypes/t_IArg
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2FstdTypes%2Ft_IArg', 'UTF-8'))
     __o['align'] = 4
     __o['size'] = 4
 
-__o = __obj[1268]  // ti.targets.arm.elf.M4F/stdTypes/t_Int
+__o = __obj[1270]  // ti.targets.arm.elf.M4F/stdTypes/t_Int
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2FstdTypes%2Ft_Int', 'UTF-8'))
     __o['align'] = 4
     __o['size'] = 4
 
-__o = __obj[1269]  // ti.targets.arm.elf.M4F/stdTypes/t_Int16
+__o = __obj[1271]  // ti.targets.arm.elf.M4F/stdTypes/t_Int16
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2FstdTypes%2Ft_Int16', 'UTF-8'))
     __o['align'] = 2
     __o['size'] = 2
 
-__o = __obj[1270]  // ti.targets.arm.elf.M4F/stdTypes/t_Int32
+__o = __obj[1272]  // ti.targets.arm.elf.M4F/stdTypes/t_Int32
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2FstdTypes%2Ft_Int32', 'UTF-8'))
     __o['align'] = 4
     __o['size'] = 4
 
-__o = __obj[1271]  // ti.targets.arm.elf.M4F/stdTypes/t_Int40
+__o = __obj[1273]  // ti.targets.arm.elf.M4F/stdTypes/t_Int40
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2FstdTypes%2Ft_Int40', 'UTF-8'))
     __o['align'] = undefined
     __o['size'] = undefined
 
-__o = __obj[1272]  // ti.targets.arm.elf.M4F/stdTypes/t_Int64
+__o = __obj[1274]  // ti.targets.arm.elf.M4F/stdTypes/t_Int64
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2FstdTypes%2Ft_Int64', 'UTF-8'))
     __o['align'] = 8
     __o['size'] = 8
 
-__o = __obj[1273]  // ti.targets.arm.elf.M4F/stdTypes/t_Int8
+__o = __obj[1275]  // ti.targets.arm.elf.M4F/stdTypes/t_Int8
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2FstdTypes%2Ft_Int8', 'UTF-8'))
     __o['align'] = 1
     __o['size'] = 1
 
-__o = __obj[1274]  // ti.targets.arm.elf.M4F/stdTypes/t_LDouble
+__o = __obj[1276]  // ti.targets.arm.elf.M4F/stdTypes/t_LDouble
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2FstdTypes%2Ft_LDouble', 'UTF-8'))
     __o['align'] = 8
     __o['size'] = 8
 
-__o = __obj[1275]  // ti.targets.arm.elf.M4F/stdTypes/t_LLong
+__o = __obj[1277]  // ti.targets.arm.elf.M4F/stdTypes/t_LLong
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2FstdTypes%2Ft_LLong', 'UTF-8'))
     __o['align'] = 8
     __o['size'] = 8
 
-__o = __obj[1276]  // ti.targets.arm.elf.M4F/stdTypes/t_Long
+__o = __obj[1278]  // ti.targets.arm.elf.M4F/stdTypes/t_Long
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2FstdTypes%2Ft_Long', 'UTF-8'))
     __o['align'] = 4
     __o['size'] = 4
 
-__o = __obj[1277]  // ti.targets.arm.elf.M4F/stdTypes/t_Ptr
+__o = __obj[1279]  // ti.targets.arm.elf.M4F/stdTypes/t_Ptr
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2FstdTypes%2Ft_Ptr', 'UTF-8'))
     __o['align'] = 4
     __o['size'] = 4
 
-__o = __obj[1278]  // ti.targets.arm.elf.M4F/stdTypes/t_Short
+__o = __obj[1280]  // ti.targets.arm.elf.M4F/stdTypes/t_Short
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2FstdTypes%2Ft_Short', 'UTF-8'))
     __o['align'] = 2
     __o['size'] = 2
 
-__o = __obj[1279]  // ti.targets.arm.elf.M4F/stdTypes/t_Size
+__o = __obj[1281]  // ti.targets.arm.elf.M4F/stdTypes/t_Size
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2FstdTypes%2Ft_Size', 'UTF-8'))
     __o['align'] = 4
     __o['size'] = 4
 
-__o = __obj[1280]  // ti.targets.arm.elf.M4F/vers
+__o = __obj[1282]  // ti.targets.arm.elf.M4F/vers
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.targets.arm.elf.M4F%2Fvers', 'UTF-8'))
     __o['cmd'] = String(java.net.URLDecoder.decode('armcl', 'UTF-8'))
     __o['opts'] = String(java.net.URLDecoder.decode('--compiler_revision', 'UTF-8'))
 
-__o = __obj[1281]  // ti.targets.arm.elf.M4F/versionMap
+__o = __obj[1283]  // ti.targets.arm.elf.M4F/versionMap
     __o.$keys = []
     __o.push(__o['TMS320C6x_4.32'] = String(java.net.URLDecoder.decode('1%2C0%2C4.32%2C0', 'UTF-8'))); __o.$keys.push('TMS320C6x_4.32')
     __o.push(__o['TMS320C2000_3.07'] = String(java.net.URLDecoder.decode('1%2C0%2C3.07%2C0', 'UTF-8'))); __o.$keys.push('TMS320C2000_3.07')

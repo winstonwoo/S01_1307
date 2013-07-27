@@ -22,3 +22,40 @@ gmake: Nothing to be done for `all'.
 ' '
 
 **** Build Finished ****
+
+**** Build of configuration Default for project S01_1307_configuration ****
+
+"C:\\Program Files\\Texas Instruments\\ccsv5\\utils\\bin\\gmake" -k all 
+'Building target: configPkg/linker.cmd'
+'Invoking: XDCtools'
+"C:/Program Files/Texas Instruments/xdctools_3_25_00_48/xs" --xdcpath="C:/Program Files/Texas Instruments/bios_6_35_01_29/packages;C:/Program Files/Texas Instruments/ccsv5/ccs_base;" xdc.tools.configuro -o configPkg -t ti.targets.arm.elf.M4F -p ti.platforms.stellaris:LM4F232H5QD -r release -c "C:/Program Files/Texas Instruments/ccsv5/tools/compiler/arm_5.0.4" --compileOptions "-g --optimize_with_debug"  ../app.cfg 
+making package.mak (because of package.bld) ...
+configuring app.xem4f from package/cfg/app_pem4f.cfg ...
+generating custom ti.sysbios library makefile ... 
+Starting build of library sources ...
+making J:/WorkHouse2013/SW2013/S01_1307_VTDR_Stellaris/S01_1307_configuration/src/sysbios.aem4f ...
+Build of libraries done.
+clem4f package/cfg/app_pem4f.c ...
+'Finished building target: configPkg/linker.cmd'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Default for project S01_1307_configuration ****
+
+"C:\\Program Files\\Texas Instruments\\ccsv5\\utils\\bin\\gmake" -k all 
+gmake: Nothing to be done for `all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project S01_1307 ****
+
+"C:\\Program Files\\Texas Instruments\\ccsv5\\utils\\bin\\gmake" -k all 
+'Building target: S01_1307.out'
+'Invoking: ARM Linker'
+"C:/Program Files/Texas Instruments/ccsv5/tools/compiler/arm_5.0.4/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 --abi=eabi -me -g --diag_warning=225 --display_error_number --diag_wrap=off -z --stack_size=512 -m"S01_1307.map" --heap_size=0 -i"C:/Program Files/Texas Instruments/ccsv5/tools/compiler/arm_5.0.4/lib" -i"C:/Program Files/Texas Instruments/ccsv5/tools/compiler/arm_5.0.4/include" --reread_libs --warn_sections --display_error_number --diag_wrap=off --xml_link_info="S01_1307_linkInfo.xml" --rom_model -l"J:/WorkHouse2013/SW2013/S01_1307_VTDR_Stellaris/S01_1307_configuration/Default/configPkg/linker.cmd" -o "S01_1307.out"  "./main.obj" -l"libc.a" "../lm4f232h5qd.cmd" 
+<Linking>
+'Finished building target: S01_1307.out'
+' '
+
+**** Build Finished ****
