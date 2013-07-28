@@ -1,0 +1,31 @@
+
+**** Build of configuration Debug for project uart_echo ****
+
+"C:\\Program Files\\Texas Instruments\\ccsv5\\utils\\bin\\gmake" -k all 
+'Building file: ../startup_ccs.c'
+'Invoking: TMS470 Compiler'
+"C:/Program Files/Texas Instruments/ccsv5/tools/compiler/arm_5.0.4/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 --abi=eabi -me -O2 -g --include_path="C:/Program Files/Texas Instruments/ccsv5/tools/compiler/arm_5.0.4/include" --include_path="J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare-m4/boards/ek-lm4f232" --include_path="J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare-m4" --gcc --define=ccs --define=PART_LM4F232H5QD --define=TARGET_IS_BLIZZARD_RA1 --diag_warning=225 --gen_func_subsections=on --ual --preproc_with_compile --preproc_dependency="startup_ccs.pp"  "../startup_ccs.c"
+'Finished building: ../startup_ccs.c'
+' '
+'Building file: ../uart_echo.c'
+'Invoking: TMS470 Compiler'
+"C:/Program Files/Texas Instruments/ccsv5/tools/compiler/arm_5.0.4/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 --abi=eabi -me -O2 -g --include_path="C:/Program Files/Texas Instruments/ccsv5/tools/compiler/arm_5.0.4/include" --include_path="J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare-m4/boards/ek-lm4f232" --include_path="J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare-m4" --gcc --define=ccs --define=PART_LM4F232H5QD --define=TARGET_IS_BLIZZARD_RA1 --diag_warning=225 --gen_func_subsections=on --ual --preproc_with_compile --preproc_dependency="uart_echo.pp"  "../uart_echo.c"
+'Finished building: ../uart_echo.c'
+' '
+'Building file: J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare-m4/boards/ek-lm4f232/drivers/cfal96x64x16.c'
+'Invoking: TMS470 Compiler'
+"C:/Program Files/Texas Instruments/ccsv5/tools/compiler/arm_5.0.4/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 --abi=eabi -me -O2 -g --include_path="C:/Program Files/Texas Instruments/ccsv5/tools/compiler/arm_5.0.4/include" --include_path="J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare-m4/boards/ek-lm4f232" --include_path="J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare-m4" --gcc --define=ccs --define=PART_LM4F232H5QD --define=TARGET_IS_BLIZZARD_RA1 --diag_warning=225 --gen_func_subsections=on --ual --preproc_with_compile --preproc_dependency="drivers/cfal96x64x16.pp" --obj_directory="drivers"  "J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare-m4/boards/ek-lm4f232/drivers/cfal96x64x16.c"
+'Finished building: J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare-m4/boards/ek-lm4f232/drivers/cfal96x64x16.c'
+' '
+'Building target: uart_echo.out'
+'Invoking: TMS470 Linker'
+"C:/Program Files/Texas Instruments/ccsv5/tools/compiler/arm_5.0.4/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 --abi=eabi -me -O2 -g --gcc --define=ccs --define=PART_LM4F232H5QD --define=TARGET_IS_BLIZZARD_RA1 --diag_warning=225 --gen_func_subsections=on --ual -z --stack_size=512 -m"uart_echo_ccs.map" --heap_size=0 -i"C:/Program Files/Texas Instruments/ccsv5/tools/compiler/arm_5.0.4/lib" -i"C:/Program Files/Texas Instruments/ccsv5/tools/compiler/arm_5.0.4/include" --reread_libs --warn_sections --rom_model -o "uart_echo.out"  "./drivers/cfal96x64x16.obj" "./uart_echo.obj" "./startup_ccs.obj" -l"libc.a" -l"J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare-m4/boards/ek-lm4f232/uart_echo/ccs/../../../../driverlib/ccs-cm4f/Debug/driverlib-cm4f.lib" -l"J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare-m4/boards/ek-lm4f232/uart_echo/ccs/../../../../grlib/ccs-cm4f/Debug/grlib-cm4f.lib" "../uart_echo_ccs.cmd" 
+<Linking>
+'Finished building target: uart_echo.out'
+' '
+"C:/Program Files/Texas Instruments/ccsv5/utils/tiobj2bin/tiobj2bin" "uart_echo.out" "uart_echo.bin" "C:/Program Files/Texas Instruments/ccsv5/tools/compiler/arm_5.0.4/bin/ofd470" "C:/Program Files/Texas Instruments/ccsv5/tools/compiler/arm_5.0.4/bin/hex470" "C:/Program Files/Texas Instruments/ccsv5/utils/tiobj2bin/mkhex4bin"
+此时不应有 Files\Texas。
+gmake[1]: [post-build] Error 255 (ignored)
+' '
+
+**** Build Finished ****

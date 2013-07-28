@@ -13,6 +13,19 @@
 #include <ti/sysbios/hal/Hwi.h>
 #include <ti/sysbios/knl/Swi.h>
 
+#include "inc/hw_ints.h"
+#include "inc/hw_memmap.h"
+#include "inc/hw_types.h"
+#include "driverlib/debug.h"
+#include "driverlib/fpu.h"
+#include "driverlib/gpio.h"
+#include "driverlib/interrupt.h"
+#include "driverlib/sysctl.h"
+#include "driverlib/uart.h"
+#include "driverlib/rom.h"
+#include "grlib/grlib.h"
+
+
 extern Swi_Handle swi_UART0_handle ;
 extern Swi_Handle swi_UART1_handle ;
 extern Swi_Handle swi_UART2_handle ;
@@ -25,13 +38,37 @@ extern Swi_Handle swi_CAN0_handle ;
 extern Swi_Handle swi_CAN1_handle ;
 extern Swi_Handle swi_GPIOBoot_handle ;
 
-
+void UARTSend(const unsigned char *pucBuffer, unsigned long ulCount) ;
 
 
 
 Void hwi_UART0_fxn(UArg arg)
 {
-	Swi_post(swi_UART0_handle) ;
+	  unsigned long ulStatus;
+
+	    //
+	    // Get the interrrupt status.
+	    //
+	    ulStatus = ROM_UARTIntStatus(UART0_BASE, true);
+
+	    //
+	    // Clear the asserted interrupts.
+	    //
+	    ROM_UARTIntClear(UART0_BASE, ulStatus);
+
+	    //
+	    // Loop while there are characters in the receive FIFO.
+	    //
+	    while(ROM_UARTCharsAvail(UART0_BASE))
+	    {
+	        //
+	        // Read the next character from the UART and write it back to the UART.
+	        //
+	        ROM_UARTCharPutNonBlocking(UART0_BASE,
+	                                   ROM_UARTCharGetNonBlocking(UART0_BASE));
+	    }
+
+	    Swi_post(swi_UART0_handle) ;
 
 }
 
@@ -167,7 +204,7 @@ Void tsk_manage_fxn(UArg arg0, UArg arg1)
 {
 	for(;;)
 	{
-		System_printf("tsk_manage_fxn \n") ;
+		 UARTSend((unsigned char *)"tsk_manage_fxn \n ", 20);
 		Task_sleep(1) ;
 	}
 
@@ -239,7 +276,7 @@ Void tsk_CAN3_fxn(UArg arg0, UArg arg1)
 
 	for(;;)
 	{
-		System_printf("tsk_CAN3_fxn \n") ;
+		 UARTSend((unsigned char *)"tsk_manage_fxn \n ", 20);
 		Task_sleep(3) ;
 	}
 }
@@ -248,7 +285,7 @@ Void tsk_CAN4_fxn(UArg arg0, UArg arg1)
 {
 	for(;;)
 	{
-		System_printf("tsk_CAN4_fxn \n") ;
+		 UARTSend((unsigned char *)"tsk_manage_fxn \n ", 20);
 		Task_sleep(3) ;
 	}
 
@@ -288,6 +325,73 @@ Void taskFxn(UArg a0, UArg a1)
     System_printf("exit taskFxn()\n");
 }
 
+/**/
+Void init_uart()
+{
+  //UART0 initialization with 115200, 8, N, 1
+  //
+  // Enable the peripherals used by this example.
+  //
+  ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
+  ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_UART0);
+
+
+	//
+	// Set GPIO A0 and A1 as UART pins.
+	//
+	ROM_GPIOPinTypeUART(GPIO_PORTA_BASE, GPIO_PIN_0 | GPIO_PIN_1);
+
+	//
+	// Configure the UART for 115,200, 8-N-1 operation.
+	//
+	ROM_UARTConfigSetExpClk(UART0_BASE, ROM_SysCtlClockGet(), 115200,
+							(UART_CONFIG_WLEN_8 | UART_CONFIG_STOP_ONE |
+							 UART_CONFIG_PAR_NONE));
+
+
+	//
+	// Enable processor interrupts.
+	//
+	ROM_IntMasterEnable();
+	//
+	// Enable the UART interrupt.
+	//
+	ROM_IntEnable(INT_UART0);
+	ROM_UARTIntEnable(UART0_BASE, UART_INT_RX | UART_INT_RT);
+
+}
+
+Void init_sys()
+{
+	//UART0 initialization
+	init_uart() ;
+
+
+	//UART1 initialization
+
+}
+
+
+//*****************************************************************************
+//
+// Send a string to the UART.
+//
+//*****************************************************************************
+void
+UARTSend(const unsigned char *pucBuffer, unsigned long ulCount)
+{
+    //
+    // Loop while there are more characters to send.
+    //
+    while(ulCount--)
+    {
+        //
+        // Write the next character to the UART.
+        //
+        ROM_UARTCharPutNonBlocking(UART0_BASE, *pucBuffer++);
+    }
+}
+
 /*
  *  ======== main ========
  */
@@ -299,6 +403,15 @@ Void main()
     System_printf("enter main()\n");
 
     Error_init(&eb);
+
+    //System driver initialization
+    init_sys() ;
+
+    //
+    // Prompt for text to be entered.
+    //
+    UARTSend((unsigned char *)"Enter text: ", 12);
+
     task = Task_create(taskFxn, NULL, &eb);
     if (task == NULL) {
         System_printf("Task_create() failed!\n");

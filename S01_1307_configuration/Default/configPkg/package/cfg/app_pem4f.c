@@ -2526,12 +2526,14 @@ Void ti_catalog_arm_cortexm4_tiva_ce_Boot_init()
 Void ti_sysbios_BIOS_exitFunc__I(Int);
 
 extern Void ti_sysbios_BIOS_registerRTSLock();
+extern Void ti_sysbios_fatfs_startup();
 
 Void ti_sysbios_BIOS_startFunc__I()
 {
     xdc_runtime_System_atexit(
         (xdc_runtime_System_AtexitHandler)ti_sysbios_BIOS_exitFunc__I);
     ti_sysbios_BIOS_registerRTSLock();
+    ti_sysbios_fatfs_startup();
     ti_sysbios_hal_Hwi_startup();
     ti_sysbios_hal_Timer_startup();
     ti_sysbios_knl_Swi_startup();
@@ -2826,6 +2828,34 @@ const UInt32 ti_sysbios_family_arm_m3_Hwi_resetVectors[] = {
 /* place holder for RAM vector table */
 UInt32 ti_sysbios_family_arm_m3_Hwi_ramVectors[216];
 
+
+/*
+ * ======== ti.sysbios.fatfs.FatFS TEMPLATE ========
+ */
+
+
+#include <stdio.h>
+#include <file.h>
+#include <string.h>
+
+#include <xdc/runtime/Error.h>
+
+#include <ti/sysbios/fatfs/ff.h>
+#include <ti/sysbios/fatfs/ffcio.h>
+#include <ti/sysbios/fatfs/diskio.h>
+
+extern DRESULT ramdisk_start(BYTE, unsigned char *, int, int);
+
+Void ti_sysbios_fatfs_startup()
+{
+    add_device("fat", _MSA, ffcio_open, ffcio_close, ffcio_read,
+        ffcio_write, ffcio_lseek, ffcio_unlink, ffcio_rename);
+}
+
+Int32 ti_sysbios_fatfs_getFatTime(Void)
+{
+    return (0x23556622);
+}
 
 /*
  * ======== ti.sysbios.rts.MemAlloc TEMPLATE ========

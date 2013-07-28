@@ -10,4 +10,5 @@
 	<linkerCommandFile value="lm4f232h5qd.cmd"/>
 	<rts value="libc.a"/>
 	<templateProperties value="id=com.ti.rtsc.SYSBIOS.example_54,type=rtsc,products=com.ti.rtsc.SYSBIOS,platform=ti.platforms.stellaris:$DeviceId$,buildProfile=release,isHybrid=false,configuroOptions=--compileOptions &quot;-g --optimize_with_debug&quot;,"/>
+	<isTargetManual value="false"/>
 </projectOptions>

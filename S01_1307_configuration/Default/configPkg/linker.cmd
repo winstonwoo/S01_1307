@@ -10,6 +10,7 @@
 
 
 -l"J:\WorkHouse2013\SW2013\S01_1307_VTDR_Stellaris\S01_1307_configuration\Default\configPkg\package\cfg\app_pem4f.oem4f"
+-l"C:\Program Files\Texas Instruments\bios_6_35_01_29\packages\ti\sysbios\fatfs\lib\release\ti.sysbios.fatfs.aem4f"
 -l"J:\WorkHouse2013\SW2013\S01_1307_VTDR_Stellaris\S01_1307_configuration\src\sysbios\sysbios.aem4f"
 -l"C:\Program Files\Texas Instruments\xdctools_3_25_00_48\packages\ti\catalog\arm\cortexm4\tiva\ce\lib\Boot.aem4f"
 -l"C:\Program Files\Texas Instruments\xdctools_3_25_00_48\packages\ti\targets\arm\rtsarm\lib\ti.targets.arm.rtsarm.aem4f"
@@ -104,6 +105,8 @@
 --retain "*(.resetVecs)"
 
 /* Content from ti.sysbios.family.arm.lm4 (null): */
+
+/* Content from ti.sysbios.fatfs (null): */
 
 /* Content from ti.sysbios.gates (null): */
 

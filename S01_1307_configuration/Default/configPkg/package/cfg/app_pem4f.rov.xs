@@ -13166,6 +13166,7 @@ __o = __obj[593]  // ti.sysbios.BIOS/startupFxns
     __o['$category'] = String(java.net.URLDecoder.decode('Vector', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.sysbios.BIOS%2FstartupFxns', 'UTF-8'))
     __o['0'] = String(java.net.URLDecoder.decode('%26ti_sysbios_BIOS_registerRTSLock', 'UTF-8'))
+    __o['1'] = String(java.net.URLDecoder.decode('%26ti_sysbios_fatfs_startup', 'UTF-8'))
 
 __o = __obj[594]  // ti.sysbios.BIOS/viewNameMap$
     __o.$keys = []
