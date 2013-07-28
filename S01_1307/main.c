@@ -73,6 +73,7 @@ Void hwi_UART0_fxn(UArg arg)
 }
 
 
+
 Void hwi_UART1_fxn(UArg arg)
 {
 	Swi_post(swi_UART1_handle) ;
@@ -128,6 +129,18 @@ Void hwi_CAN1_fxn(UArg arg)
 
 Void hwi_GPIOBoot_fxn(UArg arg)
 {
+	long lIntSts ;
+
+	//store the interrupt flag into lIntSts
+	lIntSts = ROM_GPIOPinIntStatus(GPIO_PORTM_BASE, false) ;
+
+	//
+	// Clear the GPIO interrupt.
+	//
+	ROM_GPIOPinIntClear(GPIO_PORTM_BASE, GPIO_PIN_4);
+
+
+
 	Swi_post(swi_GPIOBoot_handle) ;
 }
 
@@ -326,14 +339,25 @@ Void taskFxn(UArg a0, UArg a1)
 }
 
 /**/
+Void init_gpio()
+{
+	  ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOM);
+
+	  ROM_GPIOPinTypeGPIOInput(GPIO_PORTM_BASE, GPIO_PIN_4) ;
+	  ROM_GPIOPadConfigSet(GPIO_PORTM_BASE, GPIO_PIN_4, GPIO_STRENGTH_2MA, GPIO_PIN_TYPE_STD_WPU) ;
+	  ROM_GPIOIntTypeSet(GPIO_PORTM_BASE, GPIO_PIN_4, GPIO_FALLING_EDGE) ;
+
+}
+
+/**/
 Void init_uart()
 {
-  //UART0 initialization with 115200, 8, N, 1
-  //
-  // Enable the peripherals used by this example.
-  //
-  ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
-  ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_UART0);
+	  //UART0 initialization with 115200, 8, N, 1
+	  //
+	  // Enable the peripherals used by this example.
+	  //
+	  ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
+	  ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_UART0);
 
 
 	//
@@ -349,25 +373,43 @@ Void init_uart()
 							 UART_CONFIG_PAR_NONE));
 
 
-	//
-	// Enable processor interrupts.
-	//
-	ROM_IntMasterEnable();
-	//
-	// Enable the UART interrupt.
-	//
-	ROM_IntEnable(INT_UART0);
-	ROM_UARTIntEnable(UART0_BASE, UART_INT_RX | UART_INT_RT);
+
+
+}
+
+Void config_interrupt()
+{
+
+
+		// Enable processor interrupts.
+		//
+		ROM_IntMasterEnable();
+
+		//Enable GPIOM4 for boot trigger
+		ROM_GPIOPinIntEnable(GPIO_PORTM_BASE, GPIO_PIN_4) ;
+
+		//
+		// Enable the UART0 interrupt.
+		//
+		ROM_IntEnable(INT_UART0);
+		ROM_UARTIntEnable(UART0_BASE, UART_INT_RX | UART_INT_RT);
 
 }
 
 Void init_sys()
 {
+	//GPIOM initialization for bootloader
+	init_gpio() ;
+
 	//UART0 initialization
 	init_uart() ;
 
 
 	//UART1 initialization
+
+
+    //interrupt setting for system
+	config_interrupt() ;
 
 }
 

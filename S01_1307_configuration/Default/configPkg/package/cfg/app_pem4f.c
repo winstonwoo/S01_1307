@@ -2621,7 +2621,7 @@ const UInt32 ti_sysbios_family_arm_m3_Hwi_resetVectors[] = {
     (UInt32)(&ti_sysbios_family_arm_m3_Hwi_excHandlerAsm__I),       /* reserved */
     (UInt32)(&ti_sysbios_family_arm_m3_Hwi_pendSV__I),  /* pendSV */
     (UInt32)(&ti_sysbios_family_arm_m3_Hwi_excHandlerAsm__I),  /* intNum = 15 */
-    (UInt32)(ti_sysbios_family_arm_m3_Hwi_dispatch__I),  /* intNum = 16 */
+    (UInt32)(&ti_sysbios_family_arm_m3_Hwi_excHandlerAsm__I),  /* intNum = 16 */
     (UInt32)(&ti_sysbios_family_arm_m3_Hwi_excHandlerAsm__I),  /* intNum = 17 */
     (UInt32)(&ti_sysbios_family_arm_m3_Hwi_excHandlerAsm__I),  /* intNum = 18 */
     (UInt32)(&ti_sysbios_family_arm_m3_Hwi_excHandlerAsm__I),  /* intNum = 19 */
@@ -2732,7 +2732,7 @@ const UInt32 ti_sysbios_family_arm_m3_Hwi_resetVectors[] = {
     (UInt32)(&ti_sysbios_family_arm_m3_Hwi_excHandlerAsm__I),  /* intNum = 124 */
     (UInt32)(&ti_sysbios_family_arm_m3_Hwi_excHandlerAsm__I),  /* intNum = 125 */
     (UInt32)(&ti_sysbios_family_arm_m3_Hwi_excHandlerAsm__I),  /* intNum = 126 */
-    (UInt32)(&ti_sysbios_family_arm_m3_Hwi_excHandlerAsm__I),  /* intNum = 127 */
+    (UInt32)(ti_sysbios_family_arm_m3_Hwi_dispatch__I),  /* intNum = 127 */
     (UInt32)(&ti_sysbios_family_arm_m3_Hwi_excHandlerAsm__I),  /* intNum = 128 */
     (UInt32)(&ti_sysbios_family_arm_m3_Hwi_excHandlerAsm__I),  /* intNum = 129 */
     (UInt32)(&ti_sysbios_family_arm_m3_Hwi_excHandlerAsm__I),  /* intNum = 130 */
@@ -3645,7 +3645,7 @@ ti_sysbios_family_arm_m3_Hwi_Object__ ti_sysbios_family_arm_m3_Hwi_Object__table
         0,
         ((xdc_UArg)(0x0)),  /* arg */
         ((xdc_Void(*)(xdc_UArg))((xdc_Fxn)hwi_GPIOBoot_fxn)),  /* fxn */
-        (xdc_Int)0x10,  /* intNum */
+        (xdc_Int)0x7f,  /* intNum */
         ((xdc_UArg)0),  /* irp */
         ((void*)0),  /* hookEnv */
     },
@@ -3700,7 +3700,7 @@ __T1_ti_sysbios_family_arm_m3_Hwi_Module_State__dispatchTable ti_sysbios_family_
     0,  /* [13] */
     0,  /* [14] */
     0,  /* [15] */
-    (ti_sysbios_family_arm_m3_Hwi_Handle)&ti_sysbios_family_arm_m3_Hwi_Object__table__V[10],  /* [16] */
+    0,  /* [16] */
     0,  /* [17] */
     0,  /* [18] */
     0,  /* [19] */
@@ -3811,7 +3811,7 @@ __T1_ti_sysbios_family_arm_m3_Hwi_Module_State__dispatchTable ti_sysbios_family_
     0,  /* [124] */
     0,  /* [125] */
     0,  /* [126] */
-    0,  /* [127] */
+    (ti_sysbios_family_arm_m3_Hwi_Handle)&ti_sysbios_family_arm_m3_Hwi_Object__table__V[10],  /* [127] */
     0,  /* [128] */
     0,  /* [129] */
     0,  /* [130] */
@@ -3906,10 +3906,10 @@ __T1_ti_sysbios_family_arm_m3_Hwi_Module_State__dispatchTable ti_sysbios_family_
 ti_sysbios_family_arm_m3_Hwi_Module_State__ ti_sysbios_family_arm_m3_Hwi_Module__state__V = {
     (xdc_Bits16)0x0,  /* enables */
     {
-        (xdc_Bits32)0x2800e1,  /* [0] */
+        (xdc_Bits32)0x2800e0,  /* [0] */
         (xdc_Bits32)0xa0001a6,  /* [1] */
         (xdc_Bits32)0x0,  /* [2] */
-        (xdc_Bits32)0x0,  /* [3] */
+        (xdc_Bits32)0x8000,  /* [3] */
         (xdc_Bits32)0x0,  /* [4] */
         (xdc_Bits32)0x0,  /* [5] */
         (xdc_Bits32)0x0,  /* [6] */
