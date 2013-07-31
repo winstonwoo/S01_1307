@@ -707,11 +707,7 @@ sdcard_main(void)
 
 
 
-    //
-    // Enable the peripherals used by this example.
-    //
 
-    ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_SSI0);
 
 #if 0
     //
