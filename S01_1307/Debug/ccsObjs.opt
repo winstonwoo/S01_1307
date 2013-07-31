@@ -1,1 +1,1 @@
-"./main.obj" -l"libc.a" -l"J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/driverlib/ccs-cm4f/Debug/driverlib-cm4f.lib" "../lm4f232h5qd.cmd" 
+"./uartstdio.obj" "./sd_card.obj" "./mmc-ek-lm4f232h5qd.obj" "./main.obj" "./ff.obj" "./cmdline.obj" -l"libc.a" -l"J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/driverlib/ccs-cm4f/Debug/driverlib-cm4f.lib" "../lm4f232h5qd.cmd" 

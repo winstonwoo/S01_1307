@@ -19,21 +19,23 @@
 <coolItem id="org.eclipse.cdt.ui.CElementCreationActionSet" itemType="typeToolBarContribution" x="175" y="22"/>
 <coolItem id="org.eclipse.debug.ui.launch.toolbar" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.debug.ui.launchActionSet" itemType="typeToolBarContribution" x="55" y="22"/>
-<coolItem id="org.eclipse.debug.ui.main.toolbar" itemType="typeToolBarContribution" x="-1" y="-1"/>
-<coolItem id="com.ti.ccstudio.debug.ui.toolbar" itemType="typeToolBarContribution" x="147" y="22"/>
+<coolItem id="org.eclipse.debug.ui.main.toolbar" itemType="typeToolBarContribution" x="38" y="22"/>
+<coolItem id="com.ti.ccstudio.debug.ui.toolbar" itemType="typeToolBarContribution" x="187" y="22"/>
 <coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="55" y="22"/>
 <coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="38" y="22"/>
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="118" y="22"/>
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.ui.DefaultTextEditor" itemType="typePlaceholder" x="-1" y="-1"/>
+<coolItem id="com.ti.ccstudio.ui.cmdFileEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.rtsc.xdctools.ui.editors.XdcScriptEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.rtsc.xdctools.parsers.ui.XdcHelpEditor" itemType="typePlaceholder" x="-1" y="-1"/>
-<coolItem id="org.eclipse.rtsc.xdctools.cfgEditor" itemType="typePlaceholder" x="-1" y="-1"/>
+<coolItem id="org.eclipse.rtsc.xdctools.cfgEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.cdt.ui.editor.CEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="group.help" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
 </coolbarLayout>
-<page aggregateWorkingSetId="Aggregate for window 1374199036766" focus="true" label="Workspace - CCS Edit">
+<page aggregateWorkingSetId="Aggregate for window 1374199036766" focus="true" label="Workspace - CCS Debug">
 <editors>
 <editorArea activeWorkbook="DefaultEditorWorkbook">
 <info part="DefaultEditorWorkbook">
@@ -41,17 +43,37 @@
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
 <part id="1"/>
+<part id="2"/>
+<part id="3"/>
+<part id="4"/>
+<part id="5"/>
+<part id="6"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="J:/WorkHouse2013/SW2013/S01_1307_VTDR_Stellaris/S01_1307/main.c" title="main.c" tooltip="S01_1307/main.c" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="J:/WorkHouse2013/SW2013/S01_1307_VTDR_Stellaris/S01_1307/main.c" title="main.c" tooltip="S01_1307/main.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/S01_1307/main.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2429" selectionTopPixel="1875"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4116" selectionTopPixel="4005"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="gpio.h" partName="gpio.h" title="gpio.h" tooltip="J:\WorkHouse2013\SWRf2013\StellarisTiVa\Stellaris\StellarisWare\driverlib\gpio.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" path="J:\WorkHouse2013\SWRf2013\StellarisTiVa\Stellaris\StellarisWare\driverlib\gpio.h" project="S01_1307"/>
-<editorState selectionHorizontalPixel="0" selectionLength="16" selectionOffset="6041" selectionTopPixel="1650"/>
+<editor id="org.eclipse.rtsc.xdctools.cfgEditor" name="app.cfg" partName="app.cfg" path="J:/WorkHouse2013/SW2013/S01_1307_VTDR_Stellaris/S01_1307_configuration/app.cfg" title="app.cfg" tooltip="S01_1307_configuration/app.cfg" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/S01_1307_configuration/app.cfg"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="Idle.c" partName="Idle.c" title="Idle.c" tooltip="C:\Program Files\Texas Instruments\bios_6_35_01_29\packages\ti\sysbios\knl\Idle.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/C:/Program%20Files/Texas%20Instruments/bios_6_35_01_29/packages/ti/sysbios/knl/Idle.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2124" selectionTopPixel="584"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="uartstdio.c" partName="uartstdio.c" path="J:/WorkHouse2013/SW2013/S01_1307_VTDR_Stellaris/S01_1307/uartstdio.c" title="uartstdio.c" tooltip="S01_1307/uartstdio.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/S01_1307/uartstdio.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="20064" selectionTopPixel="8205"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="mmc-ek-lm4f232h5qd.c" partName="mmc-ek-lm4f232h5qd.c" path="J:/WorkHouse2013/SW2013/S01_1307_VTDR_Stellaris/S01_1307/mmc-ek-lm4f232h5qd.c" title="mmc-ek-lm4f232h5qd.c" tooltip="S01_1307/mmc-ek-lm4f232h5qd.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/S01_1307/mmc-ek-lm4f232h5qd.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="23390" selectionTopPixel="10275"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="Hwi.c" partName="Hwi.c" title="Hwi.c" tooltip="C:\Program Files\Texas Instruments\bios_6_35_01_29\packages\ti\sysbios\family\arm\m3\Hwi.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/C:/Program%20Files/Texas%20Instruments/bios_6_35_01_29/packages/ti/sysbios/family/arm/m3/Hwi.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="33791" selectionTopPixel="19470"/>
 </editor>
 </editors>
 <views>
@@ -59,6 +81,12 @@
 <viewState>
 <pane IMemento.internal.id="com.ti.dvt.ui.gridview.GridView:RTOS Object View (ROV)"/>
 </viewState>
+</view>
+<view id="org.eclipse.ui.views.ProgressView" partName="Progress">
+<viewState/>
+</view>
+<view id="org.eclipse.ui.console.ConsoleView:Console View #1" partName="Console">
+<viewState/>
 </view>
 <view id="org.eclipse.debug.ui.DebugView" partName="Debug">
 <viewState/>
@@ -78,26 +106,28 @@
 <view id="org.eclipse.ui.views.ContentOutline" partName="Outline">
 <viewState/>
 </view>
-<view id="org.eclipse.ui.navigator.ProjectExplorer" partName="Project Explorer">
-<viewState CommonNavigator.LINKING_ENABLED="0" org.eclipse.cdt.ui.cview.groupincludes="false" org.eclipse.cdt.ui.cview.groupmacros="false" org.eclipse.cdt.ui.editor.CUChildren="true" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0"/>
-</view>
 <view id="org.eclipse.debug.ui.ExpressionView" partName="Expressions">
 <viewState/>
 </view>
-<view id="com.ti.ccstudio.system.setup.ui.views.TargetConfigurationView" partName="Target Configurations"/>
-<view id="org.eclipse.ui.views.PropertySheet" partName="Properties"/>
-<view id="org.eclipse.cdt.make.ui.views.MakeView" partName="Make Target">
+<view id="org.eclipse.ui.navigator.ProjectExplorer" partName="Project Explorer">
+<viewState CommonNavigator.LINKING_ENABLED="0" org.eclipse.cdt.ui.cview.groupincludes="false" org.eclipse.cdt.ui.cview.groupmacros="false" org.eclipse.cdt.ui.editor.CUChildren="true" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0"/>
+</view>
+<view id="com.ti.ccstudio.system.setup.ui.views.TargetConfigurationView" partName="Target Configurations">
 <viewState/>
 </view>
+<view id="org.eclipse.ui.views.PropertySheet" partName="Properties"/>
 <view id="org.eclipse.debug.ui.RegisterView" partName="Registers">
+<viewState/>
+</view>
+<view id="org.eclipse.cdt.make.ui.views.MakeView" partName="Make Target">
 <viewState/>
 </view>
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
 <expanded>
-<category IMemento.internal.id="Warnings (1 item)"/>
+<category IMemento.internal.id="Warnings"/>
 </expanded>
-<columnWidths org.eclipse.ui.ide.locationField="90" org.eclipse.ui.ide.markerType="90" org.eclipse.ui.ide.pathField="120" org.eclipse.ui.ide.resourceField="90" org.eclipse.ui.ide.severityAndDescriptionField="606"/>
+<columnWidths org.eclipse.ui.ide.locationField="90" org.eclipse.ui.ide.markerType="90" org.eclipse.ui.ide.pathField="120" org.eclipse.ui.ide.resourceField="167" org.eclipse.ui.ide.severityAndDescriptionField="513"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.pathField"/>
@@ -105,14 +135,20 @@
 <visible IMemento.internal.id="org.eclipse.ui.ide.markerType"/>
 </viewState>
 </view>
+<view id="org.eclipse.cdt.ui.callHierarchy" partName="Call Hierarchy">
+<viewState showFilesInLabels="false" variableFilter="false"/>
+</view>
 <view id="org.eclipse.ui.console.ConsoleView" partName="Console">
 <viewState/>
+</view>
+<view id="org.eclipse.cdt.dsf.debug.ui.disassembly.view" partName="Disassembly">
+<viewState disassembly.syncActiveContext="true" disassembly.trackExpression="false"/>
 </view>
 <view id="org.eclipse.rtsc.xdctools.model.ui.views.packageView" partName="Available Products">
 <viewState/>
 </view>
 </views>
-<perspectives activePart="org.eclipse.cdt.ui.editor.CEditor" activePerspective="com.ti.ccstudio.TICPerspective">
+<perspectives activePart="org.eclipse.debug.ui.DebugView" activePerspective="com.ti.ccstudio.TIDebugPerspective">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="com.ti.ccstudio.internal.ui.perspectives.TICPerspectiveFactory" id="com.ti.ccstudio.TICPerspective" label="CCS Edit"/>
 <alwaysOnActionSet id="org.eclipse.mylyn.context.ui.actionSet"/>
@@ -378,6 +414,9 @@
 <hide_toolbar_item_id id="org.eclipse.debug.internal.ui.actions.RunDropDownAction"/>
 <view id="org.eclipse.ui.navigator.ProjectExplorer"/>
 <view id="org.eclipse.ui.views.ProblemView"/>
+<view id="org.eclipse.cdt.ui.callHierarchy"/>
+<view id="org.eclipse.ui.console.ConsoleView:Console View #1"/>
+<view id="org.eclipse.ui.views.ProgressView"/>
 <view id="org.eclipse.ui.console.ConsoleView"/>
 <view id="org.eclipse.ui.views.ContentOutline"/>
 <view id="org.eclipse.rtsc.xdctools.model.ui.views.packageView"/>
@@ -400,13 +439,13 @@
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
-<info folder="true" part="topLeft" ratio="0.18597786" ratioLeft="252" ratioRight="1103" relationship="2" relative="left">
+<info folder="true" part="topLeft" ratio="0.19704796" ratioLeft="267" ratioRight="1088" relationship="2" relative="left">
 <folder appearance="2" expanded="2">
 <page content="org.eclipse.debug.ui.DebugView" label="LabelNotFound"/>
 </folder>
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.24876441" ratioLeft="151" ratioRight="456" relationship="4" relative="topLeft"/>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@18c5b4f" ratio="0.75444263" ratioLeft="467" ratioRight="152" relationship="4" relative="org.eclipse.ui.editorss">
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@18c5b4f" ratio="0.68174475" ratioLeft="422" ratioRight="197" relationship="4" relative="org.eclipse.ui.editorss">
 <folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
@@ -414,13 +453,19 @@
 </presentation>
 </folder>
 </info>
-<info folder="true" part="bottomRight" ratio="0.34727272" ratioLeft="382" ratioRight="718" relationship="2" relative="org.eclipse.ui.internal.ViewStack@18c5b4f">
+<info folder="true" part="bottomRight" ratio="0.4753937" ratioLeft="483" ratioRight="533" relationship="2" relative="org.eclipse.ui.internal.ViewStack@18c5b4f">
 <folder activePageID="org.eclipse.ui.views.ProblemView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
+<page content="org.eclipse.cdt.ui.callHierarchy" label="Call Hierarchy"/>
+<page content="org.eclipse.ui.console.ConsoleView:Console View #1" label="Console"/>
+<page content="org.eclipse.ui.views.ProgressView" label="Progress"/>
 <page content="com.ti.ccstudio.project.ui.views.AdviceView" label="LabelNotFound"/>
 <page content="com.ti.ccstudio.scripting.console.ConsoleView" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
+<part id="1"/>
+<part id="2"/>
+<part id="3"/>
 </presentation>
 </folder>
 </info>
@@ -436,7 +481,7 @@
 <page content="com.ti.ccstudio.project.ui.views.OptimizerAssistantView" label="LabelNotFound"/>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@1da817b" ratio="0.75265956" ratioLeft="849" ratioRight="279" relationship="2" relative="org.eclipse.ui.editorss">
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@1da817b" ratio="0.69769585" ratioLeft="757" ratioRight="328" relationship="2" relative="org.eclipse.ui.editorss">
 <folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
 <page content="com.ti.ccstudio.system.setup.ui.views.TargetConfigurationView" label="LabelNotFound"/>
@@ -454,7 +499,7 @@
 <page content="org.eclipse.debug.ui.BreakpointView" label="LabelNotFound"/>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@f68905" ratio="0.7592892" ratioLeft="470" ratioRight="149" relationship="4" relative="left">
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@fddaed" ratio="0.7156704" ratioLeft="443" ratioRight="176" relationship="4" relative="left">
 <folder activePageID="org.eclipse.rtsc.xdctools.model.ui.views.packageView" appearance="2" expanded="2">
 <page content="org.eclipse.rtsc.xdctools.model.ui.views.packageView" label="Available Products"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
@@ -540,35 +585,48 @@
 <view id="org.eclipse.ui.views.ContentOutline"/>
 <view id="org.eclipse.cdt.make.ui.views.MakeView"/>
 <fastViewBars/>
-<layout>&#x0A;<mainWindow>&#x0A;<info folder="true" part="topLeft">&#x0A;<folder activePageID="org.eclipse.ui.navigator.ProjectExplorer" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.navigator.ProjectExplorer" label="Project Explorer"/>
+<layout>
+<mainWindow>
+<info folder="true" part="topLeft">
+<folder activePageID="org.eclipse.ui.navigator.ProjectExplorer" appearance="2" expanded="2">
+<page content="org.eclipse.ui.navigator.ProjectExplorer" label="Project Explorer"/>
 <page content="org.eclipse.cdt.ui.CView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.ResourceNavigator" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.BookmarkView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="stickyFolderRight" ratio="0.7498122" ratioLeft="998" ratioRight="333" relationship="2" relative="topLeft">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
+<info folder="true" part="stickyFolderRight" ratio="0.7498122" ratioLeft="998" ratioRight="333" relationship="2" relative="topLeft">
+<folder appearance="2" expanded="2">
+<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
 <page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
 </folder>
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.17121771" ratioLeft="232" ratioRight="1123" relationship="2" relative="topLeft"/>
-<info folder="true" part="bottom" ratio="0.7491961" ratioLeft="466" ratioRight="156" relationship="4" relative="org.eclipse.ui.editorss">&#x0A;<folder activePageID="org.eclipse.ui.views.ProblemView" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
+<info folder="true" part="bottom" ratio="0.7491961" ratioLeft="466" ratioRight="156" relationship="4" relative="org.eclipse.ui.editorss">
+<folder activePageID="org.eclipse.ui.views.ProblemView" appearance="2" expanded="2">
+<page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
 <page content="org.eclipse.ui.views.TaskList" label="Tasks"/>
 <page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
 <page content="org.eclipse.ui.views.PropertySheet" label="Properties"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
 <part id="1"/>
 <part id="2"/>
 <part id="3"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="topRight" ratio="0.7497497" ratioLeft="749" ratioRight="250" relationship="2" relative="org.eclipse.ui.editorss">&#x0A;<folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
+<info folder="true" part="topRight" ratio="0.7497497" ratioLeft="749" ratioRight="250" relationship="2" relative="org.eclipse.ui.editorss">
+<folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">
+<page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
 <page content="org.eclipse.cdt.make.ui.views.MakeView" label="Make Target"/>
 <page content="org.eclipse.mylyn.tasks.ui.views.tasks" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
 <part id="1"/>
 </presentation>
 </folder>
@@ -796,12 +854,16 @@
 <hide_toolbar_item_id id="org.eclipse.debug.internal.ui.actions.RunDropDownAction"/>
 <view id="org.eclipse.ui.console.ConsoleView"/>
 <view id="com.ti.dvt.ui.gridview.GridView:RTOS Object View (ROV)"/>
-<view id="org.eclipse.debug.ui.DebugView"/>
-<view id="org.eclipse.debug.ui.ExpressionView"/>
-<view id="org.eclipse.debug.ui.RegisterView"/>
 <view id="org.eclipse.ui.views.ProblemView"/>
 <view id="com.ti.dvt.ui.views.rtatable:Printf Log"/>
 <view id="org.eclipse.debug.ui.BreakpointView"/>
+<view id="org.eclipse.rtsc.xdctools.model.ui.views.packageView"/>
+<view id="org.eclipse.debug.ui.DebugView"/>
+<view id="org.eclipse.debug.ui.ExpressionView"/>
+<view id="org.eclipse.debug.ui.RegisterView"/>
+<view id="org.eclipse.ui.views.ContentOutline"/>
+<view id="org.eclipse.cdt.dsf.debug.ui.disassembly.view"/>
+<view id="org.eclipse.ui.navigator.ProjectExplorer"/>
 <fastViews>
 <view id="com.ti.ccstudio.system.setup.ui.views.TargetConfigurationView" ratio="0.3"/>
 <view id="org.eclipse.debug.ui.VariableView" ratio="0.3"/>
@@ -810,8 +872,11 @@
 <layout>
 <mainWindow>
 <info folder="true" part="left">
-<folder appearance="2" expanded="2">
-<page content="org.eclipse.ui.navigator.ProjectExplorer" label="LabelNotFound"/>
+<folder activePageID="org.eclipse.ui.navigator.ProjectExplorer" appearance="2" expanded="2">
+<page content="org.eclipse.ui.navigator.ProjectExplorer" label="Project Explorer"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+</presentation>
 </folder>
 </info>
 <info folder="true" part="stickyFolderRight" ratio="0.7496318" ratioLeft="1018" ratioRight="340" relationship="2" relative="left">
@@ -821,7 +886,7 @@
 <page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
 </folder>
 </info>
-<info part="org.eclipse.ui.editorss" ratio="0.2496318" ratioLeft="339" ratioRight="1019" relationship="2" relative="left"/>
+<info part="org.eclipse.ui.editorss" ratio="0.18671587" ratioLeft="253" ratioRight="1102" relationship="2" relative="left"/>
 <info folder="true" part="org.eclipse.ui.internal.ViewStack@e8d781" ratio="0.6575121" ratioLeft="407" ratioRight="212" relationship="4" relative="org.eclipse.ui.editorss">
 <folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
@@ -832,37 +897,42 @@
 </presentation>
 </folder>
 </info>
-<info folder="true" part="bottomRight" ratio="0.5402214" ratioLeft="732" ratioRight="623" relationship="2" relative="org.eclipse.ui.internal.ViewStack@e8d781">
-<folder activePageID="com.ti.dvt.ui.views.rtatable:Printf Log" appearance="2" expanded="2">
+<info folder="true" part="bottomRight" ratio="0.38376385" ratioLeft="520" ratioRight="835" relationship="2" relative="org.eclipse.ui.internal.ViewStack@e8d781">
+<folder activePageID="org.eclipse.debug.ui.DebugView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
 <page content="com.ti.dvt.ui.views.rtatable:Printf Log" label="Printf Logs"/>
 <page content="org.eclipse.debug.ui.BreakpointView" label="Breakpoints"/>
+<page content="org.eclipse.rtsc.xdctools.model.ui.views.packageView" label="Available Products"/>
+<page content="org.eclipse.debug.ui.DebugView" label="Debug"/>
+<page content="org.eclipse.debug.ui.ExpressionView" label="Expressions"/>
+<page content="org.eclipse.debug.ui.RegisterView" label="Registers"/>
 <page content="com.ti.ccstudio.scripting.console.ConsoleView" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
 <part id="1"/>
 <part id="2"/>
+<part id="3"/>
+<part id="4"/>
+<part id="5"/>
+<part id="6"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="right" ratio="0.6995582" ratioLeft="950" ratioRight="408" relationship="2" relative="org.eclipse.ui.editorss">
-<folder appearance="2" expanded="2">
-<page content="org.eclipse.ui.views.ContentOutline" label="LabelNotFound"/>
-<page content="org.eclipse.cdt.dsf.debug.ui.disassembly.view" label="LabelNotFound"/>
+<info folder="true" part="right" ratio="0.83468634" ratioLeft="1131" ratioRight="224" relationship="2" relative="org.eclipse.ui.editorss">
+<folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">
+<page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
+<page content="org.eclipse.cdt.dsf.debug.ui.disassembly.view" label="Disassembly"/>
 <page content="org.eclipse.cdt.debug.ui.memory.memorybrowser.MemoryBrowser" label="LabelNotFound"/>
-</folder>
-</info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@99371a" ratio="0.7269373" ratioLeft="985" ratioRight="370" relationship="2" relative="org.eclipse.ui.editorss">
-<folder activePageID="org.eclipse.debug.ui.DebugView" appearance="2" expanded="2">
-<page content="org.eclipse.debug.ui.DebugView" label="Debug"/>
-<page content="org.eclipse.debug.ui.ExpressionView" label="Expressions"/>
-<page content="org.eclipse.debug.ui.RegisterView" label="Registers"/>
-<page content="org.eclipse.debug.ui.VariableView" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
 <part id="1"/>
-<part id="2"/>
 </presentation>
+</folder>
+</info>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@99371a" ratio="0.6764184" ratioLeft="763" ratioRight="365" relationship="2" relative="org.eclipse.ui.editorss">
+<folder appearance="2" expanded="2">
+<page content="org.eclipse.debug.ui.VariableView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
 </mainWindow>
@@ -870,165 +940,7 @@
 </perspective>
 </perspectives>
 <workingSets/>
-<navigationHistory>
-<editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/S01_1307/main.c"/>
-<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" uri="file:/C:/Program%20Files/Texas%20Instruments/bios_6_35_01_29/packages/ti/sysbios/hal/Hwi.c"/>
-<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" uri="file:/C:/Program%20Files/Texas%20Instruments/bios_6_35_01_29/packages/ti/sysbios/hal/Hwi_stack.c"/>
-<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" uri="file:/C:/Program%20Files/Texas%20Instruments/bios_6_35_01_29/packages/ti/sysbios/knl/Idle.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.rtsc.xdctools.ui.editors.XdcScriptEditor" path="/S01_1307_configuration/app.cfg"/>
-<editor factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="J:\WorkHouse2013\SWRf2013\StellarisTiVa\TiVa\TivaWare_C_Series-1.0\driverlib\uart.h" project="S01_1307"/>
-<editor factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="J:\WorkHouse2013\SWRf2013\StellarisTiVa\Stellaris\StellarisWare-m4\driverlib\rom.h" project="S01_1307"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.rtsc.xdctools.cfgEditor" path="/S01_1307_configuration/app.cfg"/>
-<editor factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="J:\WorkHouse2013\SWRf2013\StellarisTiVa\Stellaris\StellarisWare\driverlib\gpio.h" project="S01_1307"/>
-<editor factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="J:\WorkHouse2013\SWRf2013\StellarisTiVa\Stellaris\StellarisWare\driverlib\interrupt.h" project="S01_1307"/>
-</editors>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="5204" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="5826" y="0"/>
-</item>
-<item historyLabel="Hwi.c" index="1">
-<position info="not_deleted" x="2982" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="5826" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="5478" y="63"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="3014" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="5478" y="63"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="6041" y="8"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="5478" y="8"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="5272" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="5478" y="8"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="3014" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="5478" y="8"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="3816" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="5478" y="63"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="2962" y="52"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="3817" y="52"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="3951" y="52"/>
-</item>
-<item historyLabel="Hwi_stack.c" index="2">
-<position info="not_deleted" x="3359" y="0"/>
-</item>
-<item historyLabel="Idle.c" index="3">
-<position info="not_deleted" x="1920" y="0"/>
-</item>
-<item historyLabel="app.cfg" index="4">
-<position/>
-</item>
-<item historyLabel="uart.h" index="5">
-<position info="not_deleted" x="9044" y="16"/>
-</item>
-<item historyLabel="rom.h" index="6">
-<position info="not_deleted" x="3440" y="0"/>
-</item>
-<item historyLabel="app.cfg" index="7"/>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="2284" y="16"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="2310" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="4966" y="9"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="4954" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="6036" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="5914" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position/>
-</item>
-<item historyLabel="gpio.h" index="8">
-<position info="not_deleted" x="7201" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="5569" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="436" y="0"/>
-</item>
-<item historyLabel="interrupt.h" index="9">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="interrupt.h" index="9">
-<position info="not_deleted" x="678" y="0"/>
-</item>
-<item historyLabel="interrupt.h" index="9">
-<position info="not_deleted" x="3244" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="436" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="185" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="2479" y="0"/>
-</item>
-<item historyLabel="gpio.h" index="8">
-<position info="not_deleted" x="6112" y="15"/>
-</item>
-<item historyLabel="gpio.h" index="8">
-<position info="not_deleted" x="6041" y="16"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position/>
-</item>
-<item historyLabel="gpio.h" index="8">
-<position info="not_deleted" x="6041" y="16"/>
-</item>
-<item active="true" historyLabel="main.c" index="0">
-<position/>
-</item>
-</navigationHistory>
+<navigationHistory/>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
 </page>
 <workbenchWindowAdvisor/>
@@ -1049,38 +961,50 @@
 </trimLayout>
 </window>
 <mruList>
-<file factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="gpio.h" tooltip="J:\WorkHouse2013\SWRf2013\StellarisTiVa\Stellaris\StellarisWare\driverlib\gpio.h">
-<persistable path="J:\WorkHouse2013\SWRf2013\StellarisTiVa\Stellaris\StellarisWare\driverlib\gpio.h" project="S01_1307"/>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Hwi.c" tooltip="C:\Program Files\Texas Instruments\bios_6_35_01_29\packages\ti\sysbios\family\arm\m3\Hwi.c">
+<persistable uri="file:/C:/Program%20Files/Texas%20Instruments/bios_6_35_01_29/packages/ti/sysbios/family/arm/m3/Hwi.c"/>
 </file>
-<file factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="interrupt.h" tooltip="J:\WorkHouse2013\SWRf2013\StellarisTiVa\Stellaris\StellarisWare\driverlib\interrupt.h">
-<persistable path="J:\WorkHouse2013\SWRf2013\StellarisTiVa\Stellaris\StellarisWare\driverlib\interrupt.h" project="S01_1307"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="mmc-ek-lm4f232h5qd.c" tooltip="S01_1307/mmc-ek-lm4f232h5qd.c">
+<persistable path="/S01_1307/mmc-ek-lm4f232h5qd.c"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.rtsc.xdctools.cfgEditor" name="app.cfg" tooltip="S01_1307_configuration/app.cfg">
-<persistable path="/S01_1307_configuration/app.cfg"/>
-</file>
-<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Hwi.c" tooltip="C:\Program Files\Texas Instruments\bios_6_35_01_29\packages\ti\sysbios\hal\Hwi.c">
-<persistable uri="file:/C:/Program%20Files/Texas%20Instruments/bios_6_35_01_29/packages/ti/sysbios/hal/Hwi.c"/>
-</file>
-<file factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="rom.h" tooltip="J:\WorkHouse2013\SWRf2013\StellarisTiVa\Stellaris\StellarisWare-m4\driverlib\rom.h">
-<persistable path="J:\WorkHouse2013\SWRf2013\StellarisTiVa\Stellaris\StellarisWare-m4\driverlib\rom.h" project="uart_echo"/>
-</file>
-<file factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="uart.h" tooltip="J:\WorkHouse2013\SWRf2013\StellarisTiVa\TiVa\TivaWare_C_Series-1.0\driverlib\uart.h">
-<persistable path="J:\WorkHouse2013\SWRf2013\StellarisTiVa\TiVa\TivaWare_C_Series-1.0\driverlib\uart.h" project="freertos_demo"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="uartstdio.c" tooltip="S01_1307/uartstdio.c">
+<persistable path="/S01_1307/uartstdio.c"/>
 </file>
 <file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Idle.c" tooltip="C:\Program Files\Texas Instruments\bios_6_35_01_29\packages\ti\sysbios\knl\Idle.c">
 <persistable uri="file:/C:/Program%20Files/Texas%20Instruments/bios_6_35_01_29/packages/ti/sysbios/knl/Idle.c"/>
 </file>
-<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Hwi_stack.c" tooltip="C:\Program Files\Texas Instruments\bios_6_35_01_29\packages\ti\sysbios\hal\Hwi_stack.c">
-<persistable uri="file:/C:/Program%20Files/Texas%20Instruments/bios_6_35_01_29/packages/ti/sysbios/hal/Hwi_stack.c"/>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Task.c" tooltip="C:\Program Files\Texas Instruments\bios_6_35_01_29\packages\ti\sysbios\knl\Task.c">
+<persistable uri="file:/C:/Program%20Files/Texas%20Instruments/bios_6_35_01_29/packages/ti/sysbios/knl/Task.c"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" tooltip="S01_1307/main.c">
-<persistable path="/S01_1307/main.c"/>
+<file factoryID="com.ti.ccstudio.resource.explorer.editor.elementFactory" id="com.ti.ccstudio.resource.explorer.editor.resourceExplorer" name="TI Resource Explorer" tooltip="TI Resource Explorer">
+<persistable name="TI Resource Explorer"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="S01_1307.map" tooltip="S01_1307/Debug/S01_1307.map">
+<persistable path="/S01_1307/Debug/S01_1307.map"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="ff.c" tooltip="S01_1307/ff.c">
+<persistable path="/S01_1307/ff.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="main.pp" tooltip="S01_1307/Debug/main.pp">
+<persistable path="/S01_1307/Debug/main.pp"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.ti.ccstudio.ui.cmdFileEditor" name="lm4f232h5qd.cmd" tooltip="S01_1307/lm4f232h5qd.cmd">
+<persistable path="/S01_1307/lm4f232h5qd.cmd"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.rtsc.xdctools.parsers.ui.XdcHelpEditor" name=".xdchelp" tooltip="S01_1307_configuration/.xdchelp">
 <persistable path="/S01_1307_configuration/.xdchelp"/>
 </file>
-<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Task.c" tooltip="C:\Program Files\Texas Instruments\bios_6_35_01_29\packages\ti\sysbios\knl\Task.c">
-<persistable uri="file:/C:/Program%20Files/Texas%20Instruments/bios_6_35_01_29/packages/ti/sysbios/knl/Task.c"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.rtsc.xdctools.cfgEditor" name="app.cfg" tooltip="S01_1307_configuration/app.cfg">
+<persistable path="/S01_1307_configuration/app.cfg"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="ff.h" tooltip="S01_1307/ff.h">
+<persistable path="/S01_1307/ff.h"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="uartstdio.c" tooltip="J:\WorkHouse2013\SWRf2013\StellarisTiVa\Stellaris\StellarisWare\utils\uartstdio.c">
+<persistable uri="file:/J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/utils/uartstdio.c"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="cpu_usage.c" tooltip="J:\WorkHouse2013\SWRf2013\StellarisTiVa\Stellaris\StellarisWare\utils\cpu_usage.c">
+<persistable uri="file:/J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/utils/cpu_usage.c"/>
 </file>
 </mruList>
 </workbench>

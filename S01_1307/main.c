@@ -23,7 +23,7 @@
 #include "driverlib/sysctl.h"
 #include "driverlib/uart.h"
 #include "driverlib/rom.h"
-#include "grlib/grlib.h"
+#include "driverlib/timer.h"
 
 
 extern Swi_Handle swi_UART0_handle ;
@@ -145,6 +145,32 @@ Void hwi_GPIOBoot_fxn(UArg arg)
 }
 
 
+//*****************************************************************************
+//
+// This is the handler for this SysTick interrupt.  FatFs requires a timer tick
+// every 10 ms for internal timing purposes.
+//
+//*****************************************************************************
+void
+hwi_TIMER2_fxn(void)
+{
+    //
+    // Clear the timer interrupt.
+    //
+    ROM_TimerIntClear(TIMER2_BASE, TIMER_TIMA_TIMEOUT);
+
+
+	// ROM_IntMasterDisable();
+	//
+	// Call the FatFs tick timer.
+	//
+       disk_timerproc();
+
+     // ROM_IntMasterEnable();
+
+}
+
+
 //SWI section
 Void swi_UART0_fxn(UArg arg0, UArg arg1)
 {
@@ -247,7 +273,8 @@ Void tsk_GPRS_fxn(UArg arg0, UArg arg1)
 {
 	for(;;)
 	{
-		System_printf("tsk_GPRS_fxn \n") ;
+		//UARTprintf("UARTprintf tsk_GPRS_fxn \n") ;
+	    System_printf("tsk_GPRS_fxn \n") ;
 		Task_sleep(3) ;
 	}
 
@@ -279,6 +306,7 @@ Void tsk_FS_fxn(UArg arg0, UArg arg1)
 	for(;;)
 	{
 		System_printf("tsk_FS_fxn \n") ;
+//		sdcard_main() ;
 		Task_sleep(3) ;
 	}
 
@@ -331,11 +359,11 @@ Void tsk_CAN1_fxn(UArg arg0, UArg arg1)
  */
 Void taskFxn(UArg a0, UArg a1)
 {
-    System_printf("enter taskFxn()\n");
+  //  UARTprintf("enter taskFxn()\n");
 
     Task_sleep(10);
 
-    System_printf("exit taskFxn()\n");
+  //  UARTprintf("exit taskFxn()\n");
 }
 
 /**/
@@ -377,7 +405,7 @@ Void init_uart()
 
 }
 
-Void config_interrupt()
+Void cfg_interrupt()
 {
 
 
@@ -394,6 +422,34 @@ Void config_interrupt()
 		ROM_IntEnable(INT_UART0);
 		ROM_UARTIntEnable(UART0_BASE, UART_INT_RX | UART_INT_RT);
 
+#if 1
+		//
+		// Setup the interrupts for the timer timeouts.
+		//
+		ROM_IntEnable(INT_TIMER2A);
+		ROM_TimerIntEnable(TIMER2_BASE, TIMER_TIMA_TIMEOUT);
+#endif
+
+
+}
+
+Void init_sdcard()
+{
+
+   // ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_SSI0);
+     ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER2);
+     //
+     // Configure the two 32-bit periodic timers.
+     //
+     ROM_TimerConfigure(TIMER2_BASE, TIMER_CFG_PERIODIC);
+     ROM_TimerLoadSet(TIMER2_BASE, TIMER_A, ROM_SysCtlClockGet()/100);
+
+     //
+     // Enable the timers.
+     //
+     ROM_TimerEnable(TIMER2_BASE, TIMER_A);
+
+
 }
 
 Void init_sys()
@@ -407,9 +463,12 @@ Void init_sys()
 
 	//UART1 initialization
 
+	init_sdcard() ;
+
+
 
     //interrupt setting for system
-	config_interrupt() ;
+	cfg_interrupt() ;
 
 }
 

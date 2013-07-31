@@ -201,7 +201,7 @@ main.obj: J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/driver
 main.obj: J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/driverlib/sysctl.h
 main.obj: J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/driverlib/uart.h
 main.obj: J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/driverlib/rom.h
-main.obj: J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/grlib/grlib.h
+main.obj: J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/driverlib/timer.h
 
 ../main.c: 
 C:/PROGRA~1/TEXASI~1/xdctools_3_25_00_48/packages/xdc/std.h: 
@@ -404,4 +404,4 @@ J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/driverlib/interr
 J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/driverlib/sysctl.h: 
 J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/driverlib/uart.h: 
 J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/driverlib/rom.h: 
-J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/grlib/grlib.h: 
+J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/driverlib/timer.h: 

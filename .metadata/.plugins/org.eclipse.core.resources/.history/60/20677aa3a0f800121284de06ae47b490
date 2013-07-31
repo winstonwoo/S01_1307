@@ -1,0 +1,215 @@
+var Defaults = xdc.useModule('xdc.runtime.Defaults');
+var Diags = xdc.useModule('xdc.runtime.Diags');
+var Error = xdc.useModule('xdc.runtime.Error');
+var Log = xdc.useModule('xdc.runtime.Log');
+var LoggerBuf = xdc.useModule('xdc.runtime.LoggerBuf');
+var Main = xdc.useModule('xdc.runtime.Main');
+var Memory = xdc.useModule('xdc.runtime.Memory')
+var SysMin = xdc.useModule('xdc.runtime.SysMin');
+var System = xdc.useModule('xdc.runtime.System');
+var Text = xdc.useModule('xdc.runtime.Text');
+
+var BIOS = xdc.useModule('ti.sysbios.BIOS');
+var Clock = xdc.useModule('ti.sysbios.knl.Clock');
+var Swi = xdc.useModule('ti.sysbios.knl.Swi');
+var Task = xdc.useModule('ti.sysbios.knl.Task');
+var Semaphore = xdc.useModule('ti.sysbios.knl.Semaphore');
+var Idle = xdc.useModule('ti.sysbios.knl.Idle');
+var Hwi = xdc.useModule('ti.sysbios.hal.Hwi');
+
+/* 
+ * Program.argSize sets the size of the .args section. 
+ * The examples don't use command line args so argSize is set to 0.
+ */
+Program.argSize = 0x0;
+
+/*
+ * Uncomment this line to globally disable Asserts.
+ * All modules inherit the default from the 'Defaults' module.  You
+ * can override these defaults on a per-module basis using Module.common$. 
+ * Disabling Asserts will save code space and improve runtime performance.
+Defaults.common$.diags_ASSERT = Diags.ALWAYS_OFF;
+ */
+
+/*
+ * Uncomment this line to keep module names from being loaded on the target.
+ * The module name strings are placed in the .const section. Setting this
+ * parameter to false will save space in the .const section.  Error and
+ * Assert messages will contain an "unknown module" prefix instead
+ * of the actual module name.
+Defaults.common$.namedModule = false;
+ */
+
+/*
+ * Minimize exit handler array in System.  The System module includes
+ * an array of functions that are registered with System_atexit() to be
+ * called by System_exit().
+ */
+System.maxAtexitHandlers = 4;       
+
+/* 
+ * Uncomment this line to disable the Error print function.  
+ * We lose error information when this is disabled since the errors are
+ * not printed.  Disabling the raiseHook will save some code space if
+ * your app is not using System_printf() since the Error_print() function
+ * calls System_printf().
+Error.raiseHook = null;
+ */
+
+/* 
+ * Uncomment this line to keep Error, Assert, and Log strings from being
+ * loaded on the target.  These strings are placed in the .const section.
+ * Setting this parameter to false will save space in the .const section.
+ * Error, Assert and Log message will print raw ids and args instead of
+ * a formatted message.
+Text.isLoaded = false;
+ */
+
+/*
+ * Uncomment this line to disable the output of characters by SysMin
+ * when the program exits.  SysMin writes characters to a circular buffer.
+ * This buffer can be viewed using the SysMin Output view in ROV.
+SysMin.flushAtExit = false;
+ */
+
+/*
+ * The BIOS module will create the default heap for the system.
+ * Specify the size of this default heap.
+ */
+BIOS.heapSize = 0x1000;
+
+/*
+ * Build a custom SYS/BIOS library from sources.
+ */
+BIOS.libType = BIOS.LibType_Custom;
+
+/* System stack size (used by ISRs and Swis) */
+Program.stack = 0x2000;
+
+/* Circular buffer size for System_printf() */
+SysMin.bufSize = 0x200;
+
+/* 
+ * Create and install logger for the whole system
+ */
+var loggerBufParams = new LoggerBuf.Params();
+loggerBufParams.numEntries = 16;
+var logger0 = LoggerBuf.create(loggerBufParams);
+Defaults.common$.logger = logger0;
+Main.common$.diags_INFO = Diags.ALWAYS_ON;
+
+System.SupportProxy = SysMin;
+var hwi0Params = new Hwi.Params();
+hwi0Params.instance.name = "hwi_UART0_handle";
+hwi0Params.arg = null;
+Program.global.hwi_UART0_handle = Hwi.create(21, "&hwi_UART0_fxn", hwi0Params);
+var swi0Params = new Swi.Params();
+swi0Params.instance.name = "swi_UART0_handle";
+Program.global.swi_UART0_handle = Swi.create("&swi_UART0_fxn", swi0Params);
+var task0Params = new Task.Params();
+task0Params.instance.name = "tsk_GPRS_handle";
+task0Params.stackSize = 1024;
+Program.global.tsk_GPRS_handle = Task.create("&tsk_GPRS_fxn", task0Params);
+var hwi1Params = new Hwi.Params();
+hwi1Params.instance.name = "hwi_UART1_handle";
+Program.global.hwi_UART1_handle = Hwi.create(22, "&hwi_UART1_fxn", hwi1Params);
+var hwi2Params = new Hwi.Params();
+hwi2Params.instance.name = "hwi_UART2_handle";
+Program.global.hwi_UART2_handle = Hwi.create(49, "&hwi_UART2_fxn", hwi2Params);
+var hwi3Params = new Hwi.Params();
+hwi3Params.instance.name = "hwi_UART3_handle";
+Program.global.hwi_UART3_handle = Hwi.create(75, "&hwi_UART3_fxn", hwi3Params);
+var hwi4Params = new Hwi.Params();
+hwi4Params.instance.name = "hwi_I2C1_handle";
+Program.global.hwi_I2C1_handle = Hwi.create(53, "&hwi_I2C1_fxn", hwi4Params);
+var hwi5Params = new Hwi.Params();
+hwi5Params.instance.name = "hwi_SPI0_handle";
+Program.global.hwi_SPI0_handle = Hwi.create(23, "&hwi_SPI0_fxn", hwi5Params);
+var hwi6Params = new Hwi.Params();
+hwi6Params.instance.name = "hwi_SPI1_handle";
+Program.global.hwi_SPI1_handle = Hwi.create(50, "&hwi_SPI1_fxn", hwi6Params);
+var hwi7Params = new Hwi.Params();
+hwi7Params.instance.name = "hwi_SPI2_handle";
+Program.global.hwi_SPI2_handle = Hwi.create(73, "&hwi_SPI2_fxn", hwi7Params);
+var hwi8Params = new Hwi.Params();
+hwi8Params.instance.name = "hwi_CAN0_handle";
+Program.global.hwi_CAN0_handle = Hwi.create(55, "&hwi_CAN0_fxn", hwi8Params);
+var hwi9Params = new Hwi.Params();
+hwi9Params.instance.name = "hwi_CAN1_handle";
+Program.global.hwi_CAN1_handle = Hwi.create(56, "&hwi_CAN1_fxn", hwi9Params);
+var hwi10Params = new Hwi.Params();
+hwi10Params.instance.name = "hwi_GPIOBoot_handle";
+Program.global.hwi_GPIOBoot_handle = Hwi.create(127, "&hwi_GPIOBoot_fxn", hwi10Params);
+var swi1Params = new Swi.Params();
+swi1Params.instance.name = "swi_UART1_handle";
+Program.global.swi_UART1_handle = Swi.create("&swi_UART1_fxn", swi1Params);
+var swi2Params = new Swi.Params();
+swi2Params.instance.name = "swi_UART2_handle";
+Program.global.swi_UART2_handle = Swi.create("&swi_UART2_fxn", swi2Params);
+var swi0Params0 = new Swi.Params();
+swi0Params0.instance.name = "swi_UART3_handle";
+Program.global.swi_UART3_handle = Swi.create("&swi_UART3_fxn", swi0Params0);
+var swi4Params = new Swi.Params();
+swi4Params.instance.name = "swi_I2C1_handle";
+Program.global.swi_I2C1_handle = Swi.create("&swi_I2C1_fxn", swi4Params);
+var swi5Params = new Swi.Params();
+swi5Params.instance.name = "swi_SPI0_handle";
+Program.global.swi_SPI0_handle = Swi.create("&swi_SPI0_fxn", swi5Params);
+var swi0Params1 = new Swi.Params();
+swi0Params1.instance.name = "swi_SPI1_handle";
+Program.global.swi_SPI1_handle = Swi.create("&swi_SPI1_fxn", swi0Params1);
+var swi0Params2 = new Swi.Params();
+swi0Params2.instance.name = "swi_SPI2_handle";
+Program.global.swi_SPI2_handle = Swi.create("&swi_SPI2_fxn", swi0Params2);
+var swi8Params = new Swi.Params();
+swi8Params.instance.name = "swi_CAN0_handle";
+Program.global.swi_CAN0_handle = Swi.create("&swi_CAN0_fxn", swi8Params);
+var swi0Params3 = new Swi.Params();
+swi0Params3.instance.name = "swi_CAN1_handle";
+Program.global.swi_CAN1_handle = Swi.create("&swi_CAN1_fxn", swi0Params3);
+var swi10Params = new Swi.Params();
+swi10Params.instance.name = "swi_GPIOBoot_handle";
+Program.global.swi_GPIOBoot_handle = Swi.create("&swi_GPIOBoot_fxn", swi10Params);
+var task1Params = new Task.Params();
+task1Params.instance.name = "tsk_bootloader_handle";
+task1Params.stackSize = 1024;
+Program.global.tsk_bootloader_handle = Task.create("&tsk_bootloader_fxn", task1Params);
+var task2Params = new Task.Params();
+task2Params.instance.name = "tsk_diagnosis_handle";
+task2Params.stackSize = 1024;
+Program.global.tsk_diagnosis_handle = Task.create("&tsk_diagnosis_fxn", task2Params);
+var task3Params = new Task.Params();
+task3Params.instance.name = "tsk_GPS_handle";
+task3Params.stackSize = 1024;
+Program.global.tsk_GPS_handle = Task.create("&tsk_GPS_fxn", task3Params);
+var task4Params = new Task.Params();
+task4Params.instance.name = "tsk_battery_hanlde";
+task4Params.stackSize = 1024;
+Program.global.tsk_battery_hanlde = Task.create("&tsk_battery_fxn", task4Params);
+var task5Params = new Task.Params();
+task5Params.instance.name = "tsk_FS_handle";
+task5Params.stackSize = 1024;
+Program.global.tsk_FS_handle = Task.create("&tsk_FS_fxn", task5Params);
+var task6Params = new Task.Params();
+task6Params.instance.name = "tsk_CAN3_handle";
+task6Params.stackSize = 1024;
+Program.global.tsk_CAN3_handle = Task.create("&tsk_CAN3_fxn", task6Params);
+var task0Params0 = new Task.Params();
+task0Params0.instance.name = "tsk_CAN4_handle";
+task0Params0.stackSize = 1024;
+Program.global.tsk_CAN4_handle = Task.create("&tsk_CAN4_fxn", task0Params0);
+var task8Params = new Task.Params();
+task8Params.instance.name = "tsk_CAN1_handle";
+task8Params.stackSize = 1024;
+Program.global.tsk_CAN1_handle = Task.create("&tsk_CAN1_fxn", task8Params);
+var task0Params1 = new Task.Params();
+task0Params1.instance.name = "tsk_CAN2_handle";
+task0Params1.stackSize = 1024;
+Program.global.tsk_CAN2_handle = Task.create("&tsk_CAN2_fxn", task0Params1);
+var task10Params = new Task.Params();
+task10Params.instance.name = "tsk_manage_handle";
+task10Params.stackSize = 1024;
+Program.global.tsk_manage_handle = Task.create("&tsk_manage_fxn", task10Params);
+var hwi11Params = new Hwi.Params();
+hwi11Params.instance.name = "hwi_TIMER0_handle";
+Program.global.hwi_TIMER0_handle = Hwi.create(37, "&hwi_TIMER0_fxn", hwi11Params);
