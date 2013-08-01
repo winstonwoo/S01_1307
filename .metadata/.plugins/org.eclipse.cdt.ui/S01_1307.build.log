@@ -1,7 +1,7 @@
 
 **** Build of configuration Debug for project S01_1307 ****
 
-"C:\\Program Files\\Texas Instruments\\ccsv5\\utils\\bin\\gmake" -k all 
+"C:\\ti\\ccsv5\\utils\\bin\\gmake" -k all 
 gmake: Nothing to be done for `all'.
 
 **** Build Finished ****

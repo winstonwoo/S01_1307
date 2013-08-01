@@ -34,16 +34,17 @@
 #include "grlib/grlib.h"
 #include "utils/cmdline.h"
 #include "utils/uartstdio.h"
-#include "fatfs/src/ff.h"
-#include "fatfs/src/diskio.h"
+#include "ff.h"
+#include "diskio.h"
 
 #include <ti/sysbios/BIOS.h>
 
 #include <ti/sysbios/knl/Task.h>
 #include <ti/sysbios/hal/Hwi.h>
 #include <ti/sysbios/knl/Swi.h>
+#include <ti/sysbios/knl/Mailbox.h>
 
-
+extern Mailbox_Handle Mb_uart0_handle ;
 //*****************************************************************************
 //
 //! \addtogroup example_list
@@ -704,20 +705,8 @@ sdcard_main(void)
 {
     int nStatus;
     FRESULT fresult;
-
-
-
-
-
-#if 0
-    //
-    // Configure SysTick for a 100Hz interrupt.  The FatFs driver wants a 10 ms
-    // tick.
-    //
-    ROM_SysTickPeriodSet(ROM_SysCtlClockGet() / 100);
-    ROM_SysTickEnable();
-    ROM_SysTickIntEnable();
-#endif
+    unsigned char ucMsg[20] ;
+    int i ;
 
 
     // Print hello message to user.
@@ -747,16 +736,32 @@ sdcard_main(void)
         //
         UARTprintf("\n%s> ", g_cCwdBuf);
 
+        //Clear the ucMsg for uart0 mailbox retrieve
+        memset(ucMsg, 0x0, sizeof(ucMsg)) ;
+        Mailbox_pend(Mb_uart0_handle, ucMsg, BIOS_WAIT_FOREVER) ;
+
+        for(i=0; i<20; i++)
+        {
+        	if(ucMsg[i] == '\n' || ucMsg[i] == '\r')
+        		ucMsg[i] = 0x0 ;
+        }
         //
         // Get a line of text from the user.
         //
-        UARTgets(g_cCmdBuf, sizeof(g_cCmdBuf));
+       // UARTgets(g_cCmdBuf, sizeof(g_cCmdBuf));
+       // memcpy(g_cCmdBuf, ucMsg, sizeof(ucMsg)) ;
 
         //
         // Pass the line from the user to the command processor.  It will be
         // parsed and valid commands executed.
         //
-        nStatus = CmdLineProcess(g_cCmdBuf);
+       // nStatus = CmdLineProcess((char*)ucMsg);
+
+       // nStatus = CmdLineProcess(ucMsg);
+
+        UARTprintf("%s\n", ucMsg) ;
+
+
 
         //
         // Handle the case of bad command.

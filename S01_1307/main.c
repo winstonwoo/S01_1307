@@ -12,6 +12,7 @@
 #include <ti/sysbios/knl/Task.h>
 #include <ti/sysbios/hal/Hwi.h>
 #include <ti/sysbios/knl/Swi.h>
+#include <ti/sysbios/knl/Mailbox.h>
 
 #include "inc/hw_ints.h"
 #include "inc/hw_memmap.h"
@@ -38,6 +39,9 @@ extern Swi_Handle swi_CAN0_handle ;
 extern Swi_Handle swi_CAN1_handle ;
 extern Swi_Handle swi_GPIOBoot_handle ;
 
+extern Mailbox_Handle Mb_uart0_handle ;
+
+
 void UARTSend(const unsigned char *pucBuffer, unsigned long ulCount) ;
 
 
@@ -45,6 +49,8 @@ void UARTSend(const unsigned char *pucBuffer, unsigned long ulCount) ;
 Void hwi_UART0_fxn(UArg arg)
 {
 	  unsigned long ulStatus;
+	  unsigned char ucMsg[20] ;
+	  int i = 0 ;
 
 	    //
 	    // Get the interrrupt status.
@@ -56,6 +62,7 @@ Void hwi_UART0_fxn(UArg arg)
 	    //
 	    ROM_UARTIntClear(UART0_BASE, ulStatus);
 
+	    memset(ucMsg, 0x0, sizeof(ucMsg)) ;
 	    //
 	    // Loop while there are characters in the receive FIFO.
 	    //
@@ -64,9 +71,14 @@ Void hwi_UART0_fxn(UArg arg)
 	        //
 	        // Read the next character from the UART and write it back to the UART.
 	        //
-	        ROM_UARTCharPutNonBlocking(UART0_BASE,
-	                                   ROM_UARTCharGetNonBlocking(UART0_BASE));
+	       // ROM_UARTCharPutNonBlocking(UART0_BASE,
+	         //                          ROM_UARTCharGetNonBlocking(UART0_BASE));
+	        ucMsg[i++] = ROM_UARTCharGetNonBlocking(UART0_BASE) ;
+	        if (i>=20) 	break ;  //If the amount of characters is big than 20;
+
 	    }
+
+	    //Mailbox_post(Mb_uart0_handle, ucMsg, BIOS_NO_WAIT) ;
 
 	    Swi_post(swi_UART0_handle) ;
 
@@ -157,14 +169,14 @@ hwi_TIMER2_fxn(void)
     //
     // Clear the timer interrupt.
     //
-    ROM_TimerIntClear(TIMER2_BASE, TIMER_TIMA_TIMEOUT);
+	ROM_TimerIntClear(TIMER2_BASE, TIMER_TIMA_TIMEOUT);
 
 
 	// ROM_IntMasterDisable();
 	//
 	// Call the FatFs tick timer.
 	//
-       disk_timerproc();
+    //disk_timerproc();
 
      // ROM_IntMasterEnable();
 
@@ -241,10 +253,13 @@ Void swi_GPIOBoot_fxn(UArg arg0, UArg arg1)
 //Task section
 Void tsk_manage_fxn(UArg arg0, UArg arg1)
 {
+	unsigned char ucMsg[20] ;
 	for(;;)
 	{
-		 UARTSend((unsigned char *)"tsk_manage_fxn \n ", 20);
-		Task_sleep(1) ;
+		// UARTSend((unsigned char *)"tsk_manage_fxn \n ", 20);
+		//Mailbox_pend(Mb_uart0_handle, ucMsg, BIOS_WAIT_FOREVER) ;
+		UARTprintf("uart output!!!\n") ;
+		Task_sleep(1000) ;
 	}
 
 }
@@ -254,7 +269,7 @@ Void tsk_bootloader_fxn(UArg arg0, UArg arg1)
 	for(;;)
 	{
 		System_printf("tsk_bootloader_fxn \n") ;
-		Task_sleep(2) ;
+		Task_sleep(2000) ;
 	}
 
 }
@@ -264,7 +279,7 @@ Void tsk_diagnosis_fxn(UArg arg0, UArg arg1)
 	for(;;)
 	{
 		System_printf("tsk_diagnosis_fxn \n") ;
-		Task_sleep(3) ;
+		Task_sleep(3000) ;
 	}
 
 }
@@ -273,9 +288,9 @@ Void tsk_GPRS_fxn(UArg arg0, UArg arg1)
 {
 	for(;;)
 	{
-		//UARTprintf("UARTprintf tsk_GPRS_fxn \n") ;
+		UARTprintf("UARTprintf tsk_GPRS_fxn \n") ;
 	    System_printf("tsk_GPRS_fxn \n") ;
-		Task_sleep(3) ;
+		Task_sleep(3000) ;
 	}
 
 }
@@ -285,7 +300,7 @@ Void tsk_GPS_fxn(UArg arg0, UArg arg1)
 	for(;;)
 	{
 		System_printf("tsk_GPS_fxn \n") ;
-		Task_sleep(3) ;
+		Task_sleep(3000) ;
 	}
 
 }
@@ -296,7 +311,7 @@ Void tsk_battery_fxn(UArg arg0, UArg arg1)
 	for(;;)
 	{
 		System_printf("tsk_battery_fxn \n") ;
-		Task_sleep(3) ;
+		Task_sleep(3000) ;
 	}
 
 }
@@ -306,8 +321,8 @@ Void tsk_FS_fxn(UArg arg0, UArg arg1)
 	for(;;)
 	{
 		System_printf("tsk_FS_fxn \n") ;
-		sdcard_main() ;
-		Task_sleep(3) ;
+	//	sdcard_main() ;
+		Task_sleep(3000) ;
 	}
 
 }
@@ -317,8 +332,8 @@ Void tsk_CAN3_fxn(UArg arg0, UArg arg1)
 
 	for(;;)
 	{
-		 UARTSend((unsigned char *)"tsk_manage_fxn \n ", 20);
-		Task_sleep(3) ;
+		 //UARTSend((unsigned char *)"tsk_manage_fxn \n ", 20);
+		Task_sleep(3000) ;
 	}
 }
 
@@ -326,8 +341,8 @@ Void tsk_CAN4_fxn(UArg arg0, UArg arg1)
 {
 	for(;;)
 	{
-		 UARTSend((unsigned char *)"tsk_manage_fxn \n ", 20);
-		Task_sleep(3) ;
+		// UARTSend((unsigned char *)"tsk_manage_fxn \n ", 20);
+		Task_sleep(3000) ;
 	}
 
 }
@@ -337,7 +352,7 @@ Void tsk_CAN2_fxn(UArg arg0, UArg arg1)
 	for(;;)
 	{
 		//UARTprintf("tsk_CAN2_fxn \n") ;
-		Task_sleep(3) ;
+		Task_sleep(3000) ;
 	}
 
 }
@@ -348,7 +363,7 @@ Void tsk_CAN1_fxn(UArg arg0, UArg arg1)
 	for(;;)
 	{
 		System_printf("tsk_CAN1_fxn \n") ;
-		Task_sleep(3) ;
+		Task_sleep(3000) ;
 	}
 
 }
@@ -361,7 +376,7 @@ Void taskFxn(UArg a0, UArg a1)
 {
   //  UARTprintf("enter taskFxn()\n");
 
-    Task_sleep(10);
+    Task_sleep(1000);
 
   //  UARTprintf("exit taskFxn()\n");
 }
@@ -429,15 +444,11 @@ Void cfg_interrupt()
 		ROM_IntEnable(INT_UART0);
 		ROM_UARTIntEnable(UART0_BASE, UART_INT_RX | UART_INT_RT);
 
-#if 1
 		//
 		// Setup the interrupts for the timer timeouts.
 		//
 		ROM_IntEnable(INT_TIMER2A);
 		ROM_TimerIntEnable(TIMER2_BASE, TIMER_TIMA_TIMEOUT);
-#endif
-
-
 }
 
 Void init_sdcard()

@@ -15,90 +15,90 @@ XDCCFGDIR = package/cfg/
 # in the event that some included BOM script changes.
 #
 ifneq (clean,$(MAKECMDGOALS))
-C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/utils.js:
-package.mak: C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/utils.js
-C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/xdc.tci:
-package.mak: C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/xdc.tci
-C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/template.xs:
-package.mak: C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/template.xs
-C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/om2.xs:
-package.mak: C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/om2.xs
-C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/xmlgen.xs:
-package.mak: C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/xmlgen.xs
-C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/xmlgen2.xs:
-package.mak: C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/xmlgen2.xs
-C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/Warnings.xs:
-package.mak: C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/Warnings.xs
-C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/IPackage.xs:
-package.mak: C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/IPackage.xs
-C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/package.xs:
-package.mak: C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/package.xs
-C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/services/global/Clock.xs:
-package.mak: C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/services/global/Clock.xs
-C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/services/global/Trace.xs:
-package.mak: C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/services/global/Trace.xs
-C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/bld/bld.js:
-package.mak: C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/bld/bld.js
-C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/bld/BuildEnvironment.xs:
-package.mak: C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/bld/BuildEnvironment.xs
-C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/bld/PackageContents.xs:
-package.mak: C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/bld/PackageContents.xs
-C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/bld/_gen.xs:
-package.mak: C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/bld/_gen.xs
-C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/bld/Library.xs:
-package.mak: C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/bld/Library.xs
-C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/bld/Executable.xs:
-package.mak: C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/bld/Executable.xs
-C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/bld/Repository.xs:
-package.mak: C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/bld/Repository.xs
-C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/bld/Configuration.xs:
-package.mak: C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/bld/Configuration.xs
-C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/bld/Script.xs:
-package.mak: C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/bld/Script.xs
-C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/bld/Manifest.xs:
-package.mak: C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/bld/Manifest.xs
-C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/bld/Utils.xs:
-package.mak: C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/bld/Utils.xs
-C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/bld/ITarget.xs:
-package.mak: C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/bld/ITarget.xs
-C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/bld/ITarget2.xs:
-package.mak: C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/bld/ITarget2.xs
-C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/bld/ITarget3.xs:
-package.mak: C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/bld/ITarget3.xs
-C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/bld/ITargetFilter.xs:
-package.mak: C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/bld/ITargetFilter.xs
-C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/bld/package.xs:
-package.mak: C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/bld/package.xs
+C:/ti/xdctools_3_25_00_48/packages/xdc/utils.js:
+package.mak: C:/ti/xdctools_3_25_00_48/packages/xdc/utils.js
+C:/ti/xdctools_3_25_00_48/packages/xdc/xdc.tci:
+package.mak: C:/ti/xdctools_3_25_00_48/packages/xdc/xdc.tci
+C:/ti/xdctools_3_25_00_48/packages/xdc/template.xs:
+package.mak: C:/ti/xdctools_3_25_00_48/packages/xdc/template.xs
+C:/ti/xdctools_3_25_00_48/packages/xdc/om2.xs:
+package.mak: C:/ti/xdctools_3_25_00_48/packages/xdc/om2.xs
+C:/ti/xdctools_3_25_00_48/packages/xdc/xmlgen.xs:
+package.mak: C:/ti/xdctools_3_25_00_48/packages/xdc/xmlgen.xs
+C:/ti/xdctools_3_25_00_48/packages/xdc/xmlgen2.xs:
+package.mak: C:/ti/xdctools_3_25_00_48/packages/xdc/xmlgen2.xs
+C:/ti/xdctools_3_25_00_48/packages/xdc/Warnings.xs:
+package.mak: C:/ti/xdctools_3_25_00_48/packages/xdc/Warnings.xs
+C:/ti/xdctools_3_25_00_48/packages/xdc/IPackage.xs:
+package.mak: C:/ti/xdctools_3_25_00_48/packages/xdc/IPackage.xs
+C:/ti/xdctools_3_25_00_48/packages/xdc/package.xs:
+package.mak: C:/ti/xdctools_3_25_00_48/packages/xdc/package.xs
+C:/ti/xdctools_3_25_00_48/packages/xdc/services/global/Clock.xs:
+package.mak: C:/ti/xdctools_3_25_00_48/packages/xdc/services/global/Clock.xs
+C:/ti/xdctools_3_25_00_48/packages/xdc/services/global/Trace.xs:
+package.mak: C:/ti/xdctools_3_25_00_48/packages/xdc/services/global/Trace.xs
+C:/ti/xdctools_3_25_00_48/packages/xdc/bld/bld.js:
+package.mak: C:/ti/xdctools_3_25_00_48/packages/xdc/bld/bld.js
+C:/ti/xdctools_3_25_00_48/packages/xdc/bld/BuildEnvironment.xs:
+package.mak: C:/ti/xdctools_3_25_00_48/packages/xdc/bld/BuildEnvironment.xs
+C:/ti/xdctools_3_25_00_48/packages/xdc/bld/PackageContents.xs:
+package.mak: C:/ti/xdctools_3_25_00_48/packages/xdc/bld/PackageContents.xs
+C:/ti/xdctools_3_25_00_48/packages/xdc/bld/_gen.xs:
+package.mak: C:/ti/xdctools_3_25_00_48/packages/xdc/bld/_gen.xs
+C:/ti/xdctools_3_25_00_48/packages/xdc/bld/Library.xs:
+package.mak: C:/ti/xdctools_3_25_00_48/packages/xdc/bld/Library.xs
+C:/ti/xdctools_3_25_00_48/packages/xdc/bld/Executable.xs:
+package.mak: C:/ti/xdctools_3_25_00_48/packages/xdc/bld/Executable.xs
+C:/ti/xdctools_3_25_00_48/packages/xdc/bld/Repository.xs:
+package.mak: C:/ti/xdctools_3_25_00_48/packages/xdc/bld/Repository.xs
+C:/ti/xdctools_3_25_00_48/packages/xdc/bld/Configuration.xs:
+package.mak: C:/ti/xdctools_3_25_00_48/packages/xdc/bld/Configuration.xs
+C:/ti/xdctools_3_25_00_48/packages/xdc/bld/Script.xs:
+package.mak: C:/ti/xdctools_3_25_00_48/packages/xdc/bld/Script.xs
+C:/ti/xdctools_3_25_00_48/packages/xdc/bld/Manifest.xs:
+package.mak: C:/ti/xdctools_3_25_00_48/packages/xdc/bld/Manifest.xs
+C:/ti/xdctools_3_25_00_48/packages/xdc/bld/Utils.xs:
+package.mak: C:/ti/xdctools_3_25_00_48/packages/xdc/bld/Utils.xs
+C:/ti/xdctools_3_25_00_48/packages/xdc/bld/ITarget.xs:
+package.mak: C:/ti/xdctools_3_25_00_48/packages/xdc/bld/ITarget.xs
+C:/ti/xdctools_3_25_00_48/packages/xdc/bld/ITarget2.xs:
+package.mak: C:/ti/xdctools_3_25_00_48/packages/xdc/bld/ITarget2.xs
+C:/ti/xdctools_3_25_00_48/packages/xdc/bld/ITarget3.xs:
+package.mak: C:/ti/xdctools_3_25_00_48/packages/xdc/bld/ITarget3.xs
+C:/ti/xdctools_3_25_00_48/packages/xdc/bld/ITargetFilter.xs:
+package.mak: C:/ti/xdctools_3_25_00_48/packages/xdc/bld/ITargetFilter.xs
+C:/ti/xdctools_3_25_00_48/packages/xdc/bld/package.xs:
+package.mak: C:/ti/xdctools_3_25_00_48/packages/xdc/bld/package.xs
 package.mak: config.bld
-C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/ti/targets/ITarget.xs:
-package.mak: C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/ti/targets/ITarget.xs
-C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/ti/targets/C28_large.xs:
-package.mak: C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/ti/targets/C28_large.xs
-C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/ti/targets/C28_float.xs:
-package.mak: C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/ti/targets/C28_float.xs
-C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/ti/targets/package.xs:
-package.mak: C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/ti/targets/package.xs
-C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/ti/targets/arm/elf/IArm.xs:
-package.mak: C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/ti/targets/arm/elf/IArm.xs
-C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/ti/targets/arm/elf/package.xs:
-package.mak: C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/ti/targets/arm/elf/package.xs
-C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/services/io/File.xs:
-package.mak: C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/services/io/File.xs
-C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/services/io/package.xs:
-package.mak: C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/services/io/package.xs
+C:/ti/xdctools_3_25_00_48/packages/ti/targets/ITarget.xs:
+package.mak: C:/ti/xdctools_3_25_00_48/packages/ti/targets/ITarget.xs
+C:/ti/xdctools_3_25_00_48/packages/ti/targets/C28_large.xs:
+package.mak: C:/ti/xdctools_3_25_00_48/packages/ti/targets/C28_large.xs
+C:/ti/xdctools_3_25_00_48/packages/ti/targets/C28_float.xs:
+package.mak: C:/ti/xdctools_3_25_00_48/packages/ti/targets/C28_float.xs
+C:/ti/xdctools_3_25_00_48/packages/ti/targets/package.xs:
+package.mak: C:/ti/xdctools_3_25_00_48/packages/ti/targets/package.xs
+C:/ti/xdctools_3_25_00_48/packages/ti/targets/arm/elf/IArm.xs:
+package.mak: C:/ti/xdctools_3_25_00_48/packages/ti/targets/arm/elf/IArm.xs
+C:/ti/xdctools_3_25_00_48/packages/ti/targets/arm/elf/package.xs:
+package.mak: C:/ti/xdctools_3_25_00_48/packages/ti/targets/arm/elf/package.xs
 package.mak: package.bld
-C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/tools/configuro/template/compiler.opt.xdt:
-package.mak: C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/tools/configuro/template/compiler.opt.xdt
-C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/tools/configuro/template/compiler.defs.xdt:
-package.mak: C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/tools/configuro/template/compiler.defs.xdt
-C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/tools/configuro/template/custom.mak.exe.xdt:
-package.mak: C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/tools/configuro/template/custom.mak.exe.xdt
-C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/tools/configuro/template/package.xs.xdt:
-package.mak: C:/Program\ Files/Texas\ Instruments/xdctools_3_25_00_48/packages/xdc/tools/configuro/template/package.xs.xdt
+C:/ti/xdctools_3_25_00_48/packages/xdc/tools/configuro/template/compiler.opt.xdt:
+package.mak: C:/ti/xdctools_3_25_00_48/packages/xdc/tools/configuro/template/compiler.opt.xdt
+C:/ti/xdctools_3_25_00_48/packages/xdc/services/io/File.xs:
+package.mak: C:/ti/xdctools_3_25_00_48/packages/xdc/services/io/File.xs
+C:/ti/xdctools_3_25_00_48/packages/xdc/services/io/package.xs:
+package.mak: C:/ti/xdctools_3_25_00_48/packages/xdc/services/io/package.xs
+C:/ti/xdctools_3_25_00_48/packages/xdc/tools/configuro/template/compiler.defs.xdt:
+package.mak: C:/ti/xdctools_3_25_00_48/packages/xdc/tools/configuro/template/compiler.defs.xdt
+C:/ti/xdctools_3_25_00_48/packages/xdc/tools/configuro/template/custom.mak.exe.xdt:
+package.mak: C:/ti/xdctools_3_25_00_48/packages/xdc/tools/configuro/template/custom.mak.exe.xdt
+C:/ti/xdctools_3_25_00_48/packages/xdc/tools/configuro/template/package.xs.xdt:
+package.mak: C:/ti/xdctools_3_25_00_48/packages/xdc/tools/configuro/template/package.xs.xdt
 endif
 
-ti.targets.arm.elf.M4F.rootDir ?= C:/PROGRA~1/TEXASI~1/ccsv5/tools/compiler/arm_5.0.4
-ti.targets.arm.elf.packageBase ?= C:/Program Files/Texas Instruments/xdctools_3_25_00_48/packages/ti/targets/arm/elf/
+ti.targets.arm.elf.M4F.rootDir ?= C:/ti/ccsv5/tools/compiler/arm_5.0.4
+ti.targets.arm.elf.packageBase ?= C:/ti/xdctools_3_25_00_48/packages/ti/targets/arm/elf/
 .PRECIOUS: $(XDCCFGDIR)/%.oem4f
 .PHONY: all,em4f .dlls,em4f .executables,em4f test,em4f
 all,em4f: .executables,em4f
@@ -128,74 +128,74 @@ package/%.xdc.inc package/%_configPkg.c package/%.defs.h: %.xdc $(PKGCFGS)
 	@$(MSG) generating interfaces for package configPkg" (because $@ is older than $(firstword $?))" ...
 	$(XSRUN) -f xdc/services/intern/cmd/build.xs $(MK_IDLOPTS) -m package/package.xdc.dep -i package/package.xdc.inc package.xdc
 
-.dlls,em4f .dlls: app.pem4f
+.dlls,em4f .dlls: mutex.pem4f
 
--include package/cfg/app_pem4f.mak
--include package/cfg/app_pem4f.cfg.mak
+-include package/cfg/mutex_pem4f.mak
+-include package/cfg/mutex_pem4f.cfg.mak
 ifeq (,$(MK_NOGENDEPS))
--include package/cfg/app_pem4f.dep
+-include package/cfg/mutex_pem4f.dep
 endif
-app.pem4f: package/cfg/app_pem4f.xdl
+mutex.pem4f: package/cfg/mutex_pem4f.xdl
 	@
 
 
 ifeq (,$(wildcard .libraries,em4f))
-app.pem4f package/cfg/app_pem4f.c: .libraries,em4f
+mutex.pem4f package/cfg/mutex_pem4f.c: .libraries,em4f
 endif
 
-package/cfg/app_pem4f.c package/cfg/app_pem4f.h package/cfg/app_pem4f.xdl: override _PROG_NAME := app.xem4f
-package/cfg/app_pem4f.c: package/cfg/app_pem4f.cfg
+package/cfg/mutex_pem4f.c package/cfg/mutex_pem4f.h package/cfg/mutex_pem4f.xdl: override _PROG_NAME := mutex.xem4f
+package/cfg/mutex_pem4f.c: package/cfg/mutex_pem4f.cfg
 
 clean:: clean,em4f
-	-$(RM) package/cfg/app_pem4f.cfg
-	-$(RM) package/cfg/app_pem4f.dep
-	-$(RM) package/cfg/app_pem4f.c
-	-$(RM) package/cfg/app_pem4f.xdc.inc
+	-$(RM) package/cfg/mutex_pem4f.cfg
+	-$(RM) package/cfg/mutex_pem4f.dep
+	-$(RM) package/cfg/mutex_pem4f.c
+	-$(RM) package/cfg/mutex_pem4f.xdc.inc
 
 clean,em4f::
-	-$(RM) app.pem4f
-.executables,em4f .executables: app.xem4f
+	-$(RM) mutex.pem4f
+.executables,em4f .executables: mutex.xem4f
 
-app.xem4f: |app.pem4f
+mutex.xem4f: |mutex.pem4f
 
--include package/cfg/app.xem4f.mak
-app.xem4f: package/cfg/app_pem4f.oem4f 
+-include package/cfg/mutex.xem4f.mak
+mutex.xem4f: package/cfg/mutex_pem4f.oem4f 
 	$(RM) $@
 	@$(MSG) lnkem4f $@ ...
 	$(RM) $(XDCCFGDIR)/$@.map
-	$(ti.targets.arm.elf.M4F.rootDir)/bin/armlnk -w -q -u _c_int00 -fs $(XDCCFGDIR)$(dir $@).  -q -o $@ package/cfg/app_pem4f.oem4f   package/cfg/app_pem4f.xdl --silicon_version=7M4 --strict_compatibility=on -c -m $(XDCCFGDIR)/$@.map -l $(ti.targets.arm.elf.M4F.rootDir)/lib/libc.a
+	$(ti.targets.arm.elf.M4F.rootDir)/bin/armlnk -w -q -u _c_int00 -fs $(XDCCFGDIR)$(dir $@).  -q -o $@ package/cfg/mutex_pem4f.oem4f   package/cfg/mutex_pem4f.xdl --silicon_version=7M4 --strict_compatibility=on -c -m $(XDCCFGDIR)/$@.map -l $(ti.targets.arm.elf.M4F.rootDir)/lib/libc.a
 	
-app.xem4f: export C_DIR=
-app.xem4f: PATH:=$(ti.targets.arm.elf.M4F.rootDir)/bin/;$(PATH)
-app.xem4f: Path:=$(ti.targets.arm.elf.M4F.rootDir)/bin/;$(PATH)
+mutex.xem4f: export C_DIR=
+mutex.xem4f: PATH:=$(ti.targets.arm.elf.M4F.rootDir)/bin/;$(PATH)
+mutex.xem4f: Path:=$(ti.targets.arm.elf.M4F.rootDir)/bin/;$(PATH)
 
-app.test test,em4f test: app.xem4f.test
+mutex.test test,em4f test: mutex.xem4f.test
 
-app.xem4f.test:: app.xem4f
+mutex.xem4f.test:: mutex.xem4f
 ifeq (,$(_TESTLEVEL))
-	@$(MAKE) -R -r --no-print-directory -f $(XDCROOT)/packages/xdc/bld/xdc.mak _TESTLEVEL=1 app.xem4f.test
+	@$(MAKE) -R -r --no-print-directory -f $(XDCROOT)/packages/xdc/bld/xdc.mak _TESTLEVEL=1 mutex.xem4f.test
 else
 	@$(MSG) running $<  ...
-	$(call EXEC.app.xem4f, ) 
+	$(call EXEC.mutex.xem4f, ) 
 endif
 
 clean,em4f::
-	-$(RM) .tmp,app.xem4f,0,*
+	-$(RM) .tmp,mutex.xem4f,0,*
 
 
 clean:: clean,em4f
 
 clean,em4f::
-	-$(RM) app.xem4f
+	-$(RM) mutex.xem4f
 clean:: 
-	-$(RM) package/cfg/app_pem4f.pjt
+	-$(RM) package/cfg/mutex_pem4f.pjt
 %,copy:
 	@$(if $<,,$(MSG) don\'t know how to build $*; exit 1)
 	@$(MSG) cp $< $@
 	$(RM) $@
 	$(CP) $< $@
-app_pem4f.oem4f,copy : package/cfg/app_pem4f.oem4f
-app_pem4f.sem4f,copy : package/cfg/app_pem4f.sem4f
+mutex_pem4f.oem4f,copy : package/cfg/mutex_pem4f.oem4f
+mutex_pem4f.sem4f,copy : package/cfg/mutex_pem4f.sem4f
 
 $(XDCCFGDIR)%.c $(XDCCFGDIR)%.h $(XDCCFGDIR)%.xdl: $(XDCCFGDIR)%.cfg .interfaces $(XDCROOT)/packages/xdc/cfg/Main.xs
 	@$(MSG) "configuring $(_PROG_NAME) from $< ..."

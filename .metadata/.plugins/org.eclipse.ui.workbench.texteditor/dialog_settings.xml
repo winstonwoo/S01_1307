@@ -2,8 +2,8 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="273" key="DIALOG_WIDTH"/>
-		<item value="74" key="DIALOG_Y_ORIGIN"/>
-		<item value="886" key="DIALOG_X_ORIGIN"/>
+		<item value="70" key="DIALOG_Y_ORIGIN"/>
+		<item value="145" key="DIALOG_X_ORIGIN"/>
 		<item value="399" key="DIALOG_HEIGHT"/>
 		<item value="1|微软雅黑|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|微软雅黑" key="DIALOG_FONT_NAME"/>
 	</section>
@@ -13,15 +13,16 @@
 		<item value="false" key="isRegEx"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="UART" key="selection"/>
+		<item value="UARTprintf" key="selection"/>
 		<list key="findhistory">
-			<item value="UART"/>
 			<item value="UARTprintf"/>
-			<item value="Task_sleep"/>
-			<item value="UARTSend"/>
 			<item value="init_sys"/>
-			<item value="fat"/>
-			<item value="hwi_uart1_fxn"/>
+			<item value="uart0"/>
+			<item value="sdcard"/>
+			<item value="sdcard_main"/>
+			<item value="UARTSend"/>
+			<item value="Mailbox"/>
+			<item value="tiva"/>
 		</list>
 		<list key="replacehistory">
 		</list>

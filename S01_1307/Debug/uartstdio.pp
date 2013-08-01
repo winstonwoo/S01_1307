@@ -1,7 +1,7 @@
 # FIXED
 
 uartstdio.obj: ../uartstdio.c
-uartstdio.obj: C:/Program\ Files/Texas\ Instruments/ccsv5/tools/compiler/arm_5.0.4/include/stdarg.h
+uartstdio.obj: C:/ti/ccsv5/tools/compiler/arm_5.0.4/include/stdarg.h
 uartstdio.obj: J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/inc/hw_ints.h
 uartstdio.obj: J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/inc/hw_memmap.h
 uartstdio.obj: J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/inc/hw_types.h
@@ -15,7 +15,7 @@ uartstdio.obj: J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/d
 uartstdio.obj: ../uartstdio.h
 
 ../uartstdio.c: 
-C:/Program\ Files/Texas\ Instruments/ccsv5/tools/compiler/arm_5.0.4/include/stdarg.h: 
+C:/ti/ccsv5/tools/compiler/arm_5.0.4/include/stdarg.h: 
 J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/inc/hw_ints.h: 
 J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/inc/hw_memmap.h: 
 J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/inc/hw_types.h: 

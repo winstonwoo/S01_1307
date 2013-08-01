@@ -1,22 +1,17 @@
 
 **** Build of configuration Default for project S01_1307_configuration ****
 
-"C:\\Program Files\\Texas Instruments\\ccsv5\\utils\\bin\\gmake" -k all 
+"C:\\ti\\ccsv5\\utils\\bin\\gmake" -k all 
 gmake: Nothing to be done for `all'.
 
 **** Build Finished ****
 
 **** Build of configuration Debug for project S01_1307 ****
 
-"C:\\Program Files\\Texas Instruments\\ccsv5\\utils\\bin\\gmake" -k all 
-'Building file: ../sd_card.c'
-'Invoking: ARM Compiler'
-"C:/Program Files/Texas Instruments/ccsv5/tools/compiler/arm_5.0.4/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 --abi=eabi -me -g --include_path="C:/Program Files/Texas Instruments/ccsv5/tools/compiler/arm_5.0.4/include" --include_path="J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare" --include_path="J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/third_party" --define=TARGET_IS_BLIZZARD_RA1 --define=PART_LM4F232H5QD --define=ccs --diag_warning=225 --display_error_number --diag_wrap=off --preproc_with_compile --preproc_dependency="sd_card.pp" --cmd_file="J:/WorkHouse2013/SW2013/S01_1307_VTDR_Stellaris/S01_1307_configuration/Default/configPkg/compiler.opt"  "../sd_card.c"
-'Finished building: ../sd_card.c'
-' '
+"C:\\ti\\ccsv5\\utils\\bin\\gmake" -k all 
 'Building target: S01_1307.out'
 'Invoking: ARM Linker'
-"C:/Program Files/Texas Instruments/ccsv5/tools/compiler/arm_5.0.4/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 --abi=eabi -me -g --define=TARGET_IS_BLIZZARD_RA1 --define=PART_LM4F232H5QD --define=ccs --diag_warning=225 --display_error_number --diag_wrap=off -z --stack_size=512 -m"S01_1307.map" --heap_size=0 -i"C:/Program Files/Texas Instruments/ccsv5/tools/compiler/arm_5.0.4/lib" -i"C:/Program Files/Texas Instruments/ccsv5/tools/compiler/arm_5.0.4/include" --reread_libs --warn_sections --display_error_number --diag_wrap=off --xml_link_info="S01_1307_linkInfo.xml" --rom_model -l"J:/WorkHouse2013/SW2013/S01_1307_VTDR_Stellaris/S01_1307_configuration/Default/configPkg/linker.cmd" -o "S01_1307.out"  "./uartstdio.obj" "./sd_card.obj" "./mmc-ek-lm4f232h5qd.obj" "./main.obj" "./ff.obj" "./cmdline.obj" -l"libc.a" -l"J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/driverlib/ccs-cm4f/Debug/driverlib-cm4f.lib" "../lm4f232h5qd.cmd" 
+"C:/ti/ccsv5/tools/compiler/arm_5.0.4/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 --abi=eabi -me -g --define=TARGET_IS_BLIZZARD_RA1 --define=PART_LM4F232H5QD --define=ccs --diag_warning=225 --display_error_number --diag_wrap=off -z --stack_size=512 -m"S01_1307.map" --heap_size=0 -i"C:/ti/ccsv5/tools/compiler/arm_5.0.4/lib" -i"C:/ti/ccsv5/tools/compiler/arm_5.0.4/include" --reread_libs --warn_sections --display_error_number --diag_wrap=off --xml_link_info="S01_1307_linkInfo.xml" --rom_model -l"J:/WorkHouse2013/SW2013/S01_1307_VTDR_Stellaris/S01_1307_configuration/Default/configPkg/linker.cmd" -o "S01_1307.out"  "./uartstdio.obj" "./sd_card.obj" "./mmc-ek-lm4f232h5qd.obj" "./main.obj" "./ff.obj" "./cmdline.obj" -l"libc.a" -l"J:\WorkHouse2013\SWRf2013\StellarisTiVa\Stellaris\StellarisWare\driverlib\ccs-cm4f\Debug\driverlib-cm4f.lib" "../lm4f232h5qd.cmd" 
 <Linking>
 'Finished building target: S01_1307.out'
 ' '
@@ -25,21 +20,21 @@ gmake: Nothing to be done for `all'.
 
 **** Build of configuration Default for project S01_1307_configuration ****
 
-"C:\\Program Files\\Texas Instruments\\ccsv5\\utils\\bin\\gmake" -k all 
+"C:\\ti\\ccsv5\\utils\\bin\\gmake" -k all 
 gmake: Nothing to be done for `all'.
 
 **** Build Finished ****
 
 **** Build of configuration Default for project S01_1307_configuration ****
 
-"C:\\Program Files\\Texas Instruments\\ccsv5\\utils\\bin\\gmake" -k all 
+"C:\\ti\\ccsv5\\utils\\bin\\gmake" -k all 
 gmake: Nothing to be done for `all'.
 
 **** Build Finished ****
 
 **** Build of configuration Debug for project S01_1307 ****
 
-"C:\\Program Files\\Texas Instruments\\ccsv5\\utils\\bin\\gmake" -k all 
+"C:\\ti\\ccsv5\\utils\\bin\\gmake" -k all 
 gmake: Nothing to be done for `all'.
 
 **** Build Finished ****

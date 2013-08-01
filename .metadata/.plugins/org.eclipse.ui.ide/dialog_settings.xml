@@ -6,14 +6,10 @@
 		<item value="com.ti.ccstudio:5.3.0.201304301100"/>
 		<item value="com.ti.cgt.arm.5.0.help:5.0.0.201210291916"/>
 		<item value="com.ti.cgt.c2000.6.1.help:6.1.1.201211281204"/>
-		<item value="com.ti.cgt.c5500.4.4.help:4.4.0.201203231357"/>
-		<item value="com.ti.cgt.c6000.7.4.help:7.4.0.201303051055"/>
 		<item value="com.ti.cgt.msp430.4.1.help:4.1.1.201211281203"/>
 		<item value="com.ti.dvt.msp430.power:3.4.0.201304031516"/>
 		<item value="com.ti.mcu.msp430ware.product.ui:1.40.0.26"/>
 		<item value="com.ti.mcu.msp430ware.product_1.40.0.26:1.40.0.26"/>
-		<item value="com.ti.rtsc.DSPBIOS.product.ui:5.42.1.09"/>
-		<item value="com.ti.rtsc.DSPBIOS.product_5.42.1.09:5.42.1.09"/>
 		<item value="com.ti.rtsc.SYSBIOS.product.ui:6.35.1.29"/>
 		<item value="com.ti.rtsc.SYSBIOS.product_6.35.1.29:6.35.1.29"/>
 		<item value="com.ti.rtsc.XDAIS.product.ui:7.21.1.07"/>
@@ -80,8 +76,8 @@
 		<item value="org.eclipse.wst.jsdt.feature:1.4.1.v201208171701-7H7DFg0FC7sReqSyfqesWi"/>
 	</list>
 	<section name="ChooseWorkspaceDialogSettings">
-		<item value="160" key="DIALOG_Y_ORIGIN"/>
-		<item value="379" key="DIALOG_X_ORIGIN"/>
+		<item value="90" key="DIALOG_Y_ORIGIN"/>
+		<item value="242" key="DIALOG_X_ORIGIN"/>
 	</section>
 	<section name="WORKBENCH_SETTINGS">
 		<list key="ENABLED_TRANSFERS">
