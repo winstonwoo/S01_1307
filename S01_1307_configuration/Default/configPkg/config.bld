@@ -15,4 +15,4 @@ if (!(target instanceof xdc.module("xdc.bld.ITarget").Module)) {
 target.ccOpts.prefix = "-g --optimize_with_debug " + target.ccOpts.prefix;
 Build.targets = [target];
 /* configuro was passed the target's rootDir explicitly */
-Build.targets[0].rootDir = 'C:/ti/ccsv5/tools/compiler/arm_5.0.4';
+Build.targets[0].rootDir = 'C:/ti/ccsv5/tools/compiler/arm_5.0.1';

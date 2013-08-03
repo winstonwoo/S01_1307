@@ -9,12 +9,12 @@
  */
 
 
--l"J:\WorkHouse2013\SW2013\S01_1307_VTDR_Stellaris\S01_1307_configuration\Default\configPkg\package\cfg\mutex_pem4f.oem4f"
--l"J:\WorkHouse2013\SW2013\S01_1307_VTDR_Stellaris\S01_1307_configuration\src\sysbios\sysbios.aem4f"
--l"C:\ti\xdctools_3_25_00_48\packages\ti\catalog\arm\cortexm4\tiva\ce\lib\Boot.aem4f"
--l"C:\ti\xdctools_3_25_00_48\packages\ti\targets\arm\rtsarm\lib\ti.targets.arm.rtsarm.aem4f"
--l"C:\ti\xdctools_3_25_00_48\packages\ti\targets\arm\rtsarm\lib\boot.aem4f"
--l"C:\ti\xdctools_3_25_00_48\packages\ti\targets\arm\rtsarm\lib\auto_init.aem4f"
+-l"J:\WorkHouse2013\SW2013\S01_1307_VTDR_Stellaris\S01_Repository\S01_1307_configuration\Default\configPkg\package\cfg\mutex_pem4f.oem4f"
+-l"J:\WorkHouse2013\SW2013\S01_1307_VTDR_Stellaris\S01_Repository\S01_1307_configuration\src\sysbios\sysbios.aem4f"
+-l"C:\ti\xdctools_3_24_05_48\packages\ti\catalog\arm\cortexm3\lm3init\lib\Boot.aem4f"
+-l"C:\ti\xdctools_3_24_05_48\packages\ti\targets\arm\rtsarm\lib\ti.targets.arm.rtsarm.aem4f"
+-l"C:\ti\xdctools_3_24_05_48\packages\ti\targets\arm\rtsarm\lib\boot.aem4f"
+-l"C:\ti\xdctools_3_24_05_48\packages\ti\targets\arm\rtsarm\lib\auto_init.aem4f"
 
 --retain="*(xdc.meta)"
 
@@ -52,6 +52,8 @@
 
 /* Content from ti.targets (null): */
 
+/* Content from ti.targets.arm (null): */
+
 /* Content from ti.targets.arm.elf (null): */
 
 /* Content from xdc.rov (null): */
@@ -71,8 +73,6 @@
 
 /* Content from ti.sysbios.hal (null): */
 
-/* Content from ti.sysbios.rts (null): */
-
 /* Content from xdc.runtime.knl (null): */
 
 /* Content from ti.catalog.arm.peripherals.timers (null): */
@@ -89,7 +89,7 @@
 
 /* Content from ti.catalog.arm.cortexm3 (null): */
 
-/* Content from ti.catalog.arm.cortexm4.tiva.ce (null): */
+/* Content from ti.catalog.arm.cortexm3.lm3init (null): */
 
 /* Content from ti.platforms.stellaris (null): */
 
@@ -98,10 +98,9 @@
 /* Content from ti.sysbios.knl (null): */
 
 /* Content from ti.sysbios.family.arm.m3 (ti/sysbios/family/arm/m3/linkcmd.xdt): */
--u _c_int00
 --retain "*(.resetVecs)"
 
-/* Content from ti.sysbios.family.arm.lm4 (null): */
+/* Content from ti.sysbios.family.arm.lm3 (null): */
 
 /* Content from ti.sysbios.gates (null): */
 

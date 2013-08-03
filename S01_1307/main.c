@@ -78,7 +78,7 @@ Void hwi_UART0_fxn(UArg arg)
 
 	    }
 
-	    //Mailbox_post(Mb_uart0_handle, ucMsg, BIOS_NO_WAIT) ;
+	    Mailbox_post(Mb_uart0_handle, ucMsg, BIOS_NO_WAIT) ;
 
 	    Swi_post(swi_UART0_handle) ;
 
@@ -321,7 +321,7 @@ Void tsk_FS_fxn(UArg arg0, UArg arg1)
 	for(;;)
 	{
 		System_printf("tsk_FS_fxn \n") ;
-	//	sdcard_main() ;
+		sdcard_main() ;
 		Task_sleep(3000) ;
 	}
 

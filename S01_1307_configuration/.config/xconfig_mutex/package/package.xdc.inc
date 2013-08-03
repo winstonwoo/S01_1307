@@ -3,8 +3,8 @@ package.xs
 package/xconfig_mutex.sch
 package/.vers_g180
 package/.vers_r170
-package/.vers_b160
-package/.xdc-z44
+package/.vers_b150
+package/.xdc-y44
 package/xconfig_mutex.java
 package/xconfig_mutex.class
 package/package_xconfig_mutex.c

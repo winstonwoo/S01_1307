@@ -728,6 +728,7 @@ sdcard_main(void)
     // Enter an infinite loop for reading and processing commands from the
     // user.
     //
+
     while(1)
     {
     	Task_sleep(20) ;
@@ -757,7 +758,7 @@ sdcard_main(void)
         //
        // nStatus = CmdLineProcess((char*)ucMsg);
 
-       // nStatus = CmdLineProcess(ucMsg);
+        nStatus = CmdLineProcess(ucMsg);
 
         UARTprintf("%s\n", ucMsg) ;
 
@@ -789,4 +790,5 @@ sdcard_main(void)
                         StringFromFresult((FRESULT)nStatus));
         }
     }
+//#endif
 }

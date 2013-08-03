@@ -1,6 +1,6 @@
 #
 # This file was generated based on the configuration script:
-#     J:\WorkHouse2013\SW2013\S01_1307_VTDR_Stellaris\S01_1307_configuration\mutex.cfg
+#     J:\WorkHouse2013\SW2013\S01_1307_VTDR_Stellaris\S01_Repository\S01_1307_configuration\mutex.cfg
 #
 # This makefile may be included in other makefiles that need to build
 # the libraries containing the compiled source files generated as
@@ -14,7 +14,7 @@
 #
 # The absolute path to the generated source directory (at the time the
 # sources were generated) is:
-#    J:\WorkHouse2013\SW2013\S01_1307_VTDR_Stellaris\S01_1307_configuration\src
+#    J:\WorkHouse2013\SW2013\S01_1307_VTDR_Stellaris\S01_Repository\S01_1307_configuration\src
 #
 GEN_SRC_DIR ?= ../src
 
