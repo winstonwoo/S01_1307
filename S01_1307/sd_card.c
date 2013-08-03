@@ -705,9 +705,13 @@ sdcard_main(void)
 {
     int nStatus;
     FRESULT fresult;
-    unsigned char ucMsg[20] ;
-    int i ;
+    unsigned char ucMsg[8] ;
+    unsigned char ucCmd[24] ;  //The cmd instruction size limited in 24 bytes
+    unsigned char *ucp_loc ;
+    int i, l ;
 
+    l = 0 ;
+    ucp_loc  = ucCmd ; //Give the command original point to ucp_loc
 
     // Print hello message to user.
     //
@@ -728,24 +732,21 @@ sdcard_main(void)
     // Enter an infinite loop for reading and processing commands from the
     // user.
     //
-
+    memset(ucCmd, 0x0, sizeof(ucCmd)) ;
     while(1)
     {
     	Task_sleep(20) ;
         //
         // Print a prompt to the console.  Show the CWD.
         //
-        UARTprintf("\n%s> ", g_cCwdBuf);
+        //UARTprintf("\n%s> ", g_cCwdBuf);
 
         //Clear the ucMsg for uart0 mailbox retrieve
         memset(ucMsg, 0x0, sizeof(ucMsg)) ;
+//
         Mailbox_pend(Mb_uart0_handle, ucMsg, BIOS_WAIT_FOREVER) ;
 
-        for(i=0; i<20; i++)
-        {
-        	if(ucMsg[i] == '\n' || ucMsg[i] == '\r')
-        		ucMsg[i] = 0x0 ;
-        }
+
         //
         // Get a line of text from the user.
         //
@@ -758,11 +759,31 @@ sdcard_main(void)
         //
        // nStatus = CmdLineProcess((char*)ucMsg);
 
-        nStatus = CmdLineProcess(ucMsg);
+        //If the command hasn't completed in previous uart transfer without '/r', continuing character collecting
+        if(!(strchr(ucMsg, 0xd)))  //if no '/r'
+        {
+        	memcpy(ucp_loc, ucMsg, sizeof(ucMsg)) ;
+        	ucp_loc += 8 ;   //if there isn't '/r', there will be 8 bytes from uart0 ISR\
 
-        UARTprintf("%s\n", ucMsg) ;
+        	if(ucp_loc >= (ucCmd+24))  //The instruction has more character than 24 bytes
+        	{
+        		memset(ucCmd, 0x0, sizeof(ucCmd)) ;  //Clear ucCmd for next command retrieving
+				ucp_loc = ucCmd ; //ucp_loc point to ucCmd original pointer for next command retrieve
+				UARTprintf("%s\n", ucCmd) ;
+				UARTprintf("Too many arguments for command processor!\n");
+        	}
+        }
+        else  //if there is '/r'
+        {
+        l = strcspn(ucMsg, "/r") ;
+        memcpy(ucp_loc, ucMsg, l-1)   ;   //Delete the '\n' at the end of instruction for command processing
 
+        nStatus = CmdLineProcess(ucCmd);
 
+        //Reset the ucCmd buffer
+        memset(ucCmd, 0x0, sizeof(ucCmd)) ;  //Clear ucCmd for next command retrieving
+        ucp_loc = ucCmd ; //ucp_loc point to ucCmd original pointer for next command retrieve
+        UARTprintf("%s\n", ucCmd) ;
 
         //
         // Handle the case of bad command.
@@ -788,6 +809,7 @@ sdcard_main(void)
         {
             UARTprintf("Command returned error code %s\n",
                         StringFromFresult((FRESULT)nStatus));
+        }
         }
     }
 //#endif

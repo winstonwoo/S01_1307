@@ -5,7 +5,10 @@
 'Building file: ../sd_card.c'
 'Invoking: ARM Compiler'
 "C:/ti/ccsv5/tools/compiler/arm_5.0.1/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 --abi=eabi -me -g --include_path="C:/ti/ccsv5/tools/compiler/arm_5.0.1/include" --include_path="J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare" --include_path="/third_party" --define=TARGET_IS_BLIZZARD_RA1 --define=PART_LM4F232H5QD --define=ccs --diag_warning=225 --display_error_number --diag_wrap=off --preproc_with_compile --preproc_dependency="sd_card.pp" --cmd_file="J:/WorkHouse2013/SW2013/S01_1307_VTDR_Stellaris/S01_Repository/S01_1307_configuration/Default/configPkg/compiler.opt"  "../sd_card.c"
-"../sd_card.c", line 761: warning #169-D: argument of type "unsigned char *" is incompatible with parameter of type "char *"
+"../sd_card.c", line 763: warning #169-D: argument of type "unsigned char *" is incompatible with parameter of type "const char *"
+"../sd_card.c", line 778: warning #169-D: argument of type "unsigned char *" is incompatible with parameter of type "const char *"
+"../sd_card.c", line 781: warning #169-D: argument of type "unsigned char *" is incompatible with parameter of type "char *"
+"../sd_card.c", line 711: warning #179-D: variable "i" was declared but never referenced
 "../sd_card.c", line 106: warning #179-D: variable "g_cCmdBuf" was declared but never referenced
 'Finished building: ../sd_card.c'
 ' '

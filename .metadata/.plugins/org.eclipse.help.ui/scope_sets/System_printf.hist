@@ -1,0 +1,4 @@
+#Sat Aug 03 13:42:35 CST 2013
+__DEFAULT__=false
+org.eclipse.help.ui.localSearch.master=true
+expression=System_printf

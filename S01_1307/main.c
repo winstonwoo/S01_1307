@@ -49,7 +49,7 @@ void UARTSend(const unsigned char *pucBuffer, unsigned long ulCount) ;
 Void hwi_UART0_fxn(UArg arg)
 {
 	  unsigned long ulStatus;
-	  unsigned char ucMsg[20] ;
+	  unsigned char ucMsg[8] ;
 	  int i = 0 ;
 
 	    //
@@ -74,7 +74,7 @@ Void hwi_UART0_fxn(UArg arg)
 	       // ROM_UARTCharPutNonBlocking(UART0_BASE,
 	         //                          ROM_UARTCharGetNonBlocking(UART0_BASE));
 	        ucMsg[i++] = ROM_UARTCharGetNonBlocking(UART0_BASE) ;
-	        if (i>=20) 	break ;  //If the amount of characters is big than 20;
+	        if (i>=8) 	break ;  //If the amount of characters is big than 20;
 
 	    }
 
@@ -258,7 +258,7 @@ Void tsk_manage_fxn(UArg arg0, UArg arg1)
 	{
 		// UARTSend((unsigned char *)"tsk_manage_fxn \n ", 20);
 		//Mailbox_pend(Mb_uart0_handle, ucMsg, BIOS_WAIT_FOREVER) ;
-		UARTprintf("uart output!!!\n") ;
+		//UARTprintf("uart output!!!\n") ;
 		Task_sleep(1000) ;
 	}
 
@@ -288,7 +288,7 @@ Void tsk_GPRS_fxn(UArg arg0, UArg arg1)
 {
 	for(;;)
 	{
-		UARTprintf("UARTprintf tsk_GPRS_fxn \n") ;
+		//UARTprintf("UARTprintf tsk_GPRS_fxn \n") ;
 	    System_printf("tsk_GPRS_fxn \n") ;
 		Task_sleep(3000) ;
 	}
