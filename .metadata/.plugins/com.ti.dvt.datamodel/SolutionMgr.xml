@@ -2,17 +2,17 @@
 <java version="1.6.0_13" class="java.beans.XMLDecoder"> 
  <object class="com.ti.dvt.datamodel.solution.SolutionManager$PersistState"> 
   <void property="defaultSolution"> 
-   <string>C:\ti\ccsv5\ccs_base\DebugServer\..\dvt_3.4.0.201304031516\CodeGen\solutions\CodeGenCoverage</string> 
+   <string>C:\ti\ccsv5\ccs_base\DebugServer\..\dvt_3.3.0.201209281235\CodeGen\solutions\CodeGenCoverage</string> 
   </void> 
   <void property="openedSolutions"> 
    <void method="add"> 
-    <string>C:\ti\ccsv5\ccs_base\DebugServer\..\dvt_3.4.0.201304031516\CodeGen\solutions\CodeGenCoverage</string> 
+    <string>C:\ti\ccsv5\ccs_base\DebugServer\..\dvt_3.3.0.201209281235\CodeGen\solutions\CodeGenCoverage</string> 
    </void> 
    <void method="add"> 
-    <string>J:/WorkHouse2013/SW2013/S01_1307_VTDR_Stellaris\dvt\AnalysisSolutionsTemp\AnalysisSolution1375399213123\null</string> 
+    <string>C:\ti\ccsv5\ccs_base\DebugServer\..\dvt_3.3.0.201209281235\RTA6\solutions\cce_rta6</string> 
    </void> 
    <void method="add"> 
-    <string>C:\ti\ccsv5\ccs_base\DebugServer\..\dvt_3.4.0.201304031516\RTA6\solutions\cce_rta6</string> 
+    <string>J:/WorkHouse2013/SW2013/S01_1307_VTDR_Stellaris/S01_Repository\dvt\AnalysisSolutionsTemp\AnalysisSolution1375501519028\null</string> 
    </void> 
   </void> 
  </object> 

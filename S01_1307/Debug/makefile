@@ -118,7 +118,7 @@ endif
 all: S01_1307.out
 
 dependents:
-	-cd J:/WorkHouse2013/SW2013/S01_1307_VTDR_Stellaris/S01_Repository/S01_1307_configuration/Default && $(MAKE) all
+	-cd J:/WorkHouse2013/SW2013/S01_1307_VTDR_Stellaris/S01_Repository/S01_1307_configuration/Default && $(MAKE) clean all
 
 # Tool invocations
 S01_1307.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS) J:/WorkHouse2013/SW2013/S01_1307_VTDR_Stellaris/S01_Repository/S01_1307_configuration/Default/configPkg/linker.cmd

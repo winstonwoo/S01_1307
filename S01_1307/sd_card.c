@@ -732,7 +732,8 @@ sdcard_main(void)
     // Enter an infinite loop for reading and processing commands from the
     // user.
     //
-    memset(ucCmd, 0x0, sizeof(ucCmd)) ;
+    memset(ucCmd, 0x0, sizeof(ucCmd)) ;  //Make clear the ucCmd for instruction receiving.
+
     while(1)
     {
     	Task_sleep(20) ;
@@ -812,5 +813,5 @@ sdcard_main(void)
         }
         }
     }
-//#endif
+
 }
