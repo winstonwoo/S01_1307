@@ -44,7 +44,7 @@
 #include <ti/sysbios/knl/Swi.h>
 #include <ti/sysbios/knl/Mailbox.h>
 
-extern Mailbox_Handle Mb_uart0_handle ;
+extern Mailbox_Handle Mb_uart2_handle ;
 //*****************************************************************************
 //
 //! \addtogroup example_list
@@ -745,7 +745,7 @@ sdcard_main(void)
         //Clear the ucMsg for uart0 mailbox retrieve
         memset(ucMsg, 0x0, sizeof(ucMsg)) ;
 //
-        Mailbox_pend(Mb_uart0_handle, ucMsg, BIOS_WAIT_FOREVER) ;
+        Mailbox_pend(Mb_uart2_handle, ucMsg, BIOS_WAIT_FOREVER) ;
 
 
         //

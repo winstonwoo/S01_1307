@@ -110,7 +110,7 @@ extern const ti_sysbios_knl_Task_Handle tsk_manage_handle;
 extern const ti_sysbios_hal_Hwi_Handle hwi_TIMER2_handle;
 
 #include <ti/sysbios/knl/Mailbox.h>
-extern const ti_sysbios_knl_Mailbox_Handle Mb_uart0_handle;
+extern const ti_sysbios_knl_Mailbox_Handle Mb_uart2_handle;
 
 extern int xdc_runtime_Startup__EXECFXN__C;
 

@@ -39,7 +39,7 @@ extern Swi_Handle swi_CAN0_handle ;
 extern Swi_Handle swi_CAN1_handle ;
 extern Swi_Handle swi_GPIOBoot_handle ;
 
-extern Mailbox_Handle Mb_uart0_handle ;
+extern Mailbox_Handle Mb_uart2_handle ;
 
 
 void UARTSend(const unsigned char *pucBuffer, unsigned long ulCount) ;
@@ -48,39 +48,7 @@ void UARTSend(const unsigned char *pucBuffer, unsigned long ulCount) ;
 
 Void hwi_UART0_fxn(UArg arg)
 {
-	  unsigned long ulStatus;
-	  unsigned char ucMsg[8] ;
-	  int i = 0 ;
-
-	    //
-	    // Get the interrrupt status.
-	    //
-	    ulStatus = ROM_UARTIntStatus(UART0_BASE, true);
-
-	    //
-	    // Clear the asserted interrupts.
-	    //
-	    ROM_UARTIntClear(UART0_BASE, ulStatus);
-
-	    memset(ucMsg, 0x0, sizeof(ucMsg)) ;
-	    //
-	    // Loop while there are characters in the receive FIFO.
-	    //
-	    while(ROM_UARTCharsAvail(UART0_BASE))
-	    {
-	        //
-	        // Read the next character from the UART and write it back to the UART.
-	        //
-	       // ROM_UARTCharPutNonBlocking(UART0_BASE,
-	         //                          ROM_UARTCharGetNonBlocking(UART0_BASE));
-	        ucMsg[i++] = ROM_UARTCharGetNonBlocking(UART0_BASE) ;
-	        if (i>=8) 	break ;  //If the amount of characters is big than 20;
-
-	    }
-
-	    Mailbox_post(Mb_uart0_handle, ucMsg, BIOS_NO_WAIT) ;
-
-	    Swi_post(swi_UART0_handle) ;
+     Swi_post(swi_UART0_handle) ;
 
 }
 
@@ -88,19 +56,52 @@ Void hwi_UART0_fxn(UArg arg)
 
 Void hwi_UART1_fxn(UArg arg)
 {
-	Swi_post(swi_UART1_handle) ;
+     Swi_post(swi_UART1_handle) ;
 }
 
 
 Void hwi_UART2_fxn(UArg arg)
 {
-	Swi_post(swi_UART2_handle) ;
+     unsigned long ulStatus;
+     unsigned char ucMsg[8] ;
+     int i = 0 ;
+
+     //
+     // Get the interrrupt status.
+     //
+     ulStatus = ROM_UARTIntStatus(UART2_BASE, true);
+
+     //
+     // Clear the asserted interrupts.
+     //
+     ROM_UARTIntClear(UART2_BASE, ulStatus);
+
+     memset(ucMsg, 0x0, sizeof(ucMsg)) ;
+     //
+     // Loop while there are characters in the receive FIFO.
+     //
+     while(ROM_UARTCharsAvail(UART2_BASE))
+     {
+          //
+          // Read the next character from the UART and write it back to the UART.
+          //
+          // ROM_UARTCharPutNonBlocking(UART0_BASE,
+          //                          ROM_UARTCharGetNonBlocking(UART0_BASE));
+          ucMsg[i++] = ROM_UARTCharGetNonBlocking(UART2_BASE) ;
+          if (i>=8) 	break ;  //If the amount of characters is big than 20;
+
+     }
+
+     Mailbox_post(Mb_uart2_handle, ucMsg, BIOS_NO_WAIT) ;
+
+
+     Swi_post(swi_UART2_handle) ;
 }
 
 
 Void hwi_UART3_fxn(UArg arg)
 {
-	Swi_post(swi_UART3_handle) ;
+     Swi_post(swi_UART3_handle) ;
 }
 
 
@@ -257,7 +258,7 @@ Void tsk_manage_fxn(UArg arg0, UArg arg1)
 	for(;;)
 	{
 		// UARTSend((unsigned char *)"tsk_manage_fxn \n ", 20);
-		//Mailbox_pend(Mb_uart0_handle, ucMsg, BIOS_WAIT_FOREVER) ;
+		//Mailbox_pend(Mb_uart2_handle, ucMsg, BIOS_WAIT_FOREVER) ;
 		//UARTprintf("uart output!!!\n") ;
 		Task_sleep(1000) ;
 	}
@@ -384,46 +385,83 @@ Void taskFxn(UArg a0, UArg a1)
 /**/
 Void init_gpio()
 {
+#if 0  //There isn't the bootloader tringer at eastsoft board
 	  ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOM);
 
 	  ROM_GPIOPinTypeGPIOInput(GPIO_PORTM_BASE, GPIO_PIN_4) ;
 	  ROM_GPIOPadConfigSet(GPIO_PORTM_BASE, GPIO_PIN_4, GPIO_STRENGTH_2MA, GPIO_PIN_TYPE_STD_WPU) ;
 	  ROM_GPIOIntTypeSet(GPIO_PORTM_BASE, GPIO_PIN_4, GPIO_FALLING_EDGE) ;
+#endif
+
+	  //Add 5V5_EN function to enable 5V5_OUT for CAN trancever with H4 pin
+	  ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOH) ;
+	  ROM_GPIOPinTypeGPIOOutput(GPIO_PORTH_BASE, GPIO_PIN_2) ;
+	  ROM_GPIOPinWrite(GPIO_PORTH_BASE, GPIO_PIN_2, GPIO_PIN_2) ;
 
 }
 
 /**/
 Void init_uart()
 {
-	  //UART0 initialization with 115200, 8, N, 1
-	  //
-	  // Enable the peripherals used by this example.
-	  //
-	  ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
-	  ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_UART0);
-
-
-	//
-	// Set GPIO A0 and A1 as UART pins.
-	//
-	ROM_GPIOPinTypeUART(GPIO_PORTA_BASE, GPIO_PIN_0 | GPIO_PIN_1);
-
 #if 0
-	//
-	// Configure the UART for 115,200, 8-N-1 operation.
-	//
-	ROM_UARTConfigSetExpClk(UART0_BASE, ROM_SysCtlClockGet(), 115200,
-							(UART_CONFIG_WLEN_8 | UART_CONFIG_STOP_ONE |
-							 UART_CONFIG_PAR_NONE));
+     //UART2 initialization with 115200, 8, N, 1
+     //
+     // Enable the peripherals used by this example.
+     //
+     ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOD);
+     ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_UART2);
 
+     //
+     // Set GPIO D6 and D7 as UART2 pins.
+     //
+//     GPIOPadConfigSet(GPIO_PORTD_BASE,GPIO_PIN_6 | GPIO_PIN_7 , GPIO_STRENGTH_8MA,GPIO_PIN_TYPE_STD);
+//     GPIODirModeSet(GPIO_PORTD_BASE, GPIO_PIN_6 | GPIO_PIN_7,  GPIO_DIR_MODE_HW);
+     GPIOPinConfigure( GPIO_PD6_U2RX ) ;
+     GPIOPinConfigure( GPIO_PD7_U2TX ) ;
+     HWREG( 0x40007000 + 0x420) |= 0xc0 ;
+     HWREG( 0x40007000 + 0x51c) |= 0xc0 ;
+     GPIOPinTypeUART(GPIO_PORTD_BASE, GPIO_PIN_6 | GPIO_PIN_7);
+
+
+     //
+     // Initialize the UART as a console for text I/O.
+     //
+     UARTStdioInit(2);
+
+
+     //
+     // Enable the UART2 interrupt.
+     //
+     ROM_IntEnable(INT_UART2);
+     ROM_UARTIntEnable(UART2_BASE, UART_INT_RX | UART_INT_RT);
 #else
-    //
-    // Initialize the UART as a console for text I/O.
-    //
-    UARTStdioInit(0);
+
+     //UART2 initialization with 115200, 8, N, 1
+         //
+         // Enable the peripherals used by this example.
+         //
+         ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOC);
+         ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_UART3);
+
+         //
+         // Set GPIO D6 and D7 as UART2 pins.
+         GPIOPinConfigure( GPIO_PC6_U3RX ) ;
+         GPIOPinConfigure( GPIO_PC7_U3TX ) ;
+         GPIOPinTypeUART(GPIO_PORTC_BASE, GPIO_PIN_6 | GPIO_PIN_7);
+
+         //
+         ROM_UARTConfigSetExpClk(UART3_BASE, ROM_SysCtlClockGet(), 115200,
+                                 (UART_CONFIG_WLEN_8 | UART_CONFIG_STOP_ONE |
+                                  UART_CONFIG_PAR_NONE));
+
+         //
+         // Enable the UART interrupt.
+         //
+         ROM_IntEnable(INT_UART3);
+         ROM_UARTIntEnable(UART3_BASE, UART_INT_RX | UART_INT_RT);
+
+
 #endif
-
-
 
 }
 
@@ -431,30 +469,28 @@ Void cfg_interrupt()
 {
 
 
-		// Enable processor interrupts.
-		//
-		ROM_IntMasterEnable();
+     // Enable processor interrupts.
+     //
+     ROM_IntMasterEnable();
 
+#if 0           //Delete this GPIO trigger function
 		//Enable GPIOM4 for boot trigger
-		ROM_GPIOPinIntEnable(GPIO_PORTM_BASE, GPIO_PIN_4) ;
+     ROM_GPIOPinIntEnable(GPIO_PORTM_BASE, GPIO_PIN_4) ;
+#endif
 
-		//
-		// Enable the UART0 interrupt.
-		//
-		ROM_IntEnable(INT_UART0);
-		ROM_UARTIntEnable(UART0_BASE, UART_INT_RX | UART_INT_RT);
-
-		//
-		// Setup the interrupts for the timer timeouts.
-		//
-		ROM_IntEnable(INT_TIMER2A);
-		ROM_TimerIntEnable(TIMER2_BASE, TIMER_TIMA_TIMEOUT);
 }
 
 Void init_sdcard()
 {
+#if 0
+     //Adopt PH4,5,6,7 for SSI2 as SDCARD signals
 
-     ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_SSI0);
+     ROM_SysCtlPeripheralEnable( SYSCTL_PERIPH_GPIOH ) ;
+     ROM_GPIOPinTypeSSI( GPIO_PORTH_BASE, GPIO_PIN_4 | GPIO_PIN_5 | GPIO_PIN_6 | GPIO_PIN_7  ) ;
+
+     ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_SSI2);
+#endif     
+
      ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER2);
      //
      // Configure the two 32-bit periodic timers.
@@ -462,12 +498,18 @@ Void init_sdcard()
      ROM_TimerConfigure(TIMER2_BASE, TIMER_CFG_PERIODIC);
      ROM_TimerLoadSet(TIMER2_BASE, TIMER_A, ROM_SysCtlClockGet()/100);
 
+
+     //
+     // Setup the interrupts for the timer timeouts.
+     //
+     ROM_IntEnable(INT_TIMER2A);
+     ROM_TimerIntEnable(TIMER2_BASE, TIMER_TIMA_TIMEOUT);
+
      //
      // Enable the timers.
      //
      ROM_TimerEnable(TIMER2_BASE, TIMER_A);
-
-
+	
 }
 
 Void init_sys()
@@ -507,7 +549,7 @@ UARTSend(const unsigned char *pucBuffer, unsigned long ulCount)
         //
         // Write the next character to the UART.
         //
-        ROM_UARTCharPutNonBlocking(UART0_BASE, *pucBuffer++);
+        ROM_UARTCharPutNonBlocking(UART3_BASE, *pucBuffer++);
     }
 }
 
@@ -529,7 +571,11 @@ Void main()
     //
     // Prompt for text to be entered.
     //
-    UARTSend((unsigned char *)"Enter text: ", 12);
+    //UARTSend((unsigned char *)"Enter text: ", 12);
+    for( ;; )
+{
+    	  UARTSend((unsigned char *)"Enter text: ", 12);
+}
 
     task = Task_create(taskFxn, NULL, &eb);
     if (task == NULL) {

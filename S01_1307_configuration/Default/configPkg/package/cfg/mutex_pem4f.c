@@ -13445,7 +13445,7 @@ const __T1_xdc_runtime_Text_charTab xdc_runtime_Text_charTab__A[5923] = {
     (xdc_Char)0x61,  /* [5509] */
     (xdc_Char)0x72,  /* [5510] */
     (xdc_Char)0x74,  /* [5511] */
-    (xdc_Char)0x30,  /* [5512] */
+    (xdc_Char)0x32,  /* [5512] */
     (xdc_Char)0x5f,  /* [5513] */
     (xdc_Char)0x68,  /* [5514] */
     (xdc_Char)0x61,  /* [5515] */
@@ -19281,7 +19281,7 @@ const ti_sysbios_hal_Hwi_Handle hwi_TIMER2_handle = (ti_sysbios_hal_Hwi_Handle)(
     __attribute__ ((externally_visible))
 #endif
 #endif
-const ti_sysbios_knl_Mailbox_Handle Mb_uart0_handle = (ti_sysbios_knl_Mailbox_Handle)((ti_sysbios_knl_Mailbox_Handle)&ti_sysbios_knl_Mailbox_Object__table__V[0]);
+const ti_sysbios_knl_Mailbox_Handle Mb_uart2_handle = (ti_sysbios_knl_Mailbox_Handle)((ti_sysbios_knl_Mailbox_Handle)&ti_sysbios_knl_Mailbox_Object__table__V[0]);
 
 
 /*

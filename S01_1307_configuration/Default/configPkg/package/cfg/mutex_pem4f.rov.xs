@@ -11569,7 +11569,7 @@ __o = __obj[485]  // xdc.runtime.Text/charTab
     __o['5509'] = 97
     __o['5510'] = 114
     __o['5511'] = 116
-    __o['5512'] = 48
+    __o['5512'] = 50
     __o['5513'] = 95
     __o['5514'] = 104
     __o['5515'] = 97
@@ -17563,7 +17563,7 @@ __o = __obj[1043]  // ti.sysbios.knl.Mailbox.Instance#0
 __o = __obj[1044]  // ti.sysbios.knl.Mailbox.Instance#0/instance
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))
     __o['$name'] = String(java.net.URLDecoder.decode('ti.sysbios.knl.Mailbox.Instance%230%2Finstance', 'UTF-8'))
-    __o['name'] = String(java.net.URLDecoder.decode('Mb_uart0_handle', 'UTF-8'))
+    __o['name'] = String(java.net.URLDecoder.decode('Mb_uart2_handle', 'UTF-8'))
 
 __o = __obj[1045]  // xdc.runtime.Assert.Desc#13
     __o['$category'] = String(java.net.URLDecoder.decode('Struct', 'UTF-8'))

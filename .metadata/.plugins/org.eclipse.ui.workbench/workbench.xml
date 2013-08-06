@@ -18,13 +18,13 @@
 <coolItem id="org.eclipse.debug.ui.launch.toolbar" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.debug.ui.launchActionSet" itemType="typeToolBarContribution" x="55" y="22"/>
 <coolItem id="org.eclipse.debug.ui.main.toolbar" itemType="typeToolBarContribution" x="-1" y="-1"/>
-<coolItem id="com.ti.ccstudio.debug.ui.toolbar" itemType="typeToolBarContribution" x="147" y="22"/>
+<coolItem id="com.ti.ccstudio.debug.ui.toolbar" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="55" y="22"/>
 <coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="38" y="22"/>
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="118" y="22"/>
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
-<coolItem id="com.ti.ccstudio.ui.cmdFileEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="com.ti.ccstudio.ui.cmdFileEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.rtsc.xdctools.ui.editors.XdcSpecEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.ui.DefaultTextEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.cdt.make.editor" itemType="typePlaceholder" x="-1" y="-1"/>
@@ -56,22 +56,11 @@
 <part id="12"/>
 <part id="13"/>
 <part id="14"/>
-<part id="15"/>
-<part id="16"/>
-<part id="17"/>
-<part id="18"/>
-<part id="19"/>
-<part id="20"/>
-<part id="21"/>
-<part id="22"/>
-<part id="23"/>
-<part id="24"/>
-<part id="25"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor id="com.ti.ccstudio.resource.explorer.editor.resourceExplorer" name="TI Resource Explorer" partName="TI Resource Explorer" title="TI Resource Explorer" tooltip="TI Resource Explorer" workbook="DefaultEditorWorkbook">
+<editor activePart="true" focus="true" id="com.ti.ccstudio.resource.explorer.editor.resourceExplorer" name="TI Resource Explorer" partName="TI Resource Explorer" title="TI Resource Explorer" tooltip="TI Resource Explorer" workbook="DefaultEditorWorkbook">
 <input factoryID="com.ti.ccstudio.resource.explorer.editor.elementFactory" name="TI Resource Explorer"/>
 </editor>
 <editor id="org.eclipse.rtsc.xdctools.ui.editors.XdcScriptEditor" name="mutex.cfg" partName="mutex.cfg" path="J:/WorkHouse2013/SW2013/S01_1307_VTDR_Stellaris/S01_Repository/S01_1307_configuration/mutex.cfg" title="mutex.cfg" tooltip="S01_1307_configuration/mutex.cfg" workbook="DefaultEditorWorkbook">
@@ -111,7 +100,7 @@
 </editor>
 <editor id="org.eclipse.ui.DefaultTextEditor" name="S01_1307.map" partName="S01_1307.map" path="J:/WorkHouse2013/SW2013/S01_1307_VTDR_Stellaris/S01_Repository/S01_1307/Debug/S01_1307.map" title="S01_1307.map" tooltip="S01_1307/Debug/S01_1307.map" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/S01_1307/Debug/S01_1307.map"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="881" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="329" selectionLength="0" selectionOffset="881" selectionTopPixel="315"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="ff.c" partName="ff.c" path="J:/WorkHouse2013/SW2013/S01_1307_VTDR_Stellaris/S01_Repository/S01_1307/ff.c" title="ff.c" tooltip="S01_1307/ff.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/S01_1307/ff.c"/>
@@ -129,14 +118,6 @@
 <input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/C:/ti/bios_6_34_02_18/packages/ti/sysbios/knl/Mailbox.c"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="8305" selectionTopPixel="3960"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="mutex.c" partName="mutex.c" path="J:/WorkHouse2013/SW2013/S01_1307_VTDR_Stellaris/S01_Repository/taskMutexExample_StellarisLM3S8962/mutex.c" title="mutex.c" tooltip="taskMutexExample_StellarisLM3S8962/mutex.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/taskMutexExample_StellarisLM3S8962/mutex.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1134" selectionTopPixel="750"/>
-</editor>
-<editor activePart="true" focus="true" id="com.ti.ccstudio.ui.cmdFileEditor" name="lm3s8962.cmd" partName="lm3s8962.cmd" path="J:/WorkHouse2013/SW2013/S01_1307_VTDR_Stellaris/S01_Repository/taskMutexExample_StellarisLM3S8962/lm3s8962.cmd" title="lm3s8962.cmd" tooltip="taskMutexExample_StellarisLM3S8962/lm3s8962.cmd" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/taskMutexExample_StellarisLM3S8962/lm3s8962.cmd"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="860" selectionTopPixel="0"/>
-</editor>
 </editors>
 <views>
 <view id="org.eclipse.ui.views.ProgressView" partName="Progress">
@@ -148,20 +129,20 @@
 <view id="org.eclipse.cdt.debug.ui.memory.memorybrowser.MemoryBrowser" partName="Memory Browser">
 <viewState/>
 </view>
-<view id="org.eclipse.debug.ui.BreakpointView" partName="Breakpoints">
+<view id="org.eclipse.debug.ui.VariableView" partName="Variables">
 <viewState/>
 </view>
-<view id="org.eclipse.debug.ui.VariableView" partName="Variables">
+<view id="org.eclipse.debug.ui.BreakpointView" partName="Breakpoints">
 <viewState/>
 </view>
 <view id="org.eclipse.ui.views.ContentOutline" partName="Outline">
 <viewState/>
 </view>
-<view id="org.eclipse.debug.ui.ExpressionView" partName="Expressions">
-<viewState/>
-</view>
 <view id="org.eclipse.ui.navigator.ProjectExplorer" partName="Project Explorer">
 <viewState CommonNavigator.LINKING_ENABLED="0" org.eclipse.cdt.ui.cview.groupincludes="false" org.eclipse.cdt.ui.cview.groupmacros="false" org.eclipse.cdt.ui.editor.CUChildren="true" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0"/>
+</view>
+<view id="org.eclipse.debug.ui.ExpressionView" partName="Expressions">
+<viewState/>
 </view>
 <view id="com.ti.ccstudio.system.setup.ui.views.TargetConfigurationView" partName="Target Configurations"/>
 <view id="org.eclipse.ui.views.PropertySheet" partName="Properties">
@@ -173,9 +154,7 @@
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
 <expanded>
-<category IMemento.internal.id="Warnings (8 items)"/>
-<category IMemento.internal.id="Errors"/>
-<category IMemento.internal.id="Warnings"/>
+<category IMemento.internal.id="Warnings (14 items)"/>
 </expanded>
 <columnWidths org.eclipse.ui.ide.locationField="90" org.eclipse.ui.ide.markerType="90" org.eclipse.ui.ide.pathField="120" org.eclipse.ui.ide.resourceField="90" org.eclipse.ui.ide.severityAndDescriptionField="1418"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
@@ -192,7 +171,7 @@
 <viewState/>
 </view>
 </views>
-<perspectives activePart="com.ti.ccstudio.ui.cmdFileEditor" activePerspective="com.ti.ccstudio.TICPerspective">
+<perspectives activePart="org.eclipse.ui.navigator.ProjectExplorer" activePerspective="com.ti.ccstudio.TICPerspective">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="com.ti.ccstudio.internal.ui.perspectives.TICPerspectiveFactory" id="com.ti.ccstudio.TICPerspective" label="CCS Edit"/>
 <alwaysOnActionSet id="org.eclipse.mylyn.context.ui.actionSet"/>
@@ -250,19 +229,19 @@
 <new_wizard_action id="org.eclipse.rtsc.builddefinitions.dspbios.ui.DSPBIOSCreateNew"/>
 <new_wizard_action id="org.eclipse.rtsc.xdctools.ui.wizards.configfile.RTSCConfigFileWizard"/>
 <perspective_action id="com.ti.ccstudio.TIDebugPerspective"/>
-<hide_menu_item_id id="org.eclipse.cdt.ui.actions.OpenCSearchPage"/>
 <hide_menu_item_id id="com.ti.ccstudio.debug.ui.command.haltOnReset"/>
+<hide_menu_item_id id="org.eclipse.cdt.ui.actions.OpenCSearchPage"/>
 <hide_menu_item_id id="com.ti.ccstudio.debug.ui.command.loadSymbol"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.refactoring.menu"/>
 <hide_menu_item_id id="com.ti.ccstudio.debug.ui.command.addSymbol"/>
-<hide_menu_item_id id="org.eclipse.debug.ui.commands.ToggleBreakpoint"/>
 <hide_menu_item_id id="org.eclipse.jdt.debug.ui.commands.AllInstances"/>
+<hide_menu_item_id id="org.eclipse.debug.ui.commands.ToggleBreakpoint"/>
 <hide_menu_item_id id="com.ti.ccstudio.debug.ui.command.reset"/>
-<hide_menu_item_id id="org.eclipse.cdt.debug.ui.command.reverseResume"/>
 <hide_menu_item_id id="org.eclipse.search.ui.openFileSearchPage"/>
+<hide_menu_item_id id="org.eclipse.cdt.debug.ui.command.reverseResume"/>
 <hide_menu_item_id id="org.eclipse.cdt.ui.edit.text.c.indent"/>
-<hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.inline"/>
 <hide_menu_item_id id="org.eclipse.debug.ui.commands.StepReturn"/>
+<hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.inline"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.pull.up"/>
 <hide_menu_item_id id="org.eclipse.search.ui.performTextSearchWorkspace"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.clean.up"/>
@@ -274,31 +253,31 @@
 <hide_menu_item_id id="com.ti.ccstudio.debug.ui.command.reloadProgram"/>
 <hide_menu_item_id id="org.eclipse.debug.internal.ui.actions.ProfileHistoryMenuAction"/>
 <hide_menu_item_id id="org.eclipse.debug.ui.commands.ProfileLast"/>
-<hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.move.element"/>
 <hide_menu_item_id id="com.ti.ccstudio.debug.ui.command.clock.setup"/>
+<hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.move.element"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.self.encapsulate.field"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.promote.local.variable"/>
-<hide_menu_item_id id="org.eclipse.ltk.ui.refactor.apply.refactoring.script"/>
 <hide_menu_item_id id="org.eclipse.debug.internal.ui.actions.RunHistoryMenuAction"/>
-<hide_menu_item_id id="org.eclipse.ui.project.buildProject"/>
+<hide_menu_item_id id="org.eclipse.ltk.ui.refactor.apply.refactoring.script"/>
 <hide_menu_item_id id="org.eclipse.jdt.debug.ui.commands.AllReferences"/>
+<hide_menu_item_id id="org.eclipse.ui.project.buildProject"/>
 <hide_menu_item_id id="org.eclipse.cdt.ui.refactor.implement.method"/>
-<hide_menu_item_id id="org.eclipse.debug.ui.commands.StepInto"/>
 <hide_menu_item_id id="com.ti.ccstudio.debug.ui.command.clock.hide"/>
+<hide_menu_item_id id="org.eclipse.debug.ui.commands.StepInto"/>
 <hide_menu_item_id id="com.ti.ccstudio.debug.ui.clockMenu"/>
-<hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.use.supertype"/>
 <hide_menu_item_id id="org.eclipse.cdt.debug.ui.command.uncall"/>
+<hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.use.supertype"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.extract.local.variable"/>
-<hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.generate.hashcode.equals"/>
 <hide_menu_item_id id="com.ti.ccstudio.debug.ui.command.removeAllSymbols"/>
+<hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.generate.hashcode.equals"/>
 <hide_menu_item_id id="breakpointTypes"/>
 <hide_menu_item_id id="org.eclipse.cdt.ui.buildConfigMenuAction"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.extract.interface"/>
 <hide_menu_item_id id="org.eclipse.search.ui.performTextSearchWorkingSet"/>
-<hide_menu_item_id id="org.eclipse.jdt.ui.refactor.migrate.jar"/>
 <hide_menu_item_id id="org.eclipse.debug.ui.commands.RunToLine"/>
-<hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.introduce.factory"/>
+<hide_menu_item_id id="org.eclipse.jdt.ui.refactor.migrate.jar"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.surround.with.quickMenu"/>
+<hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.introduce.factory"/>
 <hide_menu_item_id id="org.eclipse.search.ui.performTextSearchFile"/>
 <hide_menu_item_id id="com.ti.ccstudio.debug.ui.command.disconnectTarget"/>
 <hide_menu_item_id id="org.eclipse.debug.ui.commands.Terminate"/>
@@ -349,9 +328,9 @@
 <hide_menu_item_id id="org.eclipse.debug.ui.actions.BreakpointTypesContribution"/>
 <hide_menu_item_id id="org.eclipse.cdt.ui.edit.text.c.sort.lines"/>
 <hide_menu_item_id id="org.eclipse.ui.edit.text.shiftRight"/>
-<hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.change.type"/>
-<hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.extract.method"/>
 <hide_menu_item_id id="org.eclipse.debug.ui.commands.StepOver"/>
+<hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.extract.method"/>
+<hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.change.type"/>
 <hide_menu_item_id id="com.ti.ccstudio.debug.ui.command.dynamicLoadProgramRunMenu"/>
 <hide_menu_item_id id="textSearchSubMenu"/>
 <hide_menu_item_id id="org.eclipse.ui.externaltools.ExternalToolMenuDelegateMenu"/>
@@ -360,74 +339,74 @@
 <hide_menu_item_id id="org.eclipse.debug.ui.commands.ToggleLineBreakpoint"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.find.broken.nls.keys"/>
 <hide_menu_item_id id="com.ti.ccstudio.debug.ui.command.free.run"/>
-<hide_menu_item_id id="com.ti.ccstudio.debug.ui.msp430.command.makeDeviceSecure"/>
-<hide_menu_item_id id="com.ti.ccstudio.debug.ui.command.asmStepOver"/>
 <hide_menu_item_id id="com.ti.ccstudio.debug.ui.command.restoreDebugState"/>
+<hide_menu_item_id id="com.ti.ccstudio.debug.ui.command.asmStepOver"/>
+<hide_menu_item_id id="com.ti.ccstudio.debug.ui.msp430.command.makeDeviceSecure"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.create.delegate.methods"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.modify.method.parameters"/>
-<hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.extract.class"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.move.inner.to.top.level"/>
-<hide_menu_item_id id="com.ti.ccstudio.debug.ui.main.menu.newBreakpoint"/>
+<hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.extract.class"/>
 <hide_menu_item_id id="com.ti.ccstudio.debug.ui.command.clock.disable"/>
+<hide_menu_item_id id="com.ti.ccstudio.debug.ui.main.menu.newBreakpoint"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.introduce.indirection"/>
 <hide_menu_item_id id="com.ti.ccstudio.debug.ui.command.goMain"/>
 <hide_menu_item_id id="org.eclipse.debug.ui.commands.ToggleStepFilters"/>
 <hide_menu_item_id id="org.eclipse.cdt.debug.ui.command.resumeWithoutSignal"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.add.import"/>
-<hide_menu_item_id id="org.eclipse.cdt.ui.edit.text.c.surround.with.quickMenu"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.quick.format"/>
+<hide_menu_item_id id="org.eclipse.cdt.ui.edit.text.c.surround.with.quickMenu"/>
 <hide_menu_item_id id="com.ti.ccstudio.debug.ui.command.realtime"/>
 <hide_menu_item_id id="org.eclipse.debug.internal.ui.actions.DebugWithConfigurationAction"/>
 <hide_menu_item_id id="com.ti.ccstudio.debug.ui.command.dynamicResetDebugToolbar"/>
 <hide_menu_item_id id="com.ti.ccstudio.debug.ui.command.OSDebug"/>
-<hide_menu_item_id id="profileMenu"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.convert.anonymous.to.nested"/>
+<hide_menu_item_id id="profileMenu"/>
 <hide_menu_item_id id="org.eclipse.jdt.debug.ui.commands.Inspect"/>
 <hide_menu_item_id id="com.ti.ccstudio.debug.ui.command.clock.enable"/>
 <hide_menu_item_id id="com.ti.ccstudio.debug.ui.command.realtime.polite"/>
-<hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.extract.constant"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.add.block.comment"/>
+<hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.extract.constant"/>
 <hide_menu_item_id id="org.eclipse.debug.ui.commands.Resume"/>
 <hide_menu_item_id id="org.eclipse.debug.ui.commands.RunLast"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.add.unimplemented.constructors"/>
 <hide_menu_item_id id="com.ti.ccstudio.debug.ui.command.asmStepInto"/>
-<hide_menu_item_id id="org.eclipse.ui.project.closeProject"/>
-<hide_menu_item_id id="org.eclipse.cdt.debug.ui.actions.ResumeAtLine"/>
 <hide_menu_item_id id="com.ti.ccstudio.debug.ui.breakpointview.command.disableGlobalBreakpoint"/>
+<hide_menu_item_id id="org.eclipse.cdt.debug.ui.actions.ResumeAtLine"/>
+<hide_menu_item_id id="org.eclipse.ui.project.closeProject"/>
 <hide_menu_item_id id="com.ti.ccstudio.debug.ui.command.reloadSymbol"/>
 <hide_menu_item_id id="org.eclipse.jdt.debug.ui.commands.ForceReturn"/>
-<hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.organize.imports"/>
 <hide_menu_item_id id="org.eclipse.ui.edit.text.shiftLeft"/>
-<hide_menu_item_id id="org.eclipse.ui.project.openProject"/>
+<hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.organize.imports"/>
 <hide_menu_item_id id="org.eclipse.search.ui.openSearchDialog"/>
+<hide_menu_item_id id="org.eclipse.ui.project.openProject"/>
 <hide_menu_item_id id="org.eclipse.cdt.debug.ui.command.reverseToggle"/>
-<hide_menu_item_id id="org.eclipse.cdt.ui.edit.text.rename.element"/>
 <hide_menu_item_id id="org.eclipse.debug.internal.ui.actions.ProfileWithConfigurationAction"/>
+<hide_menu_item_id id="org.eclipse.cdt.ui.edit.text.rename.element"/>
 <hide_menu_item_id id="org.eclipse.debug.ui.commands.RemoveAllBreakpoints"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.format"/>
 <hide_menu_item_id id="org.eclipse.jdt.debug.ui.commands.AddExceptionBreakpoint"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.source.menu"/>
 <hide_menu_item_id id="org.eclipse.cdt.ui.edit.text.c.format"/>
 <hide_menu_item_id id="org.eclipse.cdt.debug.ui.command.reverseStepOver"/>
-<hide_menu_item_id id="org.eclipse.cdt.ui.refactor.extract.local.variable"/>
 <hide_menu_item_id id="com.ti.ccstudio.debug.ui.breakpointview.command.globalBreakpoint"/>
+<hide_menu_item_id id="org.eclipse.cdt.ui.refactor.extract.local.variable"/>
 <hide_menu_item_id id="org.eclipse.cdt.ui.edit.text.c.toggle.comment"/>
-<hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.indent"/>
 <hide_menu_item_id id="org.eclipse.search.ui.performTextSearchProject"/>
+<hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.indent"/>
 <hide_menu_item_id id="org.eclipse.cdt.ui.edit.text.c.remove.block.comment"/>
 <hide_toolbar_item_id id="org.eclipse.debug.ui.commands.RunToLine"/>
-<hide_toolbar_item_id id="org.eclipse.ui.file.print"/>
 <hide_toolbar_item_id id="com.ti.ccstudio.debug.ui.command.loadSymbol"/>
+<hide_toolbar_item_id id="org.eclipse.ui.file.print"/>
 <hide_toolbar_item_id id="com.ti.ccstudio.debug.ui.command.addSymbol"/>
 <hide_toolbar_item_id id="com.ti.ccstudio.debug.ui.command.loadProgram"/>
 <hide_toolbar_item_id id="org.eclipse.ui.externaltools.ExternalToolMenuDelegateToolbar"/>
-<hide_toolbar_item_id id="org.eclipse.debug.ui.commands.Terminate"/>
 <hide_toolbar_item_id id="com.ti.ccstudio.debug.ui.command.disconnectTarget"/>
-<hide_toolbar_item_id id="org.eclipse.debug.ui.commands.StepReturn"/>
+<hide_toolbar_item_id id="org.eclipse.debug.ui.commands.Terminate"/>
 <hide_toolbar_item_id id="org.eclipse.mylyn.cdt.ui.editor.folding.auto"/>
+<hide_toolbar_item_id id="org.eclipse.debug.ui.commands.StepReturn"/>
 <hide_toolbar_item_id id="org.eclipse.debug.ui.commands.SkipAllBreakpoints"/>
-<hide_toolbar_item_id id="org.eclipse.egit.ui.commit.OpenCommitAction"/>
 <hide_toolbar_item_id id="com.ti.ccstudio.debug.ui.command.connectTarget"/>
+<hide_toolbar_item_id id="org.eclipse.egit.ui.commit.OpenCommitAction"/>
 <hide_toolbar_item_id id="org.eclipse.cdt.ui.edit.text.c.toggleMarkOccurrences"/>
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowWhitespaceCharacters"/>
 <hide_toolbar_item_id id="org.eclipse.debug.ui.commands.StepOver"/>
@@ -445,12 +424,12 @@
 <hide_toolbar_item_id id="com.ti.ccstudio.debug.ui.command.reloadSymbol"/>
 <hide_toolbar_item_id id="org.eclipse.debug.ui.commands.Disconnect"/>
 <hide_toolbar_item_id id="org.eclipse.debug.ui.commands.ToggleStepFilters"/>
-<hide_toolbar_item_id id="com.ti.ccstudio.debug.ui.command.removeAllSymbols"/>
 <hide_toolbar_item_id id="org.eclipse.ui.navigate.previous"/>
+<hide_toolbar_item_id id="com.ti.ccstudio.debug.ui.command.removeAllSymbols"/>
 <hide_toolbar_item_id id="org.eclipse.cdt.ui.buildActiveConfigToolbarAction"/>
-<hide_toolbar_item_id id="com.ti.dvt.ui.openViewAction"/>
-<hide_toolbar_item_id id="com.ti.dvt.profile2.setup.action.enableProfile"/>
 <hide_toolbar_item_id id="org.eclipse.debug.ui.commands.Suspend"/>
+<hide_toolbar_item_id id="com.ti.dvt.profile2.setup.action.enableProfile"/>
+<hide_toolbar_item_id id="com.ti.dvt.ui.openViewAction"/>
 <hide_toolbar_item_id id="com.ti.dvt.profile.setup.action.enableProfile"/>
 <hide_toolbar_item_id id="com.ti.ccstudio.debug.ui.command.loadProgramOrSymbol"/>
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
@@ -767,36 +746,26 @@
 <view id="org.eclipse.cdt.debug.ui.memory.memorybrowser.MemoryBrowser"/>
 <view id="org.eclipse.debug.ui.BreakpointView"/>
 <view id="org.eclipse.debug.ui.DebugView"/>
-<fastViews>
-<view id="com.ti.ccstudio.system.setup.ui.views.TargetConfigurationView" ratio="0.3"/>
+<fastViews>&#x0A;<view id="com.ti.ccstudio.system.setup.ui.views.TargetConfigurationView" ratio="0.3"/>
 </fastViews>
 <fastViewBars/>
-<layout>
-<mainWindow>
-<info folder="true" part="left">
-<folder appearance="2" expanded="2">
-<page content="org.eclipse.ui.navigator.ProjectExplorer" label="LabelNotFound"/>
+<layout>&#x0A;<mainWindow>&#x0A;<info folder="true" part="left">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.navigator.ProjectExplorer" label="LabelNotFound"/>
 </folder>
 </info>
-<info folder="true" part="stickyFolderRight" ratio="0.7496318" ratioLeft="1018" ratioRight="340" relationship="2" relative="left">
-<folder appearance="2" expanded="2">
-<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
+<info folder="true" part="stickyFolderRight" ratio="0.7496318" ratioLeft="1018" ratioRight="340" relationship="2" relative="left">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
 <page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.2496318" ratioLeft="339" ratioRight="1019" relationship="2" relative="left"/>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@cba438" ratio="0.6252159" ratioLeft="362" ratioRight="217" relationship="4" relative="org.eclipse.ui.editorss">
-<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
-<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@cba438" ratio="0.6252159" ratioLeft="362" ratioRight="217" relationship="4" relative="org.eclipse.ui.editorss">&#x0A;<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
 <page content="org.eclipse.debug.ui.VariableView" label="Variables"/>
 <page content="org.eclipse.debug.ui.ExpressionView" label="Expressions"/>
 <page content="org.eclipse.debug.ui.RegisterView" label="Registers"/>
 <page content="org.eclipse.cdt.debug.ui.memory.memorybrowser.MemoryBrowser" label="Memory Browser"/>
 <page content="org.eclipse.debug.ui.BreakpointView" label="Breakpoints"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 <part id="1"/>
 <part id="2"/>
 <part id="3"/>
@@ -805,24 +774,17 @@
 </presentation>
 </folder>
 </info>
-<info folder="true" part="bottomRight" ratio="0.5" ratioLeft="679" ratioRight="679" relationship="2" relative="org.eclipse.ui.internal.ViewStack@cba438">
-<folder appearance="2" expanded="2">
-<page content="com.ti.ccstudio.scripting.console.ConsoleView" label="LabelNotFound"/>
+<info folder="true" part="bottomRight" ratio="0.5" ratioLeft="679" ratioRight="679" relationship="2" relative="org.eclipse.ui.internal.ViewStack@cba438">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="com.ti.ccstudio.scripting.console.ConsoleView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.ProblemView" label="LabelNotFound"/>
 </folder>
 </info>
-<info folder="true" part="right" ratio="0.6995582" ratioLeft="950" ratioRight="408" relationship="2" relative="org.eclipse.ui.editorss">
-<folder appearance="2" expanded="2">
-<page content="org.eclipse.ui.views.ContentOutline" label="LabelNotFound"/>
+<info folder="true" part="right" ratio="0.6995582" ratioLeft="950" ratioRight="408" relationship="2" relative="org.eclipse.ui.editorss">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.views.ContentOutline" label="LabelNotFound"/>
 <page content="org.eclipse.cdt.dsf.debug.ui.disassembly.view" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@13a237" ratio="0.78963417" ratioLeft="518" ratioRight="138" relationship="2" relative="org.eclipse.ui.editorss">
-<folder activePageID="org.eclipse.debug.ui.DebugView" appearance="2" expanded="2">
-<page content="org.eclipse.debug.ui.DebugView" label="Debug"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@13a237" ratio="0.78963417" ratioLeft="518" ratioRight="138" relationship="2" relative="org.eclipse.ui.editorss">&#x0A;<folder activePageID="org.eclipse.debug.ui.DebugView" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.debug.ui.DebugView" label="Debug"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 </presentation>
 </folder>
 </info>
@@ -836,48 +798,25 @@
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/S01_1307/main.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/S01_1307/sd_card.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/S01_1307/Debug/S01_1307.map"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.rtsc.xdctools.cfgEditor" path="/S01_1307_configuration/mutex.cfg"/>
 <editor factoryID="com.ti.ccstudio.resource.explorer.editor.elementFactory" id="com.ti.ccstudio.resource.explorer.editor.resourceExplorer" name="TI Resource Explorer"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/taskMutexExample_StellarisLM3S8962/mutex.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.ti.ccstudio.ui.cmdFileEditor" path="/taskMutexExample_StellarisLM3S8962/lm3s8962.cmd"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.rtsc.xdctools.ui.editors.XdcScriptEditor" path="/S01_1307_configuration/mutex.cfg"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/S01_1307/main.c"/>
+<editor factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="J:\WorkHouse2013\SWRf2013\StellarisTiVa\Stellaris\StellarisWare\driverlib\uart.h" project="S01_1307"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/S01_1307/sd_card.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/S01_1307/cmdline.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/S01_1307/uartstdio.c"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" uri="file:/C:/ti/bios_6_34_02_18/packages/ti/sysbios/hal/Hwi_stack.c"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" uri="file:/C:/ti/bios_6_34_02_18/packages/ti/sysbios/knl/Idle.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/S01_1307/Debug/S01_1307.map"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/S01_1307/ff.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/S01_1307/ff.h"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" uri="file:/C:/ti/bios_6_34_02_18/packages/ti/sysbios/knl/Task.c"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" uri="file:/C:/ti/bios_6_34_02_18/packages/ti/sysbios/knl/Mailbox.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/taskMutexExample_StellarisLM3S8962/mutex.c"/>
+<editor factoryID="com.ti.ccstudio.resource.explorer.editor.elementFactory" id="com.ti.ccstudio.resource.explorer.editor.resourceExplorer" name="TI Resource Explorer"/>
 </editors>
-<item historyLabel="sd_card.c" index="1">
-<position info="not_deleted" x="23694" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="2056" y="0"/>
-</item>
-<item historyLabel="sd_card.c" index="1">
-<position info="not_deleted" x="24338" y="0"/>
-</item>
-<item historyLabel="mutex.cfg" index="3"/>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="1441" y="0"/>
-</item>
-<item historyLabel="sd_card.c" index="1">
-<position info="not_deleted" x="24338" y="0"/>
-</item>
-<item historyLabel="S01_1307.map" index="2">
-<position info="not_deleted" x="881" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="2056" y="0"/>
-</item>
-<item historyLabel="sd_card.c" index="1">
-<position info="not_deleted" x="23694" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="2056" y="0"/>
-</item>
-<item historyLabel="sd_card.c" index="1">
-<position info="not_deleted" x="23694" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="2056" y="0"/>
-</item>
-<item historyLabel="sd_card.c" index="1">
-<position info="not_deleted" x="23694" y="0"/>
-</item>
 <item historyLabel="main.c" index="0">
 <position info="not_deleted" x="2056" y="0"/>
 </item>
@@ -965,18 +904,64 @@
 <item historyLabel="sd_card.c" index="1">
 <position info="not_deleted" x="24854" y="0"/>
 </item>
-<item historyLabel="TI Resource Explorer" index="4"/>
-<item historyLabel="mutex.c" index="5">
+<item historyLabel="TI Resource Explorer" index="3"/>
+<item historyLabel="mutex.c" index="4">
 <position info="not_deleted" x="577" y="0"/>
 </item>
-<item historyLabel="mutex.c" index="5">
+<item historyLabel="mutex.c" index="4">
 <position info="not_deleted" x="577" y="0"/>
 </item>
-<item historyLabel="mutex.c" index="5">
+<item historyLabel="mutex.c" index="4">
 <position info="not_deleted" x="1134" y="0"/>
 </item>
-<item active="true" historyLabel="lm3s8962.cmd" index="6">
+<item historyLabel="lm3s8962.cmd" index="5">
+<position info="not_deleted" x="860" y="0"/>
+</item>
+<item historyLabel="mutex.cfg" index="6">
 <position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="main.c" index="7">
+<position info="not_deleted" x="1969" y="0"/>
+</item>
+<item historyLabel="uart.h" index="8">
+<position info="not_deleted" x="9526" y="0"/>
+</item>
+<item historyLabel="sd_card.c" index="9">
+<position info="not_deleted" x="24854" y="0"/>
+</item>
+<item historyLabel="cmdline.c" index="10">
+<position info="not_deleted" x="2873" y="0"/>
+</item>
+<item historyLabel="uartstdio.c" index="11">
+<position info="not_deleted" x="19682" y="0"/>
+</item>
+<item historyLabel="Hwi_stack.c" index="12">
+<position info="not_deleted" x="3681" y="0"/>
+</item>
+<item historyLabel="Idle.c" index="13">
+<position info="not_deleted" x="2166" y="0"/>
+</item>
+<item historyLabel="S01_1307.map" index="14">
+<position info="not_deleted" x="881" y="0"/>
+</item>
+<item historyLabel="ff.c" index="15">
+<position info="not_deleted" x="30116" y="0"/>
+</item>
+<item historyLabel="ff.h" index="16">
+<position info="not_deleted" x="4469" y="5"/>
+</item>
+<item historyLabel="Task.c" index="17">
+<position info="not_deleted" x="12461" y="0"/>
+</item>
+<item historyLabel="Mailbox.c" index="18">
+<position info="not_deleted" x="8305" y="0"/>
+</item>
+<item historyLabel="mutex.c" index="19">
+<position info="not_deleted" x="1134" y="0"/>
+</item>
+<item historyLabel="TI Resource Explorer" index="20"/>
+<item active="true" historyLabel="S01_1307.map" index="14">
+<position info="not_deleted" x="881" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>

@@ -36,18 +36,18 @@
 #define CMD55    (0x40+55)    /* APP_CMD */
 #define CMD58    (0x40+58)    /* READ_OCR */
 
-/* Peripheral definitions for EK-LM3S3748 board */
+/* Peripheral definitions for EastSoft S01_1307 board */
 // SSI port
-#define SDC_SSI_BASE            SSI0_BASE
-#define SDC_SSI_SYSCTL_PERIPH   SYSCTL_PERIPH_SSI0
+#define SDC_SSI_BASE            SSI2_BASE
+#define SDC_SSI_SYSCTL_PERIPH   SYSCTL_PERIPH_SSI2
 
 // GPIO for SSI pins
-#define SDC_GPIO_PORT_BASE      GPIO_PORTA_BASE
-#define SDC_GPIO_SYSCTL_PERIPH  SYSCTL_PERIPH_GPIOA
-#define SDC_SSI_CLK             GPIO_PIN_2
-#define SDC_SSI_TX              GPIO_PIN_5
-#define SDC_SSI_RX              GPIO_PIN_4
-#define SDC_SSI_FSS             GPIO_PIN_3
+#define SDC_GPIO_PORT_BASE      GPIO_PORTH_BASE
+#define SDC_GPIO_SYSCTL_PERIPH  SYSCTL_PERIPH_GPIOH
+#define SDC_SSI_CLK             GPIO_PIN_4
+#define SDC_SSI_TX              GPIO_PIN_7
+#define SDC_SSI_RX              GPIO_PIN_6
+#define SDC_SSI_FSS             GPIO_PIN_5
 #define SDC_SSI_PINS            (SDC_SSI_TX | SDC_SSI_RX | SDC_SSI_CLK |      \
                                  SDC_SSI_FSS)
 
@@ -208,7 +208,7 @@ void power_on (void)
     ROM_GPIOPadConfigSet(SDC_GPIO_PORT_BASE, SDC_SSI_CLK | SDC_SSI_TX | SDC_SSI_FSS,
                          GPIO_STRENGTH_4MA, GPIO_PIN_TYPE_STD);
 
-    /* Configure the SSI0 port */
+    /* Configure the SSI port */
     ROM_SSIConfigSetExpClk(SDC_SSI_BASE, ROM_SysCtlClockGet(),
                            SSI_FRF_MOTO_MODE_0, SSI_MODE_MASTER, 400000, 8);
     ROM_SSIEnable(SDC_SSI_BASE);
