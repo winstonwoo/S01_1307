@@ -8,16 +8,13 @@
 #include <xdc/std.h>
 
 #include <ti/sysbios/hal/Hwi.h>
-extern const ti_sysbios_hal_Hwi_Handle hwi_UART0_handle;
+extern const ti_sysbios_hal_Hwi_Handle hwi_UART7_handle;
 
 #include <ti/sysbios/knl/Swi.h>
-extern const ti_sysbios_knl_Swi_Handle swi_UART0_handle;
+extern const ti_sysbios_knl_Swi_Handle swi_UART7_handle;
 
 #include <ti/sysbios/knl/Task.h>
 extern const ti_sysbios_knl_Task_Handle tsk_GPRS_handle;
-
-#include <ti/sysbios/hal/Hwi.h>
-extern const ti_sysbios_hal_Hwi_Handle hwi_UART1_handle;
 
 #include <ti/sysbios/hal/Hwi.h>
 extern const ti_sysbios_hal_Hwi_Handle hwi_UART2_handle;
@@ -45,9 +42,6 @@ extern const ti_sysbios_hal_Hwi_Handle hwi_CAN1_handle;
 
 #include <ti/sysbios/hal/Hwi.h>
 extern const ti_sysbios_hal_Hwi_Handle hwi_GPIOBoot_handle;
-
-#include <ti/sysbios/knl/Swi.h>
-extern const ti_sysbios_knl_Swi_Handle swi_UART1_handle;
 
 #include <ti/sysbios/knl/Swi.h>
 extern const ti_sysbios_knl_Swi_Handle swi_UART2_handle;
