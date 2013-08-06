@@ -224,6 +224,7 @@ main.obj: J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/inc/hw
 main.obj: J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/inc/hw_memmap.h
 main.obj: J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/inc/hw_types.h
 main.obj: J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/inc/hw_gpio.h
+main.obj: J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/inc/hw_can.h
 main.obj: J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/driverlib/debug.h
 main.obj: J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/driverlib/fpu.h
 main.obj: J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/driverlib/gpio.h
@@ -233,6 +234,7 @@ main.obj: J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/driver
 main.obj: J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/driverlib/uart.h
 main.obj: J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/driverlib/rom.h
 main.obj: J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/driverlib/timer.h
+main.obj: J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/driverlib/can.h
 main.obj: ../uartstdio.h
 
 ../main.c: 
@@ -459,6 +461,7 @@ J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/inc/hw_ints.h:
 J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/inc/hw_memmap.h: 
 J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/inc/hw_types.h: 
 J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/inc/hw_gpio.h: 
+J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/inc/hw_can.h: 
 J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/driverlib/debug.h: 
 J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/driverlib/fpu.h: 
 J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/driverlib/gpio.h: 
@@ -468,4 +471,5 @@ J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/driverlib/sysctl
 J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/driverlib/uart.h: 
 J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/driverlib/rom.h: 
 J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/driverlib/timer.h: 
+J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/driverlib/can.h: 
 ../uartstdio.h: 

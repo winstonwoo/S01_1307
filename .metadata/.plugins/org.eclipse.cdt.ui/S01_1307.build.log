@@ -2,16 +2,11 @@
 **** Build of configuration Debug for project S01_1307 ****
 
 "C:\\ti\\ccsv5\\utils\\bin\\gmake" -k all 
-'Building file: ../main.c'
+'Building file: ../can.c'
 'Invoking: ARM Compiler'
-"C:/ti/ccsv5/tools/compiler/arm_5.0.1/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 --abi=eabi -me -g --include_path="C:/ti/ccsv5/tools/compiler/arm_5.0.1/include" --include_path="J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare" --include_path="/third_party" --define=TARGET_IS_BLIZZARD_RA1 --define=PART_LM4F232H5QD --define=ccs --diag_warning=225 --display_error_number --diag_wrap=off --preproc_with_compile --preproc_dependency="main.pp" --cmd_file="J:/WorkHouse2013/SW2013/S01_1307_VTDR_Stellaris/S01_Repository/S01_1307_configuration/Default/configPkg/compiler.opt"  "../main.c"
-"../main.c", line 53: warning #179-D: variable "ucMsg" was declared but never referenced
-"../main.c", line 54: warning #179-D: variable "i" was declared but never referenced
-"../main.c", line 93: warning #225-D: function declared implicitly
-"../main.c", line 174: warning #552-D: variable "lIntSts" was set but never used
-"../main.c", line 281: warning #179-D: variable "ucMsg" was declared but never referenced
-"../main.c", line 350: warning #225-D: function declared implicitly
-'Finished building: ../main.c'
+"C:/ti/ccsv5/tools/compiler/arm_5.0.1/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 --abi=eabi -me -g --include_path="C:/ti/ccsv5/tools/compiler/arm_5.0.1/include" --include_path="J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare" --include_path="/third_party" --define=TARGET_IS_BLIZZARD_RA1 --define=PART_LM4F232H5QD --define=ccs --diag_warning=225 --display_error_number --diag_wrap=off --preproc_with_compile --preproc_dependency="can.pp" --cmd_file="J:/WorkHouse2013/SW2013/S01_1307_VTDR_Stellaris/S01_Repository/S01_1307_configuration/Default/configPkg/compiler.opt"  "../can.c"
+"../can.c", line 100: warning #179-D: variable "ucCANData4" was declared but never referenced
+'Finished building: ../can.c'
 ' '
 'Building target: S01_1307.out'
 'Invoking: ARM Linker'

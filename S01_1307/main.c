@@ -18,6 +18,7 @@
 #include "inc/hw_memmap.h"
 #include "inc/hw_types.h"
 #include "inc/hw_gpio.h"
+#include "inc/hw_can.h"
 #include "driverlib/debug.h"
 #include "driverlib/fpu.h"
 #include "driverlib/gpio.h"
@@ -26,7 +27,9 @@
 #include "driverlib/uart.h"
 #include "driverlib/rom.h"
 #include "driverlib/timer.h"
+#include "driverlib/can.h"
 #include "uartstdio.h"
+
 
 
 extern Swi_Handle swi_UART7_handle ;
@@ -159,12 +162,261 @@ Void hwi_SPI2_fxn(UArg arg)
 
 Void hwi_CAN0_fxn(UArg arg)
 {
+	unsigned long ulStatus;
+
+		    //
+		    // Read the CAN interrupt status to find the cause of the interrupt
+		    //
+		    ulStatus = CANIntStatus(CAN0_BASE, CAN_INT_STS_CAUSE);
+
+		    //
+		    // If the cause is a controller status interrupt, then get the status
+		    //
+		    if(ulStatus == CAN_INT_INTID_STATUS)
+		    {
+		        //
+		        // Read the controller status.  This will return a field of status
+		        // error bits that can indicate various errors.  Error processing
+		        // is not done in this example for simplicity.  Refer to the
+		        // API documentation for details about the error status bits.
+		        // The act of reading this status will clear the interrupt.  If the
+		        // CAN peripheral is not connected to a CAN bus with other CAN devices
+		        // present, then errors will occur and will be indicated in the
+		        // controller status.
+		        //
+		        ulStatus = CANStatusGet(CAN0_BASE, CAN_STS_CONTROL);
+
+		        //
+		        // Set a flag to indicate some errors may have occurred.
+		        //
+		        //g_bErrFlag = 1;
+		    }
+
+		    //
+		    // Check if the cause is message object 1, which is used for sending
+		    // message 1.
+		    //
+		    else if(ulStatus == 1)
+		    {
+		        //
+		        // Getting to this point means that the TX interrupt occurred on
+		        // message object 1, and the message TX is complete.  Clear the
+		        // message object interrupt.
+		        //
+		        CANIntClear(CAN0_BASE, 1);
+
+		        //
+		        // Increment a counter to keep track of how many messages have been
+		        // sent.  In a real application this could be used to set flags to
+		        // indicate when a message is sent.
+		        //
+		        //g_ulMsg1Count++;
+
+		        //
+		        // Since the message was sent, clear any error flags.
+		        //
+		        //g_bErrFlag = 0;
+		    }
+
+		    //
+		    // Check if the cause is message object 2, which is used for sending
+		    // message 2.
+		    //
+		    else if(ulStatus == 2)
+		    {
+		        //
+		        // Getting to this point means that the TX interrupt occurred on
+		        // message object 2, and the message TX is complete.  Clear the
+		        // message object interrupt.
+		        //
+		        CANIntClear(CAN0_BASE, 3);
+
+		        //
+		        // Increment a counter to keep track of how many messages have been
+		        // sent.  In a real application this could be used to set flags to
+		        // indicate when a message is sent.
+		        //
+		       // g_ulMsg2Count++;
+
+		        //
+		        // Since the message was sent, clear any error flags.
+		        //
+		        //g_bErrFlag = 0;
+		    }
+
+		    //
+		    // Check if the cause is message object 3, which is used for sending
+		    // messages 3 and 4.
+		    //
+		    else if(ulStatus == 3)
+		    {
+		        //
+		        // Getting to this point means that the TX interrupt occurred on
+		        // message object , and a message TX is complete.  Clear the
+		        // message object interrupt.
+		        //
+		        CANIntClear(CAN0_BASE, 2);
+
+		        //
+		        // Increment a counter to keep track of how many messages have been
+		        // sent.  In a real application this could be used to set flags to
+		        // indicate when a message is sent.
+		        //
+		        //g_ulMsg3Count++;
+
+		        //
+		        // Set the flag indicating that a message was sent using message
+		        // object 3.  The program main loop uses this to know when to send
+		        // another message using message object 3.
+		        //g_bMsgObj3Sent = 1;
+
+		        //
+		        // Since the message was sent, clear any error flags.
+		        //
+		        //g_bErrFlag = 0;
+		    }
+
+		    //
+		    // Otherwise, something unexpected caused the interrupt.  This should
+		    // never happen.
+		    //
+		    else
+		    {
+		        //
+		        // Spurious interrupt handling can go here.
+		        //
+		    }
 	Swi_post(swi_CAN0_handle) ;
 }
 
 
 Void hwi_CAN1_fxn(UArg arg)
 {
+	  unsigned long ulStatus;
+
+	    //
+	    // Read the CAN interrupt status to find the cause of the interrupt
+	    //
+	    ulStatus = CANIntStatus(CAN1_BASE, CAN_INT_STS_CAUSE);
+
+	    //
+	    // If the cause is a controller status interrupt, then get the status
+	    //
+	    if(ulStatus == CAN_INT_INTID_STATUS)
+	    {
+	        //
+	        // Read the controller status.  This will return a field of status
+	        // error bits that can indicate various errors.  Error processing
+	        // is not done in this example for simplicity.  Refer to the
+	        // API documentation for details about the error status bits.
+	        // The act of reading this status will clear the interrupt.  If the
+	        // CAN peripheral is not connected to a CAN bus with other CAN devices
+	        // present, then errors will occur and will be indicated in the
+	        // controller status.
+	        //
+	        ulStatus = CANStatusGet(CAN1_BASE, CAN_STS_CONTROL);
+
+	        //
+	        // Set a flag to indicate some errors may have occurred.
+	        //
+	        //g_bErrFlag = 1;
+	    }
+
+	    //
+	    // Check if the cause is message object 1, which is used for sending
+	    // message 1.
+	    //
+	    else if(ulStatus == 1)
+	    {
+	        //
+	        // Getting to this point means that the TX interrupt occurred on
+	        // message object 1, and the message TX is complete.  Clear the
+	        // message object interrupt.
+	        //
+	        CANIntClear(CAN1_BASE, 1);
+
+	        //
+	        // Increment a counter to keep track of how many messages have been
+	        // sent.  In a real application this could be used to set flags to
+	        // indicate when a message is sent.
+	        //
+	        //g_ulMsg1Count++;
+
+	        //
+	        // Since the message was sent, clear any error flags.
+	        //
+	        //g_bErrFlag = 0;
+	    }
+
+	    //
+	    // Check if the cause is message object 2, which is used for sending
+	    // message 2.
+	    //
+	    else if(ulStatus == 2)
+	    {
+	        //
+	        // Getting to this point means that the TX interrupt occurred on
+	        // message object 2, and the message TX is complete.  Clear the
+	        // message object interrupt.
+	        //
+	        CANIntClear(CAN1_BASE, 3);
+
+	        //
+	        // Increment a counter to keep track of how many messages have been
+	        // sent.  In a real application this could be used to set flags to
+	        // indicate when a message is sent.
+	        //
+	       // g_ulMsg2Count++;
+
+	        //
+	        // Since the message was sent, clear any error flags.
+	        //
+	        //g_bErrFlag = 0;
+	    }
+
+	    //
+	    // Check if the cause is message object 3, which is used for sending
+	    // messages 3 and 4.
+	    //
+	    else if(ulStatus == 3)
+	    {
+	        //
+	        // Getting to this point means that the TX interrupt occurred on
+	        // message object , and a message TX is complete.  Clear the
+	        // message object interrupt.
+	        //
+	        CANIntClear(CAN1_BASE, 2);
+
+	        //
+	        // Increment a counter to keep track of how many messages have been
+	        // sent.  In a real application this could be used to set flags to
+	        // indicate when a message is sent.
+	        //
+	        //g_ulMsg3Count++;
+
+	        //
+	        // Set the flag indicating that a message was sent using message
+	        // object 3.  The program main loop uses this to know when to send
+	        // another message using message object 3.
+	        //g_bMsgObj3Sent = 1;
+
+	        //
+	        // Since the message was sent, clear any error flags.
+	        //
+	        //g_bErrFlag = 0;
+	    }
+
+	    //
+	    // Otherwise, something unexpected caused the interrupt.  This should
+	    // never happen.
+	    //
+	    else
+	    {
+	        //
+	        // Spurious interrupt handling can go here.
+	        //
+	    }
+
 	Swi_post(swi_CAN1_handle) ;
 }
 
@@ -386,12 +638,8 @@ Void tsk_CAN2_fxn(UArg arg0, UArg arg1)
 Void tsk_CAN1_fxn(UArg arg0, UArg arg1)
 {
 
-	for(;;)
-	{
-		System_printf("tsk_CAN1_fxn \n") ;
-		Task_sleep(3000) ;
-	}
-
+   UARTprintf( " tsk_can entered \n" ) ;
+   tsk_can() ;
 }
 
 
@@ -600,6 +848,9 @@ Void init_sys()
 	//UART1 initialization
 
 	init_sdcard() ;
+
+	//CAN initialization
+	init_can() ;
 
 
 
