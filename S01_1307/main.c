@@ -17,6 +17,7 @@
 #include "inc/hw_ints.h"
 #include "inc/hw_memmap.h"
 #include "inc/hw_types.h"
+#include "inc/hw_gpio.h"
 #include "driverlib/debug.h"
 #include "driverlib/fpu.h"
 #include "driverlib/gpio.h"
@@ -25,6 +26,7 @@
 #include "driverlib/uart.h"
 #include "driverlib/rom.h"
 #include "driverlib/timer.h"
+#include "uartstdio.h"
 
 
 extern Swi_Handle swi_UART0_handle ;
@@ -403,6 +405,55 @@ Void init_gpio()
 /**/
 Void init_uart()
 {
+#if 1
+    	ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOD);
+    	//UART2 initialization with 115200, 8, N, 1
+        //
+        // Enable the peripherals used by this example.
+        //
+//
+		// Change PD7 into hardware (NMI) pins.  First open the
+		// lock and select the bits we want to modify in the GPIO commit
+		// register.
+		//
+		HWREG(GPIO_PORTD_BASE + GPIO_O_LOCK) = GPIO_LOCK_KEY_DD;
+		HWREG(GPIO_PORTD_BASE + GPIO_O_CR) = 0xC0;
+
+		//
+		// Now modify the configuration of the pins that we unlocked.
+		//
+	        //
+        // Set GPIO D6 and D7 as UART2 pins.
+        GPIOPinConfigure( GPIO_PD6_U2RX ) ;
+        GPIOPinConfigure( GPIO_PD7_U2TX ) ;
+        GPIOPinTypeUART(GPIO_PORTD_BASE, GPIO_PIN_6 | GPIO_PIN_7);
+
+        ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_UART2);
+
+        //
+
+        /*
+        ROM_UARTConfigSetExpClk(UART2_BASE, ROM_SysCtlClockGet(), 115200,
+                                (UART_CONFIG_WLEN_8 | UART_CONFIG_STOP_ONE |
+                                 UART_CONFIG_PAR_NONE));
+                                 */
+
+        UARTStdioInit(2) ;
+
+		// Finally, clear the commit register and the lock to prevent
+		// the pin configuration from being changed accidentally later.
+		// Note that the lock is closed whenever we write to the GPIO_O_CR
+		// register so we need to reopen it here.
+		//
+		HWREG(GPIO_PORTD_BASE + GPIO_O_LOCK) = GPIO_LOCK_KEY_DD;
+		HWREG(GPIO_PORTD_BASE + GPIO_O_CR) = 0x00;
+		HWREG(GPIO_PORTD_BASE + GPIO_O_LOCK) = 0;
+
+        //
+        // Enable the UART interrupt.
+        //
+        ROM_IntEnable(INT_UART2);
+        ROM_UARTIntEnable(UART2_BASE, UART_INT_RX | UART_INT_RT);
 #if 0
      //UART2 initialization with 115200, 8, N, 1
      //
@@ -434,6 +485,7 @@ Void init_uart()
      //
      ROM_IntEnable(INT_UART2);
      ROM_UARTIntEnable(UART2_BASE, UART_INT_RX | UART_INT_RT);
+#endif
 #else
 
      //UART2 initialization with 115200, 8, N, 1
@@ -549,7 +601,7 @@ UARTSend(const unsigned char *pucBuffer, unsigned long ulCount)
         //
         // Write the next character to the UART.
         //
-        ROM_UARTCharPutNonBlocking(UART3_BASE, *pucBuffer++);
+        ROM_UARTCharPutNonBlocking(UART2_BASE, *pucBuffer++);
     }
 }
 
@@ -574,7 +626,7 @@ Void main()
     //UARTSend((unsigned char *)"Enter text: ", 12);
     for( ;; )
 {
-    	  UARTSend((unsigned char *)"Enter text: ", 12);
+    	  UARTprintf("hello \n") ;
 }
 
     task = Task_create(taskFxn, NULL, &eb);

@@ -5,11 +5,11 @@
 'Building file: ../main.c'
 'Invoking: ARM Compiler'
 "C:/ti/ccsv5/tools/compiler/arm_5.0.1/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 --abi=eabi -me -g --include_path="C:/ti/ccsv5/tools/compiler/arm_5.0.1/include" --include_path="J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare" --include_path="/third_party" --define=TARGET_IS_BLIZZARD_RA1 --define=PART_LM4F232H5QD --define=ccs --diag_warning=225 --display_error_number --diag_wrap=off --preproc_with_compile --preproc_dependency="main.pp" --cmd_file="J:/WorkHouse2013/SW2013/S01_1307_VTDR_Stellaris/S01_Repository/S01_1307_configuration/Default/configPkg/compiler.opt"  "../main.c"
-"../main.c", line 79: warning #225-D: function declared implicitly
-"../main.c", line 145: warning #552-D: variable "lIntSts" was set but never used
-"../main.c", line 257: warning #179-D: variable "ucMsg" was declared but never referenced
-"../main.c", line 325: warning #225-D: function declared implicitly
-"../main.c", line 580: warning #112-D: statement is unreachable
+"../main.c", line 81: warning #225-D: function declared implicitly
+"../main.c", line 147: warning #552-D: variable "lIntSts" was set but never used
+"../main.c", line 259: warning #179-D: variable "ucMsg" was declared but never referenced
+"../main.c", line 327: warning #225-D: function declared implicitly
+"../main.c", line 632: warning #112-D: statement is unreachable
 'Finished building: ../main.c'
 ' '
 'Building target: S01_1307.out'
