@@ -71,11 +71,13 @@ Void hwi_UART2_fxn(UArg arg)
      //
      // Get the interrrupt status.
      //
+
      ulStatus = ROM_UARTIntStatus(UART2_BASE, true);
 
      //
      // Clear the asserted interrupts.
      //
+
      ROM_UARTIntClear(UART2_BASE, ulStatus);
 
      memset(ucMsg, 0x0, sizeof(ucMsg)) ;
@@ -534,10 +536,16 @@ Void cfg_interrupt()
 
 Void init_sdcard()
 {
-#if 0
+#if 1
      //Adopt PH4,5,6,7 for SSI2 as SDCARD signals
 
      ROM_SysCtlPeripheralEnable( SYSCTL_PERIPH_GPIOH ) ;
+
+     ROM_GPIOPinConfigure(GPIO_PH4_SSI2CLK) ;
+     ROM_GPIOPinConfigure(GPIO_PH5_SSI2FSS) ;
+     ROM_GPIOPinConfigure(GPIO_PH6_SSI2RX) ;
+     ROM_GPIOPinConfigure(GPIO_PH7_SSI2TX) ;
+
      ROM_GPIOPinTypeSSI( GPIO_PORTH_BASE, GPIO_PIN_4 | GPIO_PIN_5 | GPIO_PIN_6 | GPIO_PIN_7  ) ;
 
      ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_SSI2);
@@ -624,10 +632,6 @@ Void main()
     // Prompt for text to be entered.
     //
     //UARTSend((unsigned char *)"Enter text: ", 12);
-    for( ;; )
-{
-    	  UARTprintf("hello \n") ;
-}
 
     task = Task_create(taskFxn, NULL, &eb);
     if (task == NULL) {

@@ -1,4 +1,4 @@
-cscope 15 j:\WorkHouse2013\SW2013\S01_1307_VTDR_Stellaris\S01_Repository\S01_1307               0000082878
+cscope 15 j:\WorkHouse2013\SW2013\S01_1307_VTDR_Stellaris\S01_Repository\S01_1307               0000084127
 	@can.c
 
 3 
@@ -9716,110 +9716,118 @@ _INTEGER
 "
 
 20 
-	~"drivîlib/debug.h
+	~"öc/hw_gpio.h
 "
 
 21 
-	~"drivîlib/Âu.h
+	~"drivîlib/debug.h
 "
 
 22 
-	~"drivîlib/gpio.h
+	~"drivîlib/Âu.h
 "
 
 23 
-	~"drivîlib/öãºu±.h
+	~"drivîlib/gpio.h
 "
 
 24 
-	~"drivîlib/sys˘l.h
+	~"drivîlib/öãºu±.h
 "
 
 25 
-	~"drivîlib/u¨t.h
+	~"drivîlib/sys˘l.h
 "
 
 26 
-	~"drivîlib/rom.h
+	~"drivîlib/u¨t.h
 "
 
 27 
+	~"drivîlib/rom.h
+"
+
+28 
 	~"drivîlib/timî.h
 "
 
-30 
+29 
+	~"u¨t°dio.h
+"
+
+32 
 Swi_H™dÀ
  
 swi_UART0_h™dÀ
  ;
 
-31 
+33 
 Swi_H™dÀ
  
 swi_UART1_h™dÀ
  ;
 
-32 
+34 
 Swi_H™dÀ
  
 swi_UART2_h™dÀ
  ;
 
-33 
+35 
 Swi_H™dÀ
  
 swi_UART3_h™dÀ
  ;
 
-34 
+36 
 Swi_H™dÀ
  
 swi_I2C1_h™dÀ
  ;
 
-35 
+37 
 Swi_H™dÀ
  
 swi_SPI0_h™dÀ
  ;
 
-36 
+38 
 Swi_H™dÀ
  
 swi_SPI1_h™dÀ
  ;
 
-37 
+39 
 Swi_H™dÀ
  
 swi_SPI2_h™dÀ
  ;
 
-38 
+40 
 Swi_H™dÀ
  
 swi_CAN0_h™dÀ
  ;
 
-39 
+41 
 Swi_H™dÀ
  
 swi_CAN1_h™dÀ
  ;
 
-40 
+42 
 Swi_H™dÀ
  
 swi_GPIOBoŸ_h™dÀ
  ;
 
-42 
+44 
 Maûbox_H™dÀ
  
 Mb_u¨t2_h™dÀ
  ;
 
-45 
+47 
 UARTSíd
 (c⁄° *
 pucBuf„r
@@ -9827,7 +9835,7 @@ pucBuf„r
 ulCou¡
 ) ;
 
-49 
+51 
 Void
  
 	$hwi_UART0_fxn
@@ -9837,17 +9845,17 @@ UArg
 ¨g
 )
 
-51 
+53 
 	`Swi_po°
 (
 swi_UART0_h™dÀ
 ) ;
 
-53 
+55 
 	}
 }
 
-57 
+59 
 Void
  
 	$hwi_UART1_fxn
@@ -9857,17 +9865,17 @@ UArg
 ¨g
 )
 
-59 
+61 
 	`Swi_po°
 (
 swi_UART1_h™dÀ
 ) ;
 
-60 
+62 
 	}
 }
 
-63 
+65 
 Void
  
 	$hwi_UART2_fxn
@@ -9877,19 +9885,19 @@ UArg
 ¨g
 )
 
-65 
+67 
 ulSètus
 ;
 
-66 
+68 
 ucMsg
 [8] ;
 
-67 
+69 
 i
  = 0 ;
 
-72 
+75 
 ulSètus
  = 
 	`ROM_UARTI¡Sètus
@@ -9899,7 +9907,7 @@ UART2_BASE
 åue
 );
 
-77 
+81 
 	`ROM_UARTI¡CÀ¨
 (
 UART2_BASE
@@ -9907,19 +9915,19 @@ UART2_BASE
 ulSètus
 );
 
-79 
+83 
 	`mem£t
 (
 ucMsg
 , 0x0, (ucMsg)) ;
 
-83 
+87 
 	`ROM_UARTCh¨sAvaû
 (
 UART2_BASE
 ))
 
-90 
+94 
 ucMsg
 [
 i
@@ -9929,11 +9937,11 @@ i
 UART2_BASE
 ) ;
 
-91 i‡(
+95 i‡(
 i
 >=8)  ;
 
-95 
+99 
 	`Maûbox_po°
 (
 Mb_u¨t2_h™dÀ
@@ -9943,17 +9951,17 @@ ucMsg
 BIOS_NO_WAIT
 ) ;
 
-98 
+102 
 	`Swi_po°
 (
 swi_UART2_h™dÀ
 ) ;
 
-99 
+103 
 	}
 }
 
-102 
+106 
 Void
  
 	$hwi_UART3_fxn
@@ -9963,17 +9971,17 @@ UArg
 ¨g
 )
 
-104 
+108 
 	`Swi_po°
 (
 swi_UART3_h™dÀ
 ) ;
 
-105 
+109 
 	}
 }
 
-108 
+112 
 Void
  
 	$hwi_I2C1_fxn
@@ -9983,17 +9991,17 @@ UArg
 ¨g
 )
 
-110 
+114 
 	`Swi_po°
 (
 swi_I2C1_h™dÀ
 ) ;
 
-111 
+115 
 	}
 }
 
-113 
+117 
 Void
  
 	$hwi_SPI0_fxn
@@ -10003,17 +10011,17 @@ UArg
 ¨g
 )
 
-115 
+119 
 	`Swi_po°
 (
 swi_SPI0_h™dÀ
 ) ;
 
-116 
+120 
 	}
 }
 
-119 
+123 
 Void
  
 	$hwi_SPI1_fxn
@@ -10023,17 +10031,17 @@ UArg
 ¨g
 )
 
-121 
+125 
 	`Swi_po°
 (
 swi_SPI1_h™dÀ
 ) ;
 
-122 
+126 
 	}
 }
 
-125 
+129 
 Void
  
 	$hwi_SPI2_fxn
@@ -10043,17 +10051,17 @@ UArg
 ¨g
 )
 
-127 
+131 
 	`Swi_po°
 (
 swi_SPI2_h™dÀ
 ) ;
 
-128 
+132 
 	}
 }
 
-131 
+135 
 Void
  
 	$hwi_CAN0_fxn
@@ -10063,17 +10071,17 @@ UArg
 ¨g
 )
 
-133 
+137 
 	`Swi_po°
 (
 swi_CAN0_h™dÀ
 ) ;
 
-134 
+138 
 	}
 }
 
-137 
+141 
 Void
  
 	$hwi_CAN1_fxn
@@ -10083,17 +10091,17 @@ UArg
 ¨g
 )
 
-139 
+143 
 	`Swi_po°
 (
 swi_CAN1_h™dÀ
 ) ;
 
-140 
+144 
 	}
 }
 
-143 
+147 
 Void
  
 	$hwi_GPIOBoŸ_fxn
@@ -10103,11 +10111,11 @@ UArg
 ¨g
 )
 
-145 
+149 
 lI¡Sts
  ;
 
-148 
+152 
 lI¡Sts
  = 
 	`ROM_GPIOPöI¡Sètus
@@ -10117,7 +10125,7 @@ GPIO_PORTM_BASE
 Ál£
 ) ;
 
-153 
+157 
 	`ROM_GPIOPöI¡CÀ¨
 (
 GPIO_PORTM_BASE
@@ -10125,21 +10133,21 @@ GPIO_PORTM_BASE
 GPIO_PIN_4
 );
 
-157 
+161 
 	`Swi_po°
 (
 swi_GPIOBoŸ_h™dÀ
 ) ;
 
-158 
+162 
 	}
 }
 
-168 
+172 
 	$hwi_TIMER2_fxn
 ()
 
-173 
+177 
 	`ROM_TimîI¡CÀ¨
 (
 TIMER2_BASE
@@ -10147,11 +10155,11 @@ TIMER2_BASE
 TIMER_TIMA_TIMEOUT
 );
 
-184 
+188 
 	}
 }
 
-188 
+192 
 Void
  
 	$swi_UART0_fxn
@@ -10163,11 +10171,11 @@ UArg
 ¨g1
 )
 
-192 
+196 
 	}
 }
 
-194 
+198 
 Void
  
 	$swi_UART1_fxn
@@ -10179,11 +10187,11 @@ UArg
 ¨g1
 )
 
-198 
+202 
 	}
 }
 
-200 
+204 
 Void
  
 	$swi_UART2_fxn
@@ -10195,11 +10203,11 @@ UArg
 ¨g1
 )
 
-204 
+208 
 	}
 }
 
-206 
+210 
 Void
  
 	$swi_UART3_fxn
@@ -10211,11 +10219,11 @@ UArg
 ¨g1
 )
 
-210 
+214 
 	}
 }
 
-212 
+216 
 Void
  
 	$swi_I2C1_fxn
@@ -10227,11 +10235,11 @@ UArg
 ¨g1
 )
 
-216 
+220 
 	}
 }
 
-218 
+222 
 Void
  
 	$swi_SPI0_fxn
@@ -10243,11 +10251,11 @@ UArg
 ¨g1
 )
 
-222 
+226 
 	}
 }
 
-224 
+228 
 Void
  
 	$swi_SPI1_fxn
@@ -10259,11 +10267,11 @@ UArg
 ¨g1
 )
 
-228 
+232 
 	}
 }
 
-230 
+234 
 Void
  
 	$swi_SPI2_fxn
@@ -10275,11 +10283,11 @@ UArg
 ¨g1
 )
 
-234 
+238 
 	}
 }
 
-236 
+240 
 Void
  
 	$swi_CAN0_fxn
@@ -10291,11 +10299,11 @@ UArg
 ¨g1
 )
 
-240 
+244 
 	}
 }
 
-242 
+246 
 Void
  
 	$swi_CAN1_fxn
@@ -10307,11 +10315,11 @@ UArg
 ¨g1
 )
 
-246 
+250 
 	}
 }
 
-248 
+252 
 Void
  
 	$swi_GPIOBoŸ_fxn
@@ -10323,11 +10331,11 @@ UArg
 ¨g1
 )
 
-252 
+256 
 	}
 }
 
-255 
+259 
 Void
  
 	$tsk_m™age_fxn
@@ -10339,19 +10347,19 @@ UArg
 ¨g1
 )
 
-257 
+261 
 ucMsg
 [20] ;
 
-263 
+267 
 	`Task_¶ìp
 (1000) ;
 
-266 
+270 
 	}
 }
 
-268 
+272 
 Void
  
 	$tsk_boŸlﬂdî_fxn
@@ -10363,19 +10371,19 @@ UArg
 ¨g1
 )
 
-272 
+276 
 	`Sy°em_¥ötf
 ("tsk_bootloader_fxn \n") ;
 
-273 
+277 
 	`Task_¶ìp
 (2000) ;
 
-276 
+280 
 	}
 }
 
-278 
+282 
 Void
  
 	$tsk_dügnosis_fxn
@@ -10387,19 +10395,19 @@ UArg
 ¨g1
 )
 
-282 
+286 
 	`Sy°em_¥ötf
 ("tsk_diagnosis_fxn \n") ;
 
-283 
+287 
 	`Task_¶ìp
 (3000) ;
 
-286 
+290 
 	}
 }
 
-288 
+292 
 Void
  
 	$tsk_GPRS_fxn
@@ -10411,19 +10419,19 @@ UArg
 ¨g1
 )
 
-293 
+297 
 	`Sy°em_¥ötf
 ("tsk_GPRS_fxn \n") ;
 
-294 
+298 
 	`Task_¶ìp
 (3000) ;
 
-297 
+301 
 	}
 }
 
-299 
+303 
 Void
  
 	$tsk_GPS_fxn
@@ -10435,19 +10443,19 @@ UArg
 ¨g1
 )
 
-303 
+307 
 	`Sy°em_¥ötf
 ("tsk_GPS_fxn \n") ;
 
-304 
+308 
 	`Task_¶ìp
 (3000) ;
 
-307 
+311 
 	}
 }
 
-310 
+314 
 Void
  
 	$tsk_b©ãry_fxn
@@ -10459,19 +10467,19 @@ UArg
 ¨g1
 )
 
-314 
+318 
 	`Sy°em_¥ötf
 ("tsk_battery_fxn \n") ;
 
-315 
+319 
 	`Task_¶ìp
 (3000) ;
 
-318 
+322 
 	}
 }
 
-320 
+324 
 Void
  
 	$tsk_FS_fxn
@@ -10483,23 +10491,23 @@ UArg
 ¨g1
 )
 
-324 
+328 
 	`Sy°em_¥ötf
 ("tsk_FS_fxn \n") ;
 
-325 
+329 
 	`sdˇrd_maö
 () ;
 
-326 
+330 
 	`Task_¶ìp
 (3000) ;
 
-329 
+333 
 	}
 }
 
-331 
+335 
 Void
  
 	$tsk_CAN3_fxn
@@ -10511,15 +10519,15 @@ UArg
 ¨g1
 )
 
-337 
+341 
 	`Task_¶ìp
 (3000) ;
 
-339 
+343 
 	}
 }
 
-341 
+345 
 Void
  
 	$tsk_CAN4_fxn
@@ -10531,15 +10539,15 @@ UArg
 ¨g1
 )
 
-346 
+350 
 	`Task_¶ìp
 (3000) ;
 
-349 
+353 
 	}
 }
 
-351 
+355 
 Void
  
 	$tsk_CAN2_fxn
@@ -10551,15 +10559,15 @@ UArg
 ¨g1
 )
 
-356 
+360 
 	`Task_¶ìp
 (3000) ;
 
-359 
+363 
 	}
 }
 
-361 
+365 
 Void
  
 	$tsk_CAN1_fxn
@@ -10571,19 +10579,19 @@ UArg
 ¨g1
 )
 
-366 
+370 
 	`Sy°em_¥ötf
 ("tsk_CAN1_fxn \n") ;
 
-367 
+371 
 	`Task_¶ìp
 (3000) ;
 
-370 
+374 
 	}
 }
 
-376 
+380 
 Void
  
 	$èskFxn
@@ -10595,27 +10603,27 @@ a0
 a1
 )
 
-380 
+384 
 	`Task_¶ìp
 (1000);
 
-383 
+387 
 	}
 }
 
-386 
+390 
 Void
  
 	$öô_gpio
 ()
 
-389 
+393 
 	`ROM_SysCéPîùhîÆE«bÀ
 (
 SYSCTL_PERIPH_GPIOM
 );
 
-391 
+395 
 	`ROM_GPIOPöTy≥GPIOI≈ut
 (
 GPIO_PORTM_BASE
@@ -10623,7 +10631,7 @@ GPIO_PORTM_BASE
 GPIO_PIN_4
 ) ;
 
-392 
+396 
 	`ROM_GPIOPadC⁄figSë
 (
 GPIO_PORTM_BASE
@@ -10635,7 +10643,7 @@ GPIO_STRENGTH_2MA
 GPIO_PIN_TYPE_STD_WPU
 ) ;
 
-393 
+397 
 	`ROM_GPIOI¡Ty≥Së
 (
 GPIO_PORTM_BASE
@@ -10645,13 +10653,13 @@ GPIO_PIN_4
 GPIO_FALLING_EDGE
 ) ;
 
-397 
+401 
 	`ROM_SysCéPîùhîÆE«bÀ
 (
 SYSCTL_PERIPH_GPIOH
 ) ;
 
-398 
+402 
 	`ROM_GPIOPöTy≥GPIOOuçut
 (
 GPIO_PORTH_BASE
@@ -10659,7 +10667,7 @@ GPIO_PORTH_BASE
 GPIO_PIN_2
 ) ;
 
-399 
+403 
 	`ROM_GPIOPöWrôe
 (
 GPIO_PORTH_BASE
@@ -10667,30 +10675,54 @@ GPIO_PORTH_BASE
 GPIO_PIN_2
 , GPIO_PIN_2) ;
 
-401 
+405 
 	}
 }
 
-404 
+408 
 Void
  
 	$öô_u¨t
 ()
 
-410 
+411 
 	`ROM_SysCéPîùhîÆE«bÀ
 (
 SYSCTL_PERIPH_GPIOD
 );
 
-411 
-	`ROM_SysCéPîùhîÆE«bÀ
+421 
+	`HWREG
 (
-SYSCTL_PERIPH_UART2
-);
+GPIO_PORTD_BASE
+ + 
+GPIO_O_LOCK
+Ë
+GPIO_LOCK_KEY_DD
+;
 
-416 
-	`ROM_GPIOPöTy≥UART
+422 
+	`HWREG
+(
+GPIO_PORTD_BASE
+ + 
+GPIO_O_CR
+) = 0xC0;
+
+429 
+	`GPIOPöC⁄figuª
+–
+GPIO_PD6_U2RX
+ ) ;
+
+430 
+	`GPIOPöC⁄figuª
+–
+GPIO_PD7_U2TX
+ ) ;
+
+431 
+	`GPIOPöTy≥UART
 (
 GPIO_PORTD_BASE
 , 
@@ -10699,35 +10731,49 @@ GPIO_PIN_6
 GPIO_PIN_7
 );
 
-422 
-	`ROM_UARTC⁄figSëExpClk
+433 
+	`ROM_SysCéPîùhîÆE«bÀ
 (
-UART0_BASE
-, 
-	`ROM_SysCéClockGë
-(), 115200,
+SYSCTL_PERIPH_UART2
+);
 
-423 (
-UART_CONFIG_WLEN_8
- | 
-UART_CONFIG_STOP_ONE
- |
-
-424 
-UART_CONFIG_PAR_NONE
-));
-
-430 
+443 
 	`UARTStdioInô
-(2);
+(2) ;
 
-436 
+450 
+	`HWREG
+(
+GPIO_PORTD_BASE
+ + 
+GPIO_O_LOCK
+Ë
+GPIO_LOCK_KEY_DD
+;
+
+451 
+	`HWREG
+(
+GPIO_PORTD_BASE
+ + 
+GPIO_O_CR
+) = 0x00;
+
+452 
+	`HWREG
+(
+GPIO_PORTD_BASE
+ + 
+GPIO_O_LOCK
+) = 0;
+
+457 
 	`ROM_I¡E«bÀ
 (
 INT_UART2
 );
 
-437 
+458 
 	`ROM_UARTI¡E«bÀ
 (
 UART2_BASE
@@ -10737,21 +10783,151 @@ UART_INT_RX
 UART_INT_RT
 );
 
-439 
+464 
+	`ROM_SysCéPîùhîÆE«bÀ
+(
+SYSCTL_PERIPH_GPIOD
+);
+
+465 
+	`ROM_SysCéPîùhîÆE«bÀ
+(
+SYSCTL_PERIPH_UART2
+);
+
+472 
+	`GPIOPöC⁄figuª
+–
+GPIO_PD6_U2RX
+ ) ;
+
+473 
+	`GPIOPöC⁄figuª
+–
+GPIO_PD7_U2TX
+ ) ;
+
+474 
+	`HWREG
+( 0x40007000 + 0x420) |= 0xc0 ;
+
+475 
+	`HWREG
+( 0x40007000 + 0x51c) |= 0xc0 ;
+
+476 
+	`GPIOPöTy≥UART
+(
+GPIO_PORTD_BASE
+, 
+GPIO_PIN_6
+ | 
+GPIO_PIN_7
+);
+
+482 
+	`UARTStdioInô
+(2);
+
+488 
+	`ROM_I¡E«bÀ
+(
+INT_UART2
+);
+
+489 
+	`ROM_UARTI¡E«bÀ
+(
+UART2_BASE
+, 
+UART_INT_RX
+ | 
+UART_INT_RT
+);
+
+497 
+	`ROM_SysCéPîùhîÆE«bÀ
+(
+SYSCTL_PERIPH_GPIOC
+);
+
+498 
+	`ROM_SysCéPîùhîÆE«bÀ
+(
+SYSCTL_PERIPH_UART3
+);
+
+502 
+	`GPIOPöC⁄figuª
+–
+GPIO_PC6_U3RX
+ ) ;
+
+503 
+	`GPIOPöC⁄figuª
+–
+GPIO_PC7_U3TX
+ ) ;
+
+504 
+	`GPIOPöTy≥UART
+(
+GPIO_PORTC_BASE
+, 
+GPIO_PIN_6
+ | 
+GPIO_PIN_7
+);
+
+507 
+	`ROM_UARTC⁄figSëExpClk
+(
+UART3_BASE
+, 
+	`ROM_SysCéClockGë
+(), 115200,
+
+508 (
+UART_CONFIG_WLEN_8
+ | 
+UART_CONFIG_STOP_ONE
+ |
+
+509 
+UART_CONFIG_PAR_NONE
+));
+
+514 
+	`ROM_I¡E«bÀ
+(
+INT_UART3
+);
+
+515 
+	`ROM_UARTI¡E«bÀ
+(
+UART3_BASE
+, 
+UART_INT_RX
+ | 
+UART_INT_RT
+);
+
+520 
 	}
 }
 
-441 
+522 
 Void
  
 	$cfg_öãºu±
 ()
 
-447 
+528 
 	`ROM_I¡Ma°îE«bÀ
 ();
 
-451 
+532 
 	`ROM_GPIOPöI¡E«bÀ
 (
 GPIO_PORTM_BASE
@@ -10759,37 +10935,23 @@ GPIO_PORTM_BASE
 GPIO_PIN_4
 ) ;
 
-457 
-	`ROM_I¡E«bÀ
-(
-INT_TIMER2A
-);
-
-458 
-	`ROM_TimîI¡E«bÀ
-(
-TIMER2_BASE
-, 
-TIMER_TIMA_TIMEOUT
-);
-
-459 
+535 
 	}
 }
 
-461 
+537 
 Void
  
 	$öô_sdˇrd
 ()
 
-466 
+542 
 	`ROM_SysCéPîùhîÆE«bÀ
 –
 SYSCTL_PERIPH_GPIOH
  ) ;
 
-467 
+543 
 	`ROM_GPIOPöTy≥SSI
 –
 GPIO_PORTH_BASE
@@ -10803,19 +10965,19 @@ GPIO_PIN_6
 GPIO_PIN_7
  ) ;
 
-469 
+545 
 	`ROM_SysCéPîùhîÆE«bÀ
 (
 SYSCTL_PERIPH_SSI2
 );
 
-470 
+548 
 	`ROM_SysCéPîùhîÆE«bÀ
 (
 SYSCTL_PERIPH_TIMER2
 );
 
-474 
+552 
 	`ROM_TimîC⁄figuª
 (
 TIMER2_BASE
@@ -10823,7 +10985,7 @@ TIMER2_BASE
 TIMER_CFG_PERIODIC
 );
 
-475 
+553 
 	`ROM_TimîLﬂdSë
 (
 TIMER2_BASE
@@ -10833,7 +10995,21 @@ TIMER_A
 	`ROM_SysCéClockGë
 ()/100);
 
-480 
+559 
+	`ROM_I¡E«bÀ
+(
+INT_TIMER2A
+);
+
+560 
+	`ROM_TimîI¡E«bÀ
+(
+TIMER2_BASE
+, 
+TIMER_TIMA_TIMEOUT
+);
+
+565 
 	`ROM_TimîE«bÀ
 (
 TIMER2_BASE
@@ -10841,37 +11017,37 @@ TIMER2_BASE
 TIMER_A
 );
 
-483 
+567 
 	}
 }
 
-485 
+569 
 Void
  
 	$öô_sys
 ()
 
-488 
+572 
 	`öô_gpio
 () ;
 
-491 
+575 
 	`öô_u¨t
 () ;
 
-496 
+580 
 	`öô_sdˇrd
 () ;
 
-501 
+585 
 	`cfg_öãºu±
 () ;
 
-503 
+587 
 	}
 }
 
-512 
+596 
 	$UARTSíd
 (c⁄° *
 pucBuf„r
@@ -10879,59 +11055,55 @@ pucBuf„r
 ulCou¡
 )
 
-517 
+601 
 ulCou¡
 --)
 
-522 
+606 
 	`ROM_UARTCh¨PutN⁄Blockög
 (
-UART0_BASE
+UART2_BASE
 , *
 pucBuf„r
 ++);
 
-524 
+608 
 	}
 }
 
-529 
+613 
 Void
  
 	$maö
 ()
 
-531 
+615 
 Task_H™dÀ
  
 èsk
 ;
 
-532 
+616 
 Eº‹_Block
  
 eb
 ;
 
-534 
+618 
 	`Sy°em_¥ötf
 ("enter main()\n");
 
-536 
+620 
 	`Eº‹_öô
 (&
 eb
 );
 
-539 
+623 
 	`öô_sys
 () ;
 
-544 
-	`UARTSíd
-((*)"EnterÅext: ", 12);
-
-546 
+630 
 èsk
  = 
 	`Task_¸óã
@@ -10943,25 +11115,25 @@ NULL
 eb
 );
 
-547 i‡(
+631 i‡(
 èsk
  =
 NULL
 ) {
 
-548 
+632 
 	`Sy°em_¥ötf
 ("Task_create() failed!\n");
 
-549 
+633 
 	`BIOS_exô
 (0);
 
-552 
+636 
 	`BIOS_°¨t
 ();
 
-553 
+637 
 	}
 }
 
