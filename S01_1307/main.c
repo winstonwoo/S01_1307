@@ -299,6 +299,7 @@ Void hwi_CAN1_fxn(UArg arg)
 	    //
 	    ulStatus = CANIntStatus(CAN1_BASE, CAN_INT_STS_CAUSE);
 
+#if 1
 	    //
 	    // If the cause is a controller status interrupt, then get the status
 	    //
@@ -359,7 +360,7 @@ Void hwi_CAN1_fxn(UArg arg)
 	        // message object 2, and the message TX is complete.  Clear the
 	        // message object interrupt.
 	        //
-	        CANIntClear(CAN1_BASE, 3);
+	        CANIntClear(CAN1_BASE, 2);
 
 	        //
 	        // Increment a counter to keep track of how many messages have been
@@ -385,7 +386,7 @@ Void hwi_CAN1_fxn(UArg arg)
 	        // message object , and a message TX is complete.  Clear the
 	        // message object interrupt.
 	        //
-	        CANIntClear(CAN1_BASE, 2);
+	        CANIntClear(CAN1_BASE, 3);
 
 	        //
 	        // Increment a counter to keep track of how many messages have been
@@ -416,8 +417,10 @@ Void hwi_CAN1_fxn(UArg arg)
 	        // Spurious interrupt handling can go here.
 	        //
 	    }
+#endif
+	    CANIntClear(CAN0_BASE, ulStatus);
 
-	Swi_post(swi_CAN1_handle) ;
+	//Swi_post(swi_CAN1_handle) ;
 }
 
 

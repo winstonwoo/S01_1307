@@ -2246,7 +2246,7 @@ __FAR__ const xdc_SizeT ti_sysbios_knl_Task_Module_State_terminatedQ__O = offset
  *  Define absolute path prefix for this executable's
  *  configuration generated files.
  */
-xdc__META(__ASM__, "@(#)__ASM__ = J:/WorkHouse2013/SW2013/S01_1307_VTDR_Stellaris/S01_Repository/S01_1307_configuration/Default/configPkg/package/cfg/mutex_pem4f");
+xdc__META(__ASM__, "@(#)__ASM__ = J:/WorkHouse2013/Temp/test0807/S01_Repository/S01_1307_configuration/Default/configPkg/package/cfg/mutex_pem4f");
 
 /*
  *  ======== __ISA__ ========
@@ -3877,7 +3877,7 @@ ti_sysbios_family_arm_m3_Hwi_Module_State__ ti_sysbios_family_arm_m3_Hwi_Module_
     ((void*)ti_sysbios_family_arm_m3_Hwi_Module_State_0_excStack__A),  /* excStack */
     ((xdc_Ptr)0),  /* isrStack */
     ((xdc_Ptr)((void*)&__TI_STACK_BASE)),  /* isrStackBase */
-    (xdc_SizeT)0x1000,  /* isrStackSize */
+    (xdc_SizeT)0x2000,  /* isrStackSize */
     ((xdc_Ptr)(0x20000000)),  /* vectorTableBase */
     (xdc_UInt)0x101,  /* swiTaskKeys */
     0,  /* vnvicFlushRequired */

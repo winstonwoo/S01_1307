@@ -58,7 +58,7 @@ void init_can( void )
      IntEnable( INT_CAN1 ) ;
      CANEnable( CAN1_BASE ) ;
 
-
+#if 0
      //CAN0 initialization
      SysCtlPeripheralEnable( SYSCTL_PERIPH_GPIOE ) ;
 
@@ -85,6 +85,7 @@ void init_can( void )
        CANIntEnable( CAN0_BASE, CAN_INT_MASTER | CAN_INT_ERROR | CAN_INT_STATUS) ;
        IntEnable( INT_CAN0 ) ;
        CANEnable( CAN0_BASE ) ;
+#endif
 
 }
 
@@ -122,10 +123,13 @@ void tsk_can( void )
 
      for( ;; )
      {
-#if 0
+#if 1
           CANMessageSet( CAN1_BASE, 1, &sCANMsgObject1, MSG_OBJ_TYPE_TX ) ;
+          SysCtlDelay(SysCtlClockGet()/3) ;
           CANMessageSet( CAN1_BASE, 2, &sCANMsgObject2, MSG_OBJ_TYPE_TX ) ;
+          SysCtlDelay(SysCtlClockGet()/3) ;
           CANMessageSet( CAN1_BASE, 3, &sCANMsgObject3, MSG_OBJ_TYPE_TX ) ;
+          SysCtlDelay(SysCtlClockGet()/3) ;
         //
         // Change the value in the message data for each of the messages.
         //
@@ -136,6 +140,7 @@ void tsk_can( void )
         Task_sleep( 1000 ) ;
 #endif
 
+#if 0
         CANMessageSet( CAN0_BASE, 1, &sCANMsgObject1, MSG_OBJ_TYPE_TX ) ;
         CANMessageSet( CAN0_BASE, 2, &sCANMsgObject2, MSG_OBJ_TYPE_TX ) ;
         CANMessageSet( CAN0_BASE, 3, &sCANMsgObject3, MSG_OBJ_TYPE_TX ) ;
@@ -147,7 +152,9 @@ void tsk_can( void )
                 (*(unsigned long *)ucCANData2)++;
                 (*(unsigned long *)ucCANData3)++;
 
+
         Task_sleep( 1000 ) ;
+#endif
      }
 
 }
