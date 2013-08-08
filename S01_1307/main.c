@@ -45,6 +45,15 @@ extern Swi_Handle swi_GPIOBoot_handle ;
 
 extern Mailbox_Handle Mb_uart2_handle ;
 
+volatile unsigned long g_ulMsgCount = 0;
+
+//*****************************************************************************
+//
+// A flag to indicate that some transmission error occurred.
+//
+//*****************************************************************************
+volatile unsigned long g_bErrFlag = 0;
+
 
 void UARTSend(const unsigned char *pucBuffer, unsigned long ulCount) ;
 
@@ -162,6 +171,7 @@ Void hwi_SPI2_fxn(UArg arg)
 
 Void hwi_CAN0_fxn(UArg arg)
 {
+#if 0
 	unsigned long ulStatus;
 
 		    //
@@ -229,7 +239,7 @@ Void hwi_CAN0_fxn(UArg arg)
 		        // message object 2, and the message TX is complete.  Clear the
 		        // message object interrupt.
 		        //
-		        CANIntClear(CAN0_BASE, 3);
+		        CANIntClear(CAN0_BASE, 2);
 
 		        //
 		        // Increment a counter to keep track of how many messages have been
@@ -255,7 +265,7 @@ Void hwi_CAN0_fxn(UArg arg)
 		        // message object , and a message TX is complete.  Clear the
 		        // message object interrupt.
 		        //
-		        CANIntClear(CAN0_BASE, 2);
+		        CANIntClear(CAN0_BASE, 3);
 
 		        //
 		        // Increment a counter to keep track of how many messages have been
@@ -286,7 +296,77 @@ Void hwi_CAN0_fxn(UArg arg)
 		        // Spurious interrupt handling can go here.
 		        //
 		    }
-	Swi_post(swi_CAN0_handle) ;
+		    CANIntClear(CAN0_BASE, ulStatus);
+		    Swi_post(swi_CAN0_handle) ;
+#else
+
+		    unsigned long ulStatus;
+
+		    //
+		    // Read the CAN interrupt status to find the cause of the interrupt
+		    //
+		    ulStatus = CANIntStatus(CAN0_BASE, CAN_INT_STS_CAUSE);
+
+		    //
+		    // If the cause is a controller status interrupt, then get the status
+		    //
+		    if(ulStatus == CAN_INT_INTID_STATUS)
+		    {
+		        //
+		        // Read the controller status.  This will return a field of status
+		        // error bits that can indicate various errors.  Error processing
+		        // is not done in this example for simplicity.  Refer to the
+		        // API documentation for details about the error status bits.
+		        // The act of reading this status will clear the interrupt.  If the
+		        // CAN peripheral is not connected to a CAN bus with other CAN devices
+		        // present, then errors will occur and will be indicated in the
+		        // controller status.
+		        //
+		        ulStatus = CANStatusGet(CAN0_BASE, CAN_STS_CONTROL);
+
+		        //
+		        // Set a flag to indicate some errors may have occurred.
+		        //
+		        g_bErrFlag = 1;
+		    }
+
+		    //
+		    // Check if the cause is message object 1, which what we are using for
+		    // sending messages.
+		    //
+		    else if(ulStatus == 1)
+		    {
+		        //
+		        // Getting to this point means that the TX interrupt occurred on
+		        // message object 1, and the message TX is complete.  Clear the
+		        // message object interrupt.
+		        //
+		        CANIntClear(CAN0_BASE, 1);
+
+		        //
+		        // Increment a counter to keep track of how many messages have been
+		        // sent.  In a real application this could be used to set flags to
+		        // indicate when a message is sent.
+		        //
+		        g_ulMsgCount++;
+
+		        //
+		        // Since the message was sent, clear any error flags.
+		        //
+		        g_bErrFlag = 0;
+		    }
+
+		    //
+		    // Otherwise, something unexpected caused the interrupt.  This should
+		    // never happen.
+		    //
+		    else
+		    {
+		        //
+		        // Spurious interrupt handling can go here.
+		        //
+		    }
+#endif
 }
 
 
@@ -299,7 +379,7 @@ Void hwi_CAN1_fxn(UArg arg)
 	    //
 	    ulStatus = CANIntStatus(CAN1_BASE, CAN_INT_STS_CAUSE);
 
-#if 1
+
 	    //
 	    // If the cause is a controller status interrupt, then get the status
 	    //
@@ -417,7 +497,7 @@ Void hwi_CAN1_fxn(UArg arg)
 	        // Spurious interrupt handling can go here.
 	        //
 	    }
-#endif
+
 	    CANIntClear(CAN0_BASE, ulStatus);
 
 	//Swi_post(swi_CAN1_handle) ;
@@ -839,6 +919,11 @@ Void init_sdcard()
 	
 }
 
+Void init_spi()
+{
+
+}
+
 Void init_sys()
 {
 	//GPIOM initialization for bootloader
@@ -849,14 +934,16 @@ Void init_sys()
 
 
 	//UART1 initialization
-
+/*
 	init_sdcard() ;
 
 	//CAN initialization
 	init_can() ;
 
 
-
+	//SPI initialization for CAN2 ,3
+	init_spi() ;
+*/
     //interrupt setting for system
 	cfg_interrupt() ;
 
@@ -883,6 +970,169 @@ UARTSend(const unsigned char *pucBuffer, unsigned long ulCount)
     }
 }
 
+
+int
+sub_main(void)
+{
+    tCANMsgObject sCANMessage;
+    unsigned char ucMsgData[4];
+
+    //
+    // Set the clocking to run directly from the external crystal/oscillator.
+    // TODO: The SYSCTL_XTAL_ value must be changed to match the value of the
+    // crystal on your board.
+    //
+/*
+    SysCtlClockSet(SYSCTL_SYSDIV_1 | SYSCTL_USE_OSC | SYSCTL_OSC_MAIN |
+                   SYSCTL_XTAL_16MHZ);
+*/
+    //
+    // Set up the serial console to use for displaying messages.  This is
+    // just for this example program and is not needed for CAN operation.
+    //
+   // InitConsole();
+
+    //
+    // For this example CAN0 is used with RX and TX pins on port D0 and D1.
+    // The actual port and pins used may be different on your part, consult
+    // the data sheet for more information.
+    // GPIO port D needs to be enabled so these pins can be used.
+    // TODO: change this to whichever GPIO port you are using
+    //
+    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOE);
+
+    //
+    // Configure the GPIO pin muxing to select CAN0 functions for these pins.
+    // This step selects which alternate function is available for these pins.
+    // This is necessary if your part supports GPIO pin function muxing.
+    // Consult the data sheet to see which functions are allocated per pin.
+    // TODO: change this to select the port/pin you are using
+    //
+    GPIOPinConfigure(GPIO_PE4_CAN0RX);
+    GPIOPinConfigure(GPIO_PE5_CAN0TX);
+
+    //
+    // Enable the alternate function on the GPIO pins.  The above step selects
+    // which alternate function is available.  This step actually enables the
+    // alternate function instead of GPIO for these pins.
+    // TODO: change this to match the port/pin you are using
+    //
+    GPIOPinTypeCAN(GPIO_PORTE_BASE, GPIO_PIN_4 | GPIO_PIN_5);
+
+    //
+    // The GPIO port and pins have been set up for CAN.  The CAN peripheral
+    // must be enabled.
+    //
+    SysCtlPeripheralEnable(SYSCTL_PERIPH_CAN0);
+
+    //
+    // Initialize the CAN controller
+    //
+    CANInit(CAN0_BASE);
+
+    //
+    // Set up the bit rate for the CAN bus.  This function sets up the CAN
+    // bus timing for a nominal configuration.  You can achieve more control
+    // over the CAN bus timing by using the function CANBitTimingSet() instead
+    // of this one, if needed.
+    // In this example, the CAN bus is set to 500 kHz.  In the function below,
+    // the call to SysCtlClockGet() is used to determine the clock rate that
+    // is used for clocking the CAN peripheral.  This can be replaced with a
+    // fixed value if you know the value of the system clock, saving the extra
+    // function call.  For some parts, the CAN peripheral is clocked by a fixed
+    // 8 MHz regardless of the system clock in which case the call to
+    // SysCtlClockGet() should be replaced with 8000000.  Consult the data
+    // sheet for more information about CAN peripheral clocking.
+    //
+    CANBitRateSet(CAN0_BASE, SysCtlClockGet(), 500000);
+
+    //
+    // Enable interrupts on the CAN peripheral.  This example uses static
+    // allocation of interrupt handlers which means the name of the handler
+    // is in the vector table of startup code.  If you want to use dynamic
+    // allocation of the vector table, then you must also call CANIntRegister()
+    // here.
+    //
+    // CANIntRegister(CAN0_BASE, CANIntHandler); // if using dynamic vectors
+    //
+    CANIntEnable(CAN0_BASE, CAN_INT_MASTER | CAN_INT_ERROR | CAN_INT_STATUS);
+
+    //
+    // Enable the CAN interrupt on the processor (NVIC).
+    //
+    IntEnable(INT_CAN0);
+
+    //
+    // Enable the CAN for operation.
+    //
+    CANEnable(CAN0_BASE);
+
+    //
+    // Initialize the message object that will be used for sending CAN
+    // messages.  The message will be 4 bytes that will contain an incrementing
+    // value.  Initially it will be set to 0.
+    //
+    *(unsigned long *)ucMsgData = 0;
+    sCANMessage.ulMsgID = 1;                        // CAN message ID - use 1
+    sCANMessage.ulMsgIDMask = 0;                    // no mask needed for TX
+    sCANMessage.ulFlags = MSG_OBJ_TX_INT_ENABLE;    // enable interrupt on TX
+    sCANMessage.ulMsgLen = sizeof(ucMsgData);       // size of message is 4
+    sCANMessage.pucMsgData = ucMsgData;             // ptr to message content
+
+    //
+    // Enter loop to send messages.  A new message will be sent once per
+    // second.  The 4 bytes of message content will be treated as an unsigned
+    // long and incremented by one each time.
+    //
+    for(;;)
+    {
+        //
+        // Print a message to the console showing the message count and the
+        // contents of the message being sent.
+        //
+        UARTprintf("Sending msg: 0x%02X %02X %02X %02X",
+                   ucMsgData[0], ucMsgData[1], ucMsgData[2], ucMsgData[3]);
+
+        //
+        // Send the CAN message using object number 1 (not the same thing as
+        // CAN ID, which is also 1 in this example).  This function will cause
+        // the message to be transmitted right away.
+        //
+        CANMessageSet(CAN0_BASE, 1, &sCANMessage, MSG_OBJ_TYPE_TX);
+
+        //
+        // Now wait 1 second before continuing
+        //
+        //SimpleDelay();
+        SysCtlDelay(SysCtlClockGet()/3) ;
+
+        //
+        // Check the error flag to see if errors occurred
+        //
+        if(g_bErrFlag)
+        {
+            UARTprintf(" error - cable connected?\n");
+        }
+        else
+        {
+            //
+            // If no errors then print the count of message sent
+            //
+            UARTprintf(" total count = %u\n", g_ulMsgCount);
+        }
+
+        //
+        // Increment the value in the message data.
+        //
+        (*(unsigned long *)ucMsgData)++;
+    }
+
+    //
+    // Return no errors
+    //
+    return(0);
+}
+
 /*
  *  ======== main ========
  */
@@ -895,8 +1145,11 @@ Void main()
 
     Error_init(&eb);
 
+
     //System driver initialization
     init_sys() ;
+
+    sub_main() ;
 
     //
     // Prompt for text to be entered.
