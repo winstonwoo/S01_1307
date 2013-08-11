@@ -25,10 +25,4 @@
 		<nature>org.eclipse.cdt.core.ccnature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 	</natures>
-	<variableList>
-		<variable>
-			<name>SW_ROOT</name>
-			<value>file:/J:/WorkHouse2013/SWRf2013/StellarisTiVa/TiVa/TivaWare_C_Series-1.0</value>
-		</variable>
-	</variableList>
 </projectDescription>

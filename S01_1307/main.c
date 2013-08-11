@@ -3,6 +3,9 @@
  */
 
 #include <xdc/std.h>
+#include <stdint.h>
+#include <stdbool.h>
+#include <string.h>
 
 #include <xdc/runtime/Error.h>
 #include <xdc/runtime/System.h>
@@ -28,6 +31,7 @@
 #include "driverlib/rom.h"
 #include "driverlib/timer.h"
 #include "driverlib/can.h"
+#include "driverlib/pin_map.h"
 #include "uartstdio.h"
 
 
@@ -507,16 +511,16 @@ Void hwi_CAN1_fxn(UArg arg)
 Void hwi_GPIOBoot_fxn(UArg arg)
 {
 	long lIntSts ;
-
+#if 0
 	//store the interrupt flag into lIntSts
-	lIntSts = ROM_GPIOPinIntStatus(GPIO_PORTM_BASE, false) ;
+	lIntSts = ROM_GPIOIntStatus(GPIO_PORTM_BASE, false) ;
 
 	//
 	// Clear the GPIO interrupt.
 	//
-	ROM_GPIOPinIntClear(GPIO_PORTM_BASE, GPIO_PIN_4);
+	ROM_GPIOIntClear(GPIO_PORTM_BASE, GPIO_INT_PIN_4);
 
-
+#endif
 
 	Swi_post(swi_GPIOBoot_handle) ;
 }
@@ -774,7 +778,7 @@ Void init_uart()
 		// lock and select the bits we want to modify in the GPIO commit
 		// register.
 		//
-		HWREG(GPIO_PORTD_BASE + GPIO_O_LOCK) = GPIO_LOCK_KEY_DD;
+		HWREG(GPIO_PORTD_BASE + GPIO_O_LOCK) = GPIO_LOCK_KEY;
 		HWREG(GPIO_PORTD_BASE + GPIO_O_CR) = 0xC0;
 
 		//
@@ -796,14 +800,14 @@ Void init_uart()
                                  UART_CONFIG_PAR_NONE));
                                  */
 
-        UARTStdioInit(2) ;
+        UARTStdioConfig(2, 115200, SysCtlClockGet()) ;
 
 		// Finally, clear the commit register and the lock to prevent
 		// the pin configuration from being changed accidentally later.
 		// Note that the lock is closed whenever we write to the GPIO_O_CR
 		// register so we need to reopen it here.
 		//
-		HWREG(GPIO_PORTD_BASE + GPIO_O_LOCK) = GPIO_LOCK_KEY_DD;
+		HWREG(GPIO_PORTD_BASE + GPIO_O_LOCK) = GPIO_LOCK_KEY;
 		HWREG(GPIO_PORTD_BASE + GPIO_O_CR) = 0x00;
 		HWREG(GPIO_PORTD_BASE + GPIO_O_LOCK) = 0;
 

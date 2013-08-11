@@ -9,8 +9,8 @@
  */
 
 
--l"J:\WorkHouse2013\SW2013\S01_1307_VTDR_Stellaris\S01_Repository\S01_1307_configuration\Default\configPkg\package\cfg\mutex_pem4f.oem4f"
--l"J:\WorkHouse2013\SW2013\S01_1307_VTDR_Stellaris\S01_Repository\S01_1307_configuration\src\sysbios\sysbios.aem4f"
+-l"J:\WorkHouse2013\Temp\temp08121\S01_Repository\S01_1307_configuration\Default\configPkg\package\cfg\mutex_pem4f.oem4f"
+-l"J:\WorkHouse2013\Temp\temp08121\S01_Repository\S01_1307_configuration\src\sysbios\sysbios.aem4f"
 -l"C:\ti\xdctools_3_24_05_48\packages\ti\catalog\arm\cortexm3\lm3init\lib\Boot.aem4f"
 -l"C:\ti\xdctools_3_24_05_48\packages\ti\targets\arm\rtsarm\lib\ti.targets.arm.rtsarm.aem4f"
 -l"C:\ti\xdctools_3_24_05_48\packages\ti\targets\arm\rtsarm\lib\boot.aem4f"

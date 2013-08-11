@@ -2,7 +2,7 @@
 //
 // uartstdio.c - Utility driver to provide simple UART console functions.
 //
-// Copyright (c) 2007-2012 Texas Instruments Incorporated.  All rights reserved.
+// Copyright (c) 2007-2013 Texas Instruments Incorporated.  All rights reserved.
 // Software License Agreement
 // 
 // Texas Instruments (TI) is supplying this software for use solely and
@@ -18,10 +18,12 @@
 // CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL, OR CONSEQUENTIAL
 // DAMAGES, FOR ANY REASON WHATSOEVER.
 // 
-// This is part of revision 8555 of the Stellaris Firmware Development Package.
+// This is part of revision 1.0 of the Tiva Utility Library.
 //
 //*****************************************************************************
 
+#include <stdbool.h>
+#include <stdint.h>
 #include <stdarg.h>
 #include "inc/hw_ints.h"
 #include "inc/hw_memmap.h"
@@ -33,7 +35,7 @@
 #include "driverlib/rom_map.h"
 #include "driverlib/sysctl.h"
 #include "driverlib/uart.h"
-#include "uartstdio.h"
+#include "utils/uartstdio.h"
 
 //*****************************************************************************
 //
@@ -59,41 +61,41 @@
 // disable echo by calling UARTEchoSet(false).
 //
 //*****************************************************************************
-static tBoolean g_bDisableEcho;
+static bool g_bDisableEcho;
 
 //*****************************************************************************
 //
-// Output ring buffer.  Buffer is full if g_ulUARTTxReadIndex is one ahead of
-// g_ulUARTTxWriteIndex.  Buffer is empty if the two indices are the same.
+// Output ring buffer.  Buffer is full if g_ui32UARTTxReadIndex is one ahead of
+// g_ui32UARTTxWriteIndex.  Buffer is empty if the two indices are the same.
 //
 //*****************************************************************************
 static unsigned char g_pcUARTTxBuffer[UART_TX_BUFFER_SIZE];
-static volatile unsigned long g_ulUARTTxWriteIndex = 0;
-static volatile unsigned long g_ulUARTTxReadIndex = 0;
+static volatile uint32_t g_ui32UARTTxWriteIndex = 0;
+static volatile uint32_t g_ui32UARTTxReadIndex = 0;
 
 //*****************************************************************************
 //
-// Input ring buffer.  Buffer is full if g_ulUARTTxReadIndex is one ahead of
-// g_ulUARTTxWriteIndex.  Buffer is empty if the two indices are the same.
+// Input ring buffer.  Buffer is full if g_ui32UARTTxReadIndex is one ahead of
+// g_ui32UARTTxWriteIndex.  Buffer is empty if the two indices are the same.
 //
 //*****************************************************************************
 static unsigned char g_pcUARTRxBuffer[UART_RX_BUFFER_SIZE];
-static volatile unsigned long g_ulUARTRxWriteIndex = 0;
-static volatile unsigned long g_ulUARTRxReadIndex = 0;
+static volatile uint32_t g_ui32UARTRxWriteIndex = 0;
+static volatile uint32_t g_ui32UARTRxReadIndex = 0;
 
 //*****************************************************************************
 //
 // Macros to determine number of free and used bytes in the transmit buffer.
 //
 //*****************************************************************************
-#define TX_BUFFER_USED          (GetBufferCount(&g_ulUARTTxReadIndex,  \
-                                                &g_ulUARTTxWriteIndex, \
+#define TX_BUFFER_USED          (GetBufferCount(&g_ui32UARTTxReadIndex,  \
+                                                &g_ui32UARTTxWriteIndex, \
                                                 UART_TX_BUFFER_SIZE))
 #define TX_BUFFER_FREE          (UART_TX_BUFFER_SIZE - TX_BUFFER_USED)
-#define TX_BUFFER_EMPTY         (IsBufferEmpty(&g_ulUARTTxReadIndex,   \
-                                               &g_ulUARTTxWriteIndex))
-#define TX_BUFFER_FULL          (IsBufferFull(&g_ulUARTTxReadIndex,  \
-                                              &g_ulUARTTxWriteIndex, \
+#define TX_BUFFER_EMPTY         (IsBufferEmpty(&g_ui32UARTTxReadIndex,   \
+                                               &g_ui32UARTTxWriteIndex))
+#define TX_BUFFER_FULL          (IsBufferFull(&g_ui32UARTTxReadIndex,  \
+                                              &g_ui32UARTTxWriteIndex, \
                                               UART_TX_BUFFER_SIZE))
 #define ADVANCE_TX_BUFFER_INDEX(Index) \
                                 (Index) = ((Index) + 1) % UART_TX_BUFFER_SIZE
@@ -103,14 +105,14 @@ static volatile unsigned long g_ulUARTRxReadIndex = 0;
 // Macros to determine number of free and used bytes in the receive buffer.
 //
 //*****************************************************************************
-#define RX_BUFFER_USED          (GetBufferCount(&g_ulUARTRxReadIndex,  \
-                                                &g_ulUARTRxWriteIndex, \
+#define RX_BUFFER_USED          (GetBufferCount(&g_ui32UARTRxReadIndex,  \
+                                                &g_ui32UARTRxWriteIndex, \
                                                 UART_RX_BUFFER_SIZE))
 #define RX_BUFFER_FREE          (UART_RX_BUFFER_SIZE - RX_BUFFER_USED)
-#define RX_BUFFER_EMPTY         (IsBufferEmpty(&g_ulUARTRxReadIndex,   \
-                                               &g_ulUARTRxWriteIndex))
-#define RX_BUFFER_FULL          (IsBufferFull(&g_ulUARTRxReadIndex,  \
-                                              &g_ulUARTRxWriteIndex, \
+#define RX_BUFFER_EMPTY         (IsBufferEmpty(&g_ui32UARTRxReadIndex,   \
+                                               &g_ui32UARTRxWriteIndex))
+#define RX_BUFFER_FULL          (IsBufferFull(&g_ui32UARTRxReadIndex,  \
+                                              &g_ui32UARTRxWriteIndex, \
                                               UART_RX_BUFFER_SIZE))
 #define ADVANCE_RX_BUFFER_INDEX(Index) \
                                 (Index) = ((Index) + 1) % UART_RX_BUFFER_SIZE
@@ -121,7 +123,7 @@ static volatile unsigned long g_ulUARTRxReadIndex = 0;
 // The base address of the chosen UART.
 //
 //*****************************************************************************
-static unsigned long g_ulBase = 0;
+static uint32_t g_ui32Base = 0;
 
 //*****************************************************************************
 //
@@ -136,7 +138,7 @@ static const char * const g_pcHex = "0123456789abcdef";
 // The list of possible base addresses for the console UART.
 //
 //*****************************************************************************
-static const unsigned long g_ulUARTBase[3] =
+static const uint32_t g_ui32UARTBase[3] =
 {
     UART0_BASE, UART1_BASE, UART2_BASE
 };
@@ -147,7 +149,7 @@ static const unsigned long g_ulUARTBase[3] =
 // The list of possible interrupts for the console UART.
 //
 //*****************************************************************************
-static const unsigned long g_ulUARTInt[3] =
+static const uint32_t g_ui32UARTInt[3] =
 {
     INT_UART0, INT_UART1, INT_UART2
 };
@@ -157,7 +159,7 @@ static const unsigned long g_ulUARTInt[3] =
 // The port number in use.
 //
 //*****************************************************************************
-static unsigned long g_ulPortNum;
+static uint32_t g_ui32PortNum;
 #endif
 
 //*****************************************************************************
@@ -165,7 +167,7 @@ static unsigned long g_ulPortNum;
 // The list of UART peripherals.
 //
 //*****************************************************************************
-static const unsigned long g_ulUARTPeriph[3] =
+static const uint32_t g_ui32UARTPeriph[3] =
 {
     SYSCTL_PERIPH_UART0, SYSCTL_PERIPH_UART1, SYSCTL_PERIPH_UART2
 };
@@ -175,9 +177,9 @@ static const unsigned long g_ulUARTPeriph[3] =
 //! Determines whether the ring buffer whose pointers and size are provided
 //! is full or not.
 //!
-//! \param pulRead points to the read index for the buffer.
-//! \param pulWrite points to the write index for the buffer.
-//! \param ulSize is the size of the buffer in bytes.
+//! \param pui32Read points to the read index for the buffer.
+//! \param pui32Write points to the write index for the buffer.
+//! \param ui32Size is the size of the buffer in bytes.
 //!
 //! This function is used to determine whether or not a given ring buffer is
 //! full.  The structure of the code is specifically to ensure that we do not
@@ -188,17 +190,17 @@ static const unsigned long g_ulUARTPeriph[3] =
 //
 //*****************************************************************************
 #ifdef UART_BUFFERED
-static tBoolean
-IsBufferFull(volatile unsigned long *pulRead,
-             volatile unsigned long *pulWrite, unsigned long ulSize)
+static bool
+IsBufferFull(volatile uint32_t *pui32Read,
+             volatile uint32_t *pui32Write, uint32_t ui32Size)
 {
-    unsigned long ulWrite;
-    unsigned long ulRead;
+    uint32_t ui32Write;
+    uint32_t ui32Read;
 
-    ulWrite = *pulWrite;
-    ulRead = *pulRead;
+    ui32Write = *pui32Write;
+    ui32Read = *pui32Read;
 
-    return((((ulWrite + 1) % ulSize) == ulRead) ? true : false);
+    return((((ui32Write + 1) % ui32Size) == ui32Read) ? true : false);
 }
 #endif
 
@@ -207,8 +209,8 @@ IsBufferFull(volatile unsigned long *pulRead,
 //! Determines whether the ring buffer whose pointers and size are provided
 //! is empty or not.
 //!
-//! \param pulRead points to the read index for the buffer.
-//! \param pulWrite points to the write index for the buffer.
+//! \param pui32Read points to the read index for the buffer.
+//! \param pui32Write points to the write index for the buffer.
 //!
 //! This function is used to determine whether or not a given ring buffer is
 //! empty.  The structure of the code is specifically to ensure that we do not
@@ -219,17 +221,17 @@ IsBufferFull(volatile unsigned long *pulRead,
 //
 //*****************************************************************************
 #ifdef UART_BUFFERED
-static tBoolean
-IsBufferEmpty(volatile unsigned long *pulRead,
-              volatile unsigned long *pulWrite)
+static bool
+IsBufferEmpty(volatile uint32_t *pui32Read,
+              volatile uint32_t *pui32Write)
 {
-    unsigned long ulWrite;
-    unsigned long ulRead;
+    uint32_t ui32Write;
+    uint32_t ui32Read;
 
-    ulWrite = *pulWrite;
-    ulRead = *pulRead;
+    ui32Write = *pui32Write;
+    ui32Read = *pui32Read;
 
-    return((ulWrite  == ulRead) ? true : false);
+    return((ui32Write == ui32Read) ? true : false);
 }
 #endif
 
@@ -237,9 +239,9 @@ IsBufferEmpty(volatile unsigned long *pulRead,
 //
 //! Determines the number of bytes of data contained in a ring buffer.
 //!
-//! \param pulRead points to the read index for the buffer.
-//! \param pulWrite points to the write index for the buffer.
-//! \param ulSize is the size of the buffer in bytes.
+//! \param pui32Read points to the read index for the buffer.
+//! \param pui32Write points to the write index for the buffer.
+//! \param ui32Size is the size of the buffer in bytes.
 //!
 //! This function is used to determine how many bytes of data a given ring
 //! buffer currently contains.  The structure of the code is specifically to
@@ -250,18 +252,18 @@ IsBufferEmpty(volatile unsigned long *pulRead,
 //
 //*****************************************************************************
 #ifdef UART_BUFFERED
-static unsigned long
-GetBufferCount(volatile unsigned long *pulRead,
-               volatile unsigned long *pulWrite, unsigned long ulSize)
+static uint32_t
+GetBufferCount(volatile uint32_t *pui32Read,
+               volatile uint32_t *pui32Write, uint32_t ui32Size)
 {
-    unsigned long ulWrite;
-    unsigned long ulRead;
+    uint32_t ui32Write;
+    uint32_t ui32Read;
 
-    ulWrite = *pulWrite;
-    ulRead = *pulRead;
+    ui32Write = *pui32Write;
+    ui32Read = *pui32Read;
 
-    return((ulWrite >= ulRead) ? (ulWrite - ulRead) :
-                                 (ulSize - (ulRead - ulWrite)));
+    return((ui32Write >= ui32Read) ? (ui32Write - ui32Read) :
+           (ui32Size - (ui32Read - ui32Write)));
 }
 #endif
 
@@ -273,7 +275,7 @@ GetBufferCount(volatile unsigned long *pulRead,
 //*****************************************************************************
 #ifdef UART_BUFFERED
 static void
-UARTPrimeTransmit(unsigned long ulBase)
+UARTPrimeTransmit(uint32_t ui32Base)
 {
     //
     // Do we have any data to transmit?
@@ -281,108 +283,73 @@ UARTPrimeTransmit(unsigned long ulBase)
     if(!TX_BUFFER_EMPTY)
     {
         //
-        // Disable the UART interrupt. If we don't do this there is a race
+        // Disable the UART interrupt.  If we don't do this there is a race
         // condition which can cause the read index to be corrupted.
         //
-        MAP_IntDisable(g_ulUARTInt[g_ulPortNum]);
+        MAP_IntDisable(g_ui32UARTInt[g_ui32PortNum]);
 
         //
         // Yes - take some characters out of the transmit buffer and feed
         // them to the UART transmit FIFO.
         //
-        while(MAP_UARTSpaceAvail(ulBase) && !TX_BUFFER_EMPTY)
+        while(MAP_UARTSpaceAvail(ui32Base) && !TX_BUFFER_EMPTY)
         {
-            MAP_UARTCharPutNonBlocking(ulBase,
-                                       g_pcUARTTxBuffer[g_ulUARTTxReadIndex]);
-            ADVANCE_TX_BUFFER_INDEX(g_ulUARTTxReadIndex);
+            MAP_UARTCharPutNonBlocking(ui32Base,
+                                      g_pcUARTTxBuffer[g_ui32UARTTxReadIndex]);
+            ADVANCE_TX_BUFFER_INDEX(g_ui32UARTTxReadIndex);
         }
 
         //
         // Reenable the UART interrupt.
         //
-        MAP_IntEnable(g_ulUARTInt[g_ulPortNum]);
+        MAP_IntEnable(g_ui32UARTInt[g_ui32PortNum]);
     }
 }
 #endif
 
 //*****************************************************************************
 //
-//! Initializes the UART console.
+//! Configures the UART console.
 //!
-//! \param ulPortNum is the number of UART port to use for the serial console
+//! \param ui32PortNum is the number of UART port to use for the serial console
 //! (0-2)
+//! \param ui32Baud is the bit rate that the UART is to be configured to use.
+//! \param ui32SrcClock is the frequency of the source clock for the UART
+//! module.
 //!
-//! This function will initialize the specified serial port to be used as a
-//! serial console.  The serial parameters will be set to 115200, 8-N-1.
-//! An application wishing to use a different baud rate may call
-//! UARTStdioInitExpClk() instead of this function.
+//! This function will configure the specified serial port to be used as a
+//! serial console.  The serial parameters are set to the baud rate
+//! specified by the \e ui32Baud parameter and use 8 bit, no parity, and 1 stop
+//! bit.
 //!
-//! This function or UARTStdioInitExpClk() must be called prior to using any
-//! of the other UART console functions: UARTprintf() or UARTgets().  In order
-//! for this function to work correctly, SysCtlClockSet() must be called prior
-//! to calling this function.
-//!
-//! It is assumed that the caller has previously configured the relevant UART
-//! pins for operation as a UART rather than as GPIOs.
+//! This function must be called prior to using any of the other UART console
+//! functions: UARTprintf() or UARTgets().  This function assumes that the
+//! caller has previously configured the relevant UART pins for operation as a
+//! UART rather than as GPIOs.
 //!
 //! \return None.
 //
 //*****************************************************************************
 void
-UARTStdioInit(unsigned long ulPortNum)
-{
-    //
-    // Pass this call on to the version of the function allowing the baud rate
-    // to be specified.
-    //
-    UARTStdioInitExpClk(ulPortNum, 115200);
-}
-
-//*****************************************************************************
-//
-//! Initializes the UART console and allows the baud rate to be selected.
-//!
-//! \param ulPortNum is the number of UART port to use for the serial console
-//! (0-2)
-//! \param ulBaud is the bit rate that the UART is to be configured to use.
-//!
-//! This function will initialize the specified serial port to be used as a
-//! serial console.  The serial parameters will be set to 8-N-1 and the bit
-//! rate set according to the value of the \e ulBaud parameter.
-//!
-//! This function or UARTStdioInit() must be called prior to using any of the
-//! other UART console functions: UARTprintf() or UARTgets().  In order for
-//! this function to work correctly, SysCtlClockSet() must be called prior to
-//! calling this function.  An application wishing to use 115,200 baud may call
-//! UARTStdioInit() instead of this function but should not call both
-//! functions.
-//!
-//! It is assumed that the caller has previously configured the relevant UART
-//! pins for operation as a UART rather than as GPIOs.
-//!
-//! \return None.
-//
-//*****************************************************************************
-void
-UARTStdioInitExpClk(unsigned long ulPortNum, unsigned long ulBaud)
+UARTStdioConfig(uint32_t ui32PortNum, uint32_t ui32Baud, uint32_t ui32SrcClock)
 {
     //
     // Check the arguments.
     //
-    ASSERT((ulPortNum == 0) || (ulPortNum == 1) ||
-           (ulPortNum == 2));
+    ASSERT((ui32PortNum == 0) || (ui32PortNum == 1) ||
+           (ui32PortNum == 2));
 
 #ifdef UART_BUFFERED
     //
     // In buffered mode, we only allow a single instance to be opened.
     //
-    ASSERT(g_ulBase == 0);
+    ASSERT(g_ui32Base == 0);
 #endif
 
     //
     // Check to make sure the UART peripheral is present.
     //
-    if(!MAP_SysCtlPeripheralPresent(g_ulUARTPeriph[ulPortNum]))
+    if(!MAP_SysCtlPeripheralPresent(g_ui32UARTPeriph[ui32PortNum]))
     {
         return;
     }
@@ -390,17 +357,17 @@ UARTStdioInitExpClk(unsigned long ulPortNum, unsigned long ulBaud)
     //
     // Select the base address of the UART.
     //
-    g_ulBase = g_ulUARTBase[ulPortNum];
+    g_ui32Base = g_ui32UARTBase[ui32PortNum];
 
     //
     // Enable the UART peripheral for use.
     //
-    MAP_SysCtlPeripheralEnable(g_ulUARTPeriph[ulPortNum]);
+    MAP_SysCtlPeripheralEnable(g_ui32UARTPeriph[ui32PortNum]);
 
     //
     // Configure the UART for 115200, n, 8, 1
     //
-    MAP_UARTConfigSetExpClk(g_ulBase, MAP_SysCtlClockGet(), ulBaud,
+    MAP_UARTConfigSetExpClk(g_ui32Base, ui32SrcClock, ui32Baud,
                             (UART_CONFIG_PAR_NONE | UART_CONFIG_STOP_ONE |
                              UART_CONFIG_WLEN_8));
 
@@ -409,7 +376,7 @@ UARTStdioInitExpClk(unsigned long ulPortNum, unsigned long ulBaud)
     // Set the UART to interrupt whenever the TX FIFO is almost empty or
     // when any character is received.
     //
-    MAP_UARTFIFOLevelSet(g_ulBase, UART_FIFO_TX1_8, UART_FIFO_RX1_8);
+    MAP_UARTFIFOLevelSet(g_ui32Base, UART_FIFO_TX1_8, UART_FIFO_RX1_8);
 
     //
     // Flush both the buffers.
@@ -420,7 +387,7 @@ UARTStdioInitExpClk(unsigned long ulPortNum, unsigned long ulBaud)
     //
     // Remember which interrupt we are dealing with.
     //
-    g_ulPortNum = ulPortNum;
+    g_ui32PortNum = ui32PortNum;
 
     //
     // We are configured for buffered output so enable the master interrupt
@@ -428,15 +395,15 @@ UARTStdioInitExpClk(unsigned long ulPortNum, unsigned long ulBaud)
     // transmit interrupt in the UART itself until some data has been placed
     // in the transmit buffer.
     //
-    MAP_UARTIntDisable(g_ulBase, 0xFFFFFFFF);
-    MAP_UARTIntEnable(g_ulBase, UART_INT_RX | UART_INT_RT);
-    MAP_IntEnable(g_ulUARTInt[ulPortNum]);
+    MAP_UARTIntDisable(g_ui32Base, 0xFFFFFFFF);
+    MAP_UARTIntEnable(g_ui32Base, UART_INT_RX | UART_INT_RT);
+    MAP_IntEnable(g_ui32UARTInt[ui32PortNum]);
 #endif
 
     //
     // Enable the UART operation.
     //
-    MAP_UARTEnable(g_ulBase);
+    MAP_UARTEnable(g_ui32Base);
 }
 
 //*****************************************************************************
@@ -444,16 +411,16 @@ UARTStdioInitExpClk(unsigned long ulPortNum, unsigned long ulBaud)
 //! Writes a string of characters to the UART output.
 //!
 //! \param pcBuf points to a buffer containing the string to transmit.
-//! \param ulLen is the length of the string to transmit.
+//! \param ui32Len is the length of the string to transmit.
 //!
 //! This function will transmit the string to the UART output.  The number of
-//! characters transmitted is determined by the \e ulLen parameter.  This
+//! characters transmitted is determined by the \e ui32Len parameter.  This
 //! function does no interpretation or translation of any characters.  Since
 //! the output is sent to a UART, any LF (/n) characters encountered will be
 //! replaced with a CRLF pair.
 //!
-//! Besides using the \e ulLen parameter to stop transmitting the string, if a
-//! null character (0) is encountered, then no more characters will be
+//! Besides using the \e ui32Len parameter to stop transmitting the string, if
+//! a null character (0) is encountered, then no more characters will be
 //! transmitted and the function will return.
 //!
 //! In non-buffered mode, this function is blocking and will not return until
@@ -466,7 +433,7 @@ UARTStdioInitExpClk(unsigned long ulPortNum, unsigned long ulBaud)
 //
 //*****************************************************************************
 int
-UARTwrite(const char *pcBuf, unsigned long ulLen)
+UARTwrite(const char *pcBuf, uint32_t ui32Len)
 {
 #ifdef UART_BUFFERED
     unsigned int uIdx;
@@ -475,12 +442,12 @@ UARTwrite(const char *pcBuf, unsigned long ulLen)
     // Check for valid arguments.
     //
     ASSERT(pcBuf != 0);
-    ASSERT(g_ulBase != 0);
+    ASSERT(g_ui32Base != 0);
 
     //
     // Send the characters
     //
-    for(uIdx = 0; uIdx < ulLen; uIdx++)
+    for(uIdx = 0; uIdx < ui32Len; uIdx++)
     {
         //
         // If the character to the UART is \n, then add a \r before it so that
@@ -490,8 +457,8 @@ UARTwrite(const char *pcBuf, unsigned long ulLen)
         {
             if(!TX_BUFFER_FULL)
             {
-                g_pcUARTTxBuffer[g_ulUARTTxWriteIndex] = '\r';
-                ADVANCE_TX_BUFFER_INDEX(g_ulUARTTxWriteIndex);
+                g_pcUARTTxBuffer[g_ui32UARTTxWriteIndex] = '\r';
+                ADVANCE_TX_BUFFER_INDEX(g_ui32UARTTxWriteIndex);
             }
             else
             {
@@ -507,8 +474,8 @@ UARTwrite(const char *pcBuf, unsigned long ulLen)
         //
         if(!TX_BUFFER_FULL)
         {
-            g_pcUARTTxBuffer[g_ulUARTTxWriteIndex] = pcBuf[uIdx];
-            ADVANCE_TX_BUFFER_INDEX(g_ulUARTTxWriteIndex);
+            g_pcUARTTxBuffer[g_ui32UARTTxWriteIndex] = pcBuf[uIdx];
+            ADVANCE_TX_BUFFER_INDEX(g_ui32UARTTxWriteIndex);
         }
         else
         {
@@ -525,8 +492,8 @@ UARTwrite(const char *pcBuf, unsigned long ulLen)
     //
     if(!TX_BUFFER_EMPTY)
     {
-        UARTPrimeTransmit(g_ulBase);
-        MAP_UARTIntEnable(g_ulBase, UART_INT_TX);
+        UARTPrimeTransmit(g_ui32Base);
+        MAP_UARTIntEnable(g_ui32Base, UART_INT_TX);
     }
 
     //
@@ -539,13 +506,13 @@ UARTwrite(const char *pcBuf, unsigned long ulLen)
     //
     // Check for valid UART base address, and valid arguments.
     //
-    ASSERT(g_ulBase != 0);
+    ASSERT(g_ui32Base != 0);
     ASSERT(pcBuf != 0);
 
     //
     // Send the characters
     //
-    for(uIdx = 0; uIdx < ulLen; uIdx++)
+    for(uIdx = 0; uIdx < ui32Len; uIdx++)
     {
         //
         // If the character to the UART is \n, then add a \r before it so that
@@ -553,13 +520,13 @@ UARTwrite(const char *pcBuf, unsigned long ulLen)
         //
         if(pcBuf[uIdx] == '\n')
         {
-            MAP_UARTCharPut(g_ulBase, '\r');
+            MAP_UARTCharPut(g_ui32Base, '\r');
         }
 
         //
         // Send the character to the UART output.
         //
-           MAP_UARTCharPut(g_ulBase, pcBuf[uIdx]);
+        MAP_UARTCharPut(g_ui32Base, pcBuf[uIdx]);
     }
 
     //
@@ -574,7 +541,7 @@ UARTwrite(const char *pcBuf, unsigned long ulLen)
 //! A simple UART based get string function, with some line processing.
 //!
 //! \param pcBuf points to a buffer for the incoming string from the UART.
-//! \param ulLen is the length of the buffer for storage of the string,
+//! \param ui32Len is the length of the buffer for storage of the string,
 //! including the trailing 0.
 //!
 //! This function will receive a string from the UART input and store the
@@ -599,24 +566,24 @@ UARTwrite(const char *pcBuf, unsigned long ulLen)
 //
 //*****************************************************************************
 int
-UARTgets(char *pcBuf, unsigned long ulLen)
+UARTgets(char *pcBuf, uint32_t ui32Len)
 {
 #ifdef UART_BUFFERED
-    unsigned long ulCount = 0;
-    char cChar;
+    uint32_t ui32Count = 0;
+    int8_t cChar;
 
     //
     // Check the arguments.
     //
     ASSERT(pcBuf != 0);
-    ASSERT(ulLen != 0);
-    ASSERT(g_ulBase != 0);
+    ASSERT(ui32Len != 0);
+    ASSERT(g_ui32Base != 0);
 
     //
     // Adjust the length back by 1 to leave space for the trailing
     // null terminator.
     //
-    ulLen--;
+    ui32Len--;
 
     //
     // Process characters until a newline is received.
@@ -628,8 +595,8 @@ UARTgets(char *pcBuf, unsigned long ulLen)
         //
         if(!RX_BUFFER_EMPTY)
         {
-            cChar = g_pcUARTRxBuffer[g_ulUARTRxReadIndex];
-            ADVANCE_RX_BUFFER_INDEX(g_ulUARTRxReadIndex);
+            cChar = g_pcUARTRxBuffer[g_ui32UARTRxReadIndex];
+            ADVANCE_RX_BUFFER_INDEX(g_ui32UARTRxReadIndex);
 
             //
             // See if a newline or escape character was received.
@@ -648,17 +615,17 @@ UARTgets(char *pcBuf, unsigned long ulLen)
             // all additional characters are ignored until a newline is
             // received.
             //
-            if(ulCount < ulLen)
+            if(ui32Count < ui32Len)
             {
                 //
                 // Store the character in the caller supplied buffer.
                 //
-                pcBuf[ulCount] = cChar;
+                pcBuf[ui32Count] = cChar;
 
                 //
                 // Increment the count of characters received.
                 //
-                ulCount++;
+                ui32Count++;
             }
         }
     }
@@ -666,29 +633,29 @@ UARTgets(char *pcBuf, unsigned long ulLen)
     //
     // Add a null termination to the string.
     //
-    pcBuf[ulCount] = 0;
+    pcBuf[ui32Count] = 0;
 
     //
-    // Return the count of chars in the buffer, not counting the trailing 0.
+    // Return the count of int8_ts in the buffer, not counting the trailing 0.
     //
-    return(ulCount);
+    return(ui32Count);
 #else
-    unsigned long ulCount = 0;
-    char cChar;
-    static char bLastWasCR = 0;
+    uint32_t ui32Count = 0;
+    int8_t cChar;
+    static int8_t bLastWasCR = 0;
 
     //
     // Check the arguments.
     //
     ASSERT(pcBuf != 0);
-    ASSERT(ulLen != 0);
-    ASSERT(g_ulBase != 0);
+    ASSERT(ui32Len != 0);
+    ASSERT(g_ui32Base != 0);
 
     //
     // Adjust the length back by 1 to leave space for the trailing
     // null terminator.
     //
-    ulLen--;
+    ui32Len--;
 
     //
     // Process characters until a newline is received.
@@ -698,7 +665,7 @@ UARTgets(char *pcBuf, unsigned long ulLen)
         //
         // Read the next character from the console.
         //
-        cChar = MAP_UARTCharGet(g_ulBase);
+        cChar = MAP_UARTCharGet(g_ui32Base);
 
         //
         // See if the backspace key was pressed.
@@ -709,7 +676,7 @@ UARTgets(char *pcBuf, unsigned long ulLen)
             // If there are any characters already in the buffer, then delete
             // the last.
             //
-            if(ulCount)
+            if(ui32Count)
             {
                 //
                 // Rub out the previous character.
@@ -719,7 +686,7 @@ UARTgets(char *pcBuf, unsigned long ulLen)
                 //
                 // Decrement the number of characters in the buffer.
                 //
-                ulCount--;
+                ui32Count--;
             }
 
             //
@@ -764,29 +731,29 @@ UARTgets(char *pcBuf, unsigned long ulLen)
         // the buffer.  If the end of the buffer has been reached then all
         // additional characters are ignored until a newline is received.
         //
-        if(ulCount < ulLen)
+        if(ui32Count < ui32Len)
         {
             //
             // Store the character in the caller supplied buffer.
             //
-            pcBuf[ulCount] = cChar;
+            pcBuf[ui32Count] = cChar;
 
             //
             // Increment the count of characters received.
             //
-            ulCount++;
+            ui32Count++;
 
             //
             // Reflect the character back to the user.
             //
-            MAP_UARTCharPut(g_ulBase, cChar);
+            MAP_UARTCharPut(g_ui32Base, cChar);
         }
     }
 
     //
     // Add a null termination to the string.
     //
-    pcBuf[ulCount] = 0;
+    pcBuf[ui32Count] = 0;
 
     //
     // Send a CRLF pair to the terminal to end the line.
@@ -794,9 +761,9 @@ UARTgets(char *pcBuf, unsigned long ulLen)
     UARTwrite("\r\n", 2);
 
     //
-    // Return the count of chars in the buffer, not counting the trailing 0.
+    // Return the count of int8_ts in the buffer, not counting the trailing 0.
     //
-    return(ulCount);
+    return(ui32Count);
 #endif
 }
 
@@ -835,8 +802,8 @@ UARTgetc(void)
     //
     // Read a character from the buffer.
     //
-    cChar = g_pcUARTRxBuffer[g_ulUARTRxReadIndex];
-    ADVANCE_RX_BUFFER_INDEX(g_ulUARTRxReadIndex);
+    cChar = g_pcUARTRxBuffer[g_ui32UARTRxReadIndex];
+    ADVANCE_RX_BUFFER_INDEX(g_ui32UARTRxReadIndex);
 
     //
     // Return the character to the caller.
@@ -847,25 +814,25 @@ UARTgetc(void)
     // Block until a character is received by the UART then return it to
     // the caller.
     //
-    return(MAP_UARTCharGet(g_ulBase));
+    return(MAP_UARTCharGet(g_ui32Base));
 #endif
 }
 
 //*****************************************************************************
 //
-//! A simple UART based printf function supporting \%c, \%d, \%p, \%s, \%u,
+//! A simple UART based vprintf function supporting \%c, \%d, \%p, \%s, \%u,
 //! \%x, and \%X.
 //!
 //! \param pcString is the format string.
-//! \param ... are the optional arguments, which depend on the contents of the
-//! format string.
+//! \param vaArgP is a variable argument list pointer whose content will depend
+//! upon the format string passed in \e pcString.
 //!
-//! This function is very similar to the C library <tt>fprintf()</tt> function.
+//! This function is very similar to the C library <tt>vprintf()</tt> function.
 //! All of its output will be sent to the UART.  Only the following formatting
 //! characters are supported:
 //!
 //! - \%c to print a character
-//! - \%d to print a decimal value
+//! - \%d or \%i to print a decimal value
 //! - \%s to print a string
 //! - \%u to print an unsigned decimal value
 //! - \%x to print a hexadecimal value using lower case letters
@@ -874,7 +841,7 @@ UARTgetc(void)
 //! - \%p to print a pointer as a hexadecimal value
 //! - \%\% to print out a \% character
 //!
-//! For \%s, \%d, \%u, \%p, \%x, and \%X, an optional number may reside
+//! For \%s, \%d, \%i, \%u, \%p, \%x, and \%X, an optional number may reside
 //! between the \% and the format character, which specifies the minimum number
 //! of characters to use for that value; if preceded by a 0 then the extra
 //! characters will be filled with zeros instead of spaces.  For example,
@@ -882,29 +849,23 @@ UARTgetc(void)
 //! added to reach eight; ``\%08d'' will use eight characters as well but will
 //! add zeroes instead of spaces.
 //!
-//! The type of the arguments after \e pcString must match the requirements of
-//! the format string.  For example, if an integer was passed where a string
-//! was expected, an error of some kind will most likely occur.
+//! The type of the arguments in the variable arguments list must match the
+//! requirements of the format string.  For example, if an integer was passed
+//! where a string was expected, an error of some kind will most likely occur.
 //!
 //! \return None.
 //
 //*****************************************************************************
 void
-UARTprintf(const char *pcString, ...)
+UARTvprintf(const char *pcString, va_list vaArgP)
 {
-    unsigned long ulIdx, ulValue, ulPos, ulCount, ulBase, ulNeg;
+    uint32_t ui32Idx, ui32Value, ui32Pos, ui32Count, ui32Base, ui32Neg;
     char *pcStr, pcBuf[16], cFill;
-    va_list vaArgP;
 
     //
     // Check the arguments.
     //
     ASSERT(pcString != 0);
-
-    //
-    // Start the varargs processing.
-    //
-    va_start(vaArgP, pcString);
 
     //
     // Loop while there are more characters in the string.
@@ -914,20 +875,21 @@ UARTprintf(const char *pcString, ...)
         //
         // Find the first non-% character, or the end of the string.
         //
-        for(ulIdx = 0; (pcString[ulIdx] != '%') && (pcString[ulIdx] != '\0');
-            ulIdx++)
+        for(ui32Idx = 0;
+            (pcString[ui32Idx] != '%') && (pcString[ui32Idx] != '\0');
+            ui32Idx++)
         {
         }
 
         //
         // Write this portion of the string.
         //
-        UARTwrite(pcString, ulIdx);
+        UARTwrite(pcString, ui32Idx);
 
         //
         // Skip the portion of the string that was written.
         //
-        pcString += ulIdx;
+        pcString += ui32Idx;
 
         //
         // See if the next character is a %.
@@ -941,9 +903,9 @@ UARTprintf(const char *pcString, ...)
 
             //
             // Set the digit count to zero, and the fill character to space
-            // (i.e. to the defaults).
+            // (in other words, to the defaults).
             //
-            ulCount = 0;
+            ui32Count = 0;
             cFill = ' ';
 
             //
@@ -976,7 +938,7 @@ again:
                     // If this is a zero, and it is the first digit, then the
                     // fill character is a zero instead of a space.
                     //
-                    if((pcString[-1] == '0') && (ulCount == 0))
+                    if((pcString[-1] == '0') && (ui32Count == 0))
                     {
                         cFill = '0';
                     }
@@ -984,8 +946,8 @@ again:
                     //
                     // Update the digit count.
                     //
-                    ulCount *= 10;
-                    ulCount += pcString[-1] - '0';
+                    ui32Count *= 10;
+                    ui32Count += pcString[-1] - '0';
 
                     //
                     // Get the next character.
@@ -1001,12 +963,12 @@ again:
                     //
                     // Get the value from the varargs.
                     //
-                    ulValue = va_arg(vaArgP, unsigned long);
+                    ui32Value = va_arg(vaArgP, uint32_t);
 
                     //
                     // Print out the character.
                     //
-                    UARTwrite((char *)&ulValue, 1);
+                    UARTwrite((char *)&ui32Value, 1);
 
                     //
                     // This command has been handled.
@@ -1015,35 +977,36 @@ again:
                 }
 
                 //
-                // Handle the %d command.
+                // Handle the %d and %i commands.
                 //
                 case 'd':
+                case 'i':
                 {
                     //
                     // Get the value from the varargs.
                     //
-                    ulValue = va_arg(vaArgP, unsigned long);
+                    ui32Value = va_arg(vaArgP, uint32_t);
 
                     //
                     // Reset the buffer position.
                     //
-                    ulPos = 0;
+                    ui32Pos = 0;
 
                     //
                     // If the value is negative, make it positive and indicate
                     // that a minus sign is needed.
                     //
-                    if((long)ulValue < 0)
+                    if((int32_t)ui32Value < 0)
                     {
                         //
                         // Make the value positive.
                         //
-                        ulValue = -(long)ulValue;
+                        ui32Value = -(int32_t)ui32Value;
 
                         //
                         // Indicate that the value is negative.
                         //
-                        ulNeg = 1;
+                        ui32Neg = 1;
                     }
                     else
                     {
@@ -1051,13 +1014,13 @@ again:
                         // Indicate that the value is positive so that a minus
                         // sign isn't inserted.
                         //
-                        ulNeg = 0;
+                        ui32Neg = 0;
                     }
 
                     //
                     // Set the base to 10.
                     //
-                    ulBase = 10;
+                    ui32Base = 10;
 
                     //
                     // Convert the value to ASCII.
@@ -1078,26 +1041,27 @@ again:
                     //
                     // Determine the length of the string.
                     //
-                    for(ulIdx = 0; pcStr[ulIdx] != '\0'; ulIdx++)
+                    for(ui32Idx = 0; pcStr[ui32Idx] != '\0'; ui32Idx++)
                     {
                     }
 
                     //
                     // Write the string.
                     //
-                    UARTwrite(pcStr, ulIdx);
+                    UARTwrite(pcStr, ui32Idx);
 
                     //
                     // Write any required padding spaces
                     //
-                    if(ulCount > ulIdx)
+                    if(ui32Count > ui32Idx)
                     {
-                        ulCount -= ulIdx;
-                        while(ulCount--)
+                        ui32Count -= ui32Idx;
+                        while(ui32Count--)
                         {
                             UARTwrite(" ", 1);
                         }
                     }
+
                     //
                     // This command has been handled.
                     //
@@ -1112,23 +1076,23 @@ again:
                     //
                     // Get the value from the varargs.
                     //
-                    ulValue = va_arg(vaArgP, unsigned long);
+                    ui32Value = va_arg(vaArgP, uint32_t);
 
                     //
                     // Reset the buffer position.
                     //
-                    ulPos = 0;
+                    ui32Pos = 0;
 
                     //
                     // Set the base to 10.
                     //
-                    ulBase = 10;
+                    ui32Base = 10;
 
                     //
                     // Indicate that the value is positive so that a minus sign
                     // isn't inserted.
                     //
-                    ulNeg = 0;
+                    ui32Neg = 0;
 
                     //
                     // Convert the value to ASCII.
@@ -1138,9 +1102,9 @@ again:
 
                 //
                 // Handle the %x and %X commands.  Note that they are treated
-                // identically; i.e. %X will use lower case letters for a-f
-                // instead of the upper case letters is should use.  We also
-                // alias %p to %x.
+                // identically; in other words, %X will use lower case letters
+                // for a-f instead of the upper case letters it should use.  We
+                // also alias %p to %x.
                 //
                 case 'x':
                 case 'X':
@@ -1149,33 +1113,33 @@ again:
                     //
                     // Get the value from the varargs.
                     //
-                    ulValue = va_arg(vaArgP, unsigned long);
+                    ui32Value = va_arg(vaArgP, uint32_t);
 
                     //
                     // Reset the buffer position.
                     //
-                    ulPos = 0;
+                    ui32Pos = 0;
 
                     //
                     // Set the base to 16.
                     //
-                    ulBase = 16;
+                    ui32Base = 16;
 
                     //
                     // Indicate that the value is positive so that a minus sign
                     // isn't inserted.
                     //
-                    ulNeg = 0;
+                    ui32Neg = 0;
 
                     //
                     // Determine the number of digits in the string version of
                     // the value.
                     //
 convert:
-                    for(ulIdx = 1;
-                        (((ulIdx * ulBase) <= ulValue) &&
-                         (((ulIdx * ulBase) / ulBase) == ulIdx));
-                        ulIdx *= ulBase, ulCount--)
+                    for(ui32Idx = 1;
+                        (((ui32Idx * ui32Base) <= ui32Value) &&
+                         (((ui32Idx * ui32Base) / ui32Base) == ui32Idx));
+                        ui32Idx *= ui32Base, ui32Count--)
                     {
                     }
 
@@ -1183,38 +1147,38 @@ convert:
                     // If the value is negative, reduce the count of padding
                     // characters needed.
                     //
-                    if(ulNeg)
+                    if(ui32Neg)
                     {
-                        ulCount--;
+                        ui32Count--;
                     }
 
                     //
                     // If the value is negative and the value is padded with
                     // zeros, then place the minus sign before the padding.
                     //
-                    if(ulNeg && (cFill == '0'))
+                    if(ui32Neg && (cFill == '0'))
                     {
                         //
                         // Place the minus sign in the output buffer.
                         //
-                        pcBuf[ulPos++] = '-';
+                        pcBuf[ui32Pos++] = '-';
 
                         //
                         // The minus sign has been placed, so turn off the
                         // negative flag.
                         //
-                        ulNeg = 0;
+                        ui32Neg = 0;
                     }
 
                     //
                     // Provide additional padding at the beginning of the
                     // string conversion if needed.
                     //
-                    if((ulCount > 1) && (ulCount < 16))
+                    if((ui32Count > 1) && (ui32Count < 16))
                     {
-                        for(ulCount--; ulCount; ulCount--)
+                        for(ui32Count--; ui32Count; ui32Count--)
                         {
-                            pcBuf[ulPos++] = cFill;
+                            pcBuf[ui32Pos++] = cFill;
                         }
                     }
 
@@ -1222,26 +1186,27 @@ convert:
                     // If the value is negative, then place the minus sign
                     // before the number.
                     //
-                    if(ulNeg)
+                    if(ui32Neg)
                     {
                         //
                         // Place the minus sign in the output buffer.
                         //
-                        pcBuf[ulPos++] = '-';
+                        pcBuf[ui32Pos++] = '-';
                     }
 
                     //
                     // Convert the value into a string.
                     //
-                    for(; ulIdx; ulIdx /= ulBase)
+                    for(; ui32Idx; ui32Idx /= ui32Base)
                     {
-                        pcBuf[ulPos++] = g_pcHex[(ulValue / ulIdx) % ulBase];
+                        pcBuf[ui32Pos++] =
+                            g_pcHex[(ui32Value / ui32Idx) % ui32Base];
                     }
 
                     //
                     // Write the string.
                     //
-                    UARTwrite(pcBuf, ulPos);
+                    UARTwrite(pcBuf, ui32Pos);
 
                     //
                     // This command has been handled.
@@ -1283,9 +1248,60 @@ convert:
             }
         }
     }
+}
+
+//*****************************************************************************
+//
+//! A simple UART based printf function supporting \%c, \%d, \%p, \%s, \%u,
+//! \%x, and \%X.
+//!
+//! \param pcString is the format string.
+//! \param ... are the optional arguments, which depend on the contents of the
+//! format string.
+//!
+//! This function is very similar to the C library <tt>fprintf()</tt> function.
+//! All of its output will be sent to the UART.  Only the following formatting
+//! characters are supported:
+//!
+//! - \%c to print a character
+//! - \%d or \%i to print a decimal value
+//! - \%s to print a string
+//! - \%u to print an unsigned decimal value
+//! - \%x to print a hexadecimal value using lower case letters
+//! - \%X to print a hexadecimal value using lower case letters (not upper case
+//! letters as would typically be used)
+//! - \%p to print a pointer as a hexadecimal value
+//! - \%\% to print out a \% character
+//!
+//! For \%s, \%d, \%i, \%u, \%p, \%x, and \%X, an optional number may reside
+//! between the \% and the format character, which specifies the minimum number
+//! of characters to use for that value; if preceded by a 0 then the extra
+//! characters will be filled with zeros instead of spaces.  For example,
+//! ``\%8d'' will use eight characters to print the decimal value with spaces
+//! added to reach eight; ``\%08d'' will use eight characters as well but will
+//! add zeroes instead of spaces.
+//!
+//! The type of the arguments after \e pcString must match the requirements of
+//! the format string.  For example, if an integer was passed where a string
+//! was expected, an error of some kind will most likely occur.
+//!
+//! \return None.
+//
+//*****************************************************************************
+void
+UARTprintf(const char *pcString, ...)
+{
+    va_list vaArgP;
 
     //
-    // End the varargs processing.
+    // Start the varargs processing.
+    //
+    va_start(vaArgP, pcString);
+
+    UARTvprintf(pcString, vaArgP);
+
+    //
+    // We're finished with the varargs now.
     //
     va_end(vaArgP);
 }
@@ -1353,20 +1369,20 @@ UARTPeek(unsigned char ucChar)
 {
     int iCount;
     int iAvail;
-    unsigned long ulReadIndex;
+    uint32_t ui32ReadIndex;
 
     //
     // How many characters are there in the receive buffer?
     //
     iAvail = (int)RX_BUFFER_USED;
-    ulReadIndex = g_ulUARTRxReadIndex;
+    ui32ReadIndex = g_ui32UARTRxReadIndex;
 
     //
     // Check all the unread characters looking for the one passed.
     //
     for(iCount = 0; iCount < iAvail; iCount++)
     {
-        if(g_pcUARTRxBuffer[ulReadIndex] == ucChar)
+        if(g_pcUARTRxBuffer[ui32ReadIndex] == ucChar)
         {
             //
             // We found it so return the index
@@ -1378,7 +1394,7 @@ UARTPeek(unsigned char ucChar)
             //
             // This one didn't match so move on to the next character.
             //
-            ADVANCE_RX_BUFFER_INDEX(ulReadIndex);
+            ADVANCE_RX_BUFFER_INDEX(ui32ReadIndex);
         }
     }
 
@@ -1405,24 +1421,24 @@ UARTPeek(unsigned char ucChar)
 void
 UARTFlushRx(void)
 {
-    unsigned long ulInt;
+    uint32_t ui32Int;
 
     //
     // Temporarily turn off interrupts.
     //
-    ulInt = MAP_IntMasterDisable();
+    ui32Int = MAP_IntMasterDisable();
 
     //
     // Flush the receive buffer.
     //
-    g_ulUARTRxReadIndex = 0;
-    g_ulUARTRxWriteIndex = 0;
+    g_ui32UARTRxReadIndex = 0;
+    g_ui32UARTRxWriteIndex = 0;
 
     //
     // If interrupts were enabled when we turned them off, turn them
     // back on again.
     //
-    if(!ulInt)
+    if(!ui32Int)
     {
         MAP_IntMasterEnable();
     }
@@ -1447,9 +1463,9 @@ UARTFlushRx(void)
 //*****************************************************************************
 #if defined(UART_BUFFERED) || defined(DOXYGEN)
 void
-UARTFlushTx(tBoolean bDiscard)
+UARTFlushTx(bool bDiscard)
 {
-    unsigned long ulInt;
+    uint32_t ui32Int;
 
     //
     // Should the remaining data be discarded or transmitted?
@@ -1460,19 +1476,19 @@ UARTFlushTx(tBoolean bDiscard)
         // The remaining data should be discarded, so temporarily turn off
         // interrupts.
         //
-        ulInt = MAP_IntMasterDisable();
+        ui32Int = MAP_IntMasterDisable();
 
         //
         // Flush the transmit buffer.
         //
-        g_ulUARTTxReadIndex = 0;
-        g_ulUARTTxWriteIndex = 0;
+        g_ui32UARTTxReadIndex = 0;
+        g_ui32UARTTxWriteIndex = 0;
 
         //
         // If interrupts were enabled when we turned them off, turn them
         // back on again.
         //
-        if(!ulInt)
+        if(!ui32Int)
         {
             MAP_IntMasterEnable();
         }
@@ -1511,7 +1527,7 @@ UARTFlushTx(tBoolean bDiscard)
 //*****************************************************************************
 #if defined(UART_BUFFERED) || defined(DOXYGEN)
 void
-UARTEchoSet(tBoolean bEnable)
+UARTEchoSet(bool bEnable)
 {
     g_bDisableEcho = !bEnable;
 }
@@ -1533,51 +1549,51 @@ UARTEchoSet(tBoolean bEnable)
 void
 UARTStdioIntHandler(void)
 {
-    unsigned long ulInts;
-    char cChar;
-    long lChar;
-    static tBoolean bLastWasCR = false;
+    uint32_t ui32Ints;
+    int8_t cChar;
+    int32_t i32Char;
+    static bool bLastWasCR = false;
 
     //
     // Get and clear the current interrupt source(s)
     //
-    ulInts = MAP_UARTIntStatus(g_ulBase, true);
-    MAP_UARTIntClear(g_ulBase, ulInts);
+    ui32Ints = MAP_UARTIntStatus(g_ui32Base, true);
+    MAP_UARTIntClear(g_ui32Base, ui32Ints);
 
     //
     // Are we being interrupted because the TX FIFO has space available?
     //
-    if(ulInts & UART_INT_TX)
+    if(ui32Ints & UART_INT_TX)
     {
         //
         // Move as many bytes as we can into the transmit FIFO.
         //
-        UARTPrimeTransmit(g_ulBase);
+        UARTPrimeTransmit(g_ui32Base);
 
         //
         // If the output buffer is empty, turn off the transmit interrupt.
         //
         if(TX_BUFFER_EMPTY)
         {
-            MAP_UARTIntDisable(g_ulBase, UART_INT_TX);
+            MAP_UARTIntDisable(g_ui32Base, UART_INT_TX);
         }
     }
 
     //
     // Are we being interrupted due to a received character?
     //
-    if(ulInts & (UART_INT_RX | UART_INT_RT))
+    if(ui32Ints & (UART_INT_RX | UART_INT_RT))
     {
         //
         // Get all the available characters from the UART.
         //
-        while(MAP_UARTCharsAvail(g_ulBase))
+        while(MAP_UARTCharsAvail(g_ui32Base))
         {
             //
             // Read a character
             //
-            lChar = MAP_UARTCharGetNonBlocking(g_ulBase);
-            cChar = (unsigned char)(lChar & 0xFF);
+            i32Char = MAP_UARTCharGetNonBlocking(g_ui32Base);
+            cChar = (unsigned char)(i32Char & 0xFF);
 
             //
             // If echo is disabled, we skip the various text filtering
@@ -1587,7 +1603,8 @@ UARTStdioIntHandler(void)
             if(!g_bDisableEcho)
             {
                 //
-                // Handle backspace by erasing the last character in the buffer.
+                // Handle backspace by erasing the last character in the
+                // buffer.
                 //
                 if(cChar == '\b')
                 {
@@ -1598,20 +1615,21 @@ UARTStdioIntHandler(void)
                     if(!RX_BUFFER_EMPTY)
                     {
                         //
-                        // Rub out the previous character on the users terminal.
+                        // Rub out the previous character on the users
+                        // terminal.
                         //
                         UARTwrite("\b \b", 3);
 
                         //
                         // Decrement the number of characters in the buffer.
                         //
-                        if(g_ulUARTRxWriteIndex == 0)
+                        if(g_ui32UARTRxWriteIndex == 0)
                         {
-                            g_ulUARTRxWriteIndex = UART_RX_BUFFER_SIZE - 1;
+                            g_ui32UARTRxWriteIndex = UART_RX_BUFFER_SIZE - 1;
                         }
                         else
                         {
-                            g_ulUARTRxWriteIndex--;
+                            g_ui32UARTRxWriteIndex--;
                         }
                     }
 
@@ -1669,9 +1687,9 @@ UARTStdioIntHandler(void)
                 //
                 // Store the new character in the receive buffer
                 //
-                g_pcUARTRxBuffer[g_ulUARTRxWriteIndex] =
-                    (unsigned char)(lChar & 0xFF);
-                ADVANCE_RX_BUFFER_INDEX(g_ulUARTRxWriteIndex);
+                g_pcUARTRxBuffer[g_ui32UARTRxWriteIndex] =
+                    (unsigned char)(i32Char & 0xFF);
+                ADVANCE_RX_BUFFER_INDEX(g_ui32UARTRxWriteIndex);
 
                 //
                 // If echo is enabled, write the character to the transmit
@@ -1679,7 +1697,7 @@ UARTStdioIntHandler(void)
                 //
                 if(!g_bDisableEcho)
                 {
-                    UARTwrite(&cChar, 1);
+                    UARTwrite((const char *)&cChar, 1);
                 }
             }
         }
@@ -1688,8 +1706,8 @@ UARTStdioIntHandler(void)
         // If we wrote anything to the transmit buffer, make sure it actually
         // gets transmitted.
         //
-        UARTPrimeTransmit(g_ulBase);
-        MAP_UARTIntEnable(g_ulBase, UART_INT_TX);
+        UARTPrimeTransmit(g_ui32Base);
+        MAP_UARTIntEnable(g_ui32Base, UART_INT_TX);
     }
 }
 #endif

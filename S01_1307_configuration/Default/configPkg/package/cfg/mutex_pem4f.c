@@ -587,9 +587,9 @@ typedef struct ti_sysbios_knl_Mailbox_Module__ {
 /* Module__root__V */
 extern ti_sysbios_knl_Mailbox_Module__ ti_sysbios_knl_Mailbox_Module__root__V;
 
-/* <-- ti_sysbios_knl_Queue_Object */
-
 /* <-- ti_sysbios_knl_Semaphore_Object */
+
+/* <-- ti_sysbios_knl_Queue_Object */
 
 /* Object__ */
 typedef struct ti_sysbios_knl_Mailbox_Object__ {
@@ -2246,7 +2246,7 @@ __FAR__ const xdc_SizeT ti_sysbios_knl_Task_Module_State_terminatedQ__O = offset
  *  Define absolute path prefix for this executable's
  *  configuration generated files.
  */
-xdc__META(__ASM__, "@(#)__ASM__ = J:/WorkHouse2013/SW2013/S01_1307_VTDR_Stellaris/S01_Repository/S01_1307_configuration/Default/configPkg/package/cfg/mutex_pem4f");
+xdc__META(__ASM__, "@(#)__ASM__ = J:/WorkHouse2013/Temp/temp08121/S01_Repository/S01_1307_configuration/Default/configPkg/package/cfg/mutex_pem4f");
 
 /*
  *  ======== __ISA__ ========

@@ -1,13 +1,15 @@
 //*****************************************************************************
 
 //*****************************************************************************
+#include <stdint.h>
+#include <stdbool.h>
+#include <string.h>
 
 #include <stddef.h>
 #include <string.h>
 #include "inc/hw_memmap.h"
 #include "inc/hw_types.h"
 #include "driverlib/gpio.h"
-#include "driverlib/epi.h"
 #include "driverlib/uart.h"
 #include "driverlib/i2c.h"
 #include "driverlib/rom.h"
@@ -16,6 +18,7 @@
 #include "driverlib/interrupt.h"
 #include "driverlib/sysctl.h"
 #include "driverlib/systick.h"
+#include "driverlib/pin_map.h"
 #include "utils/uartstdio.h"
 #include "utils/ustdlib.h"
 #include "utils/cmdline.h"
@@ -25,28 +28,28 @@
 #define ID_I2C_ADDR                0x50
 
 
-static tBoolean
+static bool
 WaitI2CFinished(void)
 {
     //
     // Wait until the current byte has been transferred.
     //
-    while(ROM_I2CMasterIntStatus(I2C4_MASTER_BASE, false) == 0)
+    while(ROM_I2CMasterIntStatus(I2C4_BASE, false) == 0)
     {
     }
 
-    if(I2CMasterErr(I2C4_MASTER_BASE) != I2C_MASTER_ERR_NONE)
+    if(I2CMasterErr(I2C4_BASE) != I2C_MASTER_ERR_NONE)
     {
-        ROM_I2CMasterIntClear(I2C4_MASTER_BASE);
+        ROM_I2CMasterIntClear(I2C4_BASE);
         return(false);
     }
 
     //
     // Clear any interrupts set.
     //
-    while(ROM_I2CMasterIntStatus(I2C4_MASTER_BASE, false))
+    while(ROM_I2CMasterIntStatus(I2C4_BASE, false))
     {
-        ROM_I2CMasterIntClear(I2C4_MASTER_BASE);
+        ROM_I2CMasterIntClear(I2C4_BASE);
     }
 
     return(true);
@@ -65,7 +68,7 @@ WaitI2CFinished(void)
 // \return Returns \b true on success of \b false on failure.
 //
 //*****************************************************************************
-static tBoolean
+static bool
 EEPROMReadPolled(unsigned char *pucData, unsigned long ulOffset,
                  unsigned long ulCount)
 {
@@ -74,22 +77,22 @@ EEPROMReadPolled(unsigned char *pucData, unsigned long ulOffset,
     //
     // Clear any previously signalled interrupts.
     //
-    ROM_I2CMasterIntClear(I2C4_MASTER_BASE);
+    ROM_I2CMasterIntClear(I2C4_BASE);
 
     //
     // Start with a dummy write to get the address set in the EEPROM.
     //
-    ROM_I2CMasterSlaveAddrSet(I2C4_MASTER_BASE, ID_I2C_ADDR, false);
+    ROM_I2CMasterSlaveAddrSet(I2C4_BASE, ID_I2C_ADDR, false);
 
     //
     // Place the address to be written in the data register.
     //
-    ROM_I2CMasterDataPut(I2C4_MASTER_BASE, 0x0);
+    ROM_I2CMasterDataPut(I2C4_BASE, 0x0);
 
     //
     // Perform a single send, writing the address as the only byte.
     //
-    ROM_I2CMasterControl(I2C4_MASTER_BASE, I2C_MASTER_CMD_BURST_SEND_START);
+    ROM_I2CMasterControl(I2C4_BASE, I2C_MASTER_CMD_BURST_SEND_START);
 
     //
     // Wait until the current byte has been transferred.
@@ -102,12 +105,12 @@ EEPROMReadPolled(unsigned char *pucData, unsigned long ulOffset,
     //
     // Place the address to be written in the data register.
     //
-    ROM_I2CMasterDataPut(I2C4_MASTER_BASE, ulOffset);
+    ROM_I2CMasterDataPut(I2C4_BASE, ulOffset);
 
     //
     // Perform a single send, writing the address as the only byte.
     //
-    ROM_I2CMasterControl(I2C4_MASTER_BASE, I2C_MASTER_CMD_BURST_SEND_CONT);
+    ROM_I2CMasterControl(I2C4_BASE, I2C_MASTER_CMD_BURST_SEND_CONT);
 
     //
     // Wait until the current byte has been transferred.
@@ -120,12 +123,12 @@ EEPROMReadPolled(unsigned char *pucData, unsigned long ulOffset,
     //
     // Put the I2C master into receive mode.
     //
-    ROM_I2CMasterSlaveAddrSet(I2C4_MASTER_BASE, ID_I2C_ADDR, true);
+    ROM_I2CMasterSlaveAddrSet(I2C4_BASE, ID_I2C_ADDR, true);
 
     //
     // Start the receive.
     //
-    ROM_I2CMasterControl(I2C4_MASTER_BASE,
+    ROM_I2CMasterControl(I2C4_BASE,
                          ((ulCount > 1) ? I2C_MASTER_CMD_BURST_RECEIVE_START :
                          I2C_MASTER_CMD_SINGLE_RECEIVE));
 
@@ -139,19 +142,19 @@ EEPROMReadPolled(unsigned char *pucData, unsigned long ulOffset,
         //
         // Wait until the current byte has been read.
         //
-        while(ROM_I2CMasterIntStatus(I2C4_MASTER_BASE, false) == 0)
+        while(ROM_I2CMasterIntStatus(I2C4_BASE, false) == 0)
         {
         }
 
         //
         // Clear pending interrupt notification.
         //
-        ROM_I2CMasterIntClear(I2C4_MASTER_BASE);
+        ROM_I2CMasterIntClear(I2C4_BASE);
 
         //
         // Read the received character.
         //
-        *pucData++ = ROM_I2CMasterDataGet(I2C4_MASTER_BASE);
+        *pucData++ = ROM_I2CMasterDataGet(I2C4_BASE);
         ulToRead--;
 
         //
@@ -159,7 +162,7 @@ EEPROMReadPolled(unsigned char *pucData, unsigned long ulOffset,
         //
         if(ulToRead)
         {
-            ROM_I2CMasterControl(I2C4_MASTER_BASE,
+            ROM_I2CMasterControl(I2C4_BASE,
                                  ((ulToRead == 1) ?
                                   I2C_MASTER_CMD_BURST_RECEIVE_FINISH :
                                   I2C_MASTER_CMD_BURST_RECEIVE_CONT));
@@ -186,24 +189,24 @@ EEPROMReadPolled(unsigned char *pucData, unsigned long ulOffset,
 // \return Returns \b true on success of \b false on failure.
 //
 //*****************************************************************************
-static tBoolean
+static bool
 EEPROMWritePolled(unsigned char ucAddr, unsigned char ucData)
 {
 
     //
     // Start with a dummy write to get the address set in the EEPROM.
     //
-    ROM_I2CMasterSlaveAddrSet(I2C4_MASTER_BASE, ID_I2C_ADDR, false);
+    ROM_I2CMasterSlaveAddrSet(I2C4_BASE, ID_I2C_ADDR, false);
 
     //
     // Place the address to be written in the data register.
     //
-    ROM_I2CMasterDataPut(I2C4_MASTER_BASE, 0x0);
+    ROM_I2CMasterDataPut(I2C4_BASE, 0x0);
 
     //
     // Start a burst send, sending the device address as the first byte.
     //
-    ROM_I2CMasterControl(I2C4_MASTER_BASE, I2C_MASTER_CMD_BURST_SEND_START);
+    ROM_I2CMasterControl(I2C4_BASE, I2C_MASTER_CMD_BURST_SEND_START);
 
     //
     // Wait until the current byte has been transferred.
@@ -216,12 +219,12 @@ EEPROMWritePolled(unsigned char ucAddr, unsigned char ucData)
     //
     // Place the address to be written in the data register.
     //
-    ROM_I2CMasterDataPut(I2C4_MASTER_BASE, ucAddr);
+    ROM_I2CMasterDataPut(I2C4_BASE, ucAddr);
 
     //
     // Start a burst send, sending the device address as the first byte.
     //
-    ROM_I2CMasterControl(I2C4_MASTER_BASE, I2C_MASTER_CMD_BURST_SEND_CONT);
+    ROM_I2CMasterControl(I2C4_BASE, I2C_MASTER_CMD_BURST_SEND_CONT);
 
     //
     // Wait until the current byte has been transferred.
@@ -235,12 +238,12 @@ EEPROMWritePolled(unsigned char ucAddr, unsigned char ucData)
     //
     // Write the value to be written to the flash.
     //
-    ROM_I2CMasterDataPut(I2C4_MASTER_BASE, ucData);
+    ROM_I2CMasterDataPut(I2C4_BASE, ucData);
 
     //
     // Send the data byte.
     //
-    ROM_I2CMasterControl(I2C4_MASTER_BASE, I2C_MASTER_CMD_BURST_SEND_FINISH);
+    ROM_I2CMasterControl(I2C4_BASE, I2C_MASTER_CMD_BURST_SEND_FINISH);
 
     //
     // Wait until the current byte has been transferred.
@@ -301,13 +304,13 @@ int test_fram(void)
 
 
 
-    tBoolean bRetcode;
+    bool bRetcode;
 
    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOG) ;
 
    SysCtlPeripheralEnable(SYSCTL_PERIPH_I2C4) ;
    SysCtlDelay(1);
-   ROM_I2CMasterEnable(I2C4_MASTER_BASE);
+   ROM_I2CMasterEnable(I2C4_BASE);
    SysCtlDelay(1);
    ROM_SysCtlPeripheralReset(SYSCTL_PERIPH_I2C4);
 
@@ -317,7 +320,7 @@ int test_fram(void)
    GPIOPinTypeI2C(GPIO_PORTG_BASE, GPIO_PIN_3) ;
    GPIOPinTypeI2CSCL(GPIO_PORTG_BASE, GPIO_PIN_2) ;
 
-   I2CMasterInitExpClk(I2C4_MASTER_BASE, SysCtlClockGet(), true);
+   I2CMasterInitExpClk(I2C4_BASE, SysCtlClockGet(), true);
 
    for(;;)
    {

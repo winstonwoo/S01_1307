@@ -1,0 +1,57 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+################################################################################
+
+# Add inputs and outputs from these tool invocations to the build variables 
+CMD_SRCS += \
+../lm4f232h5qd.cmd 
+
+C_SRCS += \
+../cmdline.c \
+../ff.c \
+../main.c \
+../mmc-ek-lm4f232h5qd.c \
+../my_sd_card.c \
+../uartstdio.c 
+
+OBJS += \
+./cmdline.obj \
+./ff.obj \
+./main.obj \
+./mmc-ek-lm4f232h5qd.obj \
+./my_sd_card.obj \
+./uartstdio.obj 
+
+C_DEPS += \
+./cmdline.pp \
+./ff.pp \
+./main.pp \
+./mmc-ek-lm4f232h5qd.pp \
+./my_sd_card.pp \
+./uartstdio.pp 
+
+C_DEPS__QUOTED += \
+"cmdline.pp" \
+"ff.pp" \
+"main.pp" \
+"mmc-ek-lm4f232h5qd.pp" \
+"my_sd_card.pp" \
+"uartstdio.pp" 
+
+OBJS__QUOTED += \
+"cmdline.obj" \
+"ff.obj" \
+"main.obj" \
+"mmc-ek-lm4f232h5qd.obj" \
+"my_sd_card.obj" \
+"uartstdio.obj" 
+
+C_SRCS__QUOTED += \
+"../cmdline.c" \
+"../ff.c" \
+"../main.c" \
+"../mmc-ek-lm4f232h5qd.c" \
+"../my_sd_card.c" \
+"../uartstdio.c" 
+
+

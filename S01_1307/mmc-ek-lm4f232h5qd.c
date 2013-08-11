@@ -7,17 +7,19 @@
 
 /*
  * This file was modified from a sample available from the FatFs
- * web site. It was modified to work with a Stellaris EK-LM4F232H5QD
- * evaluation board.
+ * web site. It was modified to work with an EK-LM4F232H5QD evaluation
+ * board.
  */
 
+#include <stdint.h>
+#include <stdbool.h>
 #include "inc/hw_memmap.h"
 #include "inc/hw_types.h"
 #include "driverlib/gpio.h"
 #include "driverlib/rom.h"
 #include "driverlib/ssi.h"
 #include "driverlib/sysctl.h"
-#include "diskio.h"
+#include "fatfs/src/diskio.h"
 
 /* Definitions for MMC/SDC command */
 #define CMD0    (0x40+0)    /* GO_IDLE_STATE */
@@ -36,18 +38,18 @@
 #define CMD55    (0x40+55)    /* APP_CMD */
 #define CMD58    (0x40+58)    /* READ_OCR */
 
-/* Peripheral definitions for EastSoft S01_1307 board */
+/* Peripheral definitions for EK-LM3S3748 board */
 // SSI port
-#define SDC_SSI_BASE            SSI2_BASE
-#define SDC_SSI_SYSCTL_PERIPH   SYSCTL_PERIPH_SSI2
+#define SDC_SSI_BASE            SSI0_BASE
+#define SDC_SSI_SYSCTL_PERIPH   SYSCTL_PERIPH_SSI0
 
 // GPIO for SSI pins
-#define SDC_GPIO_PORT_BASE      GPIO_PORTH_BASE
-#define SDC_GPIO_SYSCTL_PERIPH  SYSCTL_PERIPH_GPIOH
-#define SDC_SSI_CLK             GPIO_PIN_4
-#define SDC_SSI_TX              GPIO_PIN_7
-#define SDC_SSI_RX              GPIO_PIN_6
-#define SDC_SSI_FSS             GPIO_PIN_5
+#define SDC_GPIO_PORT_BASE      GPIO_PORTA_BASE
+#define SDC_GPIO_SYSCTL_PERIPH  SYSCTL_PERIPH_GPIOA
+#define SDC_SSI_CLK             GPIO_PIN_2
+#define SDC_SSI_TX              GPIO_PIN_5
+#define SDC_SSI_RX              GPIO_PIN_4
+#define SDC_SSI_FSS             GPIO_PIN_3
 #define SDC_SSI_PINS            (SDC_SSI_TX | SDC_SSI_RX | SDC_SSI_CLK |      \
                                  SDC_SSI_FSS)
 
@@ -90,11 +92,11 @@ BYTE PowerFlag = 0;     /* indicates if "power" is on */
 static
 void xmit_spi(BYTE dat)
 {
-    DWORD rcvdat;
+    uint32_t ui32RcvDat;
 
     ROM_SSIDataPut(SDC_SSI_BASE, dat); /* Write the data to the tx fifo */
 
-    ROM_SSIDataGet(SDC_SSI_BASE, &rcvdat); /* flush data read during the write */
+    ROM_SSIDataGet(SDC_SSI_BASE, &ui32RcvDat); /* flush data read during the write */
 }
 
 
@@ -105,13 +107,13 @@ void xmit_spi(BYTE dat)
 static
 BYTE rcvr_spi (void)
 {
-    DWORD rcvdat;
+    uint32_t ui32RcvDat;
 
     ROM_SSIDataPut(SDC_SSI_BASE, 0xFF); /* write dummy data */
 
-    ROM_SSIDataGet(SDC_SSI_BASE, &rcvdat); /* read data frm rx fifo */
+    ROM_SSIDataGet(SDC_SSI_BASE, &ui32RcvDat); /* read data frm rx fifo */
 
-    return (BYTE)rcvdat;
+    return (BYTE)ui32RcvDat;
 }
 
 
@@ -148,7 +150,7 @@ static
 void send_initial_clock_train(void)
 {
     unsigned int i;
-    DWORD dat;
+    uint32_t ui32Dat;
 
     /* Ensure CS is held high. */
     DESELECT();
@@ -166,7 +168,7 @@ void send_initial_clock_train(void)
         ROM_SSIDataPut(SDC_SSI_BASE, 0xFF);
 
         /* Flush data read during data write. */
-        ROM_SSIDataGet(SDC_SSI_BASE, &dat);
+        ROM_SSIDataGet(SDC_SSI_BASE, &ui32Dat);
     }
 
     /* Revert to hardware control of the SSI TX line. */
@@ -208,7 +210,7 @@ void power_on (void)
     ROM_GPIOPadConfigSet(SDC_GPIO_PORT_BASE, SDC_SSI_CLK | SDC_SSI_TX | SDC_SSI_FSS,
                          GPIO_STRENGTH_4MA, GPIO_PIN_TYPE_STD);
 
-    /* Configure the SSI port */
+    /* Configure the SSI0 port */
     ROM_SSIConfigSetExpClk(SDC_SSI_BASE, ROM_SysCtlClockGet(),
                            SSI_FRF_MOTO_MODE_0, SSI_MODE_MASTER, 400000, 8);
     ROM_SSIEnable(SDC_SSI_BASE);

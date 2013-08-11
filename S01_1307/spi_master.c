@@ -2,6 +2,9 @@
 //This Program realize the main code of CAN driver
 //
 //*****************************************************************************
+#include <stdint.h>
+#include <stdbool.h>
+#include <string.h>
 
 #include "inc/hw_memmap.h"
 #include "inc/hw_ssi.h"
@@ -132,7 +135,7 @@ void Read_RX(int number, unsigned long RX[]);
 //
 //*****************************************************************************
 unsigned long DataRx_BUFFER[NUM_RX]={0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-unsigned long ulDataRx = 0;
+uint32_t ulDataRx = 0;
 int
 sub_spi_main(void)
 {
@@ -261,7 +264,7 @@ void SPI_Send(unsigned long x[], int y)
 
 unsigned long SPI_Receive(int x)
 {
-	unsigned long Rxdata=0;
+	uint32_t Rxdata=0;
 	for(;x>0;x--)
 	{
 		SSIDataGet(SSI0_BASE, &Rxdata);

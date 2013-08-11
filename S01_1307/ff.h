@@ -101,6 +101,8 @@ typedef struct _FATFS {
     BYTE    drive;            /* Physical drive number */
     BYTE    winflag;        /* win[] dirty flag (1:must be written back) */
     BYTE    pad1;
+    BYTE    pad2;
+    BYTE    pad3;
     BYTE    win[S_MAX_SIZ];    /* Disk access window for Directory/FAT */
 } FATFS;
 
