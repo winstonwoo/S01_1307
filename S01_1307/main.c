@@ -618,7 +618,7 @@ Void tsk_manage_fxn(UArg arg0, UArg arg1)
 	{
 		// UARTSend((unsigned char *)"tsk_manage_fxn \n ", 20);
 		//Mailbox_pend(Mb_uart2_handle, ucMsg, BIOS_WAIT_FOREVER) ;
-		//UARTprintf("uart output!!!\n") ;
+		UARTprintf("uart output!!!\n") ;
 		Task_sleep(1000) ;
 	}
 
@@ -682,7 +682,9 @@ Void tsk_FS_fxn(UArg arg0, UArg arg1)
 	for(;;)
 	{
 		System_printf("tsk_FS_fxn \n") ;
+#ifdef D_SDCARD
 		sdcard_main() ;
+#endif
 		Task_sleep(3000) ;
 	}
 
@@ -722,7 +724,9 @@ Void tsk_CAN1_fxn(UArg arg0, UArg arg1)
 {
 
    UARTprintf( " tsk_can entered \n" ) ;
+#ifdef D_CAN
    tsk_can() ;
+#endif
 }
 
 
@@ -924,26 +928,143 @@ Void init_spi()
 
 }
 
+#if 0
+
+//*****************************************************************************
+//
+// The I2C pins that are used by this application.
+//
+//*****************************************************************************
+#define FRAM_I2C_PERIPH              (4)
+#define FRAM_I2C_MASTER_BASE         (I2C4_MASTER_BASE)
+#define FRAM_I2CSCL_GPIO_PERIPH      (SYSCTL_PERIPH_GPIOG)
+#define FRAM_I2CSCL_GPIO_PORT        (GPIO_PORTG_BASE)
+#define FRAM_I2CSCL_PIN              (GPIO_PIN_2)
+
+#define FRAM_I2CSDA_GPIO_PERIPH      (SYSCTL_PERIPH_GPIOG)
+#define FRAM_I2CSDA_GPIO_PORT        (GPIO_PORTG_BASE)
+#define FRAM_I2CSDA_PIN              (GPIO_PIN_3)
+
+
+Void init_fram()
+{
+
+     tBoolean bRetcode;
+
+
+     SysCtlPeripheralEnable( SYSCTL_PERIPH_GPIOG )
+     SysCtlPeripheralEnable(SYSCTL_PERIPH_I2C4) ;
+
+     GPIOPinConfigure( GPIO_PG2_I2C4SCL ) ;
+     GPIOPinConfigure( GPIO_PG3_I2C4SDA ) ;
+     GPIOPinTypeI2C(GPIO_PORTG_BASE, GPIO_PIN_2 | GPIO_PIN_3) ;
+
+     GPIOPinTypeGPIOInput(FRAM_I2CSCL_GPIO_PORT, FRAM_I2CSDA_PIN);
+     GPIOPadConfigSet(FRAM_I2CSCL_GPIO_PORT, FRAM_I2CSDA_PIN, GPIO_STRENGTH_2MA,
+                      GPIO_PIN_TYPE_STD_WPD);
+
+     //
+     // Delay a while to ensure that we read a stable value from the SDA
+     // GPIO pin.  If we read too quickly, the result is unpredictable.
+     // This delay is around 2mS.
+     //
+     SysCtlDelay(SysCtlClockGet() / (3 * 500));
+
+     //
+     // Initialize the I2C master.
+     //
+     I2CMasterInitExpClk(I2C4_MASTER_BASE, SysCtlClockGet(), true);
+
+     I2CMasterSlaveAddrSet( I2C4_MASTER_BASE, 0x60, false ) ;
+
+     I2CMasterDataPut( I2C4_MASTER_BASE,  0x0000) ;
+
+     I2CMasterControl( I2C4_MASTER_BASE, I2C_MASTER_CMD_SINGLE_SEND ) ;
+
+     while( I2CMasterBusBusy( I2C4_MASTER_BASE ) )
+     {
+     
+
+     }
+
+     //
+     // Power up the device and the FRAM.
+     //
+     TLV320AIC23BWriteRegister(TI_POWER_DOWN, TI_POWER_DOWN_CLK |
+                               TI_POWER_DOWN_OSC);
+
+     //
+     // Set the sample rate.
+     //
+     TLV320AIC23BWriteRegister(TI_SRC, TI_SRC_SR_48000);
+
+     //
+     // Unmute the FRAM.
+     //
+     TLV320AIC23BWriteRegister(TI_DIGITAL_AP, TI_DIGITAL_AP_DEEMP_48K |
+                               TI_DIGITAL_AP_ADCHP);
+
+     //
+     // Enable the FRAM path and insure the Mic input stays muted.
+     //
+     TLV320AIC23BWriteRegister(TI_ANALOG_AP, TI_ANALOG_AP_FRAM |
+                               TI_ANALOG_AP_MICM);
+
+     //
+     // 16 bit I2S slave mode.
+     //
+     TLV320AIC23BWriteRegister(TI_DIGITAL_AI,
+                               (TI_DIGITAL_AI_LRSWAP | TI_DIGITAL_AI_IWL_16 |
+                                TI_DIGITAL_AI_FOR_I2S | TI_DIGITAL_AI_SLAVE));
+
+     //
+     // Set the Headphone volume.
+     //
+     TLV320AIC23BHeadPhoneVolumeSet(100);
+
+     //
+     // Unmute the Line input to the ADC.
+     //
+     TLV320AIC23BLineInVolumeSet(TLV_LINEIN_VC_0DB);
+
+     //
+     // Turn on the digital interface.
+     //
+     TLV320AIC23BWriteRegister(TI_DIGITAL_ACTIVATE, TI_DIGITAL_ACTIVATE_EN);
+
+
+}
+
+#endif
+
 Void init_sys()
 {
-	//GPIOM initialization for bootloader
-	init_gpio() ;
+     //GPIOM initialization for bootloader
+     init_gpio() ;
 
-	//UART0 initialization
-	init_uart() ;
+     //UART0 initialization
+     init_uart() ;
 
 
 	//UART1 initialization
-/*
+#ifdef D_SDCARD
 	init_sdcard() ;
+#endif
 
 	//CAN initialization
+#ifdef D_CAN
 	init_can() ;
-
+#endif
 
 	//SPI initialization for CAN2 ,3
+#ifdef D_SPICAN
 	init_spi() ;
-*/
+#endif
+
+#ifdef D_FRAM
+	init_fram() ;
+#endif
+
     //interrupt setting for system
 	cfg_interrupt() ;
 
@@ -971,168 +1092,6 @@ UARTSend(const unsigned char *pucBuffer, unsigned long ulCount)
 }
 
 
-int
-sub_main(void)
-{
-    tCANMsgObject sCANMessage;
-    unsigned char ucMsgData[4];
-
-    //
-    // Set the clocking to run directly from the external crystal/oscillator.
-    // TODO: The SYSCTL_XTAL_ value must be changed to match the value of the
-    // crystal on your board.
-    //
-/*
-    SysCtlClockSet(SYSCTL_SYSDIV_1 | SYSCTL_USE_OSC | SYSCTL_OSC_MAIN |
-                   SYSCTL_XTAL_16MHZ);
-*/
-    //
-    // Set up the serial console to use for displaying messages.  This is
-    // just for this example program and is not needed for CAN operation.
-    //
-   // InitConsole();
-
-    //
-    // For this example CAN0 is used with RX and TX pins on port D0 and D1.
-    // The actual port and pins used may be different on your part, consult
-    // the data sheet for more information.
-    // GPIO port D needs to be enabled so these pins can be used.
-    // TODO: change this to whichever GPIO port you are using
-    //
-    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOE);
-
-    //
-    // Configure the GPIO pin muxing to select CAN0 functions for these pins.
-    // This step selects which alternate function is available for these pins.
-    // This is necessary if your part supports GPIO pin function muxing.
-    // Consult the data sheet to see which functions are allocated per pin.
-    // TODO: change this to select the port/pin you are using
-    //
-    GPIOPinConfigure(GPIO_PE4_CAN0RX);
-    GPIOPinConfigure(GPIO_PE5_CAN0TX);
-
-    //
-    // Enable the alternate function on the GPIO pins.  The above step selects
-    // which alternate function is available.  This step actually enables the
-    // alternate function instead of GPIO for these pins.
-    // TODO: change this to match the port/pin you are using
-    //
-    GPIOPinTypeCAN(GPIO_PORTE_BASE, GPIO_PIN_4 | GPIO_PIN_5);
-
-    //
-    // The GPIO port and pins have been set up for CAN.  The CAN peripheral
-    // must be enabled.
-    //
-    SysCtlPeripheralEnable(SYSCTL_PERIPH_CAN0);
-
-    //
-    // Initialize the CAN controller
-    //
-    CANInit(CAN0_BASE);
-
-    //
-    // Set up the bit rate for the CAN bus.  This function sets up the CAN
-    // bus timing for a nominal configuration.  You can achieve more control
-    // over the CAN bus timing by using the function CANBitTimingSet() instead
-    // of this one, if needed.
-    // In this example, the CAN bus is set to 500 kHz.  In the function below,
-    // the call to SysCtlClockGet() is used to determine the clock rate that
-    // is used for clocking the CAN peripheral.  This can be replaced with a
-    // fixed value if you know the value of the system clock, saving the extra
-    // function call.  For some parts, the CAN peripheral is clocked by a fixed
-    // 8 MHz regardless of the system clock in which case the call to
-    // SysCtlClockGet() should be replaced with 8000000.  Consult the data
-    // sheet for more information about CAN peripheral clocking.
-    //
-    CANBitRateSet(CAN0_BASE, SysCtlClockGet(), 500000);
-
-    //
-    // Enable interrupts on the CAN peripheral.  This example uses static
-    // allocation of interrupt handlers which means the name of the handler
-    // is in the vector table of startup code.  If you want to use dynamic
-    // allocation of the vector table, then you must also call CANIntRegister()
-    // here.
-    //
-    // CANIntRegister(CAN0_BASE, CANIntHandler); // if using dynamic vectors
-    //
-    CANIntEnable(CAN0_BASE, CAN_INT_MASTER | CAN_INT_ERROR | CAN_INT_STATUS);
-
-    //
-    // Enable the CAN interrupt on the processor (NVIC).
-    //
-    IntEnable(INT_CAN0);
-
-    //
-    // Enable the CAN for operation.
-    //
-    CANEnable(CAN0_BASE);
-
-    //
-    // Initialize the message object that will be used for sending CAN
-    // messages.  The message will be 4 bytes that will contain an incrementing
-    // value.  Initially it will be set to 0.
-    //
-    *(unsigned long *)ucMsgData = 0;
-    sCANMessage.ulMsgID = 1;                        // CAN message ID - use 1
-    sCANMessage.ulMsgIDMask = 0;                    // no mask needed for TX
-    sCANMessage.ulFlags = MSG_OBJ_TX_INT_ENABLE;    // enable interrupt on TX
-    sCANMessage.ulMsgLen = sizeof(ucMsgData);       // size of message is 4
-    sCANMessage.pucMsgData = ucMsgData;             // ptr to message content
-
-    //
-    // Enter loop to send messages.  A new message will be sent once per
-    // second.  The 4 bytes of message content will be treated as an unsigned
-    // long and incremented by one each time.
-    //
-    for(;;)
-    {
-        //
-        // Print a message to the console showing the message count and the
-        // contents of the message being sent.
-        //
-        UARTprintf("Sending msg: 0x%02X %02X %02X %02X",
-                   ucMsgData[0], ucMsgData[1], ucMsgData[2], ucMsgData[3]);
-
-        //
-        // Send the CAN message using object number 1 (not the same thing as
-        // CAN ID, which is also 1 in this example).  This function will cause
-        // the message to be transmitted right away.
-        //
-        CANMessageSet(CAN0_BASE, 1, &sCANMessage, MSG_OBJ_TYPE_TX);
-
-        //
-        // Now wait 1 second before continuing
-        //
-        //SimpleDelay();
-        SysCtlDelay(SysCtlClockGet()/3) ;
-
-        //
-        // Check the error flag to see if errors occurred
-        //
-        if(g_bErrFlag)
-        {
-            UARTprintf(" error - cable connected?\n");
-        }
-        else
-        {
-            //
-            // If no errors then print the count of message sent
-            //
-            UARTprintf(" total count = %u\n", g_ulMsgCount);
-        }
-
-        //
-        // Increment the value in the message data.
-        //
-        (*(unsigned long *)ucMsgData)++;
-    }
-
-    //
-    // Return no errors
-    //
-    return(0);
-}
-
 /*
  *  ======== main ========
  */
@@ -1140,6 +1099,8 @@ Void main()
 { 
     Task_Handle task;
     Error_Block eb;
+
+    ROM_FPULazyStackingEnable();
 
     System_printf("enter main()\n");
 
@@ -1149,7 +1110,7 @@ Void main()
     //System driver initialization
     init_sys() ;
 
-    sub_main() ;
+    //test_fram() ;
 
     //
     // Prompt for text to be entered.

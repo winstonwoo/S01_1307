@@ -2246,7 +2246,7 @@ __FAR__ const xdc_SizeT ti_sysbios_knl_Task_Module_State_terminatedQ__O = offset
  *  Define absolute path prefix for this executable's
  *  configuration generated files.
  */
-xdc__META(__ASM__, "@(#)__ASM__ = J:/WorkHouse2013/Temp/test0807/S01_Repository/S01_1307_configuration/Default/configPkg/package/cfg/mutex_pem4f");
+xdc__META(__ASM__, "@(#)__ASM__ = J:/WorkHouse2013/SW2013/S01_1307_VTDR_Stellaris/S01_Repository/S01_1307_configuration/Default/configPkg/package/cfg/mutex_pem4f");
 
 /*
  *  ======== __ISA__ ========

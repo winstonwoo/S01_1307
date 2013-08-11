@@ -1,83 +1,915 @@
-cscope 15 j:\WorkHouse2013\SW2013\S01_1307_VTDR_Stellaris\S01_Repository\S01_1307               0000084127
+cscope 15 j:\WorkHouse2013\SW2013\S01_1307_VTDR_Stellaris\S01_Repository\S01_1307               0000114236
+	@MCP2515.h
+
+1 #i‚de‡
+__MCP2515_H
+
+
+2 
+	#__MCP2515_H
+
+
+	)
+
+18 
+	#MCP_BFPCTRL
+ 0x0D
+
+	)
+
+20 
+	#MCP_RXF0SIDH
+ 0x00
+
+	)
+
+21 
+	#MCP_RXF0SIDL
+ 0x01
+
+	)
+
+22 
+	#MCP_RXF0EID8
+ 0x02
+
+	)
+
+23 
+	#MCP_RXF0EID0
+ 0x03
+
+	)
+
+24 
+	#MCP_RXF1SIDH
+ 0x04
+
+	)
+
+25 
+	#MCP_RXF1SIDL
+ 0x05
+
+	)
+
+26 
+	#MCP_RXF1EID8
+ 0x06
+
+	)
+
+27 
+	#MCP_RXF1EID0
+ 0x07
+
+	)
+
+28 
+	#MCP_RXF2SIDH
+ 0x08
+
+	)
+
+29 
+	#MCP_RXF2SIDL
+ 0x09
+
+	)
+
+30 
+	#MCP_RXF2EID8
+ 0x0A
+
+	)
+
+31 
+	#MCP_RXF2EID0
+ 0x0B
+
+	)
+
+32 
+	#MCP_CANSTAT
+ 0x0E
+
+	)
+
+33 
+	#MCP_CANCTRL
+ 0x0F
+
+	)
+
+34 
+	#MCP_RXF3SIDH
+ 0x10
+
+	)
+
+35 
+	#MCP_RXF3SIDL
+ 0x11
+
+	)
+
+36 
+	#MCP_RXF3EID8
+ 0x12
+
+	)
+
+37 
+	#MCP_RXF3EID0
+ 0x13
+
+	)
+
+38 
+	#MCP_RXF4SIDH
+ 0x14
+
+	)
+
+39 
+	#MCP_RXF4SIDL
+ 0x15
+
+	)
+
+40 
+	#MCP_RXF4EID8
+ 0x16
+
+	)
+
+41 
+	#MCP_RXF4EID0
+ 0x17
+
+	)
+
+42 
+	#MCP_RXF5SIDH
+ 0x18
+
+	)
+
+43 
+	#MCP_RXF5SIDL
+ 0x19
+
+	)
+
+44 
+	#MCP_RXF5EID8
+ 0x1A
+
+	)
+
+45 
+	#MCP_RXF5EID0
+ 0x1B
+
+	)
+
+46 
+	#MCP_TEC
+ 0x1C
+
+	)
+
+47 
+	#MCP_REC
+ 0x1D
+
+	)
+
+48 
+	#MCP_RXM0SIDH
+ 0x20
+
+	)
+
+49 
+	#MCP_RXM0SIDL
+ 0x21
+
+	)
+
+50 
+	#MCP_RXM0EID8
+ 0x22
+
+	)
+
+51 
+	#MCP_RXM0EID0
+ 0x23
+
+	)
+
+52 
+	#MCP_RXM1SIDH
+ 0x24
+
+	)
+
+53 
+	#MCP_RXM1SIDL
+ 0x25
+
+	)
+
+54 
+	#MCP_RXM1EID8
+ 0x26
+
+	)
+
+55 
+	#MCP_RXM1EID0
+ 0x27
+
+	)
+
+56 
+	#MCP_CNF3
+ 0x28
+
+	)
+
+57 
+	#MCP_CNF2
+ 0x29
+
+	)
+
+58 
+	#MCP_CNF1
+ 0x2A
+
+	)
+
+59 
+	#MCP_CANINTE
+ 0x2B
+
+	)
+
+60 
+	#MCP_CANINTF
+ 0x2C
+
+	)
+
+61 
+	#MCP_EFLG
+ 0x2D
+
+	)
+
+62 
+	#MCP_TXB0CTRL
+ 0x30
+
+	)
+
+63 
+	#MCP_TXB1CTRL
+ 0x40
+
+	)
+
+64 
+	#MCP_TXB2CTRL
+ 0x50
+
+	)
+
+65 
+	#MCP_RXB0CTRL
+ 0x60
+
+	)
+
+66 
+	#MCP_RXB0SIDH
+ 0x61
+
+	)
+
+67 
+	#MCP_RXB1CTRL
+ 0x70
+
+	)
+
+68 
+	#MCP_RXB1SIDH
+ 0x71
+
+	)
+
+71 
+	#MCP_TX_INT
+ 0x1C
+
+72 
+	#MCP_TX01_INT
+ 0x0C
+
+73 
+	#MCP_RX_INT
+ 0x03
+
+74 
+	#MCP_NO_INT
+ 0x00
+
+75 
+
+	)
+
+76 
+	#MCP_TX01_MASK
+ 0x14
+
+	)
+
+77 
+	#MCP_TX_MASK
+ 0x54
+
+	)
+
+81 
+	#MCP_WRITE
+ 0x02
+
+	)
+
+83 
+	#MCP_READ
+ 0x03
+
+	)
+
+85 
+	#MCP_BITMOD
+ 0x05
+
+	)
+
+87 
+	#MCP_LOAD_TX0
+ 0x40
+
+	)
+
+88 
+	#MCP_LOAD_TX1
+ 0x42
+
+	)
+
+89 
+	#MCP_LOAD_TX2
+ 0x44
+
+	)
+
+91 
+	#MCP_RTS_TX0
+ 0x81
+
+	)
+
+92 
+	#MCP_RTS_TX1
+ 0x82
+
+	)
+
+93 
+	#MCP_RTS_TX2
+ 0x84
+
+	)
+
+94 
+	#MCP_RTS_ALL
+ 0x87
+
+	)
+
+96 
+	#MCP_READ_RX0
+ 0x90
+
+	)
+
+97 
+	#MCP_READ_RX1
+ 0x94
+
+	)
+
+99 
+	#MCP_READ_STATUS
+ 0xA0
+
+	)
+
+101 
+	#MCP_RX_STATUS
+ 0xB0
+
+	)
+
+103 
+	#MCP_RESET
+ 0xC0
+
+	)
+
+108 
+	#MODE_NORMAL
+ 0x00
+
+	)
+
+109 
+	#MODE_SLEEP
+ 0x20
+
+	)
+
+110 
+	#MODE_LOOPBACK
+ 0x40
+
+	)
+
+111 
+	#MODE_LISTENONLY
+ 0x60
+
+	)
+
+112 
+	#MODE_CONFIG
+ 0x80
+
+	)
+
+113 
+	#MODE_POWERUP
+ 0xE0
+
+	)
+
+114 
+	#MODE_MASK
+ 0xE0
+
+	)
+
+115 
+	#ABORT_TX
+ 0x10
+
+	)
+
+116 
+	#MODE_ONESHOT
+ 0x08
+
+	)
+
+117 
+	#CLKOUT_ENABLE
+ 0x04
+
+	)
+
+118 
+	#CLKOUT_DISABLE
+ 0x00
+
+	)
+
+119 
+	#CLKOUT_PS1
+ 0x00
+
+	)
+
+120 
+	#CLKOUT_PS2
+ 0x01
+
+	)
+
+121 
+	#CLKOUT_PS4
+ 0x02
+
+	)
+
+122 
+	#CLKOUT_PS8
+ 0x03
+
+	)
+
+127 
+	#SJW1
+ 0x00
+
+	)
+
+128 
+	#SJW2
+ 0x40
+
+	)
+
+129 
+	#SJW3
+ 0x80
+
+	)
+
+130 
+	#SJW4
+ 0xC0
+
+	)
+
+135 
+	#BTLMODE
+ 0x80
+
+	)
+
+136 
+	#SAMPLE_1X
+ 0x00
+
+	)
+
+137 
+	#SAMPLE_3X
+ 0x40
+
+	)
+
+142 
+	#SOF_ENABLE
+ 0x80
+
+	)
+
+143 
+	#SOF_DISABLE
+ 0x00
+
+	)
+
+144 
+	#WAKFIL_ENABLE
+ 0x40
+
+	)
+
+145 
+	#WAKFIL_DISABLE
+ 0x00
+
+	)
+
+150 
+	#MCP_RX0IF
+ 0x01
+
+	)
+
+151 
+	#MCP_RX1IF
+ 0x02
+
+	)
+
+152 
+	#MCP_TX0IF
+ 0x04
+
+	)
+
+153 
+	#MCP_TX1IF
+ 0x08
+
+	)
+
+154 
+	#MCP_TX2IF
+ 0x10
+
+	)
+
+155 
+	#MCP_ERRIF
+ 0x20
+
+	)
+
+156 
+	#MCP_WAKIF
+ 0x40
+
+	)
+
+157 
+	#MCP_MERRF
+ 0x80
+
+	)
+
 	@can.c
 
-3 
+2 
+	~<xdc/°d.h
+>
+
+4 
+	~<xdc/ru¡ime/Eº‹.h
+>
+
+5 
+	~<xdc/ru¡ime/Sy°em.h
+>
+
+7 
+	~<ti/sysbios/BIOS.h
+>
+
+9 
+	~<ti/sysbios/k∆/Task.h
+>
+
+10 
+	~<ti/sysbios/hÆ/Hwi.h
+>
+
+11 
+	~<ti/sysbios/k∆/Swi.h
+>
+
+12 
+	~<ti/sysbios/k∆/Maûbox.h
+>
+
+14 
 	~"öc/hw_memm≠.h
 "
 
-4 
+15 
 	~"öc/hw_ty≥s.h
 "
 
-5 
+16 
 	~"öc/hw_ˇn.h
 "
 
-6 
+17 
 	~"öc/hw_öts.h
 "
 
-7 
+18 
 	~"drivîlib/ˇn.h
 "
 
-8 
+19 
 	~"drivîlib/öãºu±.h
 "
 
-9 
+20 
 	~"drivîlib/sys˘l.h
 "
 
-10 
+21 
 	~"drivîlib/gpio.h
 "
 
-11 
+22 
 	~"utûs/u¨t°dio.h
 "
 
-17 
+29 
 	$öô_ˇn
 ( )
 
-19 
+31 #ifde‡
+D_CAN1
+
+
+34 
 	`SysCéPîùhîÆE«bÀ
 –
-SYSCTL_PERIPH_GPIOF
+SYSCTL_PERIPH_GPIOA
  ) ;
 
-20 
+36 
+	`GPIOPöC⁄figuª
+–
+GPIO_PA0_CAN1RX
+ ) ;
+
+37 
+	`GPIOPöC⁄figuª
+–
+GPIO_PA1_CAN1TX
+ ) ;
+
+39 
 	`GPIOPöTy≥CAN
 –
-GPIO_PORTF_BASE
+GPIO_PORTA_BASE
 , 
 GPIO_PIN_0
  | 
-GPIO_PIN3
+GPIO_PIN_1
+) ;
+
+42 
+	`GPIOPöTy≥GPIOI≈ut
+–
+GPIO_PORTA_BASE
+, 
+GPIO_PIN_2
+) ;
+
+45 
+	`GPIOPöTy≥GPIOOuçut
+–
+GPIO_PORTA_BASE
+, 
+GPIO_PIN_3
+) ;
+
+46 
+	`GPIOPöTy≥GPIOOuçut
+–
+GPIO_PORTA_BASE
+, 
+GPIO_PIN_4
+) ;
+
+49 
+	`GPIOPöWrôe
+–
+GPIO_PORTA_BASE
+, 
+GPIO_PIN_3
+ | 
+GPIO_PIN_4
+, GPIO_PIN_3 | GPIO_PIN_4) ;
+
+52 
+	`SysCéPîùhîÆE«bÀ
+–
+SYSCTL_PERIPH_CAN1
  ) ;
 
-22 
+53 
+	`CANInô
+–
+CAN1_BASE
+ ) ;
+
+54 
+	`CANBôR©eSë
+–
+CAN1_BASE
+, 
+	`SysCéClockGë
+(), 250000) ;
+
+59 
+	`CANI¡E«bÀ
+–
+CAN1_BASE
+, 
+CAN_INT_MASTER
+ | 
+CAN_INT_ERROR
+ | 
+CAN_INT_STATUS
+) ;
+
+60 
+	`I¡E«bÀ
+–
+INT_CAN1
+ ) ;
+
+61 
+	`CANE«bÀ
+–
+CAN1_BASE
+ ) ;
+
+64 #ifde‡
+D_CAN0
+
+
+67 
+	`SysCéPîùhîÆE«bÀ
+–
+SYSCTL_PERIPH_GPIOA
+ ) ;
+
+68 
+	`SysCéPîùhîÆE«bÀ
+–
+SYSCTL_PERIPH_GPIOE
+ ) ;
+
+69 
+	`SysCéPîùhîÆE«bÀ
+–
+SYSCTL_PERIPH_GPIOH
+ ) ;
+
+71 
+	`GPIOPöC⁄figuª
+–
+GPIO_PE4_CAN0RX
+ ) ;
+
+72 
+	`GPIOPöC⁄figuª
+–
+GPIO_PE5_CAN0TX
+ ) ;
+
+74 
+	`GPIOPöTy≥CAN
+–
+GPIO_PORTE_BASE
+, 
+GPIO_PIN_4
+ | 
+GPIO_PIN_5
+) ;
+
+77 
+	`GPIOPöTy≥GPIOI≈ut
+(
+GPIO_PORTH_BASE
+, 
+GPIO_PIN_3
+) ;
+
+80 
+	`GPIOPöTy≥GPIOOuçut
+–
+GPIO_PORTA_BASE
+, 
+GPIO_PIN_5
+) ;
+
+81 
+	`GPIOPöWrôe
+–
+GPIO_PORTA_BASE
+, 
+GPIO_PIN_5
+, GPIO_PIN_5) ;
+
+84 
 	`SysCéPîùhîÆE«bÀ
 –
 SYSCTL_PERIPH_CAN0
  ) ;
 
-23 
+86 
 	`CANInô
 –
 CAN0_BASE
  ) ;
 
-24 
+87 
 	`CANBôR©eSë
 –
 CAN0_BASE
 , 
 	`SysCéClockGë
-(), 250000 ) ;
+(), 250000) ;
 
-26 
+91 
 	`CANI¡E«bÀ
 –
 CAN0_BASE
@@ -87,63 +919,75 @@ CAN_INT_MASTER
 CAN_INT_ERROR
  | 
 CAN_INT_STATUS
- ) ;
+) ;
 
-27 
+92 
 	`I¡E«bÀ
 –
 INT_CAN0
  ) ;
 
-29 
+93 
 	`CANE«bÀ
 –
 CAN0_BASE
- )
+ ) ;
 
-32 
+96 
 	}
 }
 
-34 
+98 
 	$tsk_ˇn
 ( )
 
-36 
+100 
 tCANMsgObje˘
  
 sCANMsgObje˘1
  ;
 
-37 
+101 
+tCANMsgObje˘
+ 
+sCANMsgObje˘2
+ ;
+
+102 
+tCANMsgObje˘
+ 
+sCANMsgObje˘3
+ ;
+
+104 
 ucCAND©a1
 [8] = {1, 2, 3, 4, 5, 6, 7, 8} ;
 
-38 
+105 
 ucCAND©a2
 [5] = { 2, 2, 2, 2, 2 };
 
-39 
+106 
 ucCAND©a3
 [6] = { 3, 3, 3, 3, 3, 3 };
 
-40 
+107 
 ucCAND©a4
 [8] = { 4, 4, 4, 4, 5, 5, 5, 5 };
 
-43 
+110 
 sCANMsgObje˘1
 .
 ulMsgID
  = 0x1001 ;
 
-44 
+111 
 sCANMsgObje˘1
 .
 ulMsgIDMask
  = 0 ;
 
-45 
+112 
 sCANMsgObje˘1
 .
 ulFœgs
@@ -151,7 +995,7 @@ ulFœgs
 MSG_OBJ_TX_INT_ENABLE
  ;
 
-46 
+113 
 sCANMsgObje˘1
 .
 ulMsgLí
@@ -159,7 +1003,7 @@ ulMsgLí
 ucCAND©a1
  ) ;
 
-47 
+114 
 sCANMsgObje˘1
 .
 pucMsgD©a
@@ -167,19 +1011,19 @@ pucMsgD©a
 ucCAND©a1
  ;
 
-50 
+117 
 sCANMsgObje˘2
 .
 ulMsgID
  = 0x2001 ;
 
-51 
+118 
 sCANMsgObje˘2
 .
 ulMsgIDMask
  = 0 ;
 
-52 
+119 
 sCANMsgObje˘2
 .
 ulFœgs
@@ -187,7 +1031,7 @@ ulFœgs
 MSG_OBJ_TX_INT_ENABLE
  ;
 
-53 
+120 
 sCANMsgObje˘2
 .
 ulMsgLí
@@ -195,7 +1039,7 @@ ulMsgLí
 ucCAND©a2
  ) ;
 
-54 
+121 
 sCANMsgObje˘2
 .
 pucMsgD©a
@@ -203,19 +1047,19 @@ pucMsgD©a
 ucCAND©a2
  ;
 
-57 
+124 
 sCANMsgObje˘3
 .
 ulMsgID
  = 0x3001 ;
 
-58 
+125 
 sCANMsgObje˘3
 .
 ulMsgIDMask
  = 0 ;
 
-59 
+126 
 sCANMsgObje˘3
 .
 ulFœgs
@@ -223,7 +1067,7 @@ ulFœgs
 MSG_OBJ_TX_INT_ENABLE
  ;
 
-60 
+127 
 sCANMsgObje˘3
 .
 ulMsgLí
@@ -231,7 +1075,7 @@ ulMsgLí
 ucCAND©a3
  ) ;
 
-61 
+128 
 sCANMsgObje˘3
 .
 pucMsgD©a
@@ -239,7 +1083,79 @@ pucMsgD©a
 ucCAND©a3
  ;
 
-65 
+132 #ifde‡
+D_CAN
+
+
+133 #ifde‡
+D_CAN1
+
+
+134 
+	`CANMesßgeSë
+–
+CAN1_BASE
+, 1, &
+sCANMsgObje˘1
+, 
+MSG_OBJ_TYPE_TX
+ ) ;
+
+135 
+	`SysCéDñay
+(
+	`SysCéClockGë
+()/3) ;
+
+136 
+	`CANMesßgeSë
+–
+CAN1_BASE
+, 2, &
+sCANMsgObje˘2
+, 
+MSG_OBJ_TYPE_TX
+ ) ;
+
+137 
+	`SysCéDñay
+(
+	`SysCéClockGë
+()/3) ;
+
+138 
+	`CANMesßgeSë
+–
+CAN1_BASE
+, 3, &
+sCANMsgObje˘3
+, 
+MSG_OBJ_TYPE_TX
+ ) ;
+
+139 
+	`SysCéDñay
+(
+	`SysCéClockGë
+()/3) ;
+
+143 (*(*)
+ucCAND©a1
+)++;
+
+144 (*(*)
+ucCAND©a2
+)++;
+
+145 (*(*)
+ucCAND©a3
+)++;
+
+150 #ifde‡
+D_CAN0
+
+
+151 
 	`CANMesßgeSë
 –
 CAN0_BASE
@@ -249,7 +1165,13 @@ sCANMsgObje˘1
 MSG_OBJ_TYPE_TX
  ) ;
 
-66 
+152 
+	`SysCéDñay
+(
+	`SysCéClockGë
+()/3) ;
+
+153 
 	`CANMesßgeSë
 –
 CAN0_BASE
@@ -259,7 +1181,13 @@ sCANMsgObje˘2
 MSG_OBJ_TYPE_TX
  ) ;
 
-67 
+154 
+	`SysCéDñay
+(
+	`SysCéClockGë
+()/3) ;
+
+155 
 	`CANMesßgeSë
 –
 CAN0_BASE
@@ -269,23 +1197,29 @@ sCANMsgObje˘3
 MSG_OBJ_TYPE_TX
  ) ;
 
-71 (*(*)
-g_ucMsg1
+156 
+	`SysCéDñay
+(
+	`SysCéClockGë
+()/3) ;
+
+161 (*(*)
+ucCAND©a1
 )++;
 
-72 (*(*)
-g_ucMsg2
+162 (*(*)
+ucCAND©a2
 )++;
 
-73 (*(*)
-g_ucMsg3
+163 (*(*)
+ucCAND©a3
 )++;
 
-75 
-	`èsk_¶ìp
+170 
+	`Task_¶ìp
 ( 1000 ) ;
 
-78 
+173 
 	}
 }
 
@@ -640,6 +1574,1576 @@ disk_timî¥oc
 
 
 	)
+
+	@eeprom.c
+
+25 
+	~<°ddef.h
+>
+
+26 
+	~<°rög.h
+>
+
+27 
+	~"öc/hw_memm≠.h
+"
+
+28 
+	~"öc/hw_ty≥s.h
+"
+
+29 
+	~"drivîlib/gpio.h
+"
+
+30 
+	~"drivîlib/ïi.h
+"
+
+31 
+	~"drivîlib/u¨t.h
+"
+
+32 
+	~"drivîlib/i2c.h
+"
+
+33 
+	~"drivîlib/rom.h
+"
+
+34 
+	~"drivîlib/debug.h
+"
+
+35 
+	~"drivîlib/rom_m≠.h
+"
+
+36 
+	~"drivîlib/öãºu±.h
+"
+
+37 
+	~"drivîlib/sys˘l.h
+"
+
+38 
+	~"drivîlib/sy°ick.h
+"
+
+39 
+	~"drivîs/£t_pöout.h
+"
+
+40 
+	~"utûs/u¨t°dio.h
+"
+
+41 
+	~"utûs/u°dlib.h
+"
+
+42 
+	~"utûs/cmdlöe.h
+"
+
+68 c⁄° 
+tDaughãrIDInfo
+ 
+	gg_psIDBlock
+[] =
+
+74 {'I', 'D'}, 0, 0, 
+DAUGHTER_SRAM_FLASH
+, 1, 
+EPI_MODE_HB8
+, 0xFFFFFFFF,
+
+75 20, 20, 90, 90, 0, 0, (
+EPI_ADDR_RAM_SIZE_256MB
+ | 
+EPI_ADDR_RAM_BASE_6
+), 0,
+
+76 0, 0, 0, 0, (
+EPI_HB8_MODE_ADMUX
+ | 
+EPI_HB8_WORD_ACCESS
+), {0}
+
+82 {'I', 'D'}, 0, 0, 
+DAUGHTER_FPGA
+, 1, 
+EPI_MODE_GENERAL
+, 0xBBFFFFFF,
+
+83 25, 25, 0, 0, 0, 0, (
+EPI_ADDR_PER_SIZE_64KB
+ | 
+EPI_ADDR_PER_BASE_A
+),
+
+84 0, 0, 0, 0, 0, (
+EPI_GPMODE_DSIZE_16
+ | 
+EPI_GPMODE_ASIZE_12
+ |
+
+85 
+EPI_GPMODE_WORD_ACCESS
+ | 
+EPI_GPMODE_READWRITE
+ | 
+EPI_GPMODE_READ2CYCLE
+ |
+
+86 
+EPI_GPMODE_CLKPIN
+ | 
+EPI_GPMODE_RDYEN
+), {0}
+
+92 {'I', 'D'}, 0, 0, 
+DAUGHTER_EM2
+, 1, 
+EPI_MODE_DISABLE
+, 0, 0, 0, 0, 0, 0,
+
+98 c⁄° *
+	gg_pcIDNames
+[] =
+
+105 
+	#NUM_DAUGHTER_STRUCTS
+ ((
+g_psIDBlock
+Ë/ (
+tDaughãrIDInfo
+))
+
+	)
+
+113 
+	#ID_I2C_ADDR
+ 0x50
+
+	)
+
+120 
+	#SYSTICKHZ
+ 100
+
+	)
+
+121 
+	#SYSTICKMS
+ (1000 / 
+SYSTICKHZ
+)
+
+	)
+
+128 
+	#COMMAND_OK
+ 0
+
+	)
+
+129 
+	#COMMAND_TOO_FEW_ARGS
+ -10
+
+	)
+
+130 
+	#COMMAND_INVALID_ARG
+ -11
+
+	)
+
+137 
+	#CMD_BUF_SIZE
+ 64
+
+	)
+
+144 
+	gg_cCmdBuf
+[
+CMD_BUF_SIZE
+];
+
+151 vﬁ©ûê
+	gg_ulSysTickCou¡
+ = 0;
+
+153 
+tBoﬁón
+
+
+154 
+	$WaôI2CFöished
+()
+
+159 
+	`ROM_I2CMa°îI¡Sètus
+(
+I2C0_MASTER_BASE
+, 
+Ál£
+) == 0)
+
+163 if(
+	`I2CMa°îEº
+(
+I2C0_MASTER_BASE
+Ë!
+I2C_MASTER_ERR_NONE
+)
+
+165 
+	`ROM_I2CMa°îI¡CÀ¨
+(
+I2C0_MASTER_BASE
+);
+
+166 (
+Ál£
+);
+
+172 
+	`ROM_I2CMa°îI¡Sètus
+(
+I2C0_MASTER_BASE
+, 
+Ál£
+))
+
+174 
+	`ROM_I2CMa°îI¡CÀ¨
+(
+I2C0_MASTER_BASE
+);
+
+177 (
+åue
+);
+
+178 
+	}
+}
+
+195 
+tBoﬁón
+
+
+196 
+	$EEPROMRódPﬁÀd
+(*
+pucD©a
+, 
+ulOff£t
+,
+
+197 
+ulCou¡
+)
+
+199 
+ulToRód
+;
+
+204 
+	`ROM_I2CMa°îI¡CÀ¨
+(
+I2C0_MASTER_BASE
+);
+
+209 
+	`ROM_I2CMa°îSœveAddrSë
+(
+I2C0_MASTER_BASE
+, 
+ID_I2C_ADDR
+, 
+Ál£
+);
+
+214 
+	`ROM_I2CMa°îD©aPut
+(
+I2C0_MASTER_BASE
+, 
+ulOff£t
+);
+
+219 
+	`ROM_I2CMa°îC⁄åﬁ
+(
+I2C0_MASTER_BASE
+, 
+I2C_MASTER_CMD_BURST_SEND_START
+);
+
+224 if(!
+	`WaôI2CFöished
+())
+
+226 (
+Ál£
+);
+
+232 
+	`ROM_I2CMa°îSœveAddrSë
+(
+I2C0_MASTER_BASE
+, 
+ID_I2C_ADDR
+, 
+åue
+);
+
+237 
+	`ROM_I2CMa°îC⁄åﬁ
+(
+I2C0_MASTER_BASE
+,
+
+238 ((
+ulCou¡
+ > 1Ë? 
+I2C_MASTER_CMD_BURST_RECEIVE_START
+ :
+
+239 
+I2C_MASTER_CMD_SINGLE_RECEIVE
+));
+
+244 
+ulToRód
+ = 
+ulCou¡
+;
+
+246 
+ulToRód
+)
+
+251 
+	`ROM_I2CMa°îI¡Sètus
+(
+I2C0_MASTER_BASE
+, 
+Ál£
+) == 0)
+
+258 
+	`ROM_I2CMa°îI¡CÀ¨
+(
+I2C0_MASTER_BASE
+);
+
+263 *
+pucD©a
+++ = 
+	`ROM_I2CMa°îD©aGë
+(
+I2C0_MASTER_BASE
+);
+
+264 
+ulToRód
+--;
+
+269 if(
+ulToRód
+)
+
+271 
+	`ROM_I2CMa°îC⁄åﬁ
+(
+I2C0_MASTER_BASE
+,
+
+272 ((
+ulToRód
+ == 1) ?
+
+273 
+I2C_MASTER_CMD_BURST_RECEIVE_FINISH
+ :
+
+274 
+I2C_MASTER_CMD_BURST_RECEIVE_CONT
+));
+
+281 (
+åue
+);
+
+282 
+	}
+}
+
+301 
+tBoﬁón
+
+
+302 
+	$EEPROMWrôePﬁÀd
+(
+ucAddr
+, 
+ucD©a
+)
+
+307 
+	`ROM_I2CMa°îSœveAddrSë
+(
+I2C0_MASTER_BASE
+, 
+ID_I2C_ADDR
+, 
+Ál£
+);
+
+312 
+	`ROM_I2CMa°îD©aPut
+(
+I2C0_MASTER_BASE
+, 
+ucAddr
+);
+
+317 
+	`ROM_I2CMa°îC⁄åﬁ
+(
+I2C0_MASTER_BASE
+, 
+I2C_MASTER_CMD_BURST_SEND_START
+);
+
+322 if(!
+	`WaôI2CFöished
+())
+
+324 (
+Ál£
+);
+
+330 
+	`ROM_I2CMa°îD©aPut
+(
+I2C0_MASTER_BASE
+, 
+ucD©a
+);
+
+335 
+	`ROM_I2CMa°îC⁄åﬁ
+(
+I2C0_MASTER_BASE
+, 
+I2C_MASTER_CMD_BURST_SEND_FINISH
+);
+
+340 if(!
+	`WaôI2CFöished
+())
+
+342 (
+Ál£
+);
+
+350 
+	`SysCéDñay
+(
+	`ROM_SysCéClockGë
+() / (200 * 3));
+
+355 (
+åue
+);
+
+356 
+	}
+}
+
+367 
+	$Cmd_wïrom
+(
+¨gc
+, *
+¨gv
+[])
+
+369 c⁄° *
+pcPos
+;
+
+370 
+tBoﬁón
+ 
+bRëcode
+;
+
+371 
+ulAddr
+, 
+ulVÆ
+;
+
+376 if(
+¨gc
+ < 3)
+
+378 (
+COMMAND_TOO_FEW_ARGS
+);
+
+381 if(
+¨gc
+ > 3)
+
+383 (
+CMDLINE_TOO_MANY_ARGS
+);
+
+389 
+ulAddr
+ = 
+	`u°πoul
+(
+¨gv
+[1], &
+pcPos
+, 0);
+
+390 
+ulVÆ
+ = 
+	`u°πoul
+(
+¨gv
+[2], &
+pcPos
+, 0);
+
+392 if(
+ulAddr
+ >= 128)
+
+394 
+	`UART¥ötf
+("Error: Writeáddress must be between 0ánd 127.\n");
+
+395 (
+COMMAND_INVALID_ARG
+);
+
+401 
+	`UART¥ötf
+("Writing value %d (0x%02x)Åo I2C flasháddress 0x%02x\n",
+
+402 
+ulVÆ
+, ulVÆ, 
+ulAddr
+);
+
+407 
+bRëcode
+ = 
+	`EEPROMWrôePﬁÀd
+(()(
+ulAddr
+ & 0xFF),
+
+408 ()(
+ulVÆ
+ & 0xFF));
+
+410 if(
+bRëcode
+)
+
+412 
+	`UART¥ötf
+("Byte written successfully.\n");
+
+416 
+	`UART¥ötf
+("Error writing byte!\n");
+
+419 (
+COMMAND_OK
+);
+
+420 
+	}
+}
+
+430 
+	$Cmd_wrôeid
+(
+¨gc
+, *
+¨gv
+[])
+
+432 c⁄° *
+pcPos
+;
+
+433 
+tBoﬁón
+ 
+bRëcode
+;
+
+434 
+ulIndex
+, 
+ulLígth
+;
+
+435 
+pucBuf„r
+[128];
+
+440 if(
+¨gc
+ < 2)
+
+442 
+	`UART¥ötf
+("This functionÑequiresá single commandÜineárgument\n");
+
+443 (
+COMMAND_TOO_FEW_ARGS
+);
+
+446 if(
+¨gc
+ > 2)
+
+448 
+	`UART¥ötf
+("This functionÑequiresá single commandÜineárgument\n");
+
+449 (
+CMDLINE_TOO_MANY_ARGS
+);
+
+455 
+ulIndex
+ = 
+	`u°πoul
+(
+¨gv
+[1], &
+pcPos
+, 0);
+
+457 if(
+ulIndex
+ >
+NUM_DAUGHTER_STRUCTS
+)
+
+459 
+	`UART¥ötf
+("Error: Index must be 0 for SRAM, 1 for FPGA or 2 for EM2.\n");
+
+460 (
+COMMAND_INVALID_ARG
+);
+
+466 
+	`UART¥ötf
+("Writing ID block for '%s' daughter board...\n",
+
+467 
+g_pcIDNames
+[
+ulIndex
+]);
+
+472 
+ulLígth
+ = 
+	`°æí
+(
+g_pcIDNames
+[
+ulIndex
+]Ë+ (
+tDaughãrIDInfo
+);
+
+477 if(
+ulLígth
+ > 128)
+
+482 
+	`UART¥ötf
+("ID blockÜength %dÉxceeds maximum 128! "
+
+483 "Redu˚ såögÜígth.\n", 
+ulLígth
+);
+
+484 (
+COMMAND_OK
+);
+
+490 
+	`mem˝y
+(
+pucBuf„r
+, &
+g_psIDBlock
+[
+ulIndex
+], (
+tDaughãrIDInfo
+) - 1);
+
+495 
+pucBuf„r
+[
+	`off£tof
+(
+tDaughãrIDInfo
+, 
+ucLígth
+)] =
+
+496 ()(
+ulLígth
+ & 0xFF);
+
+501 
+	`mem˝y
+(
+pucBuf„r
+ + ((
+tDaughãrIDInfo
+) - 1),
+
+502 
+g_pcIDNames
+[
+ulIndex
+], 
+ulLígth
+ - (
+tDaughãrIDInfo
+));
+
+507 
+pucBuf„r
+[
+ulLígth
+ - 1] = ()0;
+
+512 
+ulIndex
+ = 0; ulIndex < 
+ulLígth
+; ulIndex++)
+
+514 
+bRëcode
+ = 
+	`EEPROMWrôePﬁÀd
+(()
+ulIndex
+,
+
+515 
+pucBuf„r
+[
+ulIndex
+]);
+
+516 if(!
+bRëcode
+)
+
+521 
+	`UART¥ötf
+("Eº‹ wrôög ID block byã %d!\n", 
+ulIndex
+);
+
+522 (
+COMMAND_OK
+);
+
+529 
+	`UART¥ötf
+("ID block written successfully.\n");
+
+530 (
+COMMAND_OK
+);
+
+531 
+	}
+}
+
+540 
+	$Cmd_ªad
+(
+¨gc
+, *
+¨gv
+[])
+
+542 c⁄° *
+pcPos
+;
+
+543 
+tBoﬁón
+ 
+bRëcode
+;
+
+544 
+ulAddr
+, 
+ulCou¡
+, 
+ulLo›
+, 
+ulLo›2
+;
+
+545 
+ucD©a
+;
+
+550 if(
+¨gc
+ < 3)
+
+552 (
+COMMAND_TOO_FEW_ARGS
+);
+
+555 if(
+¨gc
+ > 3)
+
+557 (
+CMDLINE_TOO_MANY_ARGS
+);
+
+563 
+ulAddr
+ = 
+	`u°πoul
+(
+¨gv
+[1], &
+pcPos
+, 0);
+
+564 
+ulCou¡
+ = 
+	`u°πoul
+(
+¨gv
+[2], &
+pcPos
+, 0);
+
+569 if(
+ulAddr
+ >= 128)
+
+571 
+	`UART¥ötf
+("Error: Address must be between 0ánd 127.\n");
+
+572 (
+COMMAND_INVALID_ARG
+);
+
+578 if((
+ulAddr
+ + 
+ulCou¡
+) > 128)
+
+580 
+	`UART¥ötf
+("Error: Endáddress must be < 128\n");
+
+581 (
+COMMAND_INVALID_ARG
+);
+
+588 
+ulLo›
+ = (
+ulAddr
+ & 0xF8); ulLo› < (((ulAdd∏+ 
+ulCou¡
+) + 7) & 0xF8);
+
+589 
+ulLo›
+ += 8)
+
+594 
+	`UART¥ötf
+("\n0x%02x: ", 
+ulLo›
+);
+
+599 
+ulLo›2
+ = 
+ulLo›
+;
+
+600 (
+ulLo›2
+ < (
+ulLo›
+ + 8)Ë&& (ulLo›2 < (
+ulAddr
+ + 
+ulCou¡
+));
+
+601 
+ulLo›2
+++)
+
+607 if(
+ulLo›2
+ < 
+ulAddr
+)
+
+609 
+	`UART¥ötf
+(" ");
+
+617 
+bRëcode
+ = 
+	`EEPROMRódPﬁÀd
+(&
+ucD©a
+, 
+ulLo›2
+, 1);
+
+622 if(
+bRëcode
+)
+
+624 
+	`UART¥ötf
+("%02x ", 
+ucD©a
+);
+
+628 
+	`UART¥ötf
+("\nErrorÑeading byte fromáddress 0x%02x!\n",
+
+629 
+ulLo›2
+);
+
+630 (
+COMMAND_OK
+);
+
+640 (
+COMMAND_OK
+);
+
+641 
+	}
+}
+
+650 
+	$Cmd_ªadid
+(
+¨gc
+, *
+¨gv
+[])
+
+652 
+tBoﬁón
+ 
+bRëcode
+;
+
+653 
+tDaughãrIDInfo
+ 
+sInfo
+;
+
+658 
+bRëcode
+ = 
+	`EEPROMRódPﬁÀd
+((*)&
+sInfo
+, 0,
+
+659 (
+tDaughãrIDInfo
+));
+
+661 if(
+bRëcode
+)
+
+663 
+	`UART¥ötf
+("\nDaughter Board ID Block\n");
+
+664 
+	`UART¥ötf
+( "-----------------------\n\n");
+
+665 
+	`UART¥ötf
+("M¨kî: %c%¯(0x%02x, 0x%02x)\n", 
+sInfo
+.
+pucM¨kî
+[0],
+
+666 
+sInfo
+.
+pucM¨kî
+[1], sInfo.pucMarker[0], sInfo.pucMarker[1]);
+
+667 
+	`UART¥ötf
+("Lígth: %d byãs\n", 
+sInfo
+.
+ucLígth
+);
+
+668 
+	`UART¥ötf
+("Vîsi⁄: %d\n", 
+sInfo
+.
+ucVîsi⁄
+);
+
+669 
+	`UART¥ötf
+("BﬂrdID: %d (0x%04x)\n", 
+sInfo
+.
+usBﬂrdID
+,
+
+670 
+sInfo
+.
+usBﬂrdID
+);
+
+671 
+	`UART¥ötf
+("BﬂrdRev: %d\n", 
+sInfo
+.
+ucBﬂrdRev
+);
+
+672 
+	`UART¥ötf
+("EPI Mode: 0x%02x\n", 
+sInfo
+.
+ucEPIMode
+);
+
+673 
+	`UART¥ötf
+("EPI Pös: 0x%08x\n", 
+sInfo
+.
+ulEPIPös
+);
+
+674 
+	`UART¥ötf
+("Add∏M≠: 0x%02x\n", 
+sInfo
+.
+ucAddrM≠
+);
+
+675 
+	`UART¥ötf
+("R©ê0: %dnS\n", 
+sInfo
+.
+usR©e0nS
+);
+
+676 
+	`UART¥ötf
+("R©ê1: %dnS\n", 
+sInfo
+.
+usR©e1nS
+);
+
+677 
+	`UART¥ötf
+("Max Waô: %d cy˛es\n", 
+sInfo
+.
+ucMaxWaô
+);
+
+678 
+	`UART¥ötf
+("C⁄fig: 0x%08x\n", 
+sInfo
+.
+ulC⁄figFœgs
+);
+
+679 
+	`UART¥ötf
+("Ród Ac˚ss: %dnS\n", 
+sInfo
+.
+ucRódAccTime
+);
+
+680 
+	`UART¥ötf
+("WrôêAc˚ss: %dnS\n", 
+sInfo
+.
+ucWrôeAccTime
+);
+
+681 
+	`UART¥ötf
+("Ród Cy˛ê %dnS\n", 
+sInfo
+.
+usRódCy˛eTime
+);
+
+682 
+	`UART¥ötf
+("WrôêCy˛e: %dnS\n", 
+sInfo
+.
+usWrôeCy˛eTime
+);
+
+683 
+	`UART¥ötf
+("Cﬁumns: %d\n", 
+sInfo
+.
+usNumCﬁumns
+);
+
+684 
+	`UART¥ötf
+("Rows: %d\n", 
+sInfo
+.
+usNumRows
+);
+
+685 
+	`UART¥ötf
+("Re‰esh: %dmS\n", 
+sInfo
+.
+ucRe‰eshI¡îvÆ
+);
+
+686 
+	`UART¥ötf
+("Fømêcou¡: %d\n", 
+sInfo
+.
+ucFømeCou¡
+);
+
+687 if(
+sInfo
+.
+pucName
+[0])
+
+689 
+ulLo›
+;
+
+690 
+ulIndex
+;
+
+691 
+ucCh¨
+;
+
+693 
+	`UART¥ötf
+("Name: %c", 
+sInfo
+.
+pucName
+[0]);
+
+695 
+ulIndex
+ = 
+	`off£tof
+(
+tDaughãrIDInfo
+, 
+pucName
+) + 1;
+
+696 
+ulLo›
+ = ()
+sInfo
+.
+ucLígth
+ - 
+ulIndex
+;
+
+701 
+ulLo›
+)
+
+706 
+bRëcode
+ = 
+	`EEPROMRódPﬁÀd
+(&
+ucCh¨
+, 
+ulIndex
+, 1);
+
+708 if(
+bRëcode
+ && 
+ucCh¨
+)
+
+710 
+	`UART¥ötf
+("%c", 
+ucCh¨
+);
+
+717 
+ulLo›
+--;
+
+718 
+ulIndex
+++;
+
+720 
+	`UART¥ötf
+("\n");
+
+725 
+	`UART¥ötf
+("ErrorÑeading ID block from daughter board!\n");
+
+728 (
+COMMAND_OK
+);
+
+729 
+	}
+}
+
+738 
+	$Cmd_hñp
+(
+¨gc
+, *
+¨gv
+[])
+
+740 
+tCmdLöeE¡ry
+ *
+pE¡ry
+;
+
+745 
+	`UART¥ötf
+("\nAvailable commands\n");
+
+746 
+	`UART¥ötf
+("------------------\n");
+
+751 
+pE¡ry
+ = &
+g_sCmdTabÀ
+[0];
+
+757 
+pE¡ry
+->
+pcCmd
+)
+
+762 
+	`UART¥ötf
+("%s%s\n", 
+pE¡ry
+->
+pcCmd
+,ÖE¡ry->
+pcHñp
+);
+
+767 
+pE¡ry
+++;
+
+774 
+	}
+}
+
+782 
+tCmdLöeE¡ry
+ 
+	gg_sCmdTabÀ
+[] =
+
+784 { "ªad", 
+Cmd_ªad
+, " : <ad> <n> Read <n> bytes fromÜocation <ad>" },
+
+785 { "ªadid", 
+Cmd_ªadid
+, " : ReadÅhe ID block fromÅhe EEPROM" },
+
+786 { "wrôeid", 
+Cmd_wrôeid
+, ": <0|1|2> Write ID block. 0 SRAM, 1 FPGA, 2 EM2" },
+
+787 { "hñp", 
+Cmd_hñp
+, " : DisplayÜist of commands" },
+
+788 { "h", 
+Cmd_hñp
+, " :álias for help" },
+
+789 { "?", 
+Cmd_hñp
+, " :álias for help" },
+
+798 #ifde‡
+DEBUG
+
+
+800 
+	$__îr‹__
+(*
+pcFûíame
+, 
+ulLöe
+)
+
+802 
+	}
+}
+
+810 
+	$maö
+()
+
+812 
+nSètus
+;
+
+817 
+	`ROM_SysCéClockSë
+(
+SYSCTL_SYSDIV_4
+ | 
+SYSCTL_USE_PLL
+ | 
+SYSCTL_OSC_MAIN
+ |
+
+818 
+SYSCTL_XTAL_16MHZ
+);
+
+825 
+	`PöoutSë
+();
+
+830 
+	`ROM_SysCéPîùhîÆE«bÀ
+(
+SYSCTL_PERIPH_UART0
+);
+
+831 
+	`ROM_SysCéPîùhîÆE«bÀ
+(
+SYSCTL_PERIPH_GPIOA
+);
+
+832 
+	`ROM_GPIOPöTy≥UART
+(
+GPIO_PORTA_BASE
+, 
+GPIO_PIN_0
+ | 
+GPIO_PIN_1
+);
+
+837 
+	`UARTStdioInô
+(0);
+
+838 
+	`UART¥ötf
+("\n\nDaughter Board ID EEPROM Read/Write\n");
+
+839 
+	`UART¥ötf
+( "-----------------------------------\n\n");
+
+840 
+	`UART¥ötf
+("UseÅhisÅoolÅoÑead orÑepairÅhe information stored\n");
+
+841 
+	`UART¥ötf
+("inÅhe 128 byte ID EEPROM on optional development kit\n");
+
+842 
+	`UART¥ötf
+("daughter boards.\n");
+
+847 
+	`Cmd_hñp
+(0, 0);
+
+852 
+	`UART¥ötf
+("\nCurrent daughter board: ");
+
+854 
+g_eDaughãrTy≥
+)
+
+856 
+DAUGHTER_NONE
+:
+
+858 
+	`UART¥ötf
+("None or SDRAM\n");
+
+862 
+DAUGHTER_SRAM_FLASH
+:
+
+863 
+DAUGHTER_FPGA
+:
+
+864 
+DAUGHTER_EM2
+:
+
+866 
+	`UART¥ötf
+(
+g_pcIDNames
+[
+g_eDaughãrTy≥
+ - 1]);
+
+872 
+	`UART¥ötf
+("Unrecognized\n");
+
+886 
+	`UART¥ötf
+("\n> ");
+
+891 
+	`UARTgës
+(
+g_cCmdBuf
+, (g_cCmdBuf));
+
+897 
+nSètus
+ = 
+	`CmdLöePro˚ss
+(
+g_cCmdBuf
+);
+
+902 if(
+nSètus
+ =
+CMDLINE_BAD_CMD
+)
+
+904 
+	`UART¥ötf
+("Bad command!\n");
+
+910 if(
+nSètus
+ =
+CMDLINE_TOO_MANY_ARGS
+)
+
+912 
+	`UART¥ötf
+("Too manyárguments for commandÖrocessor!\n");
+
+915 
+	}
+}
 
 	@ff.c
 
@@ -9720,114 +12224,124 @@ _INTEGER
 "
 
 21 
-	~"drivîlib/debug.h
+	~"öc/hw_ˇn.h
 "
 
 22 
-	~"drivîlib/Âu.h
+	~"drivîlib/debug.h
 "
 
 23 
-	~"drivîlib/gpio.h
+	~"drivîlib/Âu.h
 "
 
 24 
-	~"drivîlib/öãºu±.h
+	~"drivîlib/gpio.h
 "
 
 25 
-	~"drivîlib/sys˘l.h
+	~"drivîlib/öãºu±.h
 "
 
 26 
-	~"drivîlib/u¨t.h
+	~"drivîlib/sys˘l.h
 "
 
 27 
-	~"drivîlib/rom.h
+	~"drivîlib/u¨t.h
 "
 
 28 
-	~"drivîlib/timî.h
+	~"drivîlib/rom.h
 "
 
 29 
-	~"u¨t°dio.h
+	~"drivîlib/timî.h
 "
 
-32 
-Swi_H™dÀ
- 
-swi_UART0_h™dÀ
- ;
+30 
+	~"drivîlib/ˇn.h
+"
 
-33 
-Swi_H™dÀ
- 
-swi_UART1_h™dÀ
- ;
-
-34 
-Swi_H™dÀ
- 
-swi_UART2_h™dÀ
- ;
+31 
+	~"u¨t°dio.h
+"
 
 35 
 Swi_H™dÀ
  
-swi_UART3_h™dÀ
+swi_UART7_h™dÀ
  ;
 
 36 
 Swi_H™dÀ
  
-swi_I2C1_h™dÀ
+swi_UART2_h™dÀ
  ;
 
 37 
 Swi_H™dÀ
  
-swi_SPI0_h™dÀ
+swi_UART3_h™dÀ
  ;
 
 38 
 Swi_H™dÀ
  
-swi_SPI1_h™dÀ
+swi_I2C1_h™dÀ
  ;
 
 39 
 Swi_H™dÀ
  
-swi_SPI2_h™dÀ
+swi_SPI0_h™dÀ
  ;
 
 40 
 Swi_H™dÀ
  
-swi_CAN0_h™dÀ
+swi_SPI1_h™dÀ
  ;
 
 41 
 Swi_H™dÀ
  
-swi_CAN1_h™dÀ
+swi_SPI2_h™dÀ
  ;
 
 42 
 Swi_H™dÀ
  
-swi_GPIOBoŸ_h™dÀ
+swi_CAN0_h™dÀ
+ ;
+
+43 
+Swi_H™dÀ
+ 
+swi_CAN1_h™dÀ
  ;
 
 44 
+Swi_H™dÀ
+ 
+swi_GPIOBoŸ_h™dÀ
+ ;
+
+46 
 Maûbox_H™dÀ
  
 Mb_u¨t2_h™dÀ
  ;
 
-47 
+48 vﬁ©ûê
+	gg_ulMsgCou¡
+ = 0;
+
+55 vﬁ©ûê
+	gg_bEºFœg
+ = 0;
+
+58 
 UARTSíd
 (c⁄° *
 pucBuf„r
@@ -9835,47 +12349,57 @@ pucBuf„r
 ulCou¡
 ) ;
 
-51 
-Void
- 
-	$hwi_UART0_fxn
-(
-UArg
- 
-¨g
-)
-
-53 
-	`Swi_po°
-(
-swi_UART0_h™dÀ
-) ;
-
-55 
-	}
-}
-
-59 
-Void
- 
-	$hwi_UART1_fxn
-(
-UArg
- 
-¨g
-)
-
-61 
-	`Swi_po°
-(
-swi_UART1_h™dÀ
-) ;
-
 62 
+Void
+ 
+	$hwi_UART7_fxn
+(
+UArg
+ 
+¨g
+)
+
+64 
+ulSètus
+;
+
+65 
+ucMsg
+[8] ;
+
+66 
+i
+ = 0 ;
+
+72 
+ulSètus
+ = 
+	`ROM_UARTI¡Sètus
+(
+UART7_BASE
+, 
+åue
+);
+
+78 
+	`ROM_UARTI¡CÀ¨
+(
+UART7_BASE
+, 
+ulSètus
+);
+
+81 
+	`Swi_po°
+(
+swi_UART7_h™dÀ
+) ;
+
+83 
 	}
 }
 
-65 
+87 
 Void
  
 	$hwi_UART2_fxn
@@ -9885,19 +12409,19 @@ UArg
 ¨g
 )
 
-67 
+89 
 ulSètus
 ;
 
-68 
+90 
 ucMsg
 [8] ;
 
-69 
+91 
 i
  = 0 ;
 
-75 
+97 
 ulSètus
  = 
 	`ROM_UARTI¡Sètus
@@ -9907,7 +12431,7 @@ UART2_BASE
 åue
 );
 
-81 
+103 
 	`ROM_UARTI¡CÀ¨
 (
 UART2_BASE
@@ -9915,19 +12439,19 @@ UART2_BASE
 ulSètus
 );
 
-83 
+105 
 	`mem£t
 (
 ucMsg
 , 0x0, (ucMsg)) ;
 
-87 
+109 
 	`ROM_UARTCh¨sAvaû
 (
 UART2_BASE
 ))
 
-94 
+116 
 ucMsg
 [
 i
@@ -9937,11 +12461,11 @@ i
 UART2_BASE
 ) ;
 
-95 i‡(
+117 i‡(
 i
 >=8)  ;
 
-99 
+121 
 	`Maûbox_po°
 (
 Mb_u¨t2_h™dÀ
@@ -9951,17 +12475,17 @@ ucMsg
 BIOS_NO_WAIT
 ) ;
 
-102 
+124 
 	`Swi_po°
 (
 swi_UART2_h™dÀ
 ) ;
 
-103 
+125 
 	}
 }
 
-106 
+128 
 Void
  
 	$hwi_UART3_fxn
@@ -9971,17 +12495,39 @@ UArg
 ¨g
 )
 
-108 
+130 
+ulSètus
+;
+
+136 
+ulSètus
+ = 
+	`ROM_UARTI¡Sètus
+(
+UART3_BASE
+, 
+åue
+);
+
+142 
+	`ROM_UARTI¡CÀ¨
+(
+UART3_BASE
+, 
+ulSètus
+);
+
+145 
 	`Swi_po°
 (
 swi_UART3_h™dÀ
 ) ;
 
-109 
+146 
 	}
 }
 
-112 
+149 
 Void
  
 	$hwi_I2C1_fxn
@@ -9991,17 +12537,17 @@ UArg
 ¨g
 )
 
-114 
+151 
 	`Swi_po°
 (
 swi_I2C1_h™dÀ
 ) ;
 
-115 
+152 
 	}
 }
 
-117 
+154 
 Void
  
 	$hwi_SPI0_fxn
@@ -10011,17 +12557,17 @@ UArg
 ¨g
 )
 
-119 
+156 
 	`Swi_po°
 (
 swi_SPI0_h™dÀ
 ) ;
 
-120 
+157 
 	}
 }
 
-123 
+160 
 Void
  
 	$hwi_SPI1_fxn
@@ -10031,17 +12577,17 @@ UArg
 ¨g
 )
 
-125 
+162 
 	`Swi_po°
 (
 swi_SPI1_h™dÀ
 ) ;
 
-126 
+163 
 	}
 }
 
-129 
+166 
 Void
  
 	$hwi_SPI2_fxn
@@ -10051,17 +12597,17 @@ UArg
 ¨g
 )
 
-131 
+168 
 	`Swi_po°
 (
 swi_SPI2_h™dÀ
 ) ;
 
-132 
+169 
 	}
 }
 
-135 
+172 
 Void
  
 	$hwi_CAN0_fxn
@@ -10071,17 +12617,137 @@ UArg
 ¨g
 )
 
-137 
+175 
+ulSètus
+;
+
+180 
+ulSètus
+ = 
+	`CANI¡Sètus
+(
+CAN0_BASE
+, 
+CAN_INT_STS_CAUSE
+);
+
+185 if(
+ulSètus
+ =
+CAN_INT_INTID_STATUS
+)
+
+197 
+ulSètus
+ = 
+	`CANSètusGë
+(
+CAN0_BASE
+, 
+CAN_STS_CONTROL
+);
+
+209 if(
+ulSètus
+ == 1)
+
+216 
+	`CANI¡CÀ¨
+(
+CAN0_BASE
+, 1);
+
+235 if(
+ulSètus
+ == 2)
+
+242 
+	`CANI¡CÀ¨
+(
+CAN0_BASE
+, 2);
+
+261 if(
+ulSètus
+ == 3)
+
+268 
+	`CANI¡CÀ¨
+(
+CAN0_BASE
+, 3);
+
+299 
+	`CANI¡CÀ¨
+(
+CAN0_BASE
+, 
+ulSètus
+);
+
+300 
 	`Swi_po°
 (
 swi_CAN0_h™dÀ
 ) ;
 
-138 
+303 
+ulSètus
+;
+
+308 
+ulSètus
+ = 
+	`CANI¡Sètus
+(
+CAN0_BASE
+, 
+CAN_INT_STS_CAUSE
+);
+
+313 if(
+ulSètus
+ =
+CAN_INT_INTID_STATUS
+)
+
+325 
+ulSètus
+ = 
+	`CANSètusGë
+(
+CAN0_BASE
+, 
+CAN_STS_CONTROL
+);
+
+330 
+g_bEºFœg
+ = 1;
+
+337 if(
+ulSètus
+ == 1)
+
+344 
+	`CANI¡CÀ¨
+(
+CAN0_BASE
+, 1);
+
+351 
+g_ulMsgCou¡
+++;
+
+356 
+g_bEºFœg
+ = 0;
+
+370 
 	}
 }
 
-141 
+373 
 Void
  
 	$hwi_CAN1_fxn
@@ -10091,17 +12757,79 @@ UArg
 ¨g
 )
 
-143 
-	`Swi_po°
-(
-swi_CAN1_h™dÀ
-) ;
+375 
+ulSètus
+;
 
-144 
+380 
+ulSètus
+ = 
+	`CANI¡Sètus
+(
+CAN1_BASE
+, 
+CAN_INT_STS_CAUSE
+);
+
+386 if(
+ulSètus
+ =
+CAN_INT_INTID_STATUS
+)
+
+398 
+ulSètus
+ = 
+	`CANSètusGë
+(
+CAN1_BASE
+, 
+CAN_STS_CONTROL
+);
+
+410 if(
+ulSètus
+ == 1)
+
+417 
+	`CANI¡CÀ¨
+(
+CAN1_BASE
+, 1);
+
+436 if(
+ulSètus
+ == 2)
+
+443 
+	`CANI¡CÀ¨
+(
+CAN1_BASE
+, 2);
+
+462 if(
+ulSètus
+ == 3)
+
+469 
+	`CANI¡CÀ¨
+(
+CAN1_BASE
+, 3);
+
+501 
+	`CANI¡CÀ¨
+(
+CAN0_BASE
+, 
+ulSètus
+);
+
+504 
 	}
 }
 
-147 
+507 
 Void
  
 	$hwi_GPIOBoŸ_fxn
@@ -10111,11 +12839,11 @@ UArg
 ¨g
 )
 
-149 
+509 
 lI¡Sts
  ;
 
-152 
+512 
 lI¡Sts
  = 
 	`ROM_GPIOPöI¡Sètus
@@ -10125,7 +12853,7 @@ GPIO_PORTM_BASE
 Ál£
 ) ;
 
-157 
+517 
 	`ROM_GPIOPöI¡CÀ¨
 (
 GPIO_PORTM_BASE
@@ -10133,21 +12861,21 @@ GPIO_PORTM_BASE
 GPIO_PIN_4
 );
 
-161 
+521 
 	`Swi_po°
 (
 swi_GPIOBoŸ_h™dÀ
 ) ;
 
-162 
+522 
 	}
 }
 
-172 
+532 
 	$hwi_TIMER2_fxn
 ()
 
-177 
+537 
 	`ROM_TimîI¡CÀ¨
 (
 TIMER2_BASE
@@ -10155,14 +12883,14 @@ TIMER2_BASE
 TIMER_TIMA_TIMEOUT
 );
 
-188 
+548 
 	}
 }
 
-192 
+552 
 Void
  
-	$swi_UART0_fxn
+	$swi_UART7_fxn
 (
 UArg
  
@@ -10171,27 +12899,11 @@ UArg
 ¨g1
 )
 
-196 
+556 
 	}
 }
 
-198 
-Void
- 
-	$swi_UART1_fxn
-(
-UArg
- 
-¨g0
-, UArg 
-¨g1
-)
-
-202 
-	}
-}
-
-204 
+559 
 Void
  
 	$swi_UART2_fxn
@@ -10203,11 +12915,11 @@ UArg
 ¨g1
 )
 
-208 
+563 
 	}
 }
 
-210 
+565 
 Void
  
 	$swi_UART3_fxn
@@ -10219,11 +12931,11 @@ UArg
 ¨g1
 )
 
-214 
+569 
 	}
 }
 
-216 
+571 
 Void
  
 	$swi_I2C1_fxn
@@ -10235,11 +12947,11 @@ UArg
 ¨g1
 )
 
-220 
+575 
 	}
 }
 
-222 
+577 
 Void
  
 	$swi_SPI0_fxn
@@ -10251,11 +12963,11 @@ UArg
 ¨g1
 )
 
-226 
+581 
 	}
 }
 
-228 
+583 
 Void
  
 	$swi_SPI1_fxn
@@ -10267,11 +12979,11 @@ UArg
 ¨g1
 )
 
-232 
+587 
 	}
 }
 
-234 
+589 
 Void
  
 	$swi_SPI2_fxn
@@ -10283,11 +12995,11 @@ UArg
 ¨g1
 )
 
-238 
+593 
 	}
 }
 
-240 
+595 
 Void
  
 	$swi_CAN0_fxn
@@ -10299,11 +13011,11 @@ UArg
 ¨g1
 )
 
-244 
+599 
 	}
 }
 
-246 
+601 
 Void
  
 	$swi_CAN1_fxn
@@ -10315,11 +13027,11 @@ UArg
 ¨g1
 )
 
-250 
+605 
 	}
 }
 
-252 
+607 
 Void
  
 	$swi_GPIOBoŸ_fxn
@@ -10331,11 +13043,11 @@ UArg
 ¨g1
 )
 
-256 
+611 
 	}
 }
 
-259 
+614 
 Void
  
 	$tsk_m™age_fxn
@@ -10347,19 +13059,19 @@ UArg
 ¨g1
 )
 
-261 
+616 
 ucMsg
 [20] ;
 
-267 
+622 
 	`Task_¶ìp
 (1000) ;
 
-270 
+625 
 	}
 }
 
-272 
+627 
 Void
  
 	$tsk_boŸlﬂdî_fxn
@@ -10371,19 +13083,19 @@ UArg
 ¨g1
 )
 
-276 
+631 
 	`Sy°em_¥ötf
 ("tsk_bootloader_fxn \n") ;
 
-277 
+632 
 	`Task_¶ìp
 (2000) ;
 
-280 
+635 
 	}
 }
 
-282 
+637 
 Void
  
 	$tsk_dügnosis_fxn
@@ -10395,19 +13107,19 @@ UArg
 ¨g1
 )
 
-286 
-	`Sy°em_¥ötf
+641 
+	`UART¥ötf
 ("tsk_diagnosis_fxn \n") ;
 
-287 
+642 
 	`Task_¶ìp
 (3000) ;
 
-290 
+645 
 	}
 }
 
-292 
+647 
 Void
  
 	$tsk_GPRS_fxn
@@ -10419,19 +13131,19 @@ UArg
 ¨g1
 )
 
-297 
+652 
 	`Sy°em_¥ötf
 ("tsk_GPRS_fxn \n") ;
 
-298 
+653 
 	`Task_¶ìp
 (3000) ;
 
-301 
+656 
 	}
 }
 
-303 
+658 
 Void
  
 	$tsk_GPS_fxn
@@ -10443,19 +13155,23 @@ UArg
 ¨g1
 )
 
-307 
+662 
 	`Sy°em_¥ötf
 ("tsk_GPS_fxn \n") ;
 
-308 
+663 
+	`UARTSíd
+((*)"tsk_GPS_fxn \n", 12);
+
+664 
 	`Task_¶ìp
 (3000) ;
 
-311 
+667 
 	}
 }
 
-314 
+670 
 Void
  
 	$tsk_b©ãry_fxn
@@ -10467,19 +13183,19 @@ UArg
 ¨g1
 )
 
-318 
+674 
 	`Sy°em_¥ötf
 ("tsk_battery_fxn \n") ;
 
-319 
+675 
 	`Task_¶ìp
 (3000) ;
 
-322 
+678 
 	}
 }
 
-324 
+680 
 Void
  
 	$tsk_FS_fxn
@@ -10491,23 +13207,27 @@ UArg
 ¨g1
 )
 
-328 
+684 
 	`Sy°em_¥ötf
 ("tsk_FS_fxn \n") ;
 
-329 
+685 #ifde‡
+D_SDCARD
+
+
+686 
 	`sdˇrd_maö
 () ;
 
-330 
+688 
 	`Task_¶ìp
 (3000) ;
 
-333 
+691 
 	}
 }
 
-335 
+693 
 Void
  
 	$tsk_CAN3_fxn
@@ -10519,15 +13239,15 @@ UArg
 ¨g1
 )
 
-341 
+699 
 	`Task_¶ìp
 (3000) ;
 
-343 
+701 
 	}
 }
 
-345 
+703 
 Void
  
 	$tsk_CAN4_fxn
@@ -10539,15 +13259,15 @@ UArg
 ¨g1
 )
 
-350 
+708 
 	`Task_¶ìp
 (3000) ;
 
-353 
+711 
 	}
 }
 
-355 
+713 
 Void
  
 	$tsk_CAN2_fxn
@@ -10559,15 +13279,15 @@ UArg
 ¨g1
 )
 
-360 
+718 
 	`Task_¶ìp
 (3000) ;
 
-363 
+721 
 	}
 }
 
-365 
+723 
 Void
  
 	$tsk_CAN1_fxn
@@ -10579,19 +13299,23 @@ UArg
 ¨g1
 )
 
-370 
-	`Sy°em_¥ötf
-("tsk_CAN1_fxn \n") ;
+726 
+	`UART¥ötf
+( "Åsk_canÉntered \n" ) ;
 
-371 
-	`Task_¶ìp
-(3000) ;
+727 #ifde‡
+D_CAN
 
-374 
+
+728 
+	`tsk_ˇn
+() ;
+
+730 
 	}
 }
 
-380 
+736 
 Void
  
 	$èskFxn
@@ -10603,27 +13327,27 @@ a0
 a1
 )
 
-384 
+740 
 	`Task_¶ìp
 (1000);
 
-387 
+743 
 	}
 }
 
-390 
+746 
 Void
  
 	$öô_gpio
 ()
 
-393 
+749 
 	`ROM_SysCéPîùhîÆE«bÀ
 (
 SYSCTL_PERIPH_GPIOM
 );
 
-395 
+751 
 	`ROM_GPIOPöTy≥GPIOI≈ut
 (
 GPIO_PORTM_BASE
@@ -10631,7 +13355,7 @@ GPIO_PORTM_BASE
 GPIO_PIN_4
 ) ;
 
-396 
+752 
 	`ROM_GPIOPadC⁄figSë
 (
 GPIO_PORTM_BASE
@@ -10643,7 +13367,7 @@ GPIO_STRENGTH_2MA
 GPIO_PIN_TYPE_STD_WPU
 ) ;
 
-397 
+753 
 	`ROM_GPIOI¡Ty≥Së
 (
 GPIO_PORTM_BASE
@@ -10653,13 +13377,13 @@ GPIO_PIN_4
 GPIO_FALLING_EDGE
 ) ;
 
-401 
+757 
 	`ROM_SysCéPîùhîÆE«bÀ
 (
 SYSCTL_PERIPH_GPIOH
 ) ;
 
-402 
+758 
 	`ROM_GPIOPöTy≥GPIOOuçut
 (
 GPIO_PORTH_BASE
@@ -10667,7 +13391,7 @@ GPIO_PORTH_BASE
 GPIO_PIN_2
 ) ;
 
-403 
+759 
 	`ROM_GPIOPöWrôe
 (
 GPIO_PORTH_BASE
@@ -10675,23 +13399,23 @@ GPIO_PORTH_BASE
 GPIO_PIN_2
 , GPIO_PIN_2) ;
 
-405 
+761 
 	}
 }
 
-408 
+764 
 Void
  
 	$öô_u¨t
 ()
 
-411 
+767 
 	`ROM_SysCéPîùhîÆE«bÀ
 (
 SYSCTL_PERIPH_GPIOD
 );
 
-421 
+777 
 	`HWREG
 (
 GPIO_PORTD_BASE
@@ -10701,7 +13425,7 @@ GPIO_O_LOCK
 GPIO_LOCK_KEY_DD
 ;
 
-422 
+778 
 	`HWREG
 (
 GPIO_PORTD_BASE
@@ -10709,19 +13433,19 @@ GPIO_PORTD_BASE
 GPIO_O_CR
 ) = 0xC0;
 
-429 
+785 
 	`GPIOPöC⁄figuª
 –
 GPIO_PD6_U2RX
  ) ;
 
-430 
+786 
 	`GPIOPöC⁄figuª
 –
 GPIO_PD7_U2TX
  ) ;
 
-431 
+787 
 	`GPIOPöTy≥UART
 (
 GPIO_PORTD_BASE
@@ -10731,17 +13455,17 @@ GPIO_PIN_6
 GPIO_PIN_7
 );
 
-433 
+789 
 	`ROM_SysCéPîùhîÆE«bÀ
 (
 SYSCTL_PERIPH_UART2
 );
 
-443 
+799 
 	`UARTStdioInô
 (2) ;
 
-450 
+806 
 	`HWREG
 (
 GPIO_PORTD_BASE
@@ -10751,7 +13475,7 @@ GPIO_O_LOCK
 GPIO_LOCK_KEY_DD
 ;
 
-451 
+807 
 	`HWREG
 (
 GPIO_PORTD_BASE
@@ -10759,7 +13483,7 @@ GPIO_PORTD_BASE
 GPIO_O_CR
 ) = 0x00;
 
-452 
+808 
 	`HWREG
 (
 GPIO_PORTD_BASE
@@ -10767,13 +13491,13 @@ GPIO_PORTD_BASE
 GPIO_O_LOCK
 ) = 0;
 
-457 
+813 
 	`ROM_I¡E«bÀ
 (
 INT_UART2
 );
 
-458 
+814 
 	`ROM_UARTI¡E«bÀ
 (
 UART2_BASE
@@ -10783,93 +13507,31 @@ UART_INT_RX
 UART_INT_RT
 );
 
-464 
-	`ROM_SysCéPîùhîÆE«bÀ
-(
-SYSCTL_PERIPH_GPIOD
-);
-
-465 
-	`ROM_SysCéPîùhîÆE«bÀ
-(
-SYSCTL_PERIPH_UART2
-);
-
-472 
-	`GPIOPöC⁄figuª
-–
-GPIO_PD6_U2RX
- ) ;
-
-473 
-	`GPIOPöC⁄figuª
-–
-GPIO_PD7_U2TX
- ) ;
-
-474 
-	`HWREG
-( 0x40007000 + 0x420) |= 0xc0 ;
-
-475 
-	`HWREG
-( 0x40007000 + 0x51c) |= 0xc0 ;
-
-476 
-	`GPIOPöTy≥UART
-(
-GPIO_PORTD_BASE
-, 
-GPIO_PIN_6
- | 
-GPIO_PIN_7
-);
-
-482 
-	`UARTStdioInô
-(2);
-
-488 
-	`ROM_I¡E«bÀ
-(
-INT_UART2
-);
-
-489 
-	`ROM_UARTI¡E«bÀ
-(
-UART2_BASE
-, 
-UART_INT_RX
- | 
-UART_INT_RT
-);
-
-497 
+822 
 	`ROM_SysCéPîùhîÆE«bÀ
 (
 SYSCTL_PERIPH_GPIOC
 );
 
-498 
+823 
 	`ROM_SysCéPîùhîÆE«bÀ
 (
 SYSCTL_PERIPH_UART3
 );
 
-502 
+827 
 	`GPIOPöC⁄figuª
 –
 GPIO_PC6_U3RX
  ) ;
 
-503 
+828 
 	`GPIOPöC⁄figuª
 –
 GPIO_PC7_U3TX
  ) ;
 
-504 
+829 
 	`GPIOPöTy≥UART
 (
 GPIO_PORTC_BASE
@@ -10879,7 +13541,7 @@ GPIO_PIN_6
 GPIO_PIN_7
 );
 
-507 
+832 
 	`ROM_UARTC⁄figSëExpClk
 (
 UART3_BASE
@@ -10887,23 +13549,23 @@ UART3_BASE
 	`ROM_SysCéClockGë
 (), 115200,
 
-508 (
+833 (
 UART_CONFIG_WLEN_8
  | 
 UART_CONFIG_STOP_ONE
  |
 
-509 
+834 
 UART_CONFIG_PAR_NONE
 ));
 
-514 
+839 
 	`ROM_I¡E«bÀ
 (
 INT_UART3
 );
 
-515 
+840 
 	`ROM_UARTI¡E«bÀ
 (
 UART3_BASE
@@ -10913,21 +13575,89 @@ UART_INT_RX
 UART_INT_RT
 );
 
-520 
+847 
+	`ROM_SysCéPîùhîÆE«bÀ
+(
+SYSCTL_PERIPH_GPIOE
+);
+
+848 
+	`ROM_SysCéPîùhîÆE«bÀ
+(
+SYSCTL_PERIPH_UART7
+);
+
+852 
+	`GPIOPöC⁄figuª
+–
+GPIO_PE0_U7RX
+ ) ;
+
+853 
+	`GPIOPöC⁄figuª
+–
+GPIO_PE1_U7TX
+ ) ;
+
+854 
+	`GPIOPöTy≥UART
+(
+GPIO_PORTE_BASE
+, 
+GPIO_PIN_0
+ | 
+GPIO_PIN_1
+);
+
+857 
+	`ROM_UARTC⁄figSëExpClk
+(
+UART7_BASE
+, 
+	`ROM_SysCéClockGë
+(), 115200,
+
+858 (
+UART_CONFIG_WLEN_8
+ | 
+UART_CONFIG_STOP_ONE
+ |
+
+859 
+UART_CONFIG_PAR_NONE
+));
+
+864 
+	`ROM_I¡E«bÀ
+(
+INT_UART7
+);
+
+865 
+	`ROM_UARTI¡E«bÀ
+(
+UART7_BASE
+, 
+UART_INT_RX
+ | 
+UART_INT_RT
+);
+
+871 
 	}
 }
 
-522 
+873 
 Void
  
 	$cfg_öãºu±
 ()
 
-528 
+879 
 	`ROM_I¡Ma°îE«bÀ
 ();
 
-532 
+883 
 	`ROM_GPIOPöI¡E«bÀ
 (
 GPIO_PORTM_BASE
@@ -10935,23 +13665,47 @@ GPIO_PORTM_BASE
 GPIO_PIN_4
 ) ;
 
-535 
+886 
 	}
 }
 
-537 
+888 
 Void
  
 	$öô_sdˇrd
 ()
 
-542 
+893 
 	`ROM_SysCéPîùhîÆE«bÀ
 –
 SYSCTL_PERIPH_GPIOH
  ) ;
 
-543 
+895 
+	`ROM_GPIOPöC⁄figuª
+(
+GPIO_PH4_SSI2CLK
+) ;
+
+896 
+	`ROM_GPIOPöC⁄figuª
+(
+GPIO_PH5_SSI2FSS
+) ;
+
+897 
+	`ROM_GPIOPöC⁄figuª
+(
+GPIO_PH6_SSI2RX
+) ;
+
+898 
+	`ROM_GPIOPöC⁄figuª
+(
+GPIO_PH7_SSI2TX
+) ;
+
+900 
 	`ROM_GPIOPöTy≥SSI
 –
 GPIO_PORTH_BASE
@@ -10965,19 +13719,19 @@ GPIO_PIN_6
 GPIO_PIN_7
  ) ;
 
-545 
+902 
 	`ROM_SysCéPîùhîÆE«bÀ
 (
 SYSCTL_PERIPH_SSI2
 );
 
-548 
+905 
 	`ROM_SysCéPîùhîÆE«bÀ
 (
 SYSCTL_PERIPH_TIMER2
 );
 
-552 
+909 
 	`ROM_TimîC⁄figuª
 (
 TIMER2_BASE
@@ -10985,7 +13739,7 @@ TIMER2_BASE
 TIMER_CFG_PERIODIC
 );
 
-553 
+910 
 	`ROM_TimîLﬂdSë
 (
 TIMER2_BASE
@@ -10995,13 +13749,13 @@ TIMER_A
 	`ROM_SysCéClockGë
 ()/100);
 
-559 
+916 
 	`ROM_I¡E«bÀ
 (
 INT_TIMER2A
 );
 
-560 
+917 
 	`ROM_TimîI¡E«bÀ
 (
 TIMER2_BASE
@@ -11009,7 +13763,7 @@ TIMER2_BASE
 TIMER_TIMA_TIMEOUT
 );
 
-565 
+922 
 	`ROM_TimîE«bÀ
 (
 TIMER2_BASE
@@ -11017,37 +13771,333 @@ TIMER2_BASE
 TIMER_A
 );
 
-567 
+924 
 	}
 }
 
-569 
+926 
+Void
+ 
+	$öô_•i
+()
+
+929 
+	}
+}
+
+938 
+	#FRAM_I2C_PERIPH
+ (4)
+
+	)
+
+939 
+	#FRAM_I2C_MASTER_BASE
+ (
+I2C4_MASTER_BASE
+)
+
+	)
+
+940 
+	#FRAM_I2CSCL_GPIO_PERIPH
+ (
+SYSCTL_PERIPH_GPIOG
+)
+
+	)
+
+941 
+	#FRAM_I2CSCL_GPIO_PORT
+ (
+GPIO_PORTG_BASE
+)
+
+	)
+
+942 
+	#FRAM_I2CSCL_PIN
+ (
+GPIO_PIN_2
+)
+
+	)
+
+944 
+	#FRAM_I2CSDA_GPIO_PERIPH
+ (
+SYSCTL_PERIPH_GPIOG
+)
+
+	)
+
+945 
+	#FRAM_I2CSDA_GPIO_PORT
+ (
+GPIO_PORTG_BASE
+)
+
+	)
+
+946 
+	#FRAM_I2CSDA_PIN
+ (
+GPIO_PIN_3
+)
+
+	)
+
+949 
+Void
+ 
+	$öô_‰am
+()
+
+952 
+tBoﬁón
+ 
+bRëcode
+;
+
+955 
+	`SysCéPîùhîÆE«bÀ
+–
+SYSCTL_PERIPH_GPIOG
+ )
+
+956 
+	`SysCéPîùhîÆE«bÀ
+(
+SYSCTL_PERIPH_I2C4
+) ;
+
+958 
+	`GPIOPöC⁄figuª
+–
+GPIO_PG2_I2C4SCL
+ ) ;
+
+959 
+	`GPIOPöC⁄figuª
+–
+GPIO_PG3_I2C4SDA
+ ) ;
+
+960 
+	`GPIOPöTy≥I2C
+(
+GPIO_PORTG_BASE
+, 
+GPIO_PIN_2
+ | 
+GPIO_PIN_3
+) ;
+
+962 
+	`GPIOPöTy≥GPIOI≈ut
+(
+FRAM_I2CSCL_GPIO_PORT
+, 
+FRAM_I2CSDA_PIN
+);
+
+963 
+	`GPIOPadC⁄figSë
+(
+FRAM_I2CSCL_GPIO_PORT
+, 
+FRAM_I2CSDA_PIN
+, 
+GPIO_STRENGTH_2MA
+,
+
+964 
+GPIO_PIN_TYPE_STD_WPD
+);
+
+971 
+	`SysCéDñay
+(
+	`SysCéClockGë
+() / (3 * 500));
+
+976 
+	`I2CMa°îInôExpClk
+(
+I2C4_MASTER_BASE
+, 
+	`SysCéClockGë
+(), 
+åue
+);
+
+978 
+	`I2CMa°îSœveAddrSë
+–
+I2C4_MASTER_BASE
+, 0x60, 
+Ál£
+ ) ;
+
+980 
+	`I2CMa°îD©aPut
+–
+I2C4_MASTER_BASE
+, 0x0000) ;
+
+982 
+	`I2CMa°îC⁄åﬁ
+–
+I2C4_MASTER_BASE
+, 
+I2C_MASTER_CMD_SINGLE_SEND
+ ) ;
+
+984  
+	`I2CMa°îBusBusy
+–
+I2C4_MASTER_BASE
+ ) )
+
+993 
+	`TLV320AIC23BWrôeRegi°î
+(
+TI_POWER_DOWN
+, 
+TI_POWER_DOWN_CLK
+ |
+
+994 
+TI_POWER_DOWN_OSC
+);
+
+999 
+	`TLV320AIC23BWrôeRegi°î
+(
+TI_SRC
+, 
+TI_SRC_SR_48000
+);
+
+1004 
+	`TLV320AIC23BWrôeRegi°î
+(
+TI_DIGITAL_AP
+, 
+TI_DIGITAL_AP_DEEMP_48K
+ |
+
+1005 
+TI_DIGITAL_AP_ADCHP
+);
+
+1010 
+	`TLV320AIC23BWrôeRegi°î
+(
+TI_ANALOG_AP
+, 
+TI_ANALOG_AP_FRAM
+ |
+
+1011 
+TI_ANALOG_AP_MICM
+);
+
+1016 
+	`TLV320AIC23BWrôeRegi°î
+(
+TI_DIGITAL_AI
+,
+
+1017 (
+TI_DIGITAL_AI_LRSWAP
+ | 
+TI_DIGITAL_AI_IWL_16
+ |
+
+1018 
+TI_DIGITAL_AI_FOR_I2S
+ | 
+TI_DIGITAL_AI_SLAVE
+));
+
+1023 
+	`TLV320AIC23BHódPh⁄eVﬁumeSë
+(100);
+
+1028 
+	`TLV320AIC23BLöeInVﬁumeSë
+(
+TLV_LINEIN_VC_0DB
+);
+
+1033 
+	`TLV320AIC23BWrôeRegi°î
+(
+TI_DIGITAL_ACTIVATE
+, 
+TI_DIGITAL_ACTIVATE_EN
+);
+
+1036 
+	}
+}
+
+1040 
 Void
  
 	$öô_sys
 ()
 
-572 
+1043 
 	`öô_gpio
 () ;
 
-575 
+1046 
 	`öô_u¨t
 () ;
 
-580 
+1050 #ifde‡
+D_SDCARD
+
+
+1051 
 	`öô_sdˇrd
 () ;
 
-585 
+1055 #ifde‡
+D_CAN
+
+
+1056 
+	`öô_ˇn
+() ;
+
+1060 #ifde‡
+D_SPICAN
+
+
+1061 
+	`öô_•i
+() ;
+
+1064 #ifde‡
+D_FRAM
+
+
+1065 
+	`öô_‰am
+() ;
+
+1069 
 	`cfg_öãºu±
 () ;
 
-587 
+1071 
 	}
 }
 
-596 
+1080 
 	$UARTSíd
 (c⁄° *
 pucBuf„r
@@ -11055,55 +14105,59 @@ pucBuf„r
 ulCou¡
 )
 
-601 
+1085 
 ulCou¡
 --)
 
-606 
+1090 
 	`ROM_UARTCh¨PutN⁄Blockög
 (
-UART2_BASE
+UART7_BASE
 , *
 pucBuf„r
 ++);
 
-608 
+1092 
 	}
 }
 
-613 
+1098 
 Void
  
 	$maö
 ()
 
-615 
+1100 
 Task_H™dÀ
  
 èsk
 ;
 
-616 
+1101 
 Eº‹_Block
  
 eb
 ;
 
-618 
+1103 
 	`Sy°em_¥ötf
 ("enter main()\n");
 
-620 
+1105 
 	`Eº‹_öô
 (&
 eb
 );
 
-623 
+1109 
 	`öô_sys
 () ;
 
-630 
+1111 
+	`ã°_‰am
+() ;
+
+1121 
 èsk
  = 
 	`Task_¸óã
@@ -11115,25 +14169,25 @@ NULL
 eb
 );
 
-631 i‡(
+1122 i‡(
 èsk
  =
 NULL
 ) {
 
-632 
+1123 
 	`Sy°em_¥ötf
 ("Task_create() failed!\n");
 
-633 
+1124 
 	`BIOS_exô
 (0);
 
-636 
+1127 
 	`BIOS_°¨t
 ();
 
-637 
+1128 
 	}
 }
 
@@ -14189,6 +17243,1720 @@ nSètus
 	}
 }
 
+	@spi_master.c
+
+6 
+	~"öc/hw_memm≠.h
+"
+
+7 
+	~"öc/hw_ssi.h
+"
+
+8 
+	~"öc/hw_ty≥s.h
+"
+
+9 
+	~"drivîlib/ssi.h
+"
+
+10 
+	~"drivîlib/gpio.h
+"
+
+11 
+	~"drivîlib/sys˘l.h
+"
+
+12 
+	~"utûs/u¨t°dio.h
+"
+
+13 
+	~"öc/hw_gpio.h
+"
+
+14 
+	~"MCP2515.h
+"
+
+25 
+	#NUM_RX
+ 14
+
+	)
+
+27 
+	#INT_GPIOB
+ 0x02
+
+	)
+
+31 
+	#GPIO_PA2_SSI0CLK
+ 0x00000402
+
+	)
+
+33 
+	#GPIO_PA5_SSI0TX
+ 0x00001002
+
+	)
+
+35 
+	#GPIO_PA4_SSI0RX
+ 0x00000C02
+
+	)
+
+37 
+	#GPIO_PA3_SSI0FSS
+ 0x00000802
+
+	)
+
+39 
+	#TX0
+ 0x01
+
+	)
+
+40 
+	#TX1
+ 0x02
+
+	)
+
+41 
+	#TX3
+ 0x04
+
+	)
+
+42 
+	#TXALL
+ 0x07
+
+	)
+
+44 
+	#GPIOIM
+ 0x410
+
+	)
+
+45 
+	#NVIC_BASE
+ 0xE000E000
+
+	)
+
+46 
+	#EN0
+ 0x100
+
+	)
+
+60 
+SPI_Síd
+(
+x
+[], 
+y
+);
+
+71 
+SPI_Re˚ive
+();
+
+77 
+CAN_Re£t
+();
+
+84 
+Reg_Ród
+();
+
+92 
+Reg_Wrôe
+(, );
+
+101 
+CAN_Inô
+();
+
+108 
+Reg_BôModify
+(
+addªss
+,
+mask
+, 
+d©a
+);
+
+110 
+Tønsmô_D©a
+(
+numbî
+);
+
+116 
+CAN_I¡îru±
+();
+
+118 
+Ród_RX
+(
+numbî
+, 
+RX
+[]);
+
+134 
+	gD©aRx_BUFFER
+[
+NUM_RX
+]={0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+
+135 
+	gulD©aRx
+ = 0;
+
+137 
+	$maö
+()
+
+147 
+	`SysCéClockSë
+(
+SYSCTL_SYSDIV_1
+ | 
+SYSCTL_USE_OSC
+ | 
+SYSCTL_OSC_MAIN
+ |
+
+148 
+SYSCTL_XTAL_16MHZ
+);
+
+161 
+	`SysCéPîùhîÆE«bÀ
+(
+SYSCTL_PERIPH_SSI0
+);
+
+169 
+	`SysCéPîùhîÆE«bÀ
+(
+SYSCTL_PERIPH_GPIOA
+);
+
+170 
+	`SysCéPîùhîÆE«bÀ
+(
+SYSCTL_PERIPH_GPIOB
+);
+
+177 
+	`GPIOPöC⁄figuª
+(
+GPIO_PA2_SSI0CLK
+);
+
+178 
+	`GPIOPöC⁄figuª
+(
+GPIO_PA3_SSI0FSS
+);
+
+179 
+	`GPIOPöC⁄figuª
+(
+GPIO_PA4_SSI0RX
+);
+
+180 
+	`GPIOPöC⁄figuª
+(
+GPIO_PA5_SSI0TX
+);
+
+193 
+	`GPIOPöTy≥SSI
+(
+GPIO_PORTA_BASE
+, 
+GPIO_PIN_5
+ | 
+GPIO_PIN_4
+ | 
+GPIO_PIN_3
+ |
+
+194 
+GPIO_PIN_2
+);
+
+196 
+	`GPIOPöTy≥GPIOOuçut
+(
+GPIO_PORTA_BASE
+,
+GPIO_PIN_7
+);
+
+197 
+	`GPIOPöTy≥GPIOI≈ut
+(
+GPIO_PORTB_BASE
+,
+GPIO_PIN_6
+);
+
+198 
+	`GPIOPöWrôe
+(
+GPIO_PORTA_BASE
+, 
+GPIO_PIN_7
+, 0x00);
+
+208 
+	`SSIC⁄figSëExpClk
+(
+SSI0_BASE
+, 
+	`SysCéClockGë
+(), 
+SSI_FRF_MOTO_MODE_0
+,
+
+209 
+SSI_MODE_MASTER
+, 1000000, 8);
+
+214 
+	`SSIE«bÀ
+(
+SSI0_BASE
+);
+
+225 
+	`SSID©aGëN⁄Blockög
+(
+SSI0_BASE
+, &
+ulD©aRx
+))
+
+234 
+	`I¡DißbÀ
+(
+INT_GPIOB
+);
+
+235 
+	`HWREG
+(
+NVIC_BASE
+ + 
+EN0
+)= 0x00;
+
+236 
+	`CAN_Re£t
+();
+
+237 
+	`CAN_Inô
+();
+
+238 
+ulD©aRx
+=
+	`Reg_Ród
+(
+MCP_CANINTF
+);
+
+239 
+	`GPIOPöRód
+(
+GPIO_PORTB_BASE
+, 
+GPIO_PIN_6
+)==0x00);
+
+240 
+	`GPIOPöI¡E«bÀ
+(
+INT_GPIOB
+,0x40);
+
+241 
+	`I¡E«bÀ
+(
+INT_GPIOB
+);
+
+242 
+	`HWREG
+(0xE000E000 + 0x280)=0xFF;
+
+243 
+	`HWREG
+(
+GPIO_PORTB_BASE
+ + 
+GPIOIM
+)=0x40;
+
+244 
+	`HWREG
+(
+NVIC_BASE
+ + 
+EN0
+)= 0x02;
+
+245 
+	`GPIOI¡Ty≥Së
+(
+GPIO_PORTB_BASE
+,0x40,
+GPIO_LOW_LEVEL
+);
+
+247 
+	}
+}
+
+249 
+	$SPI_Síd
+(
+x
+[], 
+y
+)
+
+251 
+i
+;
+
+252 
+	`GPIOPöWrôe
+(
+GPIO_PORTA_BASE
+, 
+GPIO_PIN_7
+, 0x00);
+
+253 
+i
+=0;i<
+y
+;i++)
+
+255 
+	`SSIBusy
+(
+SSI0_BASE
+));
+
+256 
+	`SSID©aPut
+(
+SSI0_BASE
+, 
+x
+[
+i
+]);
+
+257 
+	`SSIBusy
+(
+SSI0_BASE
+));
+
+259 
+	`GPIOPöWrôe
+(
+GPIO_PORTA_BASE
+, 
+GPIO_PIN_7
+, 0x80);
+
+260 
+	}
+}
+
+262 
+	$SPI_Re˚ive
+(
+x
+)
+
+264 
+Rxd©a
+=0;
+
+265 ;
+x
+>0;x--)
+
+267 
+	`SSID©aGë
+(
+SSI0_BASE
+, &
+Rxd©a
+);
+
+269  
+Rxd©a
+;
+
+270 
+	}
+}
+
+272 
+	$Reg_Ród
+(
+addªss
+)
+
+274 
+Tx
+[3];
+
+275 
+ªsu…
+;
+
+276 
+	`HWREG
+(
+SSI0_BASE
+ + 
+SSI_O_SR
+Ë& 
+SSI_SR_RNE
+)
+
+278 
+	`SPI_Re˚ive
+(1);
+
+280 
+Tx
+[0]=0x03;
+
+281 
+Tx
+[1]=
+addªss
+;
+
+282 
+Tx
+[2]=0;
+
+283 
+	`SPI_Síd
+(
+Tx
+,3);
+
+284 
+	`HWREG
+(
+SSI0_BASE
+ + 
+SSI_O_SR
+Ë& 
+SSI_SR_RNE
+)
+
+286 
+ªsu…
+=
+	`SPI_Re˚ive
+(1);
+
+288  
+ªsu…
+;
+
+289 
+	}
+}
+
+291 
+	$Reg_Wrôe
+(
+addªss
+,
+d©a
+)
+
+293 
+Tx
+[3];
+
+294 
+	`HWREG
+(
+SSI0_BASE
+ + 
+SSI_O_SR
+Ë& 
+SSI_SR_RNE
+)
+
+296 
+	`SPI_Re˚ive
+(1);
+
+298 
+Tx
+[0]=0x02;
+
+299 
+Tx
+[1]=
+addªss
+;
+
+300 
+Tx
+[2]=
+d©a
+;
+
+301 
+	`SPI_Síd
+(
+Tx
+,3);
+
+302 
+	`HWREG
+(
+SSI0_BASE
+ + 
+SSI_O_SR
+Ë& 
+SSI_SR_RNE
+)
+
+304 
+	`SPI_Re˚ive
+(1);
+
+306 
+	}
+}
+
+308 
+	$CAN_Re£t
+()
+
+310 
+d©a
+[1];
+
+311 
+d©a
+[0]=0xC0;
+
+312 
+	`SPI_Síd
+(
+d©a
+,1);
+
+313 
+	`SysCéDñay
+(1000);
+
+314 
+	}
+}
+
+316 
+	$Reg_BôModify
+(
+addªss
+,
+mask
+, 
+d©a
+)
+
+318 
+Tx
+[4];
+
+319 
+	`HWREG
+(
+SSI0_BASE
+ + 
+SSI_O_SR
+Ë& 
+SSI_SR_RNE
+)
+
+321 
+	`SPI_Re˚ive
+(1);
+
+323 
+Tx
+[0]=0x05;
+
+324 
+Tx
+[1]=
+addªss
+;
+
+325 
+Tx
+[2]=
+mask
+;
+
+326 
+Tx
+[3]=
+d©a
+;
+
+327 
+	`SPI_Síd
+(
+Tx
+,4);
+
+328 
+	`HWREG
+(
+SSI0_BASE
+ + 
+SSI_O_SR
+Ë& 
+SSI_SR_RNE
+)
+
+330 
+	`SPI_Re˚ive
+(1);
+
+332 
+	}
+}
+
+334 
+	$CAN_Inô
+()
+
+337 
+	`Reg_BôModify
+(
+MCP_CANCTRL
+,0xE0, 0x80);
+
+338 
+ulD©aRx
+
+	`Reg_Ród
+(
+MCP_CANSTAT
+);
+
+339 (
+ulD©aRx
+ & 0xE0) !=0x80)
+
+341 
+	`CAN_Re£t
+();
+
+342 
+	`Reg_BôModify
+(
+MCP_CANCTRL
+,0xE0, 0x80);
+
+343 
+ulD©aRx
+=
+	`Reg_Ród
+(
+MCP_CANSTAT
+);
+
+345 
+	`Reg_Wrôe
+(
+MCP_CNF1
+,0x07);
+
+346 
+	`Reg_Wrôe
+(
+MCP_CNF2
+,0x92);
+
+347 
+	`Reg_Wrôe
+(
+MCP_CNF3
+,0x82);
+
+348 
+	`Reg_Wrôe
+(
+MCP_RXB0CTRL
+,0x20);
+
+349 
+	`Reg_Wrôe
+(
+MCP_RXB1CTRL
+,0x20);
+
+350 
+	`Reg_Wrôe
+(
+MCP_BFPCTRL
+,0x0F);
+
+351 
+	`Reg_Wrôe
+(
+MCP_RXF0SIDH
+,0xAA);
+
+352 
+	`Reg_Wrôe
+(
+MCP_RXF0SIDL
+,0x40);
+
+353 
+	`Reg_Wrôe
+(
+MCP_RXF0EID8
+,0x00);
+
+354 
+	`Reg_Wrôe
+(
+MCP_RXF0EID0
+,0x00);
+
+355 
+	`Reg_Wrôe
+(
+MCP_RXM0SIDH
+,0x00);
+
+356 
+	`Reg_Wrôe
+(
+MCP_RXM0SIDL
+,0x00);
+
+357 
+	`Reg_Wrôe
+(
+MCP_RXM0EID8
+,0x00);
+
+358 
+	`Reg_Wrôe
+(
+MCP_RXM0EID0
+,0x00);
+
+360 
+	`Reg_Wrôe
+(
+MCP_RXF1SIDH
+,0x00);
+
+361 
+	`Reg_Wrôe
+(
+MCP_RXF1SIDL
+,0x00);
+
+362 
+	`Reg_Wrôe
+(
+MCP_RXF1EID8
+,0x00);
+
+363 
+	`Reg_Wrôe
+(
+MCP_RXF1EID0
+,0x00);
+
+364 
+	`Reg_Wrôe
+(
+MCP_RXM1SIDH
+,0xFF);
+
+365 
+	`Reg_Wrôe
+(
+MCP_RXM1SIDL
+,0x00);
+
+366 
+	`Reg_Wrôe
+(
+MCP_RXM1EID8
+,0x00);
+
+367 
+	`Reg_Wrôe
+(
+MCP_RXM1EID0
+,0x00);
+
+369 
+	`Reg_Wrôe
+(
+MCP_RXF2SIDH
+,0x00);
+
+370 
+	`Reg_Wrôe
+(
+MCP_RXF2SIDL
+,0x00);
+
+371 
+	`Reg_Wrôe
+(
+MCP_RXF2EID8
+,0x00);
+
+372 
+	`Reg_Wrôe
+(
+MCP_RXF2EID0
+,0x00);
+
+374 
+	`Reg_Wrôe
+(
+MCP_RXF3SIDH
+,0x00);
+
+375 
+	`Reg_Wrôe
+(
+MCP_RXF3SIDL
+,0x00);
+
+376 
+	`Reg_Wrôe
+(
+MCP_RXF3EID8
+,0x00);
+
+377 
+	`Reg_Wrôe
+(
+MCP_RXF3EID0
+,0x00);
+
+378 
+	`Reg_Wrôe
+(
+MCP_CANINTE
+,0x01);
+
+380 
+	`Reg_BôModify
+(
+MCP_CANCTRL
+,0xE0, 0x00);
+
+381 
+ulD©aRx
+
+	`Reg_Ród
+(
+MCP_CANSTAT
+);
+
+382 (
+ulD©aRx
+ & 0xE0) !=0x00)
+
+384 
+	`CAN_Re£t
+();
+
+385 
+	`Reg_BôModify
+(
+MCP_CANCTRL
+,0xE0, 0x00);
+
+386 
+ulD©aRx
+=
+	`Reg_Ród
+(
+MCP_CANSTAT
+);
+
+389 
+	}
+}
+
+391 
+	$Tønsmô_D©a
+(
+numbî
+)
+
+393 
+Tx
+[1];
+
+394 
+Tx
+[0]=0x80|
+numbî
+;
+
+395 
+	`SPI_Síd
+(
+Tx
+,1);
+
+396 
+	}
+}
+
+398 
+	$CAN_I¡îru±
+()
+
+400 
+°©us
+;
+
+401 
+°©us
+
+	`Reg_Ród
+(
+MCP_CANSTAT
+);
+
+402 
+°©us
+ &=0x0E;
+
+403 
+°©us
+)
+
+419 
+	`Ród_RX
+(0,
+D©aRx_BUFFER
+);
+
+425 
+	}
+}
+
+427 
+	$Ród_RX
+(
+numbî
+, 
+RX
+[])
+
+429 
+Tx
+[14]={0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+
+430 
+	`HWREG
+(
+SSI0_BASE
+ + 
+SSI_O_SR
+Ë& 
+SSI_SR_RNE
+)
+
+432 
+	`SPI_Re˚ive
+(1);
+
+434 
+Tx
+[0]=0x90+2*
+numbî
+;
+
+435 
+i
+;
+
+436 
+	`GPIOPöWrôe
+(
+GPIO_PORTA_BASE
+, 
+GPIO_PIN_7
+, 0x00);
+
+437 
+i
+=0;i<14;i++)
+
+439 
+	`SSIBusy
+(
+SSI0_BASE
+));
+
+440 
+	`SSID©aPut
+(
+SSI0_BASE
+, 
+Tx
+[
+i
+]);
+
+441 
+	`SSIBusy
+(
+SSI0_BASE
+));
+
+442 *(
+RX
+++)=
+	`SPI_Re˚ive
+(1);
+
+444 
+	`GPIOPöWrôe
+(
+GPIO_PORTA_BASE
+, 
+GPIO_PIN_7
+, 0x80);
+
+445 
+	}
+}
+
+	@startup_ccs.c
+
+15 
+Re£tISR
+();
+
+16 
+NmiSR
+();
+
+17 
+Fau…ISR
+();
+
+18 
+I¡DeÁu…H™dÀr
+();
+
+26 
+_c_öt00
+();
+
+28 
+CAN_I¡îru±
+();
+
+35 
+__STACK_TOP
+;
+
+44 #¥agm®
+DATA_SECTION
+(
+g_p‚Ve˘‹s
+, ".intvecs")
+
+45 (* c⁄° 
+g_p‚Ve˘‹s
+[])() =
+
+47 ((*)())(()&
+__STACK_TOP
+),
+
+49 
+Re£tISR
+,
+
+50 
+NmiSR
+,
+
+51 
+Fau…ISR
+,
+
+52 
+I¡DeÁu…H™dÀr
+,
+
+53 
+I¡DeÁu…H™dÀr
+,
+
+54 
+I¡DeÁu…H™dÀr
+,
+
+59 
+I¡DeÁu…H™dÀr
+,
+
+60 
+I¡DeÁu…H™dÀr
+,
+
+62 
+I¡DeÁu…H™dÀr
+,
+
+63 
+I¡DeÁu…H™dÀr
+,
+
+64 
+I¡DeÁu…H™dÀr
+,
+
+66 
+CAN_I¡îru±
+,
+
+67 
+I¡DeÁu…H™dÀr
+,
+
+68 
+I¡DeÁu…H™dÀr
+,
+
+69 
+I¡DeÁu…H™dÀr
+,
+
+70 
+I¡DeÁu…H™dÀr
+,
+
+71 
+I¡DeÁu…H™dÀr
+,
+
+72 
+I¡DeÁu…H™dÀr
+,
+
+73 
+I¡DeÁu…H™dÀr
+,
+
+74 
+I¡DeÁu…H™dÀr
+,
+
+75 
+I¡DeÁu…H™dÀr
+,
+
+76 
+I¡DeÁu…H™dÀr
+,
+
+77 
+I¡DeÁu…H™dÀr
+,
+
+78 
+I¡DeÁu…H™dÀr
+,
+
+79 
+I¡DeÁu…H™dÀr
+,
+
+80 
+I¡DeÁu…H™dÀr
+,
+
+81 
+I¡DeÁu…H™dÀr
+,
+
+82 
+I¡DeÁu…H™dÀr
+,
+
+83 
+I¡DeÁu…H™dÀr
+,
+
+84 
+I¡DeÁu…H™dÀr
+,
+
+85 
+I¡DeÁu…H™dÀr
+,
+
+86 
+I¡DeÁu…H™dÀr
+,
+
+87 
+I¡DeÁu…H™dÀr
+,
+
+88 
+I¡DeÁu…H™dÀr
+,
+
+89 
+I¡DeÁu…H™dÀr
+,
+
+90 
+I¡DeÁu…H™dÀr
+,
+
+91 
+I¡DeÁu…H™dÀr
+,
+
+92 
+I¡DeÁu…H™dÀr
+,
+
+93 
+I¡DeÁu…H™dÀr
+,
+
+94 
+I¡DeÁu…H™dÀr
+,
+
+95 
+I¡DeÁu…H™dÀr
+,
+
+96 
+I¡DeÁu…H™dÀr
+,
+
+97 
+I¡DeÁu…H™dÀr
+,
+
+98 
+I¡DeÁu…H™dÀr
+,
+
+99 
+I¡DeÁu…H™dÀr
+,
+
+100 
+I¡DeÁu…H™dÀr
+,
+
+101 
+I¡DeÁu…H™dÀr
+,
+
+102 
+I¡DeÁu…H™dÀr
+,
+
+103 
+I¡DeÁu…H™dÀr
+,
+
+104 
+I¡DeÁu…H™dÀr
+,
+
+105 
+I¡DeÁu…H™dÀr
+,
+
+106 
+I¡DeÁu…H™dÀr
+,
+
+107 
+I¡DeÁu…H™dÀr
+,
+
+108 
+I¡DeÁu…H™dÀr
+,
+
+109 
+I¡DeÁu…H™dÀr
+,
+
+110 
+I¡DeÁu…H™dÀr
+,
+
+111 
+I¡DeÁu…H™dÀr
+,
+
+112 
+I¡DeÁu…H™dÀr
+,
+
+113 
+I¡DeÁu…H™dÀr
+,
+
+114 
+I¡DeÁu…H™dÀr
+,
+
+115 
+I¡DeÁu…H™dÀr
+,
+
+116 
+I¡DeÁu…H™dÀr
+,
+
+117 
+I¡DeÁu…H™dÀr
+,
+
+118 
+I¡DeÁu…H™dÀr
+,
+
+119 
+I¡DeÁu…H™dÀr
+,
+
+120 
+I¡DeÁu…H™dÀr
+,
+
+121 
+I¡DeÁu…H™dÀr
+,
+
+122 
+I¡DeÁu…H™dÀr
+,
+
+123 
+I¡DeÁu…H™dÀr
+,
+
+124 
+I¡DeÁu…H™dÀr
+,
+
+125 
+I¡DeÁu…H™dÀr
+,
+
+126 
+I¡DeÁu…H™dÀr
+,
+
+127 
+I¡DeÁu…H™dÀr
+,
+
+128 
+I¡DeÁu…H™dÀr
+,
+
+133 
+I¡DeÁu…H™dÀr
+,
+
+134 
+I¡DeÁu…H™dÀr
+,
+
+135 
+I¡DeÁu…H™dÀr
+,
+
+136 
+I¡DeÁu…H™dÀr
+,
+
+157 
+I¡DeÁu…H™dÀr
+,
+
+158 
+I¡DeÁu…H™dÀr
+,
+
+159 
+I¡DeÁu…H™dÀr
+,
+
+160 
+I¡DeÁu…H™dÀr
+,
+
+161 
+I¡DeÁu…H™dÀr
+,
+
+162 
+I¡DeÁu…H™dÀr
+,
+
+163 
+I¡DeÁu…H™dÀr
+,
+
+164 
+I¡DeÁu…H™dÀr
+,
+
+165 
+I¡DeÁu…H™dÀr
+,
+
+166 
+I¡DeÁu…H™dÀr
+,
+
+167 
+I¡DeÁu…H™dÀr
+,
+
+168 
+I¡DeÁu…H™dÀr
+,
+
+169 
+I¡DeÁu…H™dÀr
+,
+
+170 
+I¡DeÁu…H™dÀr
+,
+
+171 
+I¡DeÁu…H™dÀr
+,
+
+172 
+I¡DeÁu…H™dÀr
+,
+
+173 
+I¡DeÁu…H™dÀr
+,
+
+174 
+I¡DeÁu…H™dÀr
+,
+
+175 
+I¡DeÁu…H™dÀr
+,
+
+176 
+I¡DeÁu…H™dÀr
+,
+
+177 
+I¡DeÁu…H™dÀr
+,
+
+178 
+I¡DeÁu…H™dÀr
+,
+
+179 
+I¡DeÁu…H™dÀr
+,
+
+181 
+I¡DeÁu…H™dÀr
+,
+
+182 
+I¡DeÁu…H™dÀr
+,
+
+183 
+I¡DeÁu…H™dÀr
+,
+
+184 
+I¡DeÁu…H™dÀr
+,
+
+185 
+I¡DeÁu…H™dÀr
+,
+
+186 
+I¡DeÁu…H™dÀr
+,
+
+187 
+I¡DeÁu…H™dÀr
+,
+
+188 
+I¡DeÁu…H™dÀr
+,
+
+189 
+I¡DeÁu…H™dÀr
+,
+
+190 
+I¡DeÁu…H™dÀr
+,
+
+191 
+I¡DeÁu…H™dÀr
+,
+
+192 
+I¡DeÁu…H™dÀr
+,
+
+193 
+I¡DeÁu…H™dÀr
+,
+
+194 
+I¡DeÁu…H™dÀr
+,
+
+195 
+I¡DeÁu…H™dÀr
+,
+
+196 
+I¡DeÁu…H™dÀr
+,
+
+197 
+I¡DeÁu…H™dÀr
+,
+
+198 
+I¡DeÁu…H™dÀr
+,
+
+199 
+I¡DeÁu…H™dÀr
+,
+
+200 
+I¡DeÁu…H™dÀr
+,
+
+201 
+I¡DeÁu…H™dÀr
+,
+
+202 
+I¡DeÁu…H™dÀr
+,
+
+203 
+I¡DeÁu…H™dÀr
+
+
+204 
+	}
+};
+
+217 
+	$Re£tISR
+()
+
+223 
+	`__asm
+(" .global _c_int00\n"
+
+225 
+	}
+}
+
+235 
+	$NmiSR
+()
+
+243 
+	}
+}
+
+253 
+	$Fau…ISR
+()
+
+261 
+	}
+}
+
+271 
+	$I¡DeÁu…H™dÀr
+()
+
+279 
+	}
+}
+
 	@uartstdio.c
 
 25 
@@ -16215,16 +20983,20 @@ __˝lu•lus
 1
 .
 0
-11
-107
+15
+153
+MCP2515.h
 can.c
 cmdline.c
 diskio.h
+eeprom.c
 ff.c
 ff.h
 integer.h
 main.c
 mmc-ek-lm4f232h5qd.c
 sd_card.c
+spi_master.c
+startup_ccs.c
 uartstdio.c
 uartstdio.h

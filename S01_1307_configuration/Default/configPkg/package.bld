@@ -11,7 +11,7 @@ var makeAssembly = false;
 var Executable = xdc.module('xdc.bld.Executable');
 
 var exeOpts = new Executable.Attrs({
-        cfgScript: 'J:/WorkHouse2013/Temp/test0807/S01_Repository/S01_1307_configuration/mutex.cfg',
+        cfgScript: 'J:/WorkHouse2013/SW2013/S01_1307_VTDR_Stellaris/S01_Repository/S01_1307_configuration/mutex.cfg',
         profile: 'release',
         cfgHome: 'configPkg',
 });
@@ -41,7 +41,7 @@ else {
 
 var thisObj = {
     cfg:        '../mutex.cfg',
-    outputPath: 'J:/WorkHouse2013/Temp/test0807/S01_Repository/S01_1307_configuration/Default/configPkg',
+    outputPath: 'J:/WorkHouse2013/SW2013/S01_1307_VTDR_Stellaris/S01_Repository/S01_1307_configuration/Default/configPkg',
     exeName:    'mutex' + suffix,
     exeIntName: 'mutex' + suffix.replace('.', '_'),
     targ:       targ,

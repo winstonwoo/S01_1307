@@ -21,9 +21,8 @@
 #include "driverlib/gpio.h"
 #include "utils/uartstdio.h"
 
-#define D_CAN0
+//#define D_CAN0
 
-#if 1
 //*****************************************************************************
 
 
@@ -130,6 +129,7 @@ void tsk_can( void )
 
      for( ;; )
      {
+#ifdef D_CAN
 #ifdef D_CAN1
           CANMessageSet( CAN1_BASE, 1, &sCANMsgObject1, MSG_OBJ_TYPE_TX ) ;
           SysCtlDelay(SysCtlClockGet()/3) ;
@@ -144,7 +144,7 @@ void tsk_can( void )
         (*(unsigned long *)ucCANData2)++;
         (*(unsigned long *)ucCANData3)++;
 
-        Task_sleep( 1000 ) ;
+
 #endif
 
 #ifdef D_CAN0
@@ -163,10 +163,12 @@ void tsk_can( void )
 		(*(unsigned long *)ucCANData3)++;
 
 
-        Task_sleep( 1000 ) ;
+
 #endif
+#endif
+
+		Task_sleep( 1000 ) ;
      }
 
 }
 
-#endif
