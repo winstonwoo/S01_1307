@@ -23,16 +23,23 @@
 #include "driverlib/interrupt.h"
 #include "driverlib/sysctl.h"
 #include "driverlib/gpio.h"
+#include "driverlib/pin_map.h"
 #include "utils/uartstdio.h"
-
-//#define D_CAN0
 
 //*****************************************************************************
 
+#define D_CAN_RECEIVE
+//#define D_CAN_SEND
+#define D_LOW_CAN
 
-void init_can( void )
+volatile unsigned long g_bRXFlag1 = 0;
+volatile unsigned long g_bRXFlag2 = 0;
+volatile unsigned long g_bRXFlag3 = 0;
+
+
+void init_high_can( void )
 {
-#ifdef D_CAN1
+
 
      //For JTA1043T configuration on CAN1 port
      SysCtlPeripheralEnable( SYSCTL_PERIPH_GPIOA ) ;
@@ -63,9 +70,13 @@ void init_can( void )
      CANIntEnable( CAN1_BASE, CAN_INT_MASTER | CAN_INT_ERROR | CAN_INT_STATUS) ;
      IntEnable( INT_CAN1 ) ;
      CANEnable( CAN1_BASE ) ;
-#endif
 
-#ifdef D_CAN0
+}
+
+void init_low_can( void )
+{
+
+
      //CAN0 initialization
      //For JTA1043T configuration on CAN1 port
      SysCtlPeripheralEnable( SYSCTL_PERIPH_GPIOA ) ;
@@ -88,14 +99,14 @@ void init_can( void )
        SysCtlPeripheralEnable( SYSCTL_PERIPH_CAN0 ) ;
 
        CANInit( CAN0_BASE ) ;
-       CANBitRateSet( CAN0_BASE, SysCtlClockGet(), 250000) ;
+       CANBitRateSet( CAN0_BASE, SysCtlClockGet(), 100000) ;
        //HWREG(CAN0_BASE + CAN_O_CTL) |= CAN_CTL_TEST ;
        //HWREG(CAN0_BASE + CAN_O_TST) |= CAN_TST_LBACK ;
 
        CANIntEnable( CAN0_BASE, CAN_INT_MASTER | CAN_INT_ERROR | CAN_INT_STATUS) ;
        IntEnable( INT_CAN0 ) ;
+
        CANEnable( CAN0_BASE ) ;
-#endif
 
 }
 
@@ -104,6 +115,8 @@ void tsk_can( void )
      tCANMsgObject sCANMsgObject1 ;
      tCANMsgObject sCANMsgObject2 ;
      tCANMsgObject sCANMsgObject3 ;
+     tCANMsgObject sCANMsgObject4 ;
+     int i ;
 
      unsigned char ucCANData1[8] = {1, 2, 3, 4, 5, 6, 7, 8} ;
      unsigned char ucCANData2[5] = { 2, 2, 2, 2, 2 };
@@ -131,10 +144,17 @@ void tsk_can( void )
      sCANMsgObject3.ui32MsgLen = sizeof( ucCANData3 ) ;
      sCANMsgObject3.pui8MsgData = ucCANData3 ;
 
+     sCANMsgObject4.ui32MsgID = 0x1001 ;
+     sCANMsgObject4.ui32MsgIDMask = 0x00000 ;
+     sCANMsgObject4.ui32Flags = MSG_OBJ_RX_INT_ENABLE ;//| MSG_OBJ_USE_ID_FILTER | MSG_OBJ_EXTENDED_ID; ;
+     sCANMsgObject4.ui32MsgLen = sizeof( ucCANData4 ) ;
+
+
      for( ;; )
      {
-#ifdef D_CAN
-#ifdef D_CAN1
+#ifdef D_CAN_SEND
+
+#ifdef D_HIGH_CAN
           CANMessageSet( CAN1_BASE, 1, &sCANMsgObject1, MSG_OBJ_TYPE_TX ) ;
           SysCtlDelay(SysCtlClockGet()/3) ;
           CANMessageSet( CAN1_BASE, 2, &sCANMsgObject2, MSG_OBJ_TYPE_TX ) ;
@@ -151,7 +171,7 @@ void tsk_can( void )
 
 #endif
 
-#ifdef D_CAN0
+#ifdef D_LOW_CAN
         CANMessageSet( CAN0_BASE, 1, &sCANMsgObject1, MSG_OBJ_TYPE_TX ) ;
         SysCtlDelay(SysCtlClockGet()/3) ;
         CANMessageSet( CAN0_BASE, 2, &sCANMsgObject2, MSG_OBJ_TYPE_TX ) ;
@@ -166,10 +186,86 @@ void tsk_can( void )
 		(*(unsigned long *)ucCANData2)++;
 		(*(unsigned long *)ucCANData3)++;
 
-
+#endif
 
 #endif
+
+
+#ifdef D_CAN_RECEIVE
+		CANMessageSet(CAN0_BASE, 1, &sCANMsgObject4, MSG_OBJ_TYPE_RX);
+
+		sCANMsgObject4.ui32MsgID = 0x2001;
+		CANMessageSet(CAN0_BASE, 2, &sCANMsgObject4, MSG_OBJ_TYPE_RX);
+
+		sCANMsgObject4.ui32MsgID = 0x3001;               // CAN msg ID
+		CANMessageSet(CAN0_BASE, 3, &sCANMsgObject4, MSG_OBJ_TYPE_RX);
+
+		for(;;)
+		{
+			 if(g_bRXFlag1)
+			{
+				//
+				// Reuse the same message object that was used earlier to configure
+				// the CAN for receiving messages.  A buffer for storing the
+				// received data must also be provided, so set the buffer pointer
+				// within the message object.  This same buffer is used for all
+				// messages in this example, but your application could set a
+				// different buffer each time a message is read in order to store
+				// different messages in different buffers.
+				//
+
+				sCANMsgObject4.pui8MsgData = ucCANData4 ;
+
+				//
+				// Read the message from the CAN.  Message object number 1 is used
+				// (which is not the same thing as CAN ID).  The interrupt clearing
+				// flag is not set because this interrupt was already cleared in
+				// the interrupt handler.
+				//
+				CANMessageGet(CAN0_BASE, 1, &sCANMsgObject4, 0);
+                UARTprintf("CAN0 OBJECT1 RECEIVED!\\n") ;
+				for(i=0; i<sizeof(ucCANData1); i++)
+					UARTprintf("%u \n", ucCANData4[i]) ;
+
+				//
+				// Clear the pending message flag so that the interrupt handler can
+				// set it again when the next message arrives.
+				//
+				g_bRXFlag1 = 0;
+
+			}
+
+		 if(g_bRXFlag2)
+			{
+			 sCANMsgObject4.pui8MsgData = ucCANData4 ;
+				CANMessageGet(CAN0_BASE, 2, &sCANMsgObject4, 0);
+				UARTprintf("CAN0 OBJECT2 RECEIVED!\\n") ;
+				for(i=0; i<sizeof(ucCANData2); i++)
+									UARTprintf("%u \n", ucCANData4[i]) ;
+				g_bRXFlag2 = 0;
+
+			}
+
+
+		 if(g_bRXFlag3)
+		   {
+			 sCANMsgObject4.pui8MsgData = ucCANData4 ;
+			   CANMessageGet(CAN0_BASE, 3, &sCANMsgObject4, 0);
+			   UARTprintf("CAN0 OBJECT3 RECEIVED!\\n") ;
+			   for(i=0; i<sizeof(ucCANData3); i++)
+			   					UARTprintf("%u \n", ucCANData4[i]) ;
+			   g_bRXFlag3 = 0;
+
+		   }
+
+
+		Task_sleep(1000) ;
+
+
+		}
+
 #endif
+
 
 		Task_sleep( 1000 ) ;
      }

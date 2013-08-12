@@ -7,7 +7,7 @@
         <srcFile name="package/cfg/mutex_pem4f.c"/>
     </sources>
     <configscripts>
-        <srcFile name="J:/WorkHouse2013/Temp/temp08121/S01_Repository/S01_1307_configuration/mutex.cfg"/>
+        <srcFile name="J:/WorkHouse2013/SW2013/S01_1307_VTDR_Tiva/S01_Repository/S01_1307_configuration/mutex.cfg"/>
     </configscripts>
     <makefiles>
         <srcFile name="package.mak" src="package.bld"/>
@@ -43,7 +43,7 @@
         isPartial="false"
         xCfgScript="package/cfg/mutex_pem4f.cfg"
         xCfgPrefix="package/cfg/mutex_pem4f"
-        cfgScript="J:/WorkHouse2013/Temp/temp08121/S01_Repository/S01_1307_configuration/mutex.cfg"
+        cfgScript="J:/WorkHouse2013/SW2013/S01_1307_VTDR_Tiva/S01_Repository/S01_1307_configuration/mutex.cfg"
         cfgArgs="null"
         />
     </configurations>
@@ -55,7 +55,7 @@
         profile="release"
         xCfgScript="package/cfg/mutex_pem4f.cfg"
         xCfgPrefix="package/cfg/mutex_pem4f"
-        cfgScript="J:/WorkHouse2013/Temp/temp08121/S01_Repository/S01_1307_configuration/mutex.cfg"
+        cfgScript="J:/WorkHouse2013/SW2013/S01_1307_VTDR_Tiva/S01_Repository/S01_1307_configuration/mutex.cfg"
         cfgArgs="null"
         />
     </executables>

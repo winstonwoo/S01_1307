@@ -234,6 +234,7 @@ mycan.obj: J:/WorkHouse2013/SWRf2013/StellarisTiVa/TiVa/TivaWare_C_Series-1.0/dr
 mycan.obj: J:/WorkHouse2013/SWRf2013/StellarisTiVa/TiVa/TivaWare_C_Series-1.0/driverlib/interrupt.h
 mycan.obj: J:/WorkHouse2013/SWRf2013/StellarisTiVa/TiVa/TivaWare_C_Series-1.0/driverlib/sysctl.h
 mycan.obj: J:/WorkHouse2013/SWRf2013/StellarisTiVa/TiVa/TivaWare_C_Series-1.0/driverlib/gpio.h
+mycan.obj: J:/WorkHouse2013/SWRf2013/StellarisTiVa/TiVa/TivaWare_C_Series-1.0/driverlib/pin_map.h
 mycan.obj: J:/WorkHouse2013/SWRf2013/StellarisTiVa/TiVa/TivaWare_C_Series-1.0/utils/uartstdio.h
 mycan.obj: C:/ti/ccsv5/tools/compiler/arm_5.0.1/include/stdarg.h
 
@@ -471,5 +472,6 @@ J:/WorkHouse2013/SWRf2013/StellarisTiVa/TiVa/TivaWare_C_Series-1.0/driverlib/can
 J:/WorkHouse2013/SWRf2013/StellarisTiVa/TiVa/TivaWare_C_Series-1.0/driverlib/interrupt.h: 
 J:/WorkHouse2013/SWRf2013/StellarisTiVa/TiVa/TivaWare_C_Series-1.0/driverlib/sysctl.h: 
 J:/WorkHouse2013/SWRf2013/StellarisTiVa/TiVa/TivaWare_C_Series-1.0/driverlib/gpio.h: 
+J:/WorkHouse2013/SWRf2013/StellarisTiVa/TiVa/TivaWare_C_Series-1.0/driverlib/pin_map.h: 
 J:/WorkHouse2013/SWRf2013/StellarisTiVa/TiVa/TivaWare_C_Series-1.0/utils/uartstdio.h: 
 C:/ti/ccsv5/tools/compiler/arm_5.0.1/include/stdarg.h: 

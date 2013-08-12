@@ -18690,7 +18690,7 @@ __o = __obj[1160]  // ti.sysbios.knl.Task.Instance#8
     __o['stack'] = null
     __o['stackHeap'] = null
     __o['stackSection'] = String(java.net.URLDecoder.decode('.bss%3AtaskStackSection', 'UTF-8'))
-    __o['stackSize'] = 512
+    __o['stackSize'] = 1024
     __o['vitalTaskFlag'] = true
 
 __o = __obj[1161]  // ti.sysbios.knl.Task.Instance#8/instance
@@ -19408,7 +19408,7 @@ __o = __obj[1239]
     __o['cfgArgs'] = null
     __o['cfgArgsEncoded'] = true
     __o['cfgHome'] = String(java.net.URLDecoder.decode('configPkg', 'UTF-8'))
-    __o['cfgScript'] = String(java.net.URLDecoder.decode('J%3A%2FWorkHouse2013%2FTemp%2Ftemp08121%2FS01_Repository%2FS01_1307_configuration%2Fmutex.cfg', 'UTF-8'))
+    __o['cfgScript'] = String(java.net.URLDecoder.decode('J%3A%2FWorkHouse2013%2FSW2013%2FS01_1307_VTDR_Tiva%2FS01_Repository%2FS01_1307_configuration%2Fmutex.cfg', 'UTF-8'))
     __o['prelink'] = false
     __o['profile'] = String(java.net.URLDecoder.decode('release', 'UTF-8'))
     __o['releases'] = __obj[1240.0]

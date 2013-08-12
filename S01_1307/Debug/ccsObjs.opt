@@ -1,1 +1,1 @@
-"./uartstdio.obj" "./spi_master.obj" "./mycan.obj" "./my_sd_card.obj" "./mmc-ek-lm4f232h5qd.obj" "./main.obj" "./fram.obj" "./ff.obj" "./cmdline.obj" -l"libc.a" -lJ:/WorkHouse2013/SWRf2013/StellarisTiVa/TiVa/TivaWare_C_Series-1.0/driverlib/ccs/Debug/driverlib.lib "../lm4f232h5qd.cmd" 
+"./uartstdio.obj" "./spi_master.obj" "./mysdcard.obj" "./myfram.obj" "./mycan.obj" "./mmc-ek-lm4f232h5qd.obj" "./main.obj" "./ff.obj" "./cmdline.obj" -l"libc.a" -lJ:/WorkHouse2013/SWRf2013/StellarisTiVa/TiVa/TivaWare_C_Series-1.0/driverlib/ccs/Debug/driverlib.lib "../lm4f232h5qd.cmd" 
