@@ -2,6 +2,25 @@
 **** Build of configuration Debug for project S01_1307 ****
 
 "C:\\ti\\ccsv5\\utils\\bin\\gmake" -k all 
-gmake: Nothing to be done for `all'.
+'Building file: ../main.c'
+'Invoking: ARM Compiler'
+"C:/ti/ccsv5/tools/compiler/arm_5.0.1/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 --abi=eabi -me -g --include_path="C:/ti/ccsv5/tools/compiler/arm_5.0.1/include" --include_path="J:/WorkHouse2013/SWRf2013/StellarisTiVa/TiVa/TivaWare_C_Series-1.0" --include_path="J:/WorkHouse2013/SWRf2013/StellarisTiVa/TiVa/TivaWare_C_Series-1.0/third_party" --define=TARGET_IS_BLIZZARD_RA1 --define=PART_TM4C123GH6PGE --define=ccs --diag_warning=225 --display_error_number --diag_wrap=off --preproc_with_compile --preproc_dependency="main.pp" --cmd_file="J:/WorkHouse2013/SW2013/S01_1307_VTDR_Tiva/S01_Repository/S01_1307_configuration/Default/configPkg/compiler.opt"  "../main.c"
+"../main.c", line 73: warning #179-D: variable "ucMsg" was declared but never referenced
+"../main.c", line 74: warning #179-D: variable "i" was declared but never referenced
+"../main.c", line 458: warning #552-D: variable "lIntSts" was set but never used
+"../main.c", line 483: warning #225-D: function declared implicitly
+"../main.c", line 501: warning #225-D: function declared implicitly
+"../main.c", line 476: warning #552-D: variable "lIntSts" was set but never used
+"../main.c", line 608: warning #179-D: variable "ucMsg" was declared but never referenced
+"../main.c", line 720: warning #225-D: function declared implicitly
+"../main.c", line 1024: warning #225-D: function declared implicitly
+'Finished building: ../main.c'
+' '
+'Building target: S01_1307.out'
+'Invoking: ARM Linker'
+"C:/ti/ccsv5/tools/compiler/arm_5.0.1/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 --abi=eabi -me -g --define=TARGET_IS_BLIZZARD_RA1 --define=PART_TM4C123GH6PGE --define=ccs --diag_warning=225 --display_error_number --diag_wrap=off -z --stack_size=512 -m"S01_1307.map" --heap_size=0 -i"C:/ti/ccsv5/tools/compiler/arm_5.0.1/lib" -i"C:/ti/ccsv5/tools/compiler/arm_5.0.1/include" --reread_libs --warn_sections --display_error_number --diag_wrap=off --xml_link_info="S01_1307_linkInfo.xml" --rom_model -l"J:/WorkHouse2013/SW2013/S01_1307_VTDR_Tiva/S01_Repository/S01_1307_configuration/Default/configPkg/linker.cmd" -o "S01_1307.out"  "./uartstdio.obj" "./myspican.obj" "./mysdcard.obj" "./myfram.obj" "./mycan.obj" "./mmc-ek-lm4f232h5qd.obj" "./main.obj" "./ff.obj" "./cmdline.obj" -l"libc.a" -lJ:/WorkHouse2013/SWRf2013/StellarisTiVa/TiVa/TivaWare_C_Series-1.0/driverlib/ccs/Debug/driverlib.lib "../lm4f232h5qd.cmd" 
+<Linking>
+'Finished building target: S01_1307.out'
+' '
 
 **** Build Finished ****

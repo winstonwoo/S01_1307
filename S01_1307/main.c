@@ -34,6 +34,8 @@
 #include "driverlib/pin_map.h"
 #include "uartstdio.h"
 
+#include "MCP2515.h"
+
 extern volatile unsigned long g_bRXFlag1 ;
 extern volatile unsigned long g_bRXFlag2 ;
 extern volatile unsigned long g_bRXFlag3 ;
@@ -472,9 +474,35 @@ Void hwi_GPIOB_fxn(UArg arg)
 Void hwi_GPIOE_fxn(UArg arg)
 {
 	long lIntSts ;
+	unsigned long DataRx_BUFFER[14]={0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 #if 1
 	//store the interrupt flag into lIntSts
 	lIntSts = GPIOIntStatus(GPIO_PORTE_BASE, false) ;
+
+	unsigned long status;
+		status= Reg_Read(MCP_CANSTAT);
+		status &=0x0E;
+		switch(status)
+		{
+		case 0x00:
+			break;
+		case 0x02:
+			break;
+		case 0x04:
+			break;
+		case 0x06:
+			break;
+		case 0x08:
+			break;
+		case 0x0A:
+			break;
+		case 0x0C:
+			//Reg_BitModify(MCP_CANINTF,0x01, 0x00);
+			 Read_RX(0,DataRx_BUFFER);
+			break;
+		case 0x0E:
+			break;
+		}
 
 	//
 	// Clear the GPIO interrupt.

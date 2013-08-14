@@ -112,6 +112,9 @@ BYTE rcvr_spi (void)
     ROM_SSIDataPut(SDC_SSI_BASE, 0xFF); /* write dummy data */
 
     ROM_SSIDataGet(SDC_SSI_BASE, &ui32RcvDat); /* read data frm rx fifo */
+    ROM_SSIDataGet(SDC_SSI_BASE, &ui32RcvDat); /* read data frm rx fifo */
+    ROM_SSIDataGet(SDC_SSI_BASE, &ui32RcvDat); /* read data frm rx fifo */
+    ROM_SSIDataGet(SDC_SSI_BASE, &ui32RcvDat); /* read data frm rx fifo */
 
     return (BYTE)ui32RcvDat;
 }
