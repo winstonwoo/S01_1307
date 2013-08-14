@@ -41,7 +41,7 @@ extern const ti_sysbios_hal_Hwi_Handle hwi_CAN0_handle;
 extern const ti_sysbios_hal_Hwi_Handle hwi_CAN1_handle;
 
 #include <ti/sysbios/hal/Hwi.h>
-extern const ti_sysbios_hal_Hwi_Handle hwi_GPIOBoot_handle;
+extern const ti_sysbios_hal_Hwi_Handle hwi_GPIOB_handle;
 
 #include <ti/sysbios/knl/Swi.h>
 extern const ti_sysbios_knl_Swi_Handle swi_UART2_handle;
@@ -68,7 +68,7 @@ extern const ti_sysbios_knl_Swi_Handle swi_CAN0_handle;
 extern const ti_sysbios_knl_Swi_Handle swi_CAN1_handle;
 
 #include <ti/sysbios/knl/Swi.h>
-extern const ti_sysbios_knl_Swi_Handle swi_GPIOBoot_handle;
+extern const ti_sysbios_knl_Swi_Handle swi_GPIOB_handle;
 
 #include <ti/sysbios/knl/Task.h>
 extern const ti_sysbios_knl_Task_Handle tsk_bootloader_handle;
@@ -105,6 +105,9 @@ extern const ti_sysbios_hal_Hwi_Handle hwi_TIMER2_handle;
 
 #include <ti/sysbios/knl/Mailbox.h>
 extern const ti_sysbios_knl_Mailbox_Handle Mb_uart2_handle;
+
+#include <ti/sysbios/hal/Hwi.h>
+extern const ti_sysbios_hal_Hwi_Handle hwi_GPIOE_handle;
 
 extern int xdc_runtime_Startup__EXECFXN__C;
 

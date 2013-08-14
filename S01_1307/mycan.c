@@ -28,9 +28,9 @@
 
 //*****************************************************************************
 
-#define D_CAN_RECEIVE
+//#define D_CAN_RECEIVE
 //#define D_CAN_SEND
-#define D_LOW_CAN
+//#define D_LOW_CAN
 
 volatile unsigned long g_bRXFlag1 = 0;
 volatile unsigned long g_bRXFlag2 = 0;

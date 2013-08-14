@@ -47,7 +47,7 @@ extern Swi_Handle swi_SPI1_handle ;
 extern Swi_Handle swi_SPI2_handle ;
 extern Swi_Handle swi_CAN0_handle ;
 extern Swi_Handle swi_CAN1_handle ;
-extern Swi_Handle swi_GPIOBoot_handle ;
+extern Swi_Handle swi_GPIOB_handle ;
 
 extern Mailbox_Handle Mb_uart2_handle ;
 
@@ -451,23 +451,40 @@ Void hwi_CAN1_fxn(UArg arg)
 }
 
 
-Void hwi_GPIOBoot_fxn(UArg arg)
+Void hwi_GPIOB_fxn(UArg arg)
 {
 	long lIntSts ;
-#if 0
+#if 1
 	//store the interrupt flag into lIntSts
-	lIntSts = ROM_GPIOIntStatus(GPIO_PORTM_BASE, false) ;
+	lIntSts = GPIOIntStatus(GPIO_PORTM_BASE, false) ;
 
 	//
 	// Clear the GPIO interrupt.
 	//
-	ROM_GPIOIntClear(GPIO_PORTM_BASE, GPIO_INT_PIN_4);
+	GPIOIntClear(GPIO_PORTM_BASE, GPIO_INT_PIN_4);
 
 #endif
 
-	Swi_post(swi_GPIOBoot_handle) ;
+	Swi_post(swi_GPIOB_handle) ;
 }
 
+
+Void hwi_GPIOE_fxn(UArg arg)
+{
+	long lIntSts ;
+#if 1
+	//store the interrupt flag into lIntSts
+	lIntSts = GPIOIntStatus(GPIO_PORTE_BASE, false) ;
+
+	//
+	// Clear the GPIO interrupt.
+	//
+	GPIOIntClear(GPIO_PORTE_BASE, GPIO_INT_PIN_6);
+
+#endif
+
+	//Swi_post(swi_GPIOB_handle) ;
+}
 
 //*****************************************************************************
 //
@@ -551,7 +568,7 @@ Void swi_CAN1_fxn(UArg arg0, UArg arg1)
 
 }
 
-Void swi_GPIOBoot_fxn(UArg arg0, UArg arg1)
+Void swi_GPIOB_fxn(UArg arg0, UArg arg1)
 {
 
 
@@ -894,7 +911,7 @@ Void init_fram()
 	   ROM_I2CMasterInitExpClk(I2C4_BASE, SysCtlClockGet(), true);
 }
 
-#define D_LOW_CAN
+//#define D_LOW_CAN
 
 Void init_sys()
 {
@@ -975,6 +992,8 @@ Void main()
     init_sys() ;
 
     //test_fram() ;
+
+    sub_spi_main() ;
 
     //
     // Prompt for text to be entered.
