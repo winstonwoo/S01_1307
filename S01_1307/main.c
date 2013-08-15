@@ -490,10 +490,12 @@ Void hwi_GPIOE_fxn(UArg arg)
 			break;
 		case 0x02:
 			//PC4 reset for CAN2
+			/*
 				    GPIOPinTypeGPIOOutput(GPIO_PORTC_BASE, GPIO_PIN_4) ;
 				    GPIOPinWrite(GPIO_PORTC_BASE, GPIO_PIN_4, 0) ;
 				    SysCtlDelay(100) ;
 				    GPIOPinWrite(GPIO_PORTC_BASE, GPIO_PIN_4, GPIO_PIN_4) ;
+				    */
 			  //CAN_Reset();
 			  //  CAN_Init();
 			//TxBnCTRL.TXERR = 1;
@@ -699,6 +701,7 @@ Void tsk_CAN3_fxn(UArg arg0, UArg arg1)
 	for(;;)
 	{
 		 //UARTSend((unsigned char *)"tsk_manage_fxn \n ", 20);
+		sub_spi_main_CAN3() ;
 		Task_sleep(3000) ;
 	}
 }
@@ -707,7 +710,7 @@ Void tsk_CAN4_fxn(UArg arg0, UArg arg1)
 {
 	for(;;)
 	{
-		// UARTSend((unsigned char *)"tsk_manage_fxn \n ", 20);
+		sub_spi_main() ;
 		Task_sleep(3000) ;
 	}
 
@@ -937,7 +940,7 @@ Void set_PE6_INT()
 		ROM_IntPrioritySet(INT_GPIOE, 0x00);
 }
 
-Void init_spi_can2()
+Void init_spi_can4()
 {
 	  SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF) ;
 	    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOE) ;
@@ -963,7 +966,7 @@ Void init_spi_can2()
 	    GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_3) ;
 	    GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3, GPIO_PIN_3) ;
 
-#if 1
+#if 0
 	    //PE6 work as interrupt, Low lever trigger
 	    set_PE6_INT() ;
 #endif
@@ -1008,9 +1011,9 @@ Void init_spi_can3()
 	    GPIOPinTypeGPIOOutput(GPIO_PORTK_BASE, GPIO_PIN_1) ;
 	    GPIOPinWrite(GPIO_PORTK_BASE, GPIO_PIN_1, GPIO_PIN_1) ;
 
-#if 1
+#if 0
 	    //PE6 work as interrupt, Low lever trigger
-	    set_PE6_INT()
+	    set_PE6_INT() ;
 #endif
 
 
@@ -1045,7 +1048,8 @@ Void init_fram()
 }
 
 //#define D_LOW_CAN
-#define D_SPICAN2
+#define D_SPICAN3
+#define D_SPICAN4
 
 Void init_sys()
 {
@@ -1072,8 +1076,12 @@ Void init_sys()
 #endif
 
 	//SPI initialization for CAN2 ,3
-#ifdef D_SPICAN2
-	init_spi_can2() ;
+#ifdef D_SPICAN4
+	init_spi_can4() ;
+#endif
+
+#ifdef D_SPICAN3
+	init_spi_can3() ;
 #endif
 
 #ifdef D_FRAM
@@ -1163,7 +1171,8 @@ Void main()
     //test_fram() ;
 
 
-    sub_spi_main() ;
+
+
 
     //
     // Prompt for text to be entered.

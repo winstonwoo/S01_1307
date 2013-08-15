@@ -6,6 +6,8 @@
 #include <stdbool.h>
 #include <string.h>
 
+
+
 #include "integer.h"
 #include "inc/hw_memmap.h"
 #include "inc/hw_ssi.h"
@@ -19,6 +21,8 @@
 #include "utils/uartstdio.h"
 #include "inc/hw_gpio.h"
 #include "MCP2515.h"
+
+#include <ti/sysbios/knl/Task.h>
 
 //*****************************************************************************
 //
@@ -264,13 +268,7 @@ sub_spi_main(void)
     //unsigned long ulDataTx[NUM_SSI_DATA]={0,0,0};
     //unsigned long ulDataRx = 0;
 	int i ;
-#if 0
 
-#else
-
-
-
-#endif
 
     while(SSIDataGetNonBlocking(SSI1_BASE, &ulDataRx))
       {
@@ -314,7 +312,7 @@ sub_spi_main(void)
     CAN_Reset();
     CAN_Init();
 
-    //set_PE6_INT() ;
+    set_PE6_INT() ;
 
     ulDataRx=Reg_Read(MCP_CANINTF);
 
@@ -322,8 +320,8 @@ sub_spi_main(void)
 
     for(;;)
     {
-    Transmit_Data(1,DataTx_BUFFER,0,0); // uncomment this if you want to send data
-    SysCtlDelay(SysCtlClockGet()/3) ;
+
+    	Task_sleep(5000) ;
 
     }
 
