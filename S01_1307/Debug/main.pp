@@ -240,6 +240,7 @@ main.obj: J:/WorkHouse2013/SWRf2013/StellarisTiVa/TiVa/TivaWare_C_Series-1.0/dri
 main.obj: J:/WorkHouse2013/SWRf2013/StellarisTiVa/TiVa/TivaWare_C_Series-1.0/driverlib/rom.h
 main.obj: J:/WorkHouse2013/SWRf2013/StellarisTiVa/TiVa/TivaWare_C_Series-1.0/driverlib/timer.h
 main.obj: J:/WorkHouse2013/SWRf2013/StellarisTiVa/TiVa/TivaWare_C_Series-1.0/driverlib/can.h
+main.obj: J:/WorkHouse2013/SWRf2013/StellarisTiVa/TiVa/TivaWare_C_Series-1.0/driverlib/ssi.h
 main.obj: J:/WorkHouse2013/SWRf2013/StellarisTiVa/TiVa/TivaWare_C_Series-1.0/driverlib/pin_map.h
 main.obj: ../uartstdio.h
 main.obj: C:/ti/ccsv5/tools/compiler/arm_5.0.1/include/stdarg.h
@@ -485,6 +486,7 @@ J:/WorkHouse2013/SWRf2013/StellarisTiVa/TiVa/TivaWare_C_Series-1.0/driverlib/uar
 J:/WorkHouse2013/SWRf2013/StellarisTiVa/TiVa/TivaWare_C_Series-1.0/driverlib/rom.h: 
 J:/WorkHouse2013/SWRf2013/StellarisTiVa/TiVa/TivaWare_C_Series-1.0/driverlib/timer.h: 
 J:/WorkHouse2013/SWRf2013/StellarisTiVa/TiVa/TivaWare_C_Series-1.0/driverlib/can.h: 
+J:/WorkHouse2013/SWRf2013/StellarisTiVa/TiVa/TivaWare_C_Series-1.0/driverlib/ssi.h: 
 J:/WorkHouse2013/SWRf2013/StellarisTiVa/TiVa/TivaWare_C_Series-1.0/driverlib/pin_map.h: 
 ../uartstdio.h: 
 C:/ti/ccsv5/tools/compiler/arm_5.0.1/include/stdarg.h: 

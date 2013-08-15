@@ -268,38 +268,7 @@ sub_spi_main(void)
 
 #else
 
-    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF) ;
-    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOE) ;
 
-    SysCtlPeripheralEnable(SYSCTL_PERIPH_SSI1) ;
-
-    //PF0,1,2 work as SPI function
-    GPIOPinConfigure(GPIO_PF0_SSI1RX) ;
-    GPIOPinConfigure(GPIO_PF1_SSI1TX) ;
-    GPIOPinConfigure(GPIO_PF2_SSI1CLK) ;
-    GPIOPinConfigure(GPIO_PF3_SSI1FSS) ;
-
-    GPIOPinTypeSSI(GPIO_PORTF_BASE, GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2) ;
-
-
-    //PF3 work as SPI CS with GPIO mode
-    GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_3) ;
-    GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3, GPIO_PIN_3) ;
-
-
-    //PE6 work as interrupt, Low lever trigger
-    GPIOPinTypeGPIOInput(GPIO_PORTE_BASE, GPIO_PIN_6) ;
-    GPIOIntTypeSet(GPIO_PORTE_BASE, GPIO_PIN_6, GPIO_LOW_LEVEL) ;
-    GPIOIntEnable(GPIO_PORTE_BASE, GPIO_PIN_6) ;
-
-    //PF7 operate as CAN tranceiver Slient enable , high level select silent mode, low level select normal mode
-    GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_7 ) ;
-    GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_7, 0) ;  //Normal mode enable
-
-
-    //Set SSI1 configure
-    SSIConfigSetExpClk(SSI1_BASE, SysCtlClockGet(), SSI_FRF_MOTO_MODE_0, SSI_MODE_MASTER, 200000, 8) ;
-    SSIEnable(SSI1_BASE) ;
 
 #endif
 
@@ -342,20 +311,14 @@ sub_spi_main(void)
 
 #endif
 
-
-    //IntMasterEnable();
-    IntDisable(INT_GPIOE);
-    HWREG(NVIC_BASE + EN0)= 0x00;
     CAN_Reset();
     CAN_Init();
+
+    //set_PE6_INT() ;
+
     ulDataRx=Reg_Read(MCP_CANINTF);
-    while(GPIOPinRead(GPIO_PORTE_BASE, GPIO_PIN_6)==0x00);
-    GPIOIntEnable(INT_GPIOE,0x40);
-    IntEnable(INT_GPIOE);
-    HWREG(0xE000E000 + 0x280)=0xFF;
-    HWREG(GPIO_PORTE_BASE + GPIOIM)=0x40;
-    HWREG(NVIC_BASE + EN0)= 0x10;
-    GPIOIntTypeSet(GPIO_PORTE_BASE,0x40,GPIO_LOW_LEVEL);
+
+    //inter_test() ;
 
     for(;;)
     {
@@ -363,7 +326,7 @@ sub_spi_main(void)
     SysCtlDelay(SysCtlClockGet()/3) ;
 
     }
-    while(1);
+
 }
 
 void SPI_Send(unsigned long x[], int y)
@@ -478,7 +441,7 @@ void CAN_Init(void)
 	    Reg_Write(MCP_CNF2,0x92);
 	    Reg_Write(MCP_CNF3,0x82);
 	    Reg_Write(MCP_RXB0CTRL,0x20);
-	    Reg_Write(MCP_RXB1CTRL,0x20);
+	    Reg_Write(MCP_RXB1CTRL,0x60);
 	    Reg_Write(MCP_BFPCTRL,0x0F);
 	    Reg_Write(MCP_RXF0SIDH,0xAA);
 	    Reg_Write(MCP_RXF0SIDL,0x40);

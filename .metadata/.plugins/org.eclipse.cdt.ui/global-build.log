@@ -12,15 +12,15 @@ gmake: Nothing to be done for `all'.
 'Building file: ../main.c'
 'Invoking: ARM Compiler'
 "C:/ti/ccsv5/tools/compiler/arm_5.0.1/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 --abi=eabi -me -g --include_path="C:/ti/ccsv5/tools/compiler/arm_5.0.1/include" --include_path="J:/WorkHouse2013/SWRf2013/StellarisTiVa/TiVa/TivaWare_C_Series-1.0" --include_path="J:/WorkHouse2013/SWRf2013/StellarisTiVa/TiVa/TivaWare_C_Series-1.0/third_party" --define=TARGET_IS_BLIZZARD_RA1 --define=PART_TM4C123GH6PGE --define=ccs --diag_warning=225 --display_error_number --diag_wrap=off --preproc_with_compile --preproc_dependency="main.pp" --cmd_file="J:/WorkHouse2013/SW2013/S01_1307_VTDR_Tiva/S01_Repository/S01_1307_configuration/Default/configPkg/compiler.opt"  "../main.c"
-"../main.c", line 73: warning #179-D: variable "ucMsg" was declared but never referenced
-"../main.c", line 74: warning #179-D: variable "i" was declared but never referenced
-"../main.c", line 458: warning #552-D: variable "lIntSts" was set but never used
-"../main.c", line 483: warning #225-D: function declared implicitly
-"../main.c", line 501: warning #225-D: function declared implicitly
-"../main.c", line 476: warning #552-D: variable "lIntSts" was set but never used
-"../main.c", line 608: warning #179-D: variable "ucMsg" was declared but never referenced
-"../main.c", line 720: warning #225-D: function declared implicitly
-"../main.c", line 1024: warning #225-D: function declared implicitly
+"../main.c", line 74: warning #179-D: variable "ucMsg" was declared but never referenced
+"../main.c", line 75: warning #179-D: variable "i" was declared but never referenced
+"../main.c", line 459: warning #552-D: variable "lIntSts" was set but never used
+"../main.c", line 485: warning #225-D: function declared implicitly
+"../main.c", line 512: warning #225-D: function declared implicitly
+"../main.c", line 477: warning #552-D: variable "lIntSts" was set but never used
+"../main.c", line 619: warning #179-D: variable "ucMsg" was declared but never referenced
+"../main.c", line 731: warning #225-D: function declared implicitly
+"../main.c", line 1158: warning #225-D: function declared implicitly
 'Finished building: ../main.c'
 ' '
 'Building target: S01_1307.out'
@@ -29,5 +29,26 @@ gmake: Nothing to be done for `all'.
 <Linking>
 'Finished building target: S01_1307.out'
 ' '
+
+**** Build Finished ****
+
+**** Build of configuration Default for project S01_1307_configuration ****
+
+"C:\\ti\\ccsv5\\utils\\bin\\gmake" -k all 
+gmake: Nothing to be done for `all'.
+
+**** Build Finished ****
+
+**** Build of configuration Default for project S01_1307_configuration ****
+
+"C:\\ti\\ccsv5\\utils\\bin\\gmake" -k all 
+gmake: Nothing to be done for `all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project S01_1307 ****
+
+"C:\\ti\\ccsv5\\utils\\bin\\gmake" -k all 
+gmake: Nothing to be done for `all'.
 
 **** Build Finished ****

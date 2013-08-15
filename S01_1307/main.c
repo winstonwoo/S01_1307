@@ -31,6 +31,7 @@
 #include "driverlib/rom.h"
 #include "driverlib/timer.h"
 #include "driverlib/can.h"
+#include "driverlib/ssi.h"
 #include "driverlib/pin_map.h"
 #include "uartstdio.h"
 
@@ -479,6 +480,7 @@ Void hwi_GPIOE_fxn(UArg arg)
 	//store the interrupt flag into lIntSts
 	lIntSts = GPIOIntStatus(GPIO_PORTE_BASE, false) ;
 
+
 	unsigned long status;
 		status= Reg_Read(MCP_CANSTAT);
 		status &=0x0E;
@@ -487,6 +489,15 @@ Void hwi_GPIOE_fxn(UArg arg)
 		case 0x00:
 			break;
 		case 0x02:
+			//PC4 reset for CAN2
+				    GPIOPinTypeGPIOOutput(GPIO_PORTC_BASE, GPIO_PIN_4) ;
+				    GPIOPinWrite(GPIO_PORTC_BASE, GPIO_PIN_4, 0) ;
+				    SysCtlDelay(100) ;
+				    GPIOPinWrite(GPIO_PORTC_BASE, GPIO_PIN_4, GPIO_PIN_4) ;
+			  //CAN_Reset();
+			  //  CAN_Init();
+			//TxBnCTRL.TXERR = 1;
+			//CANTINF.MERRF =1 ;
 			break;
 		case 0x04:
 			break;
@@ -915,10 +926,104 @@ Void init_sdcard()
 	
 }
 
-Void init_spi()
+Void set_PE6_INT()
 {
-
+		//PE6 work as interrupt, Low lever trigger, for CAN2
+		SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOE) ;
+		GPIOPinTypeGPIOInput(GPIO_PORTE_BASE, GPIO_PIN_6) ;
+		GPIOIntTypeSet(GPIO_PORTE_BASE, GPIO_PIN_6, GPIO_LOW_LEVEL) ;
+		GPIOIntEnable(GPIO_PORTE_BASE, GPIO_PIN_6) ;
+		IntEnable(INT_GPIOE) ;
+		ROM_IntPrioritySet(INT_GPIOE, 0x00);
 }
+
+Void init_spi_can2()
+{
+	  SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF) ;
+	    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOE) ;
+	    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOC) ;
+
+	    SysCtlPeripheralEnable(SYSCTL_PERIPH_SSI1) ;
+
+	    //PF0,1,2 work as SPI function
+	    GPIOPinConfigure(GPIO_PF0_SSI1RX) ;
+	    GPIOPinConfigure(GPIO_PF1_SSI1TX) ;
+	    GPIOPinConfigure(GPIO_PF2_SSI1CLK) ;
+	    GPIOPinConfigure(GPIO_PF3_SSI1FSS) ;
+
+	    GPIOPinTypeSSI(GPIO_PORTF_BASE, GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2) ;
+
+	    //PC4 reset for CAN2
+	    GPIOPinTypeGPIOOutput(GPIO_PORTC_BASE, GPIO_PIN_4) ;
+	    GPIOPinWrite(GPIO_PORTC_BASE, GPIO_PIN_4, 0) ;
+	    SysCtlDelay(100) ;
+	    GPIOPinWrite(GPIO_PORTC_BASE, GPIO_PIN_4, GPIO_PIN_4) ;
+
+	    //PF3 work as SPI CS with GPIO mode
+	    GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_3) ;
+	    GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3, GPIO_PIN_3) ;
+
+#if 1
+	    //PE6 work as interrupt, Low lever trigger
+	    set_PE6_INT() ;
+#endif
+
+
+	    //PF7 operate as CAN tranceiver Slient enable , high level select silent mode, low level select normal mode
+	    GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_7 ) ;
+	    GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_7, 0) ;  //Normal mode enable
+
+
+	    //Set SSI1 configure
+	    SSIConfigSetExpClk(SSI1_BASE, SysCtlClockGet(), SSI_FRF_MOTO_MODE_0, SSI_MODE_MASTER, 200000, 8) ;
+	    SSIEnable(SSI1_BASE) ;
+}
+
+
+Void init_spi_can3()
+{
+	  SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF) ;
+	    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOK) ;
+	    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOC) ;
+	    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOD) ;
+
+	    SysCtlPeripheralEnable(SYSCTL_PERIPH_SSI3) ;
+
+	    //PF0,1,2 work as SPI function
+	    GPIOPinConfigure(GPIO_PK2_SSI3RX) ;
+	    GPIOPinConfigure(GPIO_PK3_SSI3TX) ;
+	    GPIOPinConfigure(GPIO_PK0_SSI3CLK) ;
+	    GPIOPinConfigure(GPIO_PK1_SSI3FSS) ;
+
+	    GPIOPinTypeSSI(GPIO_PORTK_BASE, GPIO_PIN_0|GPIO_PIN_3|GPIO_PIN_2) ;
+
+		//PC5 reset for CAN3
+		GPIOPinTypeGPIOOutput(GPIO_PORTC_BASE, GPIO_PIN_5) ;
+		GPIOPinWrite(GPIO_PORTC_BASE, GPIO_PIN_5, 0) ;
+		SysCtlDelay(100) ;
+		GPIOPinWrite(GPIO_PORTC_BASE, GPIO_PIN_5, GPIO_PIN_5) ;
+
+
+	    //PK1 work as SPI CS with GPIO mode
+	    GPIOPinTypeGPIOOutput(GPIO_PORTK_BASE, GPIO_PIN_1) ;
+	    GPIOPinWrite(GPIO_PORTK_BASE, GPIO_PIN_1, GPIO_PIN_1) ;
+
+#if 1
+	    //PE6 work as interrupt, Low lever trigger
+	    set_PE6_INT()
+#endif
+
+
+	    //PF7 operate as CAN tranceiver Slient enable , high level select silent mode, low level select normal mode
+	    GPIOPinTypeGPIOOutput(GPIO_PORTD_BASE, GPIO_PIN_3 ) ;
+	    GPIOPinWrite(GPIO_PORTD_BASE, GPIO_PIN_3, 0) ;  //Normal mode enable
+
+
+	    //Set SSI1 configure
+	    SSIConfigSetExpClk(SSI3_BASE, SysCtlClockGet(), SSI_FRF_MOTO_MODE_0, SSI_MODE_MASTER, 200000, 8) ;
+	    SSIEnable(SSI3_BASE) ;
+}
+
 
 Void init_fram()
 {
@@ -940,6 +1045,7 @@ Void init_fram()
 }
 
 //#define D_LOW_CAN
+#define D_SPICAN2
 
 Void init_sys()
 {
@@ -966,8 +1072,8 @@ Void init_sys()
 #endif
 
 	//SPI initialization for CAN2 ,3
-#ifdef D_SPICAN
-	init_spi() ;
+#ifdef D_SPICAN2
+	init_spi_can2() ;
 #endif
 
 #ifdef D_FRAM
@@ -1001,6 +1107,39 @@ UARTSend(const unsigned char *pucBuffer, unsigned long ulCount)
 }
 
 
+Void inter_test()
+{
+	    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOE);
+	    GPIOPinTypeGPIOInput(GPIO_PORTE_BASE, GPIO_PIN_6) ;
+	    GPIOIntTypeSet(GPIO_PORTE_BASE, GPIO_PIN_6, GPIO_LOW_LEVEL) ;
+	    GPIOIntEnable(GPIO_PORTE_BASE, GPIO_PIN_6) ;
+
+
+	    //
+	    // Enable interrupts to the processor.
+	    //
+	    ROM_IntMasterEnable();
+
+	    //
+	    // Enable the interrupts.
+	    //
+
+	    ROM_IntEnable(INT_GPIOE);
+
+
+	    //
+	    // Set the interrupt priorities so they are all equal.
+	    //
+
+	    ROM_IntPrioritySet(INT_GPIOE, 0x00);
+
+	    /*
+	       while(1)
+	    {
+	    }
+	    */
+}
+
 /*
  *  ======== main ========
  */
@@ -1016,10 +1155,13 @@ Void main()
     Error_init(&eb);
 
 
+
+
     //System driver initialization
     init_sys() ;
 
     //test_fram() ;
+
 
     sub_spi_main() ;
 
