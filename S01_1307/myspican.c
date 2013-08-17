@@ -211,7 +211,7 @@ unsigned long DataRx_BUFFER[NUM_RX]={0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 unsigned long DataTx_BUFFER[11] = {23,3,8,1,2,3,4,5,6,7,0};
 uint32_t ulDataRx = 0;
 
-//#define MY_SPI
+// #define MY_SPI
 #ifdef MY_SPI
 // asserts the CS pin to the card
 static
@@ -240,6 +240,7 @@ void xmit_spi(BYTE dat)
     ROM_SSIDataPut(SSI1_BASE, dat); /* Write the data to the tx fifo */
 
     ROM_SSIDataGet(SSI1_BASE, &ui32RcvDat); /* flush data read during the write */
+    UARTprintf("0x%x", ui32RcvDat) ;
 }
 
 
@@ -282,10 +283,12 @@ sub_spi_main(void)
 
     for(; ;)
     {
+    SysCtlDelay(10) ;
     SELECT() ;
     xmit_spi(0xc0) ;
     DESELECT() ;
 
+    SysCtlDelay(10) ;
     SELECT() ;
     xmit_spi(0x05) ;
     xmit_spi(0x0f) ;
@@ -293,14 +296,13 @@ sub_spi_main(void)
     xmit_spi(0x80) ;
     DESELECT() ;
 
+    SysCtlDelay(10) ;
     SELECT() ;
     xmit_spi(0x03) ;
     xmit_spi(0x0e) ;
 
     bData = rcvr_spi() ;
-
-
-
+    bData = rcvr_spi() ;
     DESELECT() ;
 
 
@@ -321,6 +323,8 @@ sub_spi_main(void)
     for(;;)
     {
 
+    	 Transmit_Data(1,DataTx_BUFFER,0,0); // uncomment this if you want to send data
+
     	Task_sleep(5000) ;
 
     }
@@ -331,45 +335,64 @@ void SPI_Send(unsigned long x[], int y)
 {
 	int i;
 
-	  uint32_t ui32RcvDat;
-
 	GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3, 0x00);
 	for(i=0;i<y;i++)
 	{
-	 //  while(SSIBusy(SSI1_BASE));
+	   while(SSIBusy(SSI1_BASE));
 	   SSIDataPut(SSI1_BASE, x[i]);
-	   SSIDataGet(SSI1_BASE, &ui32RcvDat); /* flush data read during the write */
-	  // while(SSIBusy(SSI1_BASE));
+	   while(SSIBusy(SSI1_BASE));
 	}
-	GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3, 0x08);
+	GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3, GPIO_PIN_3);
 }
 
 unsigned long SPI_Receive(int x)
 {
 	uint32_t Rxdata=0;
+
 	for(;x>0;x--)
 	{
 		SSIDataGet(SSI1_BASE, &Rxdata);
 	}
+
 	return Rxdata;
 }
+
+#ifdef D_SPICAN4
+unsigned long my_Reg_Read(unsigned long address)
+{
+
+	unsigned long bData ;
+
+	    SELECT() ;
+	    xmit_spi(0x03) ;
+	    xmit_spi(address) ;
+
+	    SysCtlDelay(100) ;
+
+	    bData = (unsigned long)rcvr_spi() ;
+
+	    DESELECT() ;
+
+}
+
+#endif
 
 unsigned long Reg_Read(unsigned long address)
 {
 	unsigned long Tx[3];
 	unsigned long result;
 
-	SysCtlDelay(100) ;
-#if 1
+
 	while(HWREG(SSI1_BASE + SSI_O_SR) & SSI_SR_RNE)
 		{
 			SPI_Receive(1);
 		}
-#endif
+
 	Tx[0]=0x03;
 	Tx[1]=address;
 	Tx[2]=0;
 	SPI_Send(Tx,3);
+
 	while(HWREG(SSI1_BASE + SSI_O_SR) & SSI_SR_RNE)
 	{
 		result=SPI_Receive(1);
@@ -405,23 +428,23 @@ void CAN_Reset(void)
 void Reg_BitModify(unsigned long address,unsigned long mask, unsigned long data)
 {
 	unsigned long Tx[4];
-#if 0
+
 	while(HWREG(SSI1_BASE + SSI_O_SR) & SSI_SR_RNE)
 		{
 			SPI_Receive(1);
 		}
-#endif
+
 	Tx[0]=0x05;
 	Tx[1]=address;
 	Tx[2]=mask;
 	Tx[3]=data;
 	SPI_Send(Tx,4);
-#if 0
+
 	while(HWREG(SSI1_BASE + SSI_O_SR) & SSI_SR_RNE)
 	{
 		SPI_Receive(1);
 	}
-#endif
+
 }
 
 void CAN_Init(void)
@@ -435,9 +458,11 @@ void CAN_Init(void)
 	    	Reg_BitModify(MCP_CANCTRL,0xE0, 0x80);
 	    	ulDataRx=Reg_Read(MCP_CANSTAT);
 	    }
+
 	    Reg_Write(MCP_CNF1,0x07);
 	    Reg_Write(MCP_CNF2,0x92);
 	    Reg_Write(MCP_CNF3,0x82);
+	    ulDataRx= Reg_Read(MCP_CNF3);
 	    Reg_Write(MCP_RXB0CTRL,0x20);
 	    Reg_Write(MCP_RXB1CTRL,0x60);
 	    Reg_Write(MCP_BFPCTRL,0x0F);

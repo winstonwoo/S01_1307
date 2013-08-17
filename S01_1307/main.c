@@ -482,7 +482,8 @@ Void hwi_GPIOE_fxn(UArg arg)
 
 
 	unsigned long status;
-		status= Reg_Read(MCP_CANSTAT);
+		status= Reg_Read_CAN3(MCP_CANSTAT);
+		//status= Reg_Read(MCP_CANSTAT);
 		status &=0x0E;
 		switch(status)
 		{
@@ -511,7 +512,8 @@ Void hwi_GPIOE_fxn(UArg arg)
 			break;
 		case 0x0C:
 			//Reg_BitModify(MCP_CANINTF,0x01, 0x00);
-			 Read_RX(0,DataRx_BUFFER);
+			//Read_RX(0,DataRx_BUFFER);
+			 Read_RX_CAN3(0,DataRx_BUFFER);
 			break;
 		case 0x0E:
 			break;
@@ -695,13 +697,19 @@ Void tsk_FS_fxn(UArg arg0, UArg arg1)
 
 }
 
+#define D_SPICAN3
+//#define D_SPICAN4
+
 Void tsk_CAN3_fxn(UArg arg0, UArg arg1)
 {
 
 	for(;;)
 	{
 		 //UARTSend((unsigned char *)"tsk_manage_fxn \n ", 20);
+#ifdef D_SPICAN3
 		sub_spi_main_CAN3() ;
+#endif
+
 		Task_sleep(3000) ;
 	}
 }
@@ -710,7 +718,9 @@ Void tsk_CAN4_fxn(UArg arg0, UArg arg1)
 {
 	for(;;)
 	{
+#ifdef D_SPICAN4
 		sub_spi_main() ;
+#endif
 		Task_sleep(3000) ;
 	}
 
@@ -942,50 +952,68 @@ Void set_PE6_INT()
 
 Void init_spi_can4()
 {
-	  SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF) ;
-	    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOE) ;
-	    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOC) ;
 
-	    SysCtlPeripheralEnable(SYSCTL_PERIPH_SSI1) ;
+		SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF) ;
+		SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOE) ;
+		SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOC) ;
 
-	    //PF0,1,2 work as SPI function
-	    GPIOPinConfigure(GPIO_PF0_SSI1RX) ;
-	    GPIOPinConfigure(GPIO_PF1_SSI1TX) ;
-	    GPIOPinConfigure(GPIO_PF2_SSI1CLK) ;
-	    GPIOPinConfigure(GPIO_PF3_SSI1FSS) ;
-
-	    GPIOPinTypeSSI(GPIO_PORTF_BASE, GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2) ;
-
-	    //PC4 reset for CAN2
-	    GPIOPinTypeGPIOOutput(GPIO_PORTC_BASE, GPIO_PIN_4) ;
-	    GPIOPinWrite(GPIO_PORTC_BASE, GPIO_PIN_4, 0) ;
-	    SysCtlDelay(100) ;
-	    GPIOPinWrite(GPIO_PORTC_BASE, GPIO_PIN_4, GPIO_PIN_4) ;
-
-	    //PF3 work as SPI CS with GPIO mode
-	    GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_3) ;
-	    GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3, GPIO_PIN_3) ;
-
-#if 0
-	    //PE6 work as interrupt, Low lever trigger
-	    set_PE6_INT() ;
-#endif
+		SysCtlPeripheralEnable(SYSCTL_PERIPH_SSI1) ;
 
 
-	    //PF7 operate as CAN tranceiver Slient enable , high level select silent mode, low level select normal mode
-	    GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_7 ) ;
-	    GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_7, 0) ;  //Normal mode enable
+		// Change PF0 into hardware (NMI) pins.  First open the
+		// lock and select the bits we want to modify in the GPIO commit
+		// register.
+		//
+		HWREG(GPIO_PORTF_BASE + GPIO_O_LOCK) = GPIO_LOCK_KEY;
+		HWREG(GPIO_PORTF_BASE + GPIO_O_CR) = 0x0F;
+
+		//PF0,1,2 work as SPI function
+		GPIOPinConfigure(GPIO_PF0_SSI1RX) ;
+		GPIOPinConfigure(GPIO_PF1_SSI1TX) ;
+		GPIOPinConfigure(GPIO_PF2_SSI1CLK) ;
+		//GPIOPinConfigure(GPIO_PF3_SSI1FSS) ;
+
+		GPIOPinTypeSSI(GPIO_PORTF_BASE, GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3) ;
+
+		// Finally, clear the commit register and the lock to prevent
+		// the pin configuration from being changed accidentally later.
+		// Note that the lock is closed whenever we write to the GPIO_O_CR
+		// register so we need to reopen it here.
+		//
+		HWREG(GPIO_PORTF_BASE + GPIO_O_LOCK) = GPIO_LOCK_KEY;
+		HWREG(GPIO_PORTF_BASE + GPIO_O_CR) = 0x00;
+		HWREG(GPIO_PORTF_BASE + GPIO_O_LOCK) = 0;
+
+		//PC4 reset for CAN2
+		GPIOPinTypeGPIOOutput(GPIO_PORTC_BASE, GPIO_PIN_4) ;
+		GPIOPinWrite(GPIO_PORTC_BASE, GPIO_PIN_4, 0) ;
+		SysCtlDelay(100) ;
+		GPIOPinWrite(GPIO_PORTC_BASE, GPIO_PIN_4, GPIO_PIN_4) ;
+
+		//PF3 work as SPI CS with GPIO mode
+		GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_3) ;
+		GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3, GPIO_PIN_3) ;
+
+		#if 0
+		//PE6 work as interrupt, Low lever trigger
+		set_PE6_INT() ;
+		#endif
 
 
-	    //Set SSI1 configure
-	    SSIConfigSetExpClk(SSI1_BASE, SysCtlClockGet(), SSI_FRF_MOTO_MODE_0, SSI_MODE_MASTER, 200000, 8) ;
-	    SSIEnable(SSI1_BASE) ;
+		//PF7 operate as CAN tranceiver Slient enable , high level select silent mode, low level select normal mode
+		GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_3 ) ;
+		GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3, 0) ;  //Normal mode enable
+
+
+		//Set SSI1 configure
+		SSIConfigSetExpClk(SSI1_BASE, SysCtlClockGet(), SSI_FRF_MOTO_MODE_0, SSI_MODE_MASTER, 1000000, 8) ;
+		SSIEnable(SSI1_BASE) ;
 }
 
 
 Void init_spi_can3()
 {
-	  SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF) ;
+	    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF) ;
 	    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOK) ;
 	    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOC) ;
 	    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOD) ;
@@ -1023,7 +1051,7 @@ Void init_spi_can3()
 
 
 	    //Set SSI1 configure
-	    SSIConfigSetExpClk(SSI3_BASE, SysCtlClockGet(), SSI_FRF_MOTO_MODE_0, SSI_MODE_MASTER, 200000, 8) ;
+	    SSIConfigSetExpClk(SSI3_BASE, SysCtlClockGet(), SSI_FRF_MOTO_MODE_0, SSI_MODE_MASTER, 1000000, 8) ;
 	    SSIEnable(SSI3_BASE) ;
 }
 
@@ -1048,8 +1076,7 @@ Void init_fram()
 }
 
 //#define D_LOW_CAN
-#define D_SPICAN3
-#define D_SPICAN4
+
 
 Void init_sys()
 {
@@ -1162,8 +1189,12 @@ Void main()
 
     Error_init(&eb);
 
-
-
+#if 0
+    while(1)
+    {
+    	SysCtlDelay(SysCtlClockGet()/3) ;
+    }
+#endif
 
     //System driver initialization
     init_sys() ;
@@ -1171,7 +1202,7 @@ Void main()
     //test_fram() ;
 
 
-
+    sub_spi_main_CAN3() ;
 
 
     //

@@ -1,0 +1,605 @@
+//*****************************************************************************
+//This Program realize the main code of CAN driver
+//
+//*****************************************************************************
+#include <stdint.h>
+#include <stdbool.h>
+#include <string.h>
+
+
+
+#include "integer.h"
+#include "inc/hw_memmap.h"
+#include "inc/hw_ssi.h"
+#include "inc/hw_types.h"
+#include "inc/hw_ints.h"
+#include "driverlib/ssi.h"
+#include "driverlib/rom.h"
+#include "driverlib/gpio.h"
+#include "driverlib/sysctl.h"
+#include "driverlib/pin_map.h"
+#include "utils/uartstdio.h"
+#include "inc/hw_gpio.h"
+#include "MCP2515.h"
+
+#include <ti/sysbios/knl/Task.h>
+
+//*****************************************************************************
+//
+//*****************************************************************************
+
+//*****************************************************************************
+//
+// Number of bytes to send and receive.
+//
+//*****************************************************************************
+#define NUM_RX 14
+
+#define INT_GPIOB 0x02
+
+
+
+#define GPIO_PA2_SSI0CLK 0x00000402
+
+#define GPIO_PA5_SSI0TX 0x00001002
+
+#define GPIO_PA4_SSI0RX 0x00000C02
+
+#define GPIO_PA3_SSI0FSS 0x00000802
+
+#define TX0   0x01
+#define TX1   0x02
+#define TX3   0x04
+#define TXALL 0x07
+
+#define GPIOIM 0x410
+#define NVIC_BASE 0xE000E000
+#define EN0 0x100
+
+#define MCP_TXB0SIDH 0x31
+#define MCP_TXB0SIDL 0x32
+#define MCP_TXB0DLC  0x35
+#define MCP_TXB0D0   0x36
+#define MCP_TXB0D1   0x37
+#define MCP_TXB0D2   0x38
+#define MCP_TXB0D3   0x39
+#define MCP_TXB0D4   0x3A
+#define MCP_TXB0D5   0x3B
+#define MCP_TXB0D6   0x3C
+#define MCP_TXB0D7   0x3D
+
+
+#define MCP_TXB1SIDH 0x41
+#define MCP_TXB1SIDL 0x42
+#define MCP_TXB1DLC  0x45
+#define MCP_TXB1D0   0x46
+#define MCP_TXB1D1   0x47
+#define MCP_TXB1D2   0x48
+#define MCP_TXB1D3   0x49
+#define MCP_TXB1D4   0x4A
+#define MCP_TXB1D5   0x4B
+#define MCP_TXB1D6   0x4C
+#define MCP_TXB1D7   0x4D
+
+
+#define MCP_TXB2SIDH 0x51
+#define MCP_TXB2SIDL 0x52
+#define MCP_TXB2DLC  0x55
+#define MCP_TXB2D0   0x56
+#define MCP_TXB2D1   0x57
+#define MCP_TXB2D2   0x58
+#define MCP_TXB2D3   0x59
+#define MCP_TXB2D4   0x5A
+#define MCP_TXB2D5   0x5B
+#define MCP_TXB2D6   0x5C
+#define MCP_TXB2D7   0x5D
+
+
+
+
+
+//*****************************************************************************
+//
+//This function send the Data through SPI, x[] is the array that contains the
+//data to send, and the y determines how may bytes(frames) to send. One thing
+//should be keep in mind to use this function is that the SPI is full-duplex
+//RX buffer receives data when sending data, so in read register functions using
+//this function, cares should be take to avoid reading unwanted junks.
+
+//*****************************************************************************
+void SPI_Send(unsigned long x[], int y);
+
+//*****************************************************************************
+//
+//This function send the Data through SPI, x[] is the array that contains the
+//data to send, and the y determines how may bytes(frames) to send. One thing
+//should be keep in mind to use this function is that the SPI is full-duplex
+//RX buffer receives data when sending data, so in read register functions using
+//this function, cares should be take to avoid reading unwanted junks.
+
+//*****************************************************************************
+unsigned long SPI_Receive(int);
+
+//*****************************************************************************
+//Reset CAN Controller through command
+
+//*****************************************************************************
+void CAN_Reset(void);
+
+//*****************************************************************************
+//Read a CAN controller register, the parameter is the address of the register
+//to read, returns the content of the register
+
+//*****************************************************************************
+unsigned long Reg_Read(unsigned long);
+
+//*****************************************************************************
+//Write a CAN controller register, the parameter is the address of the register
+//to write and the content to write
+
+//*****************************************************************************
+
+void Reg_Write(unsigned long, unsigned long);
+
+//*****************************************************************************
+//CAN Controller Init, Just configure one RX Buffer, the baud rate is set to 125K
+// In order to debug, the mask of the RX buffer is set to 0x00, which accept all the
+//packet despite of the ID.
+
+//*****************************************************************************
+
+void CAN_Init(void);
+
+//*****************************************************************************
+//Bit modify of a register
+
+//*****************************************************************************
+
+void Reg_BitModify(unsigned long address,unsigned long mask, unsigned long data);
+
+//*****************************************************************************
+//Transmit Data, the parameter: "number" determines which buffer want to be send:
+//100: RXB0
+//010: TXB1
+//001: TXB2
+//TX_A[],TX_B[],TX_C[] contains the content and ID for the three TX buffer
+// In this example, only standard frame is send
+
+//*****************************************************************************
+
+void Transmit_Data(unsigned long number, unsigned long TX_A[],unsigned long TX_B[],unsigned long TX_C[]);
+
+//*****************************************************************************
+
+void CAN_Interrupt(void);
+
+//*****************************************************************************
+
+//Read RX buffer, the parameter"number" refers to the number of RX buffer to read
+//0: buffer 0
+//1: buffer 1
+//RX[] is used to contain the reading result,
+//RX[0] Junk data(should be discarded) returned by the one byte command
+//RX[1] SIDH
+//RX[2] SIDL
+//RX[3] EIDH8(not used in this example)
+//RX[4] EIDL(not used in this example)
+//RX[5] DLC
+//RX[6] Data0
+//......
+//RX[13] SID7
+
+//*****************************************************************************
+
+void Read_RX(int number, unsigned long RX[]);
+
+//*****************************************************************************
+//
+// This function sets up UART0 to be used for a console to display information
+// as the example is running.
+//
+//*****************************************************************************
+
+//*****************************************************************************
+//
+// Configure SSI0 in master Freescale (SPI) mode.  This example will send out
+// 3 bytes of data, then wait for 3 bytes of data to come in.  This will all be
+// done using the polling method.
+//
+//*****************************************************************************
+unsigned long DataRx_BUFFER[NUM_RX]={0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+unsigned long DataTx_BUFFER[11] = {23,3,8,1,2,3,4,5,6,7,0};
+uint32_t ulDataRx = 0;
+
+#define MY_SPI
+#ifdef MY_SPI
+// asserts the CS pin to the card
+static
+void SELECT (void)
+{
+    ROM_GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3, 0);
+}
+
+// de-asserts the CS pin to the card
+static
+void DESELECT (void)
+{
+	ROM_GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3, GPIO_PIN_3);
+}
+
+
+/*-----------------------------------------------------------------------*/
+/* Transmit a byte via SPI  (Platform dependent)                  */
+/*-----------------------------------------------------------------------*/
+
+static
+void xmit_spi(BYTE dat)
+{
+    uint32_t ui32RcvDat;
+
+    ROM_SSIDataPut(SSI1_BASE, dat); /* Write the data to the tx fifo */
+
+    ROM_SSIDataGet(SSI1_BASE, &ui32RcvDat); /* flush data read during the write */
+}
+
+
+/*-----------------------------------------------------------------------*/
+/* Receive a byte from MMC via SPI  (Platform dependent)                 */
+/*-----------------------------------------------------------------------*/
+
+static
+BYTE rcvr_spi (void)
+{
+    uint32_t ui32RcvDat;
+
+    ROM_SSIDataPut(SSI1_BASE, 0xFF); /* write dummy data */
+
+    ROM_SSIDataGet(SSI1_BASE, &ui32RcvDat); /* read data frm rx fifo */
+
+    return (BYTE)ui32RcvDat;
+}
+
+#endif
+
+int
+sub_spi_main(void)
+{
+
+    //unsigned long ulDataTx[NUM_SSI_DATA]={0,0,0};
+    //unsigned long ulDataRx = 0;
+	int i ;
+
+
+    while(SSIDataGetNonBlocking(SSI1_BASE, &ulDataRx))
+      {
+      }
+
+
+
+#ifdef MY_SPI_
+    BYTE bData = 0x00 ;
+    uint32_t ui32Data ;
+
+    for(; ;)
+    {
+    SELECT() ;
+    xmit_spi(0xc0) ;
+    DESELECT() ;
+
+    SELECT() ;
+    xmit_spi(0x05) ;
+    xmit_spi(0x0f) ;
+    xmit_spi(0xe0) ;
+    xmit_spi(0x80) ;
+    DESELECT() ;
+
+    SELECT() ;
+    xmit_spi(0x03) ;
+    xmit_spi(0x0e) ;
+
+    bData = rcvr_spi() ;
+
+
+
+    DESELECT() ;
+
+
+    }
+
+
+#endif
+
+    CAN_Reset();
+    CAN_Init();
+
+    set_PE6_INT() ;
+
+    ulDataRx=Reg_Read(MCP_CANINTF);
+
+    //inter_test() ;
+
+    for(;;)
+    {
+
+    	 Transmit_Data(1,DataTx_BUFFER,0,0); // uncomment this if you want to send data
+
+    	Task_sleep(5000) ;
+
+    }
+
+}
+
+void SPI_Send(unsigned long x[], int y)
+{
+	int i;
+
+	  uint32_t ui32RcvDat;
+
+	GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3, 0x00);
+	for(i=0;i<y;i++)
+	{
+	   //while(SSIBusy(SSI1_BASE));
+	   SSIDataPut(SSI1_BASE, x[i]);
+	   SSIDataGet(SSI1_BASE, &ui32RcvDat); /* flush data read during the write */
+	   //while(SSIBusy(SSI1_BASE));
+	}
+	GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3, 0x08);
+}
+
+unsigned long SPI_Receive(int x)
+{
+	uint32_t Rxdata=0;
+	for(;x>0;x--)
+	{
+		SSIDataGet(SSI1_BASE, &Rxdata);
+	}
+	return Rxdata;
+}
+
+unsigned long my_Reg_Read(unsigned long address)
+{
+
+	unsigned long bData ;
+
+	    SELECT() ;
+	    xmit_spi(0x03) ;
+	    xmit_spi(address) ;
+
+	    SysCtlDelay(100) ;
+
+	    bData = (unsigned long)rcvr_spi() ;
+
+	    DESELECT() ;
+
+}
+
+unsigned long Reg_Read(unsigned long address)
+{
+	unsigned long Tx[3];
+	unsigned long result;
+
+	//SysCtlDelay(1000) ;
+#if 1
+	while(HWREG(SSI1_BASE + SSI_O_SR) & SSI_SR_RNE)
+		{
+			SPI_Receive(1);
+		}
+#endif
+	Tx[0]=0x03;
+	Tx[1]=address;
+	Tx[2]=0;
+	SPI_Send(Tx,3);
+	while(HWREG(SSI1_BASE + SSI_O_SR) & SSI_SR_RNE)
+	{
+		result=SPI_Receive(1);
+	}
+	return result;
+}
+
+void Reg_Write(unsigned long address,unsigned long data)
+{
+	    unsigned long Tx[3];
+		while(HWREG(SSI1_BASE + SSI_O_SR) & SSI_SR_RNE)
+			{
+				SPI_Receive(1);
+			}
+		Tx[0]=0x02;
+		Tx[1]=address;
+		Tx[2]=data;
+		SPI_Send(Tx,3);
+		while(HWREG(SSI1_BASE + SSI_O_SR) & SSI_SR_RNE)
+		{
+			SPI_Receive(1);
+		}
+}
+
+void CAN_Reset(void)
+{
+	unsigned long data[1];
+	data[0]=0xC0;
+	SPI_Send(data,1);
+	SysCtlDelay(1000);
+}
+
+void Reg_BitModify(unsigned long address,unsigned long mask, unsigned long data)
+{
+	unsigned long Tx[4];
+#if 0
+	while(HWREG(SSI1_BASE + SSI_O_SR) & SSI_SR_RNE)
+		{
+			SPI_Receive(1);
+		}
+#endif
+	Tx[0]=0x05;
+	Tx[1]=address;
+	Tx[2]=mask;
+	Tx[3]=data;
+	SPI_Send(Tx,4);
+#if 0
+	while(HWREG(SSI1_BASE + SSI_O_SR) & SSI_SR_RNE)
+	{
+		SPI_Receive(1);
+	}
+#endif
+}
+
+void CAN_Init(void)
+{
+	    CAN_Reset();
+	    Reg_BitModify(MCP_CANCTRL,0xE0, 0x80);
+	    ulDataRx= Reg_Read(MCP_CANSTAT);
+	    while((ulDataRx & 0xE0) !=0x80)
+	    {
+	    	CAN_Reset();
+	    	Reg_BitModify(MCP_CANCTRL,0xE0, 0x80);
+	    	ulDataRx=Reg_Read(MCP_CANSTAT);
+	    }
+
+	    Reg_Write(MCP_CNF1,0x07);
+	    Reg_Write(MCP_CNF2,0x92);
+	    Reg_Write(MCP_CNF3,0x82);
+	    ulDataRx= Reg_Read(MCP_CNF3);
+	    Reg_Write(MCP_RXB0CTRL,0x20);
+	    Reg_Write(MCP_RXB1CTRL,0x60);
+	    Reg_Write(MCP_BFPCTRL,0x0F);
+	    Reg_Write(MCP_RXF0SIDH,0xAA);
+	    Reg_Write(MCP_RXF0SIDL,0x40);
+	    Reg_Write(MCP_RXF0EID8,0x00);
+	    Reg_Write(MCP_RXF0EID0,0x00);
+	    Reg_Write(MCP_RXM0SIDH,0x00);
+	    Reg_Write(MCP_RXM0SIDL,0x00);
+	    Reg_Write(MCP_RXM0EID8,0x00);
+	    Reg_Write(MCP_RXM0EID0,0x00);
+
+	    Reg_Write(MCP_RXF1SIDH,0x00);
+	    Reg_Write(MCP_RXF1SIDL,0x00);
+	    Reg_Write(MCP_RXF1EID8,0x00);
+	    Reg_Write(MCP_RXF1EID0,0x00);
+	    Reg_Write(MCP_RXM1SIDH,0xFF);
+	    Reg_Write(MCP_RXM1SIDL,0x00);
+	    Reg_Write(MCP_RXM1EID8,0x00);
+	    Reg_Write(MCP_RXM1EID0,0x00);
+
+	    Reg_Write(MCP_RXF2SIDH,0x00);
+	    Reg_Write(MCP_RXF2SIDL,0x00);
+	    Reg_Write(MCP_RXF2EID8,0x00);
+	    Reg_Write(MCP_RXF2EID0,0x00);
+
+	    Reg_Write(MCP_RXF3SIDH,0x00);
+	    Reg_Write(MCP_RXF3SIDL,0x00);
+	    Reg_Write(MCP_RXF3EID8,0x00);
+	    Reg_Write(MCP_RXF3EID0,0x00);
+	    Reg_Write(MCP_CANINTE,0x01);
+
+	    Reg_Write(MCP_TXB0CTRL,0x03);//TXB0 highest priority
+	    Reg_Write(MCP_TXB1CTRL,0x02);//TXB1 middle priority
+	    Reg_Write(MCP_TXB2CTRL,0x00);//TXB2 lowest priority
+
+	    Reg_BitModify(MCP_CANCTRL,0xE0, 0x00);
+	    ulDataRx= Reg_Read(MCP_CANSTAT);
+	    while((ulDataRx & 0xE0) !=0x00)
+	     {
+	    	   CAN_Reset();
+	    	   Reg_BitModify(MCP_CANCTRL,0xE0, 0x00);
+	    	   ulDataRx=Reg_Read(MCP_CANSTAT);
+	     }
+
+}
+
+void Transmit_Data(unsigned long number, unsigned long TX_A[],unsigned long TX_B[],unsigned long TX_C[])
+{
+	unsigned long Tx[1];
+	if(number&0x01 !=0)
+	{
+    Reg_Write(MCP_TXB0SIDH,TX_A[0]);
+    Reg_Write(MCP_TXB0SIDL,TX_A[1]);
+    Reg_Write(MCP_TXB0DLC,TX_A[2]);
+    Reg_Write(MCP_TXB0D0,TX_A[3]);
+    Reg_Write(MCP_TXB0D1,TX_A[4]);
+    Reg_Write(MCP_TXB0D2,TX_A[5]);
+    Reg_Write(MCP_TXB0D3,TX_A[6]);
+    Reg_Write(MCP_TXB0D4,TX_A[7]);
+    Reg_Write(MCP_TXB0D5,TX_A[8]);
+    Reg_Write(MCP_TXB0D6,TX_A[9]);
+    Reg_Write(MCP_TXB0D7,TX_A[10]);
+	}
+	if(number&0x02 !=0)
+		{
+	    Reg_Write(MCP_TXB1SIDH,TX_B[0]);
+	    Reg_Write(MCP_TXB1SIDL,TX_B[1]);
+	    Reg_Write(MCP_TXB1DLC,TX_B[2]);
+	    Reg_Write(MCP_TXB1D0,TX_B[3]);
+	    Reg_Write(MCP_TXB1D1,TX_B[4]);
+	    Reg_Write(MCP_TXB1D2,TX_B[5]);
+	    Reg_Write(MCP_TXB1D3,TX_B[6]);
+	    Reg_Write(MCP_TXB1D4,TX_B[7]);
+	    Reg_Write(MCP_TXB1D5,TX_B[8]);
+	    Reg_Write(MCP_TXB1D6,TX_B[9]);
+	    Reg_Write(MCP_TXB1D7,TX_B[10]);
+		}
+	if(number&0x04 !=0)
+		{
+	    Reg_Write(MCP_TXB2SIDH,TX_C[0]);
+	    Reg_Write(MCP_TXB2SIDL,TX_C[1]);
+	    Reg_Write(MCP_TXB2DLC,TX_C[2]);
+	    Reg_Write(MCP_TXB2D0,TX_C[3]);
+	    Reg_Write(MCP_TXB2D1,TX_C[4]);
+	    Reg_Write(MCP_TXB2D2,TX_C[5]);
+	    Reg_Write(MCP_TXB2D3,TX_C[6]);
+	    Reg_Write(MCP_TXB2D4,TX_C[7]);
+	    Reg_Write(MCP_TXB2D5,TX_C[8]);
+	    Reg_Write(MCP_TXB2D6,TX_C[9]);
+	    Reg_Write(MCP_TXB2D7,TX_C[10]);
+		}
+	Tx[0]=0x80|number;
+	SPI_Send(Tx,1);
+}
+
+void CAN_Interrupt(void)
+{
+	unsigned long status;
+	status= Reg_Read(MCP_CANSTAT);
+	status &=0x0E;
+	switch(status)
+	{
+	case 0x00:
+		break;
+	case 0x02:
+		break;
+	case 0x04:
+		break;
+	case 0x06:
+		break;
+	case 0x08:
+		break;
+	case 0x0A:
+		break;
+	case 0x0C:
+		//Reg_BitModify(MCP_CANINTF,0x01, 0x00);
+		 Read_RX(0,DataRx_BUFFER);
+		break;
+	case 0x0E:
+		break;
+	}
+
+}
+
+void Read_RX(int number, unsigned long RX[])
+{
+	    unsigned long Tx[14]={0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+		while(HWREG(SSI1_BASE + SSI_O_SR) & SSI_SR_RNE)
+			{
+				SPI_Receive(1);
+			}
+		Tx[0]=0x90+2*number;
+		int i;
+		GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3, 0x00);
+		for(i=0;i<14;i++)
+			{
+			   while(SSIBusy(SSI1_BASE));
+			   SSIDataPut(SSI1_BASE, Tx[i]);
+			   while(SSIBusy(SSI1_BASE));
+			   *(RX++)=SPI_Receive(1);
+			}
+		GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3, 0x08);
+}

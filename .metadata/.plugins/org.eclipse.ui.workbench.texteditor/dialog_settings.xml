@@ -3,28 +3,29 @@
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="273" key="DIALOG_WIDTH"/>
 		<item value="125" key="DIALOG_Y_ORIGIN"/>
-		<item value="865" key="DIALOG_X_ORIGIN"/>
 		<item value="399" key="DIALOG_HEIGHT"/>
+		<item value="865" key="DIALOG_X_ORIGIN"/>
 		<item value="1|微软雅黑|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|微软雅黑" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="true" key="wrap"/>
-		<item value="false" key="casesensitive"/>
 		<item value="false" key="isRegEx"/>
+		<item value="false" key="casesensitive"/>
 		<item value="true" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="DataRx_BUFFER" key="selection"/>
+		<item value="sub" key="selection"/>
 		<list key="findhistory">
-			<item value="DataRx_BUFFER"/>
-			<item value="GPIOe"/>
-			<item value="MY_SPI"/>
-			<item value="main"/>
-			<item value="D_LOW"/>
+			<item value="sub"/>
+			<item value="SPI_Receive"/>
 			<item value="hwi_CAN"/>
-			<item value="tsk_can1"/>
-			<item value="hwi_can"/>
+			<item value="D_SPICAN3"/>
+			<item value="init_sys"/>
+			<item value="hwi_spi"/>
+			<item value="CAN_Reset"/>
+			<item value="D_SPICAN4"/>
 		</list>
 		<list key="replacehistory">
+			<item value="SPI_Receive_CAN3"/>
 			<item value="FRAM"/>
 			<item value="bool"/>
 			<item value="I2C4_BASE"/>

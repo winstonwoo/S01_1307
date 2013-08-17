@@ -320,6 +320,7 @@ sub_spi_main_CAN3(void)
     {
     Transmit_Data_CAN3(1,DataTx_BUFFER_CAN3,0,0); // uncomment this if you want to send data
 
+    SysCtlDelay(SysCtlClockGet()/3) ;
     Task_sleep(1000) ;
 
     }
@@ -330,15 +331,12 @@ void SPI_Send_CAN3(unsigned long x[], int y)
 {
 	int i;
 
-	  uint32_t ui32RcvDat;
-
 	GPIOPinWrite(GPIO_PORTK_BASE, GPIO_PIN_1, 0x00);
 	for(i=0;i<y;i++)
 	{
-	 //  while(SSIBusy(SSI3_BASE));
-	   SSIDataPut(SSI3_BASE, x[i]);
-	   SSIDataGet(SSI3_BASE, &ui32RcvDat); /* flush data read during the write */
-	  // while(SSIBusy(SSI3_BASE));
+	  while(SSIBusy(SSI3_BASE));
+	  SSIDataPut(SSI3_BASE, x[i]);
+	  while(SSIBusy(SSI3_BASE));
 	}
 	GPIOPinWrite(GPIO_PORTK_BASE, GPIO_PIN_1, GPIO_PIN_1);
 }
@@ -358,17 +356,17 @@ unsigned long Reg_Read_CAN3(unsigned long address)
 	unsigned long Tx[3];
 	unsigned long result;
 
-	SysCtlDelay(100) ;
-#if 1
+
 	while(HWREG(SSI3_BASE + SSI_O_SR) & SSI_SR_RNE)
 		{
 			SPI_Receive_CAN3(1);
 		}
-#endif
+
 	Tx[0]=0x03;
 	Tx[1]=address;
 	Tx[2]=0;
 	SPI_Send_CAN3(Tx,3);
+
 	while(HWREG(SSI3_BASE + SSI_O_SR) & SSI_SR_RNE)
 	{
 		result=SPI_Receive_CAN3(1);
@@ -381,7 +379,7 @@ void Reg_Write_CAN3(unsigned long address,unsigned long data)
 	    unsigned long Tx[3];
 		while(HWREG(SSI3_BASE + SSI_O_SR) & SSI_SR_RNE)
 			{
-				SPI_Receive(1);
+				SPI_Receive_CAN3(1);
 			}
 		Tx[0]=0x02;
 		Tx[1]=address;
@@ -404,23 +402,23 @@ void CAN_Reset_CAN3(void)
 void Reg_BitModify_CAN3(unsigned long address,unsigned long mask, unsigned long data)
 {
 	unsigned long Tx[4];
-#if 0
+
 	while(HWREG(SSI3_BASE + SSI_O_SR) & SSI_SR_RNE)
 		{
 			SPI_Receive_CAN3(1);
 		}
-#endif
+
 	Tx[0]=0x05;
 	Tx[1]=address;
 	Tx[2]=mask;
 	Tx[3]=data;
 	SPI_Send_CAN3(Tx,4);
-#if 0
+
 	while(HWREG(SSI3_BASE + SSI_O_SR) & SSI_SR_RNE)
 	{
 		SPI_Receive_CAN3(1);
 	}
-#endif
+
 }
 
 void CAN_Init_CAN3(void)
@@ -436,9 +434,13 @@ void CAN_Init_CAN3(void)
 	    	Reg_BitModify_CAN3(MCP_CANCTRL,0xE0, 0x80);
 	    	ulDataRx=Reg_Read_CAN3(MCP_CANSTAT);
 	    }
+
+	    //100K baut rate via 16MOSC
 	    Reg_Write_CAN3(MCP_CNF1,0x07);
-	    Reg_Write_CAN3(MCP_CNF2,0x92);
+	   	Reg_Write_CAN3(MCP_CNF2,0x92);
 	    Reg_Write_CAN3(MCP_CNF3,0x82);
+
+
 	    Reg_Write_CAN3(MCP_RXB0CTRL,0x20);
 	    Reg_Write_CAN3(MCP_RXB1CTRL,0x60);
 	    Reg_Write_CAN3(MCP_BFPCTRL,0x0F);
