@@ -5714,7 +5714,7 @@ __o = __obj[450]  // xdc.runtime.SysMin
     __o['Object__heap'] = null
     __o['Object__sizeof'] = 0
     __o['Object__table'] = null
-    __o['bufSize'] = 512
+    __o['bufSize'] = 4096
     __o['common$'] = __obj[452.0]
     __o['configNameMap$'] = __obj[453.0]
     __o['flushAtExit'] = true
@@ -18599,7 +18599,7 @@ __o = __obj[1150]  // ti.sysbios.knl.Task.Instance#0
     __o['stack'] = null
     __o['stackHeap'] = null
     __o['stackSection'] = String(java.net.URLDecoder.decode('.bss%3AtaskStackSection', 'UTF-8'))
-    __o['stackSize'] = 1024
+    __o['stackSize'] = 512
     __o['vitalTaskFlag'] = true
 
 __o = __obj[1151]  // ti.sysbios.knl.Task.Instance#0/instance
@@ -18775,7 +18775,7 @@ __o = __obj[1166]  // ti.sysbios.knl.Task.Instance#8
     __o['stack'] = null
     __o['stackHeap'] = null
     __o['stackSection'] = String(java.net.URLDecoder.decode('.bss%3AtaskStackSection', 'UTF-8'))
-    __o['stackSize'] = 512
+    __o['stackSize'] = 1024
     __o['vitalTaskFlag'] = true
 
 __o = __obj[1167]  // ti.sysbios.knl.Task.Instance#8/instance

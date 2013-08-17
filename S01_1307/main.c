@@ -758,8 +758,12 @@ Void tsk_CAN1_fxn(UArg arg0, UArg arg1)
 {
 
    UARTprintf( " tsk_can entered \n" ) ;
+   while(1)
+   {
+	   Task_sleep(5000) ;
+   }
 
-   tsk_can() ;
+   //tsk_can() ;
 
 }
 
