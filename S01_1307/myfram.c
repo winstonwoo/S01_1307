@@ -27,32 +27,54 @@
 
 #define ID_I2C_ADDR                0x50
 
+void init_fram()
+{
+
+     ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOG) ;
+
+     ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_I2C4) ;
+     ROM_SysCtlDelay(1);
+     ROM_I2CMasterEnable(I2C4_BASE);
+     ROM_SysCtlDelay(1);
+     ROM_SysCtlPeripheralReset(SYSCTL_PERIPH_I2C4);
+
+     ROM_GPIOPinConfigure( GPIO_PG2_I2C4SCL ) ;
+     ROM_GPIOPinConfigure( GPIO_PG3_I2C4SDA ) ;
+
+     ROM_GPIOPinTypeI2C(GPIO_PORTG_BASE, GPIO_PIN_3) ;
+     GPIOPinTypeI2CSCL(GPIO_PORTG_BASE, GPIO_PIN_2) ;
+
+     ROM_I2CMasterInitExpClk(I2C4_BASE, SysCtlClockGet(), true);
+
+}
+
+
 
 static bool
 WaitI2CFinished(void)
 {
-    //
-    // Wait until the current byte has been transferred.
-    //
-    while(ROM_I2CMasterIntStatus(I2C4_BASE, false) == 0)
-    {
-    }
+     //
+     // Wait until the current byte has been transferred.
+     //
+     while(ROM_I2CMasterIntStatus(I2C4_BASE, false) == 0)
+     {
+     }
 
-    if(I2CMasterErr(I2C4_BASE) != I2C_MASTER_ERR_NONE)
-    {
-        ROM_I2CMasterIntClear(I2C4_BASE);
-        return(false);
-    }
+     if(I2CMasterErr(I2C4_BASE) != I2C_MASTER_ERR_NONE)
+     {
+          ROM_I2CMasterIntClear(I2C4_BASE);
+          return(false);
+     }
 
-    //
-    // Clear any interrupts set.
-    //
-    while(ROM_I2CMasterIntStatus(I2C4_BASE, false))
-    {
-        ROM_I2CMasterIntClear(I2C4_BASE);
-    }
+     //
+     // Clear any interrupts set.
+     //
+     while(ROM_I2CMasterIntStatus(I2C4_BASE, false))
+     {
+          ROM_I2CMasterIntClear(I2C4_BASE);
+     }
 
-    return(true);
+     return(true);
 
 }
 
@@ -70,115 +92,115 @@ WaitI2CFinished(void)
 //*****************************************************************************
 static bool
 FRAMRead(unsigned char *pucData, unsigned short usOffset,
-                 unsigned long ulCount)
+         unsigned long ulCount)
 {
-    unsigned long ulToRead;
+     unsigned long ulToRead;
 
-    //Check the address for 8K byte FRAM
-    if(usOffset > 0x2000)
-    {
-    	return false ;
-    }
+     //Check the address for 8K byte FRAM
+     if(usOffset > 0x2000)
+     {
+          return false ;
+     }
 
-    //
-    // Clear any previously signalled interrupts.
-    //
-    ROM_I2CMasterIntClear(I2C4_BASE);
+     //
+     // Clear any previously signalled interrupts.
+     //
+     ROM_I2CMasterIntClear(I2C4_BASE);
 
-    //
-    // Start with a dummy write to get the address set in the FRAM.
-    //
-    ROM_I2CMasterSlaveAddrSet(I2C4_BASE, ID_I2C_ADDR, false);
+     //
+     // Start with a dummy write to get the address set in the FRAM.
+     //
+     ROM_I2CMasterSlaveAddrSet(I2C4_BASE, ID_I2C_ADDR, false);
 
-    //
-    // Place the address to be written in the data register.
-    //
-    ROM_I2CMasterDataPut(I2C4_BASE, (uint8_t)(usOffset>>8));
+     //
+     // Place the address to be written in the data register.
+     //
+     ROM_I2CMasterDataPut(I2C4_BASE, (uint8_t)(usOffset>>8));
 
-    //
-    // Perform a single send, writing the address as the only byte.
-    //
-    ROM_I2CMasterControl(I2C4_BASE, I2C_MASTER_CMD_BURST_SEND_START);
+     //
+     // Perform a single send, writing the address as the only byte.
+     //
+     ROM_I2CMasterControl(I2C4_BASE, I2C_MASTER_CMD_BURST_SEND_START);
 
-    //
-    // Wait until the current byte has been transferred.
-    //
-    if(!WaitI2CFinished())
-    {
-        return(false);
-    }
+     //
+     // Wait until the current byte has been transferred.
+     //
+     if(!WaitI2CFinished())
+     {
+          return(false);
+     }
 
-    //
-    // Place the address to be written in the data register.
-    //
-    ROM_I2CMasterDataPut(I2C4_BASE, (uint8_t)usOffset);
+     //
+     // Place the address to be written in the data register.
+     //
+     ROM_I2CMasterDataPut(I2C4_BASE, (uint8_t)usOffset);
 
-    //
-    // Perform a single send, writing the address as the only byte.
-    //
-    ROM_I2CMasterControl(I2C4_BASE, I2C_MASTER_CMD_BURST_SEND_CONT);
+     //
+     // Perform a single send, writing the address as the only byte.
+     //
+     ROM_I2CMasterControl(I2C4_BASE, I2C_MASTER_CMD_BURST_SEND_CONT);
 
-    //
-    // Wait until the current byte has been transferred.
-    //
-    if(!WaitI2CFinished())
-    {
-        return(false);
-    }
+     //
+     // Wait until the current byte has been transferred.
+     //
+     if(!WaitI2CFinished())
+     {
+          return(false);
+     }
 
-    //
-    // Put the I2C master into receive mode.
-    //
-    ROM_I2CMasterSlaveAddrSet(I2C4_BASE, ID_I2C_ADDR, true);
+     //
+     // Put the I2C master into receive mode.
+     //
+     ROM_I2CMasterSlaveAddrSet(I2C4_BASE, ID_I2C_ADDR, true);
 
-    //
-    // Start the receive.
-    //
-    ROM_I2CMasterControl(I2C4_BASE,
-                         ((ulCount > 1) ? I2C_MASTER_CMD_BURST_RECEIVE_START :
-                         I2C_MASTER_CMD_SINGLE_RECEIVE));
+     //
+     // Start the receive.
+     //
+     ROM_I2CMasterControl(I2C4_BASE,
+                          ((ulCount > 1) ? I2C_MASTER_CMD_BURST_RECEIVE_START :
+                           I2C_MASTER_CMD_SINGLE_RECEIVE));
 
-    //
-    // Receive the required number of bytes.
-    //
-    ulToRead = ulCount;
+     //
+     // Receive the required number of bytes.
+     //
+     ulToRead = ulCount;
 
-    while(ulToRead)
-    {
-        //
-        // Wait until the current byte has been read.
-        //
-        while(ROM_I2CMasterIntStatus(I2C4_BASE, false) == 0)
-        {
-        }
+     while(ulToRead)
+     {
+          //
+          // Wait until the current byte has been read.
+          //
+          while(ROM_I2CMasterIntStatus(I2C4_BASE, false) == 0)
+          {
+          }
 
-        //
-        // Clear pending interrupt notification.
-        //
-        ROM_I2CMasterIntClear(I2C4_BASE);
+          //
+          // Clear pending interrupt notification.
+          //
+          ROM_I2CMasterIntClear(I2C4_BASE);
 
-        //
-        // Read the received character.
-        //
-        *pucData++ = ROM_I2CMasterDataGet(I2C4_BASE);
-        ulToRead--;
+          //
+          // Read the received character.
+          //
+          *pucData++ = ROM_I2CMasterDataGet(I2C4_BASE);
+          ulToRead--;
 
-        //
-        // Set up for the next byte if any more remain.
-        //
-        if(ulToRead)
-        {
-            ROM_I2CMasterControl(I2C4_BASE,
-                                 ((ulToRead == 1) ?
-                                  I2C_MASTER_CMD_BURST_RECEIVE_FINISH :
-                                  I2C_MASTER_CMD_BURST_RECEIVE_CONT));
-        }
-    }
+          //
+          // Set up for the next byte if any more remain.
+          //
+          if(ulToRead)
+          {
+               ROM_I2CMasterControl(I2C4_BASE,
+                                    ((ulToRead == 1) ?
+                                     I2C_MASTER_CMD_BURST_RECEIVE_FINISH :
+                                     I2C_MASTER_CMD_BURST_RECEIVE_CONT));
+          }
+     }
 
-    //
-    // Tell the caller we read the required data.
-    //
-    return(true);
+     //
+     // Tell the caller we read the required data.
+     //
+     return(true);
 }
 
 //*****************************************************************************
@@ -198,83 +220,83 @@ FRAMRead(unsigned char *pucData, unsigned short usOffset,
 static bool
 FRAMWriteByte(unsigned short usAddr, unsigned char ucData)
 {
-	 //Check the address for 8K byte FRAM
-	    if(usAddr > 0x2000)
-	    {
-	    	return false ;
-	    }
+     //Check the address for 8K byte FRAM
+     if(usAddr > 0x2000)
+     {
+          return false ;
+     }
 
-    //
-    // Start with a dummy write to get the address set in the FRAM.
-    //
-    ROM_I2CMasterSlaveAddrSet(I2C4_BASE, ID_I2C_ADDR, false);
+     //
+     // Start with a dummy write to get the address set in the FRAM.
+     //
+     ROM_I2CMasterSlaveAddrSet(I2C4_BASE, ID_I2C_ADDR, false);
 
-    //
-    // Place the address to be written in the data register.
-    //
-    ROM_I2CMasterDataPut(I2C4_BASE, (uint8_t) (usAddr>>8));
+     //
+     // Place the address to be written in the data register.
+     //
+     ROM_I2CMasterDataPut(I2C4_BASE, (uint8_t) (usAddr>>8));
 
-    //
-    // Start a burst send, sending the device address as the first byte.
-    //
-    ROM_I2CMasterControl(I2C4_BASE, I2C_MASTER_CMD_BURST_SEND_START);
+     //
+     // Start a burst send, sending the device address as the first byte.
+     //
+     ROM_I2CMasterControl(I2C4_BASE, I2C_MASTER_CMD_BURST_SEND_START);
 
-    //
-    // Wait until the current byte has been transferred.
-    //
-    if(!WaitI2CFinished())
-    {
-        return(false);
-    }
+     //
+     // Wait until the current byte has been transferred.
+     //
+     if(!WaitI2CFinished())
+     {
+          return(false);
+     }
 
-    //
-    // Place the address to be written in the data register.
-    //
-    ROM_I2CMasterDataPut(I2C4_BASE, (uint8_t)usAddr);
+     //
+     // Place the address to be written in the data register.
+     //
+     ROM_I2CMasterDataPut(I2C4_BASE, (uint8_t)usAddr);
 
-    //
-    // Start a burst send, sending the device address as the first byte.
-    //
-    ROM_I2CMasterControl(I2C4_BASE, I2C_MASTER_CMD_BURST_SEND_CONT);
+     //
+     // Start a burst send, sending the device address as the first byte.
+     //
+     ROM_I2CMasterControl(I2C4_BASE, I2C_MASTER_CMD_BURST_SEND_CONT);
 
-    //
-    // Wait until the current byte has been transferred.
-    //
-    if(!WaitI2CFinished())
-    {
-        return(false);
-    }
+     //
+     // Wait until the current byte has been transferred.
+     //
+     if(!WaitI2CFinished())
+     {
+          return(false);
+     }
 
 
-    //
-    // Write the value to be written to the flash.
-    //
-    ROM_I2CMasterDataPut(I2C4_BASE, ucData);
+     //
+     // Write the value to be written to the flash.
+     //
+     ROM_I2CMasterDataPut(I2C4_BASE, ucData);
 
-    //
-    // Send the data byte.
-    //
-    ROM_I2CMasterControl(I2C4_BASE, I2C_MASTER_CMD_BURST_SEND_FINISH);
+     //
+     // Send the data byte.
+     //
+     ROM_I2CMasterControl(I2C4_BASE, I2C_MASTER_CMD_BURST_SEND_FINISH);
 
-    //
-    // Wait until the current byte has been transferred.
-    //
-    if(!WaitI2CFinished())
-    {
-        return(false);
-    }
+     //
+     // Wait until the current byte has been transferred.
+     //
+     if(!WaitI2CFinished())
+     {
+          return(false);
+     }
 
-    //
-    // Delay 5mS to allow the write to complete.  We should really poll the
-    // device waiting for an ACK but this is easier (and this code is only
-    // for testcase use so this should be safe).
-    //
-    SysCtlDelay(ROM_SysCtlClockGet() / (200 * 3));
+     //
+     // Delay 5mS to allow the write to complete.  We should really poll the
+     // device waiting for an ACK but this is easier (and this code is only
+     // for testcase use so this should be safe).
+     //
+     SysCtlDelay(ROM_SysCtlClockGet() / (200 * 3));
 
-    //
-    // Tell the caller we wrote the required data.
-    //
-    return(true);
+     //
+     // Tell the caller we wrote the required data.
+     //
+     return(true);
 
 }
 
@@ -282,120 +304,120 @@ FRAMWriteByte(unsigned short usAddr, unsigned char ucData)
 static bool
 FRAMWrite(unsigned char *pucData, unsigned short usAddr, unsigned short usCount)
 {
-    unsigned short usToWrite ;
+     unsigned short usToWrite ;
 
-    //
-    // Start with a dummy write to get the address set in the FRAM.
-    //
-    ROM_I2CMasterSlaveAddrSet(I2C4_BASE, ID_I2C_ADDR, false);
+     //
+     // Start with a dummy write to get the address set in the FRAM.
+     //
+     ROM_I2CMasterSlaveAddrSet(I2C4_BASE, ID_I2C_ADDR, false);
 
-    //
-    // Place the address to be written in the data register.
-    //
-    ROM_I2CMasterDataPut(I2C4_BASE, usAddr>>8);
+     //
+     // Place the address to be written in the data register.
+     //
+     ROM_I2CMasterDataPut(I2C4_BASE, usAddr>>8);
 
-    //
-    // Start a burst send, sending the device address as the first byte.
-    //
-    ROM_I2CMasterControl(I2C4_BASE, I2C_MASTER_CMD_BURST_SEND_START);
+     //
+     // Start a burst send, sending the device address as the first byte.
+     //
+     ROM_I2CMasterControl(I2C4_BASE, I2C_MASTER_CMD_BURST_SEND_START);
 
-    //
-    // Wait until the current byte has been transferred.
-    //
-    if(!WaitI2CFinished())
-    {
-        return(false);
-    }
+     //
+     // Wait until the current byte has been transferred.
+     //
+     if(!WaitI2CFinished())
+     {
+          return(false);
+     }
 
-    //
-    // Place the address to be written in the data register.
-    //
-    ROM_I2CMasterDataPut(I2C4_BASE, (uint8_t)usAddr);
+     //
+     // Place the address to be written in the data register.
+     //
+     ROM_I2CMasterDataPut(I2C4_BASE, (uint8_t)usAddr);
 
-    //
-    // Start a burst send, sending the device address as the first byte.
-    //
-    ROM_I2CMasterControl(I2C4_BASE, I2C_MASTER_CMD_BURST_SEND_CONT);
+     //
+     // Start a burst send, sending the device address as the first byte.
+     //
+     ROM_I2CMasterControl(I2C4_BASE, I2C_MASTER_CMD_BURST_SEND_CONT);
 
-    //
-    // Wait until the current byte has been transferred.
-    //
-    if(!WaitI2CFinished())
-    {
-        return(false);
-    }
+     //
+     // Wait until the current byte has been transferred.
+     //
+     if(!WaitI2CFinished())
+     {
+          return(false);
+     }
 
 #if 1
-    //
-      // Receive the required number of bytes.
-      //
-      usToWrite = usCount;
+     //
+     // Receive the required number of bytes.
+     //
+     usToWrite = usCount;
 
-      while(usToWrite)
-      {
+     while(usToWrite)
+     {
     	  //
-    	    // Write the value to be written to the flash.
-    	    //
-    	    ROM_I2CMasterDataPut(I2C4_BASE, *pucData++);
+          // Write the value to be written to the flash.
+          //
+          ROM_I2CMasterDataPut(I2C4_BASE, *pucData++);
 
-    	    //
-    	    // Send the data byte.
-    	    //
-    	   // ROM_I2CMasterControl(I2C4_BASE, I2C_MASTER_CMD_BURST_SEND_FINISH);
+          //
+          // Send the data byte.
+          //
+          // ROM_I2CMasterControl(I2C4_BASE, I2C_MASTER_CMD_BURST_SEND_FINISH);
 
-    	    if(usToWrite)
-			{
-				ROM_I2CMasterControl(I2C4_BASE,
-									 ((usToWrite == 1) ?
-									  I2C_MASTER_CMD_BURST_SEND_FINISH :
-									  I2C_MASTER_CMD_BURST_SEND_CONT));
-			}
+          if(usToWrite)
+          {
+               ROM_I2CMasterControl(I2C4_BASE,
+                                    ((usToWrite == 1) ?
+                                     I2C_MASTER_CMD_BURST_SEND_FINISH :
+                                     I2C_MASTER_CMD_BURST_SEND_CONT));
+          }
 
-    	    usToWrite-- ;
-    	    //
-    	    // Wait until the current byte has been transferred.
-    	    //
-    	    if(!WaitI2CFinished())
-    	    {
-    	        return(false);
-    	    }
+          usToWrite-- ;
+          //
+          // Wait until the current byte has been transferred.
+          //
+          if(!WaitI2CFinished())
+          {
+               return(false);
+          }
 
-      }
+     }
 #endif
 
-    //
-    // Delay 5mS to allow the write to complete.  We should really poll the
-    // device waiting for an ACK but this is easier (and this code is only
-    // for testcase use so this should be safe).
-    //
-    SysCtlDelay(ROM_SysCtlClockGet() / (200 * 3));
+     //
+     // Delay 5mS to allow the write to complete.  We should really poll the
+     // device waiting for an ACK but this is easier (and this code is only
+     // for testcase use so this should be safe).
+     //
+     SysCtlDelay(ROM_SysCtlClockGet() / (200 * 3));
 
-    //
-    // Tell the caller we wrote the required data.
-    //
-    return(true);
+     //
+     // Tell the caller we wrote the required data.
+     //
+     return(true);
 
 }
 
 #if 0
 void test(void)
 {
-    //
-    // Write the structure to flash, one byte at a time.
-    //
-    for(ulIndex = 0; ulIndex < ulLength; ulIndex++)
-    {
-        bRetcode = FRAMWritePolled((unsigned char)ulIndex,
+     //
+     // Write the structure to flash, one byte at a time.
+     //
+     for(ulIndex = 0; ulIndex < ulLength; ulIndex++)
+     {
+          bRetcode = FRAMWritePolled((unsigned char)ulIndex,
                                      pucBuffer[ulIndex]);
-        if(!bRetcode)
-        {
-            //
-            // There was an error - abort the operation.
-            //
-            UARTprintf("Error writing ID block byte %d!\n", ulIndex);
-            return(COMMAND_OK);
-        }
-    }
+          if(!bRetcode)
+          {
+               //
+               // There was an error - abort the operation.
+               //
+               UARTprintf("Error writing ID block byte %d!\n", ulIndex);
+               return(COMMAND_OK);
+          }
+     }
 }
 
 #endif
@@ -408,51 +430,36 @@ void test(void)
 //*****************************************************************************
 int test_fram(void)
 {
-    int nStatus;
-    unsigned char ucIndex ;
-    unsigned char ucStore[20] ;
+     int nStatus;
+     unsigned char ucIndex ;
+     unsigned char ucStore[20] ;
 
-    unsigned char ucData[5] = {0x88, 0x99, 0xaa, 0xbb, 0xcc} ;
-
-
-
-   bool bRetcode;
-
-   ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOG) ;
-
-   ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_I2C4) ;
-   ROM_SysCtlDelay(1);
-   ROM_I2CMasterEnable(I2C4_BASE);
-   ROM_SysCtlDelay(1);
-   ROM_SysCtlPeripheralReset(SYSCTL_PERIPH_I2C4);
-
-   ROM_GPIOPinConfigure( GPIO_PG2_I2C4SCL ) ;
-   ROM_GPIOPinConfigure( GPIO_PG3_I2C4SDA ) ;
-
-   ROM_GPIOPinTypeI2C(GPIO_PORTG_BASE, GPIO_PIN_3) ;
-   GPIOPinTypeI2CSCL(GPIO_PORTG_BASE, GPIO_PIN_2) ;
-
-   ROM_I2CMasterInitExpClk(I2C4_BASE, SysCtlClockGet(), true);
-
-   for(;;)
-   {
-	   //
-	   // Read the ID information from the I2C FRAM.
-	   //
-	   FRAMWrite(ucData, 0x0050, sizeof(ucData)) ;
-
-	   for(ucIndex=20; ucIndex<40; ucIndex++)
-	   FRAMWriteByte((0x1000+ucIndex), ucIndex) ;
-	   memset(ucStore, 0x0, sizeof(ucStore)) ;
-	   FRAMRead((unsigned char *)ucStore, 0x1010, sizeof(ucStore));
-	   memset(ucStore, 0x0, sizeof(ucStore)) ;
-	   FRAMRead((unsigned char *)ucStore, 0x0050, sizeof(ucData));
-   }
+     unsigned char ucData[5] = {0x88, 0x99, 0xaa, 0xbb, 0xcc} ;
 
 
-    //
-    //
-    // Fall into the command line processing loop.
-    //
+
+     bool bRetcode;
+
+
+     for(;;)
+     {
+          //
+          // Read the ID information from the I2C FRAM.
+          //
+          FRAMWrite(ucData, 0x0050, sizeof(ucData)) ;
+
+          for(ucIndex=20; ucIndex<40; ucIndex++)
+               FRAMWriteByte((0x1000+ucIndex), ucIndex) ;
+          memset(ucStore, 0x0, sizeof(ucStore)) ;
+          FRAMRead((unsigned char *)ucStore, 0x1010, sizeof(ucStore));
+          memset(ucStore, 0x0, sizeof(ucStore)) ;
+          FRAMRead((unsigned char *)ucStore, 0x0050, sizeof(ucData));
+     }
+
+
+     //
+     //
+     // Fall into the command line processing loop.
+     //
 
 }

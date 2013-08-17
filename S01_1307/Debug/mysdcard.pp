@@ -10,6 +10,8 @@ mysdcard.obj: C:/ti/ccsv5/tools/compiler/arm_5.0.1/include/_lock.h
 mysdcard.obj: C:/ti/ccsv5/tools/compiler/arm_5.0.1/include/string.h
 mysdcard.obj: J:/WorkHouse2013/SWRf2013/StellarisTiVa/TiVa/TivaWare_C_Series-1.0/inc/hw_memmap.h
 mysdcard.obj: J:/WorkHouse2013/SWRf2013/StellarisTiVa/TiVa/TivaWare_C_Series-1.0/inc/hw_types.h
+mysdcard.obj: J:/WorkHouse2013/SWRf2013/StellarisTiVa/TiVa/TivaWare_C_Series-1.0/driverlib/timer.h
+mysdcard.obj: J:/WorkHouse2013/SWRf2013/StellarisTiVa/TiVa/TivaWare_C_Series-1.0/inc/hw_ints.h
 mysdcard.obj: J:/WorkHouse2013/SWRf2013/StellarisTiVa/TiVa/TivaWare_C_Series-1.0/driverlib/fpu.h
 mysdcard.obj: J:/WorkHouse2013/SWRf2013/StellarisTiVa/TiVa/TivaWare_C_Series-1.0/driverlib/gpio.h
 mysdcard.obj: J:/WorkHouse2013/SWRf2013/StellarisTiVa/TiVa/TivaWare_C_Series-1.0/driverlib/interrupt.h
@@ -236,6 +238,8 @@ C:/ti/ccsv5/tools/compiler/arm_5.0.1/include/_lock.h:
 C:/ti/ccsv5/tools/compiler/arm_5.0.1/include/string.h: 
 J:/WorkHouse2013/SWRf2013/StellarisTiVa/TiVa/TivaWare_C_Series-1.0/inc/hw_memmap.h: 
 J:/WorkHouse2013/SWRf2013/StellarisTiVa/TiVa/TivaWare_C_Series-1.0/inc/hw_types.h: 
+J:/WorkHouse2013/SWRf2013/StellarisTiVa/TiVa/TivaWare_C_Series-1.0/driverlib/timer.h: 
+J:/WorkHouse2013/SWRf2013/StellarisTiVa/TiVa/TivaWare_C_Series-1.0/inc/hw_ints.h: 
 J:/WorkHouse2013/SWRf2013/StellarisTiVa/TiVa/TivaWare_C_Series-1.0/driverlib/fpu.h: 
 J:/WorkHouse2013/SWRf2013/StellarisTiVa/TiVa/TivaWare_C_Series-1.0/driverlib/gpio.h: 
 J:/WorkHouse2013/SWRf2013/StellarisTiVa/TiVa/TivaWare_C_Series-1.0/driverlib/interrupt.h: 

@@ -1,0 +1,216 @@
+//*****************************************************************************
+#include <stdint.h>
+#include <stdbool.h>
+#include <string.h>
+
+#include <xdc/std.h>
+
+#include <xdc/runtime/Error.h>
+#include <xdc/runtime/System.h>
+
+#include <ti/sysbios/BIOS.h>
+
+#include <ti/sysbios/knl/Task.h>
+#include <ti/sysbios/hal/Hwi.h>
+#include <ti/sysbios/knl/Swi.h>
+#include <ti/sysbios/knl/Mailbox.h>
+
+#include "inc/hw_memmap.h"
+#include "inc/hw_types.h"
+#include "inc/hw_can.h"
+#include "inc/hw_ints.h"
+#include "driverlib/can.h"
+#include "driverlib/interrupt.h"
+#include "driverlib/sysctl.h"
+#include "driverlib/gpio.h"
+#include "driverlib/pin_map.h"
+#include "utils/uartstdio.h"
+
+//*****************************************************************************
+
+Void init_uart()
+{
+
+    	ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOD);
+    	//UART2 initialization with 115200, 8, N, 1
+        //
+        // Enable the peripherals used by this example.
+        //
+//
+		// Change PD7 into hardware (NMI) pins.  First open the
+		// lock and select the bits we want to modify in the GPIO commit
+		// register.
+		//
+		HWREG(GPIO_PORTD_BASE + GPIO_O_LOCK) = GPIO_LOCK_KEY;
+		HWREG(GPIO_PORTD_BASE + GPIO_O_CR) = 0xC0;
+
+		//
+		// Now modify the configuration of the pins that we unlocked.
+		//
+	        //
+        // Set GPIO D6 and D7 as UART2 pins.
+        GPIOPinConfigure( GPIO_PD6_U2RX ) ;
+        GPIOPinConfigure( GPIO_PD7_U2TX ) ;
+        GPIOPinTypeUART(GPIO_PORTD_BASE, GPIO_PIN_6 | GPIO_PIN_7);
+
+        ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_UART2);
+
+        //
+
+        /*
+        ROM_UARTConfigSetExpClk(UART2_BASE, ROM_SysCtlClockGet(), 115200,
+                                (UART_CONFIG_WLEN_8 | UART_CONFIG_STOP_ONE |
+                                 UART_CONFIG_PAR_NONE));
+                                 */
+
+        UARTStdioConfig(2, 115200, SysCtlClockGet()) ;
+
+		// Finally, clear the commit register and the lock to prevent
+		// the pin configuration from being changed accidentally later.
+		// Note that the lock is closed whenever we write to the GPIO_O_CR
+		// register so we need to reopen it here.
+		//
+		HWREG(GPIO_PORTD_BASE + GPIO_O_LOCK) = GPIO_LOCK_KEY;
+		HWREG(GPIO_PORTD_BASE + GPIO_O_CR) = 0x00;
+		HWREG(GPIO_PORTD_BASE + GPIO_O_LOCK) = 0;
+
+        //
+        // Enable the UART interrupt.
+        //
+        ROM_IntEnable(INT_UART2);
+        ROM_UARTIntEnable(UART2_BASE, UART_INT_RX | UART_INT_RT);
+
+
+
+         //UART3 initialization with 115200, 8, N, 1
+         //
+         // Enable the peripherals used by this example.
+         //
+         ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOC);
+         ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_UART3);
+
+         //
+         // Set GPIO D6 and D7 as UART2 pins.
+         GPIOPinConfigure( GPIO_PC6_U3RX ) ;
+         GPIOPinConfigure( GPIO_PC7_U3TX ) ;
+         GPIOPinTypeUART(GPIO_PORTC_BASE, GPIO_PIN_6 | GPIO_PIN_7);
+
+         //
+         ROM_UARTConfigSetExpClk(UART3_BASE, ROM_SysCtlClockGet(), 115200,
+                                 (UART_CONFIG_WLEN_8 | UART_CONFIG_STOP_ONE |
+                                  UART_CONFIG_PAR_NONE));
+
+         //
+         // Enable the UART interrupt.
+         //
+         ROM_IntEnable(INT_UART3);
+         ROM_UARTIntEnable(UART3_BASE, UART_INT_RX | UART_INT_RT);
+
+
+         //UART2 initialization with 115200, 8, N, 1
+		 //
+		 // Enable the peripherals used by this example.
+		 //
+		 ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOE);
+		 ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_UART7);
+
+		 //
+		 // Set GPIO D6 and D7 as UART2 pins.
+		 GPIOPinConfigure( GPIO_PE0_U7RX ) ;
+		 GPIOPinConfigure( GPIO_PE1_U7TX ) ;
+		 GPIOPinTypeUART(GPIO_PORTE_BASE, GPIO_PIN_0 | GPIO_PIN_1);
+
+		 //
+		 ROM_UARTConfigSetExpClk(UART7_BASE, ROM_SysCtlClockGet(), 115200,
+								 (UART_CONFIG_WLEN_8 | UART_CONFIG_STOP_ONE |
+								  UART_CONFIG_PAR_NONE));
+
+		 //
+		 // Enable the UART interrupt.
+		 //
+		 ROM_IntEnable(INT_UART7);
+		 ROM_UARTIntEnable(UART7_BASE, UART_INT_RX | UART_INT_RT);
+
+
+
+}
+
+
+void init_low_can( void )
+{
+
+
+     //CAN0 initialization
+     //For JTA1043T configuration on CAN1 port
+     SysCtlPeripheralEnable( SYSCTL_PERIPH_GPIOA ) ;
+     SysCtlPeripheralEnable( SYSCTL_PERIPH_GPIOE ) ;
+     SysCtlPeripheralEnable( SYSCTL_PERIPH_GPIOH ) ;
+
+     GPIOPinConfigure( GPIO_PE4_CAN0RX ) ;
+     GPIOPinConfigure( GPIO_PE5_CAN0TX ) ;
+
+     GPIOPinTypeCAN( GPIO_PORTE_BASE, GPIO_PIN_4 | GPIO_PIN_5) ;
+
+     //PH3 work as CAN_ERR_N
+     GPIOPinTypeGPIOInput(GPIO_PORTH_BASE, GPIO_PIN_3) ;
+
+       //Disable Bypass
+     GPIOPinTypeGPIOOutput( GPIO_PORTA_BASE, GPIO_PIN_5) ;
+      GPIOPinWrite( GPIO_PORTA_BASE, GPIO_PIN_5, GPIO_PIN_5) ;
+
+       //Enable CAN0 port
+       SysCtlPeripheralEnable( SYSCTL_PERIPH_CAN0 ) ;
+
+       CANInit( CAN0_BASE ) ;
+       CANBitRateSet( CAN0_BASE, SysCtlClockGet(), 100000) ;
+       //HWREG(CAN0_BASE + CAN_O_CTL) |= CAN_CTL_TEST ;
+       //HWREG(CAN0_BASE + CAN_O_TST) |= CAN_TST_LBACK ;
+
+       CANIntEnable( CAN0_BASE, CAN_INT_MASTER | CAN_INT_ERROR | CAN_INT_STATUS) ;
+       IntEnable( INT_CAN0 ) ;
+
+       CANEnable( CAN0_BASE ) ;
+
+}
+
+
+
+void init_high_can( void )
+{
+
+
+     //For JTA1043T configuration on CAN1 port
+     SysCtlPeripheralEnable( SYSCTL_PERIPH_GPIOA ) ;
+
+     GPIOPinConfigure( GPIO_PA0_CAN1RX ) ;
+     GPIOPinConfigure( GPIO_PA1_CAN1TX ) ;
+
+     GPIOPinTypeCAN( GPIO_PORTA_BASE, GPIO_PIN_0 | GPIO_PIN_1) ;
+
+     //PA2 work as CAN_ERR_N
+     GPIOPinTypeGPIOInput( GPIO_PORTA_BASE, GPIO_PIN_2) ;
+
+     //PA3 work as CAN_EN
+     GPIOPinTypeGPIOOutput( GPIO_PORTA_BASE, GPIO_PIN_3) ;
+     GPIOPinTypeGPIOOutput( GPIO_PORTA_BASE, GPIO_PIN_4) ;
+
+     //Enable TJA1043T U3004 part
+     GPIOPinWrite( GPIO_PORTA_BASE, GPIO_PIN_3 | GPIO_PIN_4, GPIO_PIN_3 | GPIO_PIN_4) ;
+
+     //Enable CAN0 port
+     SysCtlPeripheralEnable( SYSCTL_PERIPH_CAN1 ) ;
+     CANInit( CAN1_BASE ) ;
+     CANBitRateSet( CAN1_BASE, SysCtlClockGet(), 250000) ;
+
+     //HWREG(CAN1_BASE + CAN_O_CTL) |= CAN_CTL_TEST ;
+     //HWREG(CAN1_BASE + CAN_O_TST) |= CAN_TST_LBACK ;
+
+     CANIntEnable( CAN1_BASE, CAN_INT_MASTER | CAN_INT_ERROR | CAN_INT_STATUS) ;
+     IntEnable( INT_CAN1 ) ;
+     CANEnable( CAN1_BASE ) ;
+
+}
+
+
+
+

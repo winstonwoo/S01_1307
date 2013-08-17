@@ -1,0 +1,1394 @@
+/*
+ *  ======== main.c ========
+ */
+
+#include <xdc/std.h>
+#include <stdint.h>
+#include <stdbool.h>
+#include <string.h>
+
+#include <xdc/runtime/Error.h>
+#include <xdc/runtime/System.h>
+
+#include <ti/sysbios/BIOS.h>
+
+#include <ti/sysbios/knl/Task.h>
+#include <ti/sysbios/hal/Hwi.h>
+#include <ti/sysbios/knl/Swi.h>
+#include <ti/sysbios/knl/Mailbox.h>
+
+#include "inc/hw_ints.h"
+#include "inc/hw_memmap.h"
+#include "inc/hw_types.h"
+#include "inc/hw_gpio.h"
+#include "inc/hw_can.h"
+#include "driverlib/debug.h"
+#include "driverlib/fpu.h"
+#include "driverlib/gpio.h"
+#include "driverlib/interrupt.h"
+#include "driverlib/sysctl.h"
+#include "driverlib/uart.h"
+#include "driverlib/rom.h"
+#include "driverlib/timer.h"
+#include "driverlib/can.h"
+#include "driverlib/ssi.h"
+#include "driverlib/pin_map.h"
+#include "uartstdio.h"
+
+#include "MCP2515.h"
+
+extern volatile unsigned long g_bRXFlag1 ;
+extern volatile unsigned long g_bRXFlag2 ;
+extern volatile unsigned long g_bRXFlag3 ;
+
+extern Swi_Handle swi_UART7_handle ;
+extern Swi_Handle swi_UART2_handle ;
+extern Swi_Handle swi_UART3_handle ;
+extern Swi_Handle swi_I2C1_handle ;
+extern Swi_Handle swi_SPI0_handle ;
+extern Swi_Handle swi_SPI1_handle ;
+extern Swi_Handle swi_SPI2_handle ;
+extern Swi_Handle swi_CAN0_handle ;
+extern Swi_Handle swi_CAN1_handle ;
+extern Swi_Handle swi_GPIOB_handle ;
+extern Swi_Handle swi_GPIOE_handle ;
+
+extern Mailbox_Handle Mb_uart2_handle ;
+
+volatile unsigned long g_ulMsgCount = 0;
+
+Swi_Handle swi0, swi1;
+
+//*****************************************************************************
+//
+// A flag to indicate that some transmission error occurred.
+//
+//*****************************************************************************
+volatile unsigned long g_bErrFlag = 0;
+
+
+void UARTSend(const unsigned char *pucBuffer, unsigned long ulCount) ;
+
+
+
+Void hwi_UART7_fxn(UArg arg)
+{
+     unsigned long ulStatus;
+     unsigned char ucMsg[8] ;
+     int i = 0 ;
+
+     //
+     // Get the interrrupt status.
+     //
+
+     ulStatus = ROM_UARTIntStatus(UART7_BASE, true);
+
+     //
+     // Clear the asserted interrupts.
+     //
+
+     ROM_UARTIntClear(UART7_BASE, ulStatus);
+
+
+     Swi_post(swi_UART7_handle) ;
+
+}
+
+
+
+Void hwi_UART2_fxn(UArg arg)
+{
+     unsigned long ulStatus;
+     unsigned char ucMsg[8] ;
+     int i = 0 ;
+
+     //
+     // Get the interrrupt status.
+     //
+
+     ulStatus = ROM_UARTIntStatus(UART2_BASE, true);
+
+     //
+     // Clear the asserted interrupts.
+     //
+
+     ROM_UARTIntClear(UART2_BASE, ulStatus);
+
+     memset(ucMsg, 0x0, sizeof(ucMsg)) ;
+     //
+     // Loop while there are characters in the receive FIFO.
+     //
+     while(ROM_UARTCharsAvail(UART2_BASE))
+     {
+          //
+          // Read the next character from the UART and write it back to the UART.
+          //
+          // ROM_UARTCharPutNonBlocking(UART0_BASE,
+          //                          ROM_UARTCharGetNonBlocking(UART0_BASE));
+          ucMsg[i++] = ROM_UARTCharGetNonBlocking(UART2_BASE) ;
+          if (i>=8) 	break ;  //If the amount of characters is big than 20;
+
+     }
+
+     Mailbox_post(Mb_uart2_handle, ucMsg, BIOS_NO_WAIT) ;
+
+
+     Swi_post(swi_UART2_handle) ;
+}
+
+
+Void hwi_UART3_fxn(UArg arg)
+{
+     unsigned long ulStatus;
+
+     //
+     // Get the interrrupt status.
+     //
+
+     ulStatus = ROM_UARTIntStatus(UART3_BASE, true);
+
+     //
+     // Clear the asserted interrupts.
+     //
+
+     ROM_UARTIntClear(UART3_BASE, ulStatus);
+
+
+     Swi_post(swi_UART3_handle) ;
+}
+
+
+Void hwi_I2C1_fxn(UArg arg)
+{
+	Swi_post(swi_I2C1_handle) ;
+}
+
+Void hwi_SPI0_fxn(UArg arg)
+{
+	Swi_post(swi_SPI0_handle) ;
+}
+
+
+Void hwi_SPI1_fxn(UArg arg)
+{
+	Swi_post(swi_SPI1_handle) ;
+}
+
+
+Void hwi_SPI2_fxn(UArg arg)
+{
+	Swi_post(swi_SPI2_handle) ;
+}
+
+
+Void hwi_CAN0_fxn(UArg arg)
+{
+
+unsigned long ulStatus;
+
+		//
+		// Read the CAN interrupt status to find the cause of the interrupt
+		//
+		ulStatus = CANIntStatus(CAN0_BASE, CAN_INT_STS_CAUSE);
+
+		//
+		// If the cause is a controller status interrupt, then get the status
+		//
+		if(ulStatus == CAN_INT_INTID_STATUS)
+		{
+			//
+			// Read the controller status.  This will return a field of status
+			// error bits that can indicate various errors.  Error processing
+			// is not done in this example for simplicity.  Refer to the
+			// API documentation for details about the error status bits.
+			// The act of reading this status will clear the interrupt.  If the
+			// CAN peripheral is not connected to a CAN bus with other CAN devices
+			// present, then errors will occur and will be indicated in the
+			// controller status.
+			//
+			ulStatus = CANStatusGet(CAN0_BASE, CAN_STS_CONTROL);
+
+			//
+			// Set a flag to indicate some errors may have occurred.
+			//
+			//g_bErrFlag = 1;
+		}
+
+		//
+		// Check if the cause is message object 1, which is used for sending
+		// message 1.
+		//
+		else if(ulStatus == 1)
+		{
+			//
+			// Getting to this point means that the TX interrupt occurred on
+			// message object 1, and the message TX is complete.  Clear the
+			// message object interrupt.
+			//
+			CANIntClear(CAN0_BASE, 1);
+
+			g_bRXFlag1 = 1;
+
+			//
+			// Increment a counter to keep track of how many messages have been
+			// sent.  In a real application this could be used to set flags to
+			// indicate when a message is sent.
+			//
+			//g_ulMsg1Count++;
+
+			//
+			// Since the message was sent, clear any error flags.
+			//
+			//g_bErrFlag = 0;
+
+		}
+
+		//
+		// Check if the cause is message object 2, which is used for sending
+		// message 2.
+		//
+		else if(ulStatus == 2)
+		{
+			//
+			// Getting to this point means that the TX interrupt occurred on
+			// message object 2, and the message TX is complete.  Clear the
+			// message object interrupt.
+			//
+			CANIntClear(CAN0_BASE, 2);
+
+			g_bRXFlag2 = 1;
+
+			//
+			// Increment a counter to keep track of how many messages have been
+			// sent.  In a real application this could be used to set flags to
+			// indicate when a message is sent.
+			//
+		   // g_ulMsg2Count++;
+
+			//
+			// Since the message was sent, clear any error flags.
+			//
+			//g_bErrFlag = 0;
+		}
+
+		//
+		// Check if the cause is message object 3, which is used for sending
+		// messages 3 and 4.
+		//
+		else if(ulStatus == 3)
+		{
+			//
+			// Getting to this point means that the TX interrupt occurred on
+			// message object , and a message TX is complete.  Clear the
+			// message object interrupt.
+			//
+			CANIntClear(CAN0_BASE, 3);
+
+			g_bRXFlag3 = 1;
+
+			//
+			// Increment a counter to keep track of how many messages have been
+			// sent.  In a real application this could be used to set flags to
+			// indicate when a message is sent.
+			//
+			//g_ulMsg3Count++;
+
+			//
+			// Set the flag indicating that a message was sent using message
+			// object 3.  The program main loop uses this to know when to send
+			// another message using message object 3.
+			//g_bMsgObj3Sent = 1;
+
+			//
+			// Since the message was sent, clear any error flags.
+			//
+			//g_bErrFlag = 0;
+		}
+
+		//
+		// Otherwise, something unexpected caused the interrupt.  This should
+		// never happen.
+		//
+		else
+		{
+			//
+			// Spurious interrupt handling can go here.
+			//
+		}
+
+		CANIntClear(CAN0_BASE, ulStatus);
+
+		Swi_post(swi_CAN0_handle) ;
+
+}
+
+
+Void hwi_CAN1_fxn(UArg arg)
+{
+	  unsigned long ulStatus;
+
+	    //
+	    // Read the CAN interrupt status to find the cause of the interrupt
+	    //
+	    ulStatus = CANIntStatus(CAN1_BASE, CAN_INT_STS_CAUSE);
+
+
+	    //
+	    // If the cause is a controller status interrupt, then get the status
+	    //
+	    if(ulStatus == CAN_INT_INTID_STATUS)
+	    {
+	        //
+	        // Read the controller status.  This will return a field of status
+	        // error bits that can indicate various errors.  Error processing
+	        // is not done in this example for simplicity.  Refer to the
+	        // API documentation for details about the error status bits.
+	        // The act of reading this status will clear the interrupt.  If the
+	        // CAN peripheral is not connected to a CAN bus with other CAN devices
+	        // present, then errors will occur and will be indicated in the
+	        // controller status.
+	        //
+	        ulStatus = CANStatusGet(CAN1_BASE, CAN_STS_CONTROL);
+
+	        //
+	        // Set a flag to indicate some errors may have occurred.
+	        //
+	        //g_bErrFlag = 1;
+	    }
+
+	    //
+	    // Check if the cause is message object 1, which is used for sending
+	    // message 1.
+	    //
+	    else if(ulStatus == 1)
+	    {
+	        //
+	        // Getting to this point means that the TX interrupt occurred on
+	        // message object 1, and the message TX is complete.  Clear the
+	        // message object interrupt.
+	        //
+	        CANIntClear(CAN1_BASE, 1);
+
+	        //
+	        // Increment a counter to keep track of how many messages have been
+	        // sent.  In a real application this could be used to set flags to
+	        // indicate when a message is sent.
+	        //
+	        //g_ulMsg1Count++;
+
+	        //
+	        // Since the message was sent, clear any error flags.
+	        //
+	        //g_bErrFlag = 0;
+	    }
+
+	    //
+	    // Check if the cause is message object 2, which is used for sending
+	    // message 2.
+	    //
+	    else if(ulStatus == 2)
+	    {
+	        //
+	        // Getting to this point means that the TX interrupt occurred on
+	        // message object 2, and the message TX is complete.  Clear the
+	        // message object interrupt.
+	        //
+	        CANIntClear(CAN1_BASE, 2);
+
+	        //
+	        // Increment a counter to keep track of how many messages have been
+	        // sent.  In a real application this could be used to set flags to
+	        // indicate when a message is sent.
+	        //
+	       // g_ulMsg2Count++;
+
+	        //
+	        // Since the message was sent, clear any error flags.
+	        //
+	        //g_bErrFlag = 0;
+	    }
+
+	    //
+	    // Check if the cause is message object 3, which is used for sending
+	    // messages 3 and 4.
+	    //
+	    else if(ulStatus == 3)
+	    {
+	        //
+	        // Getting to this point means that the TX interrupt occurred on
+	        // message object , and a message TX is complete.  Clear the
+	        // message object interrupt.
+	        //
+	        CANIntClear(CAN1_BASE, 3);
+
+	        //
+	        // Increment a counter to keep track of how many messages have been
+	        // sent.  In a real application this could be used to set flags to
+	        // indicate when a message is sent.
+	        //
+	        //g_ulMsg3Count++;
+
+	        //
+	        // Set the flag indicating that a message was sent using message
+	        // object 3.  The program main loop uses this to know when to send
+	        // another message using message object 3.
+	        //g_bMsgObj3Sent = 1;
+
+	        //
+	        // Since the message was sent, clear any error flags.
+	        //
+	        //g_bErrFlag = 0;
+	    }
+
+	    //
+	    // Otherwise, something unexpected caused the interrupt.  This should
+	    // never happen.
+	    //
+	    else
+	    {
+	        //
+	        // Spurious interrupt handling can go here.
+	        //
+	    }
+
+	    CANIntClear(CAN0_BASE, ulStatus);
+
+	//Swi_post(swi_CAN1_handle) ;
+}
+
+
+Void hwi_GPIOB_fxn(UArg arg)
+{
+	long lIntSts ;
+#if 1
+	//store the interrupt flag into lIntSts
+	lIntSts = GPIOIntStatus(GPIO_PORTM_BASE, false) ;
+
+	//
+	// Clear the GPIO interrupt.
+	//
+	GPIOIntClear(GPIO_PORTM_BASE, GPIO_INT_PIN_4);
+
+#endif
+
+	Swi_post(swi_GPIOB_handle) ;
+}
+
+
+Void hwi_GPIOE_fxn(UArg arg)
+{
+	long lIntSts ;
+	unsigned long DataRx_BUFFER[14]={0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+
+#if 1
+	//store the interrupt flag into lIntSts
+	lIntSts = GPIOIntStatus(GPIO_PORTE_BASE, false) ;
+
+
+	unsigned long status;
+		status= Reg_Read_CAN3(MCP_CANSTAT);
+		//status= Reg_Read(MCP_CANSTAT);
+		status &=0x0E;
+		switch(status)
+		{
+		case 0x00:
+			break;
+		case 0x02:
+			//PC4 reset for CAN2
+			/*
+				    GPIOPinTypeGPIOOutput(GPIO_PORTC_BASE, GPIO_PIN_4) ;
+				    GPIOPinWrite(GPIO_PORTC_BASE, GPIO_PIN_4, 0) ;
+				    SysCtlDelay(100) ;
+				    GPIOPinWrite(GPIO_PORTC_BASE, GPIO_PIN_4, GPIO_PIN_4) ;
+				    */
+			  //CAN_Reset();
+			  //  CAN_Init();
+			//TxBnCTRL.TXERR = 1;
+			//CANTINF.MERRF =1 ;
+			break;
+		case 0x04:
+			break;
+		case 0x06:
+			break;
+		case 0x08:
+			break;
+		case 0x0A:
+			break;
+		case 0x0C:
+			  IntDisable(INT_GPIOE) ;
+			  Swi_post(swi0);
+			 // Swi_post(swi1);
+			//Reg_BitModify(MCP_CANINTF,0x01, 0x00);
+			//Read_RX_CAN3(0,DataRx_BUFFER);
+
+			break;
+		case 0x0E:
+			break;
+		}
+
+	//
+	// Clear the GPIO interrupt.
+	//
+	GPIOIntClear(GPIO_PORTE_BASE, GPIO_INT_PIN_6);
+
+#endif
+	//Swi_post(swi0);
+				 // Swi_post(swi1);
+
+}
+
+//*****************************************************************************
+//
+// This is the handler for this SysTick interrupt.  FatFs requires a timer tick
+// every 10 ms for internal timing purposes.
+//
+//*****************************************************************************
+void
+hwi_TIMER2_fxn(void)
+{
+    //
+    // Clear the timer interrupt.
+    //
+	ROM_TimerIntClear(TIMER2_BASE, TIMER_TIMA_TIMEOUT);
+
+
+	// ROM_IntMasterDisable();
+	//
+	// Call the FatFs tick timer.
+	//
+    //disk_timerproc();
+
+     // ROM_IntMasterEnable();
+
+}
+
+
+//SWI section
+Void swi_UART7_fxn(UArg arg0, UArg arg1)
+{
+
+
+}
+
+
+Void swi_UART2_fxn(UArg arg0, UArg arg1)
+{
+
+
+}
+
+Void swi_UART3_fxn(UArg arg0, UArg arg1)
+{
+
+
+}
+
+Void swi_I2C1_fxn(UArg arg0, UArg arg1)
+{
+
+
+}
+
+Void swi_SPI0_fxn(UArg arg0, UArg arg1)
+{
+
+
+}
+
+Void swi_SPI1_fxn(UArg arg0, UArg arg1)
+{
+
+
+}
+
+Void swi_SPI2_fxn(UArg arg0, UArg arg1)
+{
+
+
+}
+
+Void swi_CAN0_fxn(UArg arg0, UArg arg1)
+{
+
+
+}
+
+Void swi_CAN1_fxn(UArg arg0, UArg arg1)
+{
+
+
+}
+
+Void swi_GPIOB_fxn(UArg arg0, UArg arg1)
+{
+
+
+
+}
+
+Void swi_GPIOE_fxn(UArg arg0, UArg arg1)
+{
+
+
+
+}
+
+//Task section
+Void tsk_manage_fxn(UArg arg0, UArg arg1)
+{
+	unsigned char ucMsg[20] ;
+	for(;;)
+	{
+		// UARTSend((unsigned char *)"tsk_manage_fxn \n ", 20);
+		//Mailbox_pend(Mb_uart2_handle, ucMsg, BIOS_WAIT_FOREVER) ;
+
+
+		UARTprintf("uart output!!!\n") ;
+		Task_sleep(1000) ;
+	}
+
+}
+
+Void tsk_bootloader_fxn(UArg arg0, UArg arg1)
+{
+	for(;;)
+	{
+		System_printf("tsk_bootloader_fxn \n") ;
+		Task_sleep(2000) ;
+	}
+
+}
+
+Void tsk_diagnosis_fxn(UArg arg0, UArg arg1)
+{
+	for(;;)
+	{
+		UARTprintf("tsk_diagnosis_fxn \n") ;
+		Task_sleep(3000) ;
+	}
+
+}
+
+Void tsk_GPRS_fxn(UArg arg0, UArg arg1)
+{
+	for(;;)
+	{
+		//UARTprintf("UARTprintf tsk_GPRS_fxn \n") ;
+	    System_printf("tsk_GPRS_fxn \n") ;
+		Task_sleep(3000) ;
+	}
+
+}
+
+Void tsk_GPS_fxn(UArg arg0, UArg arg1)
+{
+	for(;;)
+	{
+		System_printf("tsk_GPS_fxn \n") ;
+		UARTSend((unsigned char *)"tsk_GPS_fxn \n", 12);
+		Task_sleep(3000) ;
+	}
+
+}
+
+
+Void tsk_battery_fxn(UArg arg0, UArg arg1)
+{
+	for(;;)
+	{
+		System_printf("tsk_battery_fxn \n") ;
+		Task_sleep(3000) ;
+	}
+
+}
+
+Void tsk_FS_fxn(UArg arg0, UArg arg1)
+{
+	for(;;)
+	{
+		System_printf("tsk_FS_fxn \n") ;
+#ifdef D_SDCARD
+		sdcard_main() ;
+#endif
+		Task_sleep(3000) ;
+	}
+
+}
+
+#define D_SPICAN3
+//#define D_SPICAN4
+
+Void tsk_CAN3_fxn(UArg arg0, UArg arg1)
+{
+
+	for(;;)
+	{
+		 //UARTSend((unsigned char *)"tsk_manage_fxn \n ", 20);
+#ifdef D_SPICAN3
+		sub_spi_main_CAN3() ;
+#endif
+
+		Task_sleep(3000) ;
+	}
+}
+
+Void tsk_CAN4_fxn(UArg arg0, UArg arg1)
+{
+	for(;;)
+	{
+#ifdef D_SPICAN4
+		sub_spi_main() ;
+#endif
+		Task_sleep(3000) ;
+	}
+
+}
+
+
+volatile unsigned long g_bRXFlag1 = 0;
+volatile unsigned long g_bRXFlag2 = 0;
+volatile unsigned long g_bRXFlag3 = 0;
+
+//CAN2 operate as low speed by TJA1055 via CAN0_BASE
+Void tsk_CAN2_fxn(UArg arg0, UArg arg1)
+{
+     tCANMsgObject sCANMsgObject1 ;
+     tCANMsgObject sCANMsgObject2 ;
+     tCANMsgObject sCANMsgObject3 ;
+     tCANMsgObject sCANMsgObject4 ;
+
+     int i ;
+
+     unsigned char ucCANData1[8] = {1, 2, 3, 4, 5, 6, 7, 8} ;
+     unsigned char ucCANData2[5] = { 2, 2, 2, 2, 2 };
+     unsigned char ucCANData3[6] = { 3, 3, 3, 3, 3, 3 };
+     unsigned char ucCANData4[8] = { 4, 4, 4, 4, 5, 5, 5, 5 };
+
+
+     sCANMsgObject1.ui32MsgID = 0x1001 ;
+     sCANMsgObject1.ui32MsgIDMask = 0 ;
+     sCANMsgObject1.ui32Flags = MSG_OBJ_TX_INT_ENABLE ;
+     sCANMsgObject1.ui32MsgLen = sizeof( ucCANData1 ) ;
+     sCANMsgObject1.pui8MsgData = ucCANData1 ;
+
+
+     sCANMsgObject2.ui32MsgID = 0x2001 ;
+     sCANMsgObject2.ui32MsgIDMask = 0 ;
+     sCANMsgObject2.ui32Flags = MSG_OBJ_TX_INT_ENABLE ;
+     sCANMsgObject2.ui32MsgLen = sizeof( ucCANData2 ) ;
+     sCANMsgObject2.pui8MsgData = ucCANData2 ;
+
+
+     sCANMsgObject3.ui32MsgID = 0x3001 ;
+     sCANMsgObject3.ui32MsgIDMask = 0 ;
+     sCANMsgObject3.ui32Flags = MSG_OBJ_TX_INT_ENABLE ;
+     sCANMsgObject3.ui32MsgLen = sizeof( ucCANData3 ) ;
+     sCANMsgObject3.pui8MsgData = ucCANData3 ;
+
+     sCANMsgObject4.ui32MsgID = 0x1001 ;
+     sCANMsgObject4.ui32MsgIDMask = 0x00000 ;
+     sCANMsgObject4.ui32Flags = MSG_OBJ_RX_INT_ENABLE ;//| MSG_OBJ_USE_ID_FILTER | MSG_OBJ_EXTENDED_ID; ;
+     sCANMsgObject4.ui32MsgLen = sizeof( ucCANData4 ) ;
+
+
+     for( ;; )
+     {
+#ifdef D_CAN_SEND
+
+        CANMessageSet( CAN0_BASE, 1, &sCANMsgObject1, MSG_OBJ_TYPE_TX ) ;
+        SysCtlDelay(SysCtlClockGet()/3) ;
+        CANMessageSet( CAN0_BASE, 2, &sCANMsgObject2, MSG_OBJ_TYPE_TX ) ;
+        SysCtlDelay(SysCtlClockGet()/3) ;
+        CANMessageSet( CAN0_BASE, 3, &sCANMsgObject3, MSG_OBJ_TYPE_TX ) ;
+        SysCtlDelay(SysCtlClockGet()/3) ;
+
+		//
+		// Change the value in the message data for each of the messages.
+		//
+		(*(unsigned long *)ucCANData1)++;
+		(*(unsigned long *)ucCANData2)++;
+		(*(unsigned long *)ucCANData3)++;
+
+
+#endif
+
+
+#ifdef D_CAN_RECEIVE
+
+		CANMessageSet(CAN0_BASE, 1, &sCANMsgObject4, MSG_OBJ_TYPE_RX);
+
+		sCANMsgObject4.ui32MsgID = 0x2001;
+		CANMessageSet(CAN0_BASE, 2, &sCANMsgObject4, MSG_OBJ_TYPE_RX);
+
+		sCANMsgObject4.ui32MsgID = 0x3001;               // CAN msg ID
+		CANMessageSet(CAN0_BASE, 3, &sCANMsgObject4, MSG_OBJ_TYPE_RX);
+
+		for(;;)
+		{
+			 if(g_bRXFlag1)
+			{
+				//
+				// Reuse the same message object that was used earlier to configure
+				// the CAN for receiving messages.  A buffer for storing the
+				// received data must also be provided, so set the buffer pointer
+				// within the message object.  This same buffer is used for all
+				// messages in this example, but your application could set a
+				// different buffer each time a message is read in order to store
+				// different messages in different buffers.
+				//
+
+				sCANMsgObject4.pui8MsgData = ucCANData4 ;
+
+				//
+				// Read the message from the CAN.  Message object number 1 is used
+				// (which is not the same thing as CAN ID).  The interrupt clearing
+				// flag is not set because this interrupt was already cleared in
+				// the interrupt handler.
+				//
+				CANMessageGet(CAN0_BASE, 1, &sCANMsgObject4, 0);
+                UARTprintf("CAN0 OBJECT1 RECEIVED!\\n") ;
+				for(i=0; i<sizeof(ucCANData1); i++)
+					UARTprintf("%u \n", ucCANData4[i]) ;
+
+				//
+				// Clear the pending message flag so that the interrupt handler can
+				// set it again when the next message arrives.
+				//
+				g_bRXFlag1 = 0;
+
+			}
+
+		 if(g_bRXFlag2)
+			{
+			 sCANMsgObject4.pui8MsgData = ucCANData4 ;
+				CANMessageGet(CAN0_BASE, 2, &sCANMsgObject4, 0);
+				UARTprintf("CAN0 OBJECT2 RECEIVED!\\n") ;
+				for(i=0; i<sizeof(ucCANData2); i++)
+									UARTprintf("%u \n", ucCANData4[i]) ;
+				g_bRXFlag2 = 0;
+
+			}
+
+
+		 if(g_bRXFlag3)
+		   {
+			 sCANMsgObject4.pui8MsgData = ucCANData4 ;
+			   CANMessageGet(CAN0_BASE, 3, &sCANMsgObject4, 0);
+			   UARTprintf("CAN0 OBJECT3 RECEIVED!\\n") ;
+			   for(i=0; i<sizeof(ucCANData3); i++)
+			   					UARTprintf("%u \n", ucCANData4[i]) ;
+			   g_bRXFlag3 = 0;
+
+		   }
+
+
+		Task_sleep(1000) ;
+
+
+		}
+
+#endif
+
+
+		Task_sleep( 5000 ) ;
+     }
+
+}
+
+
+//CAN1 operates as high speed by TJA1043 vis CAN1_BASE
+Void tsk_CAN1_fxn(UArg arg0, UArg arg1)
+{
+     tCANMsgObject sCANMsgObject1 ;
+     tCANMsgObject sCANMsgObject2 ;
+     tCANMsgObject sCANMsgObject3 ;
+     tCANMsgObject sCANMsgObject4 ;
+     int i ;
+
+     unsigned char ucCANData1[8] = {1, 2, 3, 4, 5, 6, 7, 8} ;
+     unsigned char ucCANData2[5] = { 2, 2, 2, 2, 2 };
+     unsigned char ucCANData3[6] = { 3, 3, 3, 3, 3, 3 };
+     unsigned char ucCANData4[8] = { 4, 4, 4, 4, 5, 5, 5, 5 };
+
+
+     sCANMsgObject1.ui32MsgID = 0x1001 ;
+     sCANMsgObject1.ui32MsgIDMask = 0 ;
+     sCANMsgObject1.ui32Flags = MSG_OBJ_TX_INT_ENABLE ;
+     sCANMsgObject1.ui32MsgLen = sizeof( ucCANData1 ) ;
+     sCANMsgObject1.pui8MsgData = ucCANData1 ;
+
+
+     sCANMsgObject2.ui32MsgID = 0x2001 ;
+     sCANMsgObject2.ui32MsgIDMask = 0 ;
+     sCANMsgObject2.ui32Flags = MSG_OBJ_TX_INT_ENABLE ;
+     sCANMsgObject2.ui32MsgLen = sizeof( ucCANData2 ) ;
+     sCANMsgObject2.pui8MsgData = ucCANData2 ;
+
+
+     sCANMsgObject3.ui32MsgID = 0x3001 ;
+     sCANMsgObject3.ui32MsgIDMask = 0 ;
+     sCANMsgObject3.ui32Flags = MSG_OBJ_TX_INT_ENABLE ;
+     sCANMsgObject3.ui32MsgLen = sizeof( ucCANData3 ) ;
+     sCANMsgObject3.pui8MsgData = ucCANData3 ;
+
+     sCANMsgObject4.ui32MsgID = 0x1001 ;
+     sCANMsgObject4.ui32MsgIDMask = 0x00000 ;
+     sCANMsgObject4.ui32Flags = MSG_OBJ_RX_INT_ENABLE ;//| MSG_OBJ_USE_ID_FILTER | MSG_OBJ_EXTENDED_ID; ;
+     sCANMsgObject4.ui32MsgLen = sizeof( ucCANData4 ) ;
+
+
+     for( ;; )
+     {
+#ifdef D_CAN_SEND
+
+
+          CANMessageSet( CAN1_BASE, 1, &sCANMsgObject1, MSG_OBJ_TYPE_TX ) ;
+          SysCtlDelay(SysCtlClockGet()/3) ;
+          CANMessageSet( CAN1_BASE, 2, &sCANMsgObject2, MSG_OBJ_TYPE_TX ) ;
+          SysCtlDelay(SysCtlClockGet()/3) ;
+          CANMessageSet( CAN1_BASE, 3, &sCANMsgObject3, MSG_OBJ_TYPE_TX ) ;
+          SysCtlDelay(SysCtlClockGet()/3) ;
+        //
+        // Change the value in the message data for each of the messages.
+        //
+        (*(unsigned long *)ucCANData1)++;
+        (*(unsigned long *)ucCANData2)++;
+        (*(unsigned long *)ucCANData3)++;
+
+
+
+
+
+
+#endif
+
+
+#ifdef D_CAN_RECEIVE
+		CANMessageSet(CAN1_BASE, 1, &sCANMsgObject4, MSG_OBJ_TYPE_RX);
+
+		sCANMsgObject4.ui32MsgID = 0x2001;
+		CANMessageSet(CAN1_BASE, 2, &sCANMsgObject4, MSG_OBJ_TYPE_RX);
+
+		sCANMsgObject4.ui32MsgID = 0x3001;               // CAN msg ID
+		CANMessageSet(CAN1_BASE, 3, &sCANMsgObject4, MSG_OBJ_TYPE_RX);
+
+		for(;;)
+		{
+			 if(g_bRXFlag1)
+			{
+				//
+				// Reuse the same message object that was used earlier to configure
+				// the CAN for receiving messages.  A buffer for storing the
+				// received data must also be provided, so set the buffer pointer
+				// within the message object.  This same buffer is used for all
+				// messages in this example, but your application could set a
+				// different buffer each time a message is read in order to store
+				// different messages in different buffers.
+				//
+
+				sCANMsgObject4.pui8MsgData = ucCANData4 ;
+
+				//
+				// Read the message from the CAN.  Message object number 1 is used
+				// (which is not the same thing as CAN ID).  The interrupt clearing
+				// flag is not set because this interrupt was already cleared in
+				// the interrupt handler.
+				//
+				CANMessageGet(CAN1_BASE, 1, &sCANMsgObject4, 0);
+                UARTprintf("CAN1 OBJECT1 RECEIVED!\\n") ;
+				for(i=0; i<sizeof(ucCANData1); i++)
+					UARTprintf("%u \n", ucCANData4[i]) ;
+
+				//
+				// Clear the pending message flag so that the interrupt handler can
+				// set it again when the next message arrives.
+				//
+				g_bRXFlag1 = 0;
+
+			}
+
+		 if(g_bRXFlag2)
+			{
+			 sCANMsgObject4.pui8MsgData = ucCANData4 ;
+				CANMessageGet(CAN1_BASE, 2, &sCANMsgObject4, 0);
+				UARTprintf("CAN1 OBJECT2 RECEIVED!\\n") ;
+				for(i=0; i<sizeof(ucCANData2); i++)
+									UARTprintf("%u \n", ucCANData4[i]) ;
+				g_bRXFlag2 = 0;
+
+			}
+
+
+		 if(g_bRXFlag3)
+		   {
+			 sCANMsgObject4.pui8MsgData = ucCANData4 ;
+			   CANMessageGet(CAN1_BASE, 3, &sCANMsgObject4, 0);
+			   UARTprintf("CAN1 OBJECT3 RECEIVED!\\n") ;
+			   for(i=0; i<sizeof(ucCANData3); i++)
+			   					UARTprintf("%u \n", ucCANData4[i]) ;
+			   g_bRXFlag3 = 0;
+
+		   }
+
+
+		Task_sleep(1000) ;
+
+
+		}
+
+#endif
+
+
+		Task_sleep( 5000 ) ;
+     }
+
+}
+
+/*
+ *  ======== taskFxn ========
+ */
+Void taskFxn(UArg a0, UArg a1)
+{
+  //  UARTprintf("enter taskFxn()\n");
+
+    Task_sleep(1000);
+
+  //  UARTprintf("exit taskFxn()\n");
+}
+
+/**/
+Void init_gpio()
+{
+
+	  //Add 5V5_EN function to enable 5V5_OUT for CAN trancever with H4 pin
+	  ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOH) ;
+	  ROM_GPIOPinTypeGPIOOutput(GPIO_PORTH_BASE, GPIO_PIN_2) ;
+	  ROM_GPIOPinWrite(GPIO_PORTH_BASE, GPIO_PIN_2, GPIO_PIN_2) ;
+
+}
+
+/**/
+
+
+Void cfg_interrupt()
+{
+
+
+     // Enable processor interrupts.
+     //
+     ROM_IntMasterEnable();
+
+#if 0           //Delete this GPIO trigger function
+		//Enable GPIOM4 for boot trigger
+     ROM_GPIOPinIntEnable(GPIO_PORTM_BASE, GPIO_PIN_4) ;
+#endif
+
+}
+
+
+
+Void set_PE6_INT()
+{
+		//PE6 work as interrupt, Low lever trigger, for CAN2
+		SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOE) ;
+		GPIOPinTypeGPIOInput(GPIO_PORTE_BASE, GPIO_PIN_6) ;
+		//GPIOIntTypeSet(GPIO_PORTE_BASE, GPIO_PIN_6, GPIO_LOW_LEVEL) ; GPIO_FALLING_EDGE
+		GPIOIntTypeSet(GPIO_PORTE_BASE, GPIO_PIN_6, GPIO_FALLING_EDGE) ;
+		GPIOIntEnable(GPIO_PORTE_BASE, GPIO_PIN_6) ;
+		IntEnable(INT_GPIOE) ;
+		ROM_IntPrioritySet(INT_GPIOE, 0x00);
+}
+
+Void init_spi_can4()
+{
+
+		SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF) ;
+		SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOE) ;
+		SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOC) ;
+
+		SysCtlPeripheralEnable(SYSCTL_PERIPH_SSI1) ;
+
+
+		// Change PF0 into hardware (NMI) pins.  First open the
+		// lock and select the bits we want to modify in the GPIO commit
+		// register.
+		//
+		HWREG(GPIO_PORTF_BASE + GPIO_O_LOCK) = GPIO_LOCK_KEY;
+		HWREG(GPIO_PORTF_BASE + GPIO_O_CR) = 0x0F;
+
+		//PF0,1,2 work as SPI function
+		GPIOPinConfigure(GPIO_PF0_SSI1RX) ;
+		GPIOPinConfigure(GPIO_PF1_SSI1TX) ;
+		GPIOPinConfigure(GPIO_PF2_SSI1CLK) ;
+		//GPIOPinConfigure(GPIO_PF3_SSI1FSS) ;
+
+		GPIOPinTypeSSI(GPIO_PORTF_BASE, GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3) ;
+
+		// Finally, clear the commit register and the lock to prevent
+		// the pin configuration from being changed accidentally later.
+		// Note that the lock is closed whenever we write to the GPIO_O_CR
+		// register so we need to reopen it here.
+		//
+		HWREG(GPIO_PORTF_BASE + GPIO_O_LOCK) = GPIO_LOCK_KEY;
+		HWREG(GPIO_PORTF_BASE + GPIO_O_CR) = 0x00;
+		HWREG(GPIO_PORTF_BASE + GPIO_O_LOCK) = 0;
+
+		//PC4 reset for CAN2
+		GPIOPinTypeGPIOOutput(GPIO_PORTC_BASE, GPIO_PIN_4) ;
+		GPIOPinWrite(GPIO_PORTC_BASE, GPIO_PIN_4, 0) ;
+		SysCtlDelay(100) ;
+		GPIOPinWrite(GPIO_PORTC_BASE, GPIO_PIN_4, GPIO_PIN_4) ;
+
+		//PF3 work as SPI CS with GPIO mode
+		GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_3) ;
+		GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3, GPIO_PIN_3) ;
+
+		#if 0
+		//PE6 work as interrupt, Low lever trigger
+		set_PE6_INT() ;
+		#endif
+
+
+		//PF7 operate as CAN tranceiver Slient enable , high level select silent mode, low level select normal mode
+		GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_3 ) ;
+		GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3, 0) ;  //Normal mode enable
+
+
+		//Set SSI1 configure
+		SSIConfigSetExpClk(SSI1_BASE, SysCtlClockGet(), SSI_FRF_MOTO_MODE_0, SSI_MODE_MASTER, 1000000, 8) ;
+		SSIEnable(SSI1_BASE) ;
+}
+
+
+Void init_spi_can3()
+{
+	    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF) ;
+	    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOK) ;
+	    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOC) ;
+	    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOD) ;
+
+	    SysCtlPeripheralEnable(SYSCTL_PERIPH_SSI3) ;
+
+	    //PF0,1,2 work as SPI function
+	    GPIOPinConfigure(GPIO_PK2_SSI3RX) ;
+	    GPIOPinConfigure(GPIO_PK3_SSI3TX) ;
+	    GPIOPinConfigure(GPIO_PK0_SSI3CLK) ;
+	    GPIOPinConfigure(GPIO_PK1_SSI3FSS) ;
+
+	    GPIOPinTypeSSI(GPIO_PORTK_BASE, GPIO_PIN_0|GPIO_PIN_3|GPIO_PIN_2) ;
+
+		//PC5 reset for CAN3
+		GPIOPinTypeGPIOOutput(GPIO_PORTC_BASE, GPIO_PIN_5) ;
+		GPIOPinWrite(GPIO_PORTC_BASE, GPIO_PIN_5, 0) ;
+		SysCtlDelay(100) ;
+		GPIOPinWrite(GPIO_PORTC_BASE, GPIO_PIN_5, GPIO_PIN_5) ;
+
+
+	    //PK1 work as SPI CS with GPIO mode
+	    GPIOPinTypeGPIOOutput(GPIO_PORTK_BASE, GPIO_PIN_1) ;
+	    GPIOPinWrite(GPIO_PORTK_BASE, GPIO_PIN_1, GPIO_PIN_1) ;
+
+#if 0
+	    //PE6 work as interrupt, Low lever trigger
+	    set_PE6_INT() ;
+#endif
+
+
+	    //PF7 operate as CAN tranceiver Slient enable , high level select silent mode, low level select normal mode
+	    GPIOPinTypeGPIOOutput(GPIO_PORTD_BASE, GPIO_PIN_3 ) ;
+	    GPIOPinWrite(GPIO_PORTD_BASE, GPIO_PIN_3, 0) ;  //Normal mode enable
+
+
+	    //Set SSI1 configure
+	    SSIConfigSetExpClk(SSI3_BASE, SysCtlClockGet(), SSI_FRF_MOTO_MODE_0, SSI_MODE_MASTER, 1000000, 8) ;
+	    SSIEnable(SSI3_BASE) ;
+}
+
+
+Void init_fram()
+{
+	  ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOG) ;
+
+	   ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_I2C4) ;
+	   ROM_SysCtlDelay(1);
+	   ROM_I2CMasterEnable(I2C4_BASE);
+	   ROM_SysCtlDelay(1);
+	   ROM_SysCtlPeripheralReset(SYSCTL_PERIPH_I2C4);
+
+	   ROM_GPIOPinConfigure( GPIO_PG2_I2C4SCL ) ;
+	   ROM_GPIOPinConfigure( GPIO_PG3_I2C4SDA ) ;
+
+	   ROM_GPIOPinTypeI2C(GPIO_PORTG_BASE, GPIO_PIN_3) ;
+	   GPIOPinTypeI2CSCL(GPIO_PORTG_BASE, GPIO_PIN_2) ;
+
+	   ROM_I2CMasterInitExpClk(I2C4_BASE, SysCtlClockGet(), true);
+}
+
+//#define D_LOW_CAN
+
+
+Void init_sys()
+{
+     //GPIOM initialization for bootloader
+     init_gpio() ;
+
+     //UART0 initialization
+     init_uart() ;
+
+
+	//SDCARD initialization by SS2
+	 init_sdcard() ;
+
+	//CAN initialization for CAN1_BASE
+	init_high_can() ;
+
+	//CAN initialization for CAN0_BASE
+	init_low_can() ;
+
+	//SPI initialization for CAN4 by SSI1
+	init_spi_can4() ;
+
+	//SPI initialization for CAN4 by SSI3
+	init_spi_can3() ;
+
+	//I2C4 initialization for FRAM
+	init_fram() ;
+
+    //interrupt setting for system
+	cfg_interrupt() ;
+
+}
+
+
+//*****************************************************************************
+//
+// Send a string to the UART.
+//
+//*****************************************************************************
+void
+UARTSend(const unsigned char *pucBuffer, unsigned long ulCount)
+{
+    //
+    // Loop while there are more characters to send.
+    //
+    while(ulCount--)
+    {
+        //
+        // Write the next character to the UART.
+        //
+        ROM_UARTCharPutNonBlocking(UART7_BASE, *pucBuffer++);
+    }
+}
+
+
+Void inter_test()
+{
+	    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOE);
+	    GPIOPinTypeGPIOInput(GPIO_PORTE_BASE, GPIO_PIN_6) ;
+	    GPIOIntTypeSet(GPIO_PORTE_BASE, GPIO_PIN_6, GPIO_LOW_LEVEL) ;
+	    GPIOIntEnable(GPIO_PORTE_BASE, GPIO_PIN_6) ;
+
+
+	    //
+	    // Enable interrupts to the processor.
+	    //
+	    ROM_IntMasterEnable();
+
+	    //
+	    // Enable the interrupts.
+	    //
+
+	    ROM_IntEnable(INT_GPIOE);
+
+
+	    //
+	    // Set the interrupt priorities so they are all equal.
+	    //
+
+	    ROM_IntPrioritySet(INT_GPIOE, 0x00);
+
+	    /*
+	       while(1)
+	    {
+	    }
+	    */
+}
+
+
+/*
+ *  ======== swi0Fxn =======
+ */
+Void swi0Fxn(UArg arg0, UArg arg1)
+{
+
+	unsigned long DataRx_BUFFER[14]={0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+	Read_RX_CAN3(0,DataRx_BUFFER);
+	IntEnable(INT_GPIOE) ;
+
+    System_printf("Enter swi0Fxn, a0 = %d, a1 = %d\n", (Int)arg0, (Int)arg1);
+    System_printf("swi0 trigger = %d\n", Swi_getTrigger());
+    System_printf("swi0 pri = %d\n", Swi_getPri(swi0));
+    System_printf("Exit swi0Fxn\n");
+}
+
+/*
+ *  ======== swi1Fxn =======
+ */
+Void swi1Fxn(UArg arg0, UArg arg1)
+{
+    System_printf("Enter swi1Fxn, a0 = %d, a1 = %d\n", (Int)arg0, (Int)arg1);
+    System_printf("swi1 trigger = %d\n", Swi_getTrigger());
+    System_printf("swi1 pri = %d\n", Swi_getPri(swi1));
+    System_printf("Exit swi1Fxn\n");
+}
+
+
+/*
+ *  ======== main ========
+ */
+Void main()
+{ 
+    Task_Handle task;
+    Error_Block eb;
+
+    Swi_Params swiParams;
+
+    Swi_Params_init(&swiParams);
+    swiParams.arg0 = 1;
+    swiParams.arg1 = 0;
+    swiParams.priority = 2;
+    swiParams.trigger = 0;
+
+    swi0 = Swi_create(swi0Fxn, &swiParams, NULL);
+
+    swiParams.arg0 = 2;
+    swiParams.arg1 = 0;
+    swiParams.priority = 1;
+    swiParams.trigger = 3;
+
+    swi1 = Swi_create(swi1Fxn, &swiParams, NULL);
+
+    ROM_FPULazyStackingEnable();
+
+    System_printf("enter main()\n");
+
+    Error_init(&eb);
+
+
+    //System driver initialization
+    init_sys() ;
+
+
+    //
+    // Prompt for text to be entered.
+    //
+     UARTprintf("Tiva System entered!\n") ;
+
+    task = Task_create(taskFxn, NULL, &eb);
+    if (task == NULL) {
+        System_printf("Task_create() failed!\n");
+        BIOS_exit(0);
+    }
+
+    BIOS_start();     /* enable interrupts and start SYS/BIOS */
+}

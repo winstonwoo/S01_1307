@@ -2,15 +2,15 @@
 #define __MCP2515_H
 
 /*
-mcp2515.h
+  mcp2515.h
 
-This file contains constants that are specific to the MCP2515.
+  This file contains constants that are specific to the MCP2515.
 
-Version     Date        Description
-----------------------------------------------------------------------
-v1.00       2003/12/11  Initial release
+  Version     Date        Description
+  ----------------------------------------------------------------------
+  v1.00       2003/12/11  Initial release
 
-Copyright 2003 Kimberly Otten Software Consulting
+  Copyright 2003 Kimberly Otten Software Consulting
 */
 
 // Define MCP2515 register addresses

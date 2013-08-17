@@ -215,14 +215,14 @@ uint32_t ulDataRxCAN3 = 0;
 static
 void SELECT (void)
 {
-    ROM_GPIOPinWrite(GPIO_PORTK_BASE, GPIO_PIN_1, 0);
+     ROM_GPIOPinWrite(GPIO_PORTK_BASE, GPIO_PIN_1, 0);
 }
 
 // de-asserts the CS pin to the card
 static
 void DESELECT (void)
 {
-	ROM_GPIOPinWrite(GPIO_PORTK_BASE, GPIO_PIN_1, GPIO_PIN_1);
+     ROM_GPIOPinWrite(GPIO_PORTK_BASE, GPIO_PIN_1, GPIO_PIN_1);
 }
 
 
@@ -233,11 +233,11 @@ void DESELECT (void)
 static
 void xmit_spi(BYTE dat)
 {
-    uint32_t ui32RcvDat;
+     uint32_t ui32RcvDat;
 
-    ROM_SSIDataPut(SSI3_BASE, dat); /* Write the data to the tx fifo */
+     ROM_SSIDataPut(SSI3_BASE, dat); /* Write the data to the tx fifo */
 
-    ROM_SSIDataGet(SSI3_BASE, &ui32RcvDat); /* flush data read during the write */
+     ROM_SSIDataGet(SSI3_BASE, &ui32RcvDat); /* flush data read during the write */
 }
 
 
@@ -248,340 +248,386 @@ void xmit_spi(BYTE dat)
 static
 BYTE rcvr_spi (void)
 {
-    uint32_t ui32RcvDat;
+     uint32_t ui32RcvDat;
 
-    ROM_SSIDataPut(SSI3_BASE, 0xFF); /* write dummy data */
+     ROM_SSIDataPut(SSI3_BASE, 0xFF); /* write dummy data */
 
-    ROM_SSIDataGet(SSI3_BASE, &ui32RcvDat); /* read data frm rx fifo */
+     ROM_SSIDataGet(SSI3_BASE, &ui32RcvDat); /* read data frm rx fifo */
 
-    return (BYTE)ui32RcvDat;
+     return (BYTE)ui32RcvDat;
 }
 
 #endif
+
+
+Void init_spi_can3()
+{
+     SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF) ;
+     SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOK) ;
+     SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOC) ;
+     SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOD) ;
+
+     SysCtlPeripheralEnable(SYSCTL_PERIPH_SSI3) ;
+
+     //PF0,1,2 work as SPI function
+     GPIOPinConfigure(GPIO_PK2_SSI3RX) ;
+     GPIOPinConfigure(GPIO_PK3_SSI3TX) ;
+     GPIOPinConfigure(GPIO_PK0_SSI3CLK) ;
+     GPIOPinConfigure(GPIO_PK1_SSI3FSS) ;
+
+     GPIOPinTypeSSI(GPIO_PORTK_BASE, GPIO_PIN_0|GPIO_PIN_3|GPIO_PIN_2) ;
+
+     //PC5 reset for CAN3
+     GPIOPinTypeGPIOOutput(GPIO_PORTC_BASE, GPIO_PIN_5) ;
+     GPIOPinWrite(GPIO_PORTC_BASE, GPIO_PIN_5, 0) ;
+     SysCtlDelay(100) ;
+     GPIOPinWrite(GPIO_PORTC_BASE, GPIO_PIN_5, GPIO_PIN_5) ;
+
+
+     //PK1 work as SPI CS with GPIO mode
+     GPIOPinTypeGPIOOutput(GPIO_PORTK_BASE, GPIO_PIN_1) ;
+     GPIOPinWrite(GPIO_PORTK_BASE, GPIO_PIN_1, GPIO_PIN_1) ;
+
+#if 0
+     //PE6 work as interrupt, Low lever trigger
+     set_PE6_INT() ;
+#endif
+
+
+     //PF7 operate as CAN tranceiver Slient enable , high level select silent mode, low level select normal mode
+     GPIOPinTypeGPIOOutput(GPIO_PORTD_BASE, GPIO_PIN_3 ) ;
+     GPIOPinWrite(GPIO_PORTD_BASE, GPIO_PIN_3, 0) ;  //Normal mode enable
+
+
+     //Set SSI1 configure
+     SSIConfigSetExpClk(SSI3_BASE, SysCtlClockGet(), SSI_FRF_MOTO_MODE_0, SSI_MODE_MASTER, 1000000, 8) ;
+     SSIEnable(SSI3_BASE) ;
+}
+
 
 int
 sub_spi_main_CAN3(void)
 {
 
-    //unsigned long ulDataTx[NUM_SSI_DATA]={0,0,0};
-    uint32_t ulDataRx = 0;
-	int i ;
+     //unsigned long ulDataTx[NUM_SSI_DATA]={0,0,0};
+     uint32_t ulDataRx = 0;
+     int i ;
 
 
-    while(SSIDataGetNonBlocking(SSI3_BASE, &ulDataRx))
-      {
-      }
+     while(SSIDataGetNonBlocking(SSI3_BASE, &ulDataRx))
+     {
+     }
 
 
 
 #ifdef MY_SPI
-    BYTE bData = 0x00 ;
-    uint32_t ui32Data ;
+     BYTE bData = 0x00 ;
+     uint32_t ui32Data ;
 
-    for(; ;)
-    {
-    SELECT() ;
-    xmit_spi(0xc0) ;
-    DESELECT() ;
+     for(; ;)
+     {
+          SELECT() ;
+          xmit_spi(0xc0) ;
+          DESELECT() ;
 
-    SELECT() ;
-    xmit_spi(0x05) ;
-    xmit_spi(0x0f) ;
-    xmit_spi(0xe0) ;
-    xmit_spi(0x80) ;
-    DESELECT() ;
+          SELECT() ;
+          xmit_spi(0x05) ;
+          xmit_spi(0x0f) ;
+          xmit_spi(0xe0) ;
+          xmit_spi(0x80) ;
+          DESELECT() ;
 
-    SELECT() ;
-    xmit_spi(0x03) ;
-    xmit_spi(0x0e) ;
+          SELECT() ;
+          xmit_spi(0x03) ;
+          xmit_spi(0x0e) ;
 
-    bData = rcvr_spi() ;
-
-
-
-    DESELECT() ;
+          bData = rcvr_spi() ;
 
 
-    }
+
+          DESELECT() ;
+
+
+     }
 
 
 #endif
 
-    CAN_Reset_CAN3();
-    CAN_Init_CAN3();
+     CAN_Reset_CAN3();
+     CAN_Init_CAN3();
 
-    set_PE6_INT() ;
+     set_PE6_INT() ;
 
-    ulDataRx=Reg_Read_CAN3(MCP_CANINTF);
+     ulDataRx=Reg_Read_CAN3(MCP_CANINTF);
 
-    //inter_test() ;
+     //inter_test() ;
 
-    for(;;)
-    {
-    Transmit_Data_CAN3(1,DataTx_BUFFER_CAN3,0,0); // uncomment this if you want to send data
+     for(;;)
+     {
+          Transmit_Data_CAN3(1,DataTx_BUFFER_CAN3,0,0); // uncomment this if you want to send data
 
-    SysCtlDelay(SysCtlClockGet()/3) ;
-    Task_sleep(1000) ;
+          SysCtlDelay(SysCtlClockGet()/3) ;
+          Task_sleep(1000) ;
 
-    }
+     }
 
 }
 
 void SPI_Send_CAN3(unsigned long x[], int y)
 {
-	int i;
+     int i;
 
-	GPIOPinWrite(GPIO_PORTK_BASE, GPIO_PIN_1, 0x00);
-	for(i=0;i<y;i++)
-	{
+     GPIOPinWrite(GPIO_PORTK_BASE, GPIO_PIN_1, 0x00);
+     for(i=0;i<y;i++)
+     {
 	  while(SSIBusy(SSI3_BASE));
 	  SSIDataPut(SSI3_BASE, x[i]);
 	  while(SSIBusy(SSI3_BASE));
-	}
-	GPIOPinWrite(GPIO_PORTK_BASE, GPIO_PIN_1, GPIO_PIN_1);
+     }
+     GPIOPinWrite(GPIO_PORTK_BASE, GPIO_PIN_1, GPIO_PIN_1);
 }
 
 unsigned long SPI_Receive_CAN3(int x)
 {
-	uint32_t Rxdata=0;
-	for(;x>0;x--)
-	{
-		SSIDataGet(SSI3_BASE, &Rxdata);
-	}
-	return Rxdata;
+     uint32_t Rxdata=0;
+     for(;x>0;x--)
+     {
+          SSIDataGet(SSI3_BASE, &Rxdata);
+     }
+     return Rxdata;
 }
 
 unsigned long Reg_Read_CAN3(unsigned long address)
 {
-	unsigned long Tx[3];
-	unsigned long result;
+     unsigned long Tx[3];
+     unsigned long result;
 
 
-	while(HWREG(SSI3_BASE + SSI_O_SR) & SSI_SR_RNE)
-		{
-			SPI_Receive_CAN3(1);
-		}
+     while(HWREG(SSI3_BASE + SSI_O_SR) & SSI_SR_RNE)
+     {
+          SPI_Receive_CAN3(1);
+     }
 
-	Tx[0]=0x03;
-	Tx[1]=address;
-	Tx[2]=0;
-	SPI_Send_CAN3(Tx,3);
+     Tx[0]=0x03;
+     Tx[1]=address;
+     Tx[2]=0;
+     SPI_Send_CAN3(Tx,3);
 
-	while(HWREG(SSI3_BASE + SSI_O_SR) & SSI_SR_RNE)
-	{
-		result=SPI_Receive_CAN3(1);
-	}
-	return result;
+     while(HWREG(SSI3_BASE + SSI_O_SR) & SSI_SR_RNE)
+     {
+          result=SPI_Receive_CAN3(1);
+     }
+     return result;
 }
 
 void Reg_Write_CAN3(unsigned long address,unsigned long data)
 {
-	    unsigned long Tx[3];
-		while(HWREG(SSI3_BASE + SSI_O_SR) & SSI_SR_RNE)
-			{
-				SPI_Receive_CAN3(1);
-			}
-		Tx[0]=0x02;
-		Tx[1]=address;
-		Tx[2]=data;
-		SPI_Send_CAN3(Tx,3);
-		while(HWREG(SSI3_BASE + SSI_O_SR) & SSI_SR_RNE)
-		{
-			SPI_Receive_CAN3(1);
-		}
+     unsigned long Tx[3];
+     while(HWREG(SSI3_BASE + SSI_O_SR) & SSI_SR_RNE)
+     {
+          SPI_Receive_CAN3(1);
+     }
+     Tx[0]=0x02;
+     Tx[1]=address;
+     Tx[2]=data;
+     SPI_Send_CAN3(Tx,3);
+     while(HWREG(SSI3_BASE + SSI_O_SR) & SSI_SR_RNE)
+     {
+          SPI_Receive_CAN3(1);
+     }
 }
 
 void CAN_Reset_CAN3(void)
 {
-	unsigned long data[1];
-	data[0]=0xC0;
-	SPI_Send_CAN3(data,1);
-	SysCtlDelay(1000);
+     unsigned long data[1];
+     data[0]=0xC0;
+     SPI_Send_CAN3(data,1);
+     SysCtlDelay(1000);
 }
 
 void Reg_BitModify_CAN3(unsigned long address,unsigned long mask, unsigned long data)
 {
-	unsigned long Tx[4];
+     unsigned long Tx[4];
 
-	while(HWREG(SSI3_BASE + SSI_O_SR) & SSI_SR_RNE)
-		{
-			SPI_Receive_CAN3(1);
-		}
+     while(HWREG(SSI3_BASE + SSI_O_SR) & SSI_SR_RNE)
+     {
+          SPI_Receive_CAN3(1);
+     }
 
-	Tx[0]=0x05;
-	Tx[1]=address;
-	Tx[2]=mask;
-	Tx[3]=data;
-	SPI_Send_CAN3(Tx,4);
+     Tx[0]=0x05;
+     Tx[1]=address;
+     Tx[2]=mask;
+     Tx[3]=data;
+     SPI_Send_CAN3(Tx,4);
 
-	while(HWREG(SSI3_BASE + SSI_O_SR) & SSI_SR_RNE)
-	{
-		SPI_Receive_CAN3(1);
-	}
+     while(HWREG(SSI3_BASE + SSI_O_SR) & SSI_SR_RNE)
+     {
+          SPI_Receive_CAN3(1);
+     }
 
 }
 
 void CAN_Init_CAN3(void)
 {
-    unsigned long ulDataRx = 0;
+     unsigned long ulDataRx = 0;
 
-	    CAN_Reset_CAN3();
-	    Reg_BitModify_CAN3(MCP_CANCTRL,0xE0, 0x80);
-	    ulDataRx= Reg_Read_CAN3(MCP_CANSTAT);
-	    while((ulDataRx & 0xE0) !=0x80)
-	    {
-	    	CAN_Reset_CAN3();
-	    	Reg_BitModify_CAN3(MCP_CANCTRL,0xE0, 0x80);
-	    	ulDataRx=Reg_Read_CAN3(MCP_CANSTAT);
-	    }
+     CAN_Reset_CAN3();
+     Reg_BitModify_CAN3(MCP_CANCTRL,0xE0, 0x80);
+     ulDataRx= Reg_Read_CAN3(MCP_CANSTAT);
+     while((ulDataRx & 0xE0) !=0x80)
+     {
+          CAN_Reset_CAN3();
+          Reg_BitModify_CAN3(MCP_CANCTRL,0xE0, 0x80);
+          ulDataRx=Reg_Read_CAN3(MCP_CANSTAT);
+     }
 
-	    //100K baut rate via 16MOSC
-	    Reg_Write_CAN3(MCP_CNF1,0x07);
-	   	Reg_Write_CAN3(MCP_CNF2,0x92);
-	    Reg_Write_CAN3(MCP_CNF3,0x82);
+     //100K baut rate via 16MOSC
+     Reg_Write_CAN3(MCP_CNF1,0x07);
+     Reg_Write_CAN3(MCP_CNF2,0x92);
+     Reg_Write_CAN3(MCP_CNF3,0x82);
 
 
-	    Reg_Write_CAN3(MCP_RXB0CTRL,0x20);
-	    Reg_Write_CAN3(MCP_RXB1CTRL,0x60);
-	    Reg_Write_CAN3(MCP_BFPCTRL,0x0F);
-	    Reg_Write_CAN3(MCP_RXF0SIDH,0xAA);
-	    Reg_Write_CAN3(MCP_RXF0SIDL,0x40);
-	    Reg_Write_CAN3(MCP_RXF0EID8,0x00);
-	    Reg_Write_CAN3(MCP_RXF0EID0,0x00);
-	    Reg_Write_CAN3(MCP_RXM0SIDH,0x00);
-	    Reg_Write_CAN3(MCP_RXM0SIDL,0x00);
-	    Reg_Write_CAN3(MCP_RXM0EID8,0x00);
-	    Reg_Write_CAN3(MCP_RXM0EID0,0x00);
+     Reg_Write_CAN3(MCP_RXB0CTRL,0x20);
+     Reg_Write_CAN3(MCP_RXB1CTRL,0x60);
+     Reg_Write_CAN3(MCP_BFPCTRL,0x0F);
+     Reg_Write_CAN3(MCP_RXF0SIDH,0xAA);
+     Reg_Write_CAN3(MCP_RXF0SIDL,0x40);
+     Reg_Write_CAN3(MCP_RXF0EID8,0x00);
+     Reg_Write_CAN3(MCP_RXF0EID0,0x00);
+     Reg_Write_CAN3(MCP_RXM0SIDH,0x00);
+     Reg_Write_CAN3(MCP_RXM0SIDL,0x00);
+     Reg_Write_CAN3(MCP_RXM0EID8,0x00);
+     Reg_Write_CAN3(MCP_RXM0EID0,0x00);
 
-	    Reg_Write_CAN3(MCP_RXF1SIDH,0x00);
-	    Reg_Write_CAN3(MCP_RXF1SIDL,0x00);
-	    Reg_Write_CAN3(MCP_RXF1EID8,0x00);
-	    Reg_Write_CAN3(MCP_RXF1EID0,0x00);
-	    Reg_Write_CAN3(MCP_RXM1SIDH,0xFF);
-	    Reg_Write_CAN3(MCP_RXM1SIDL,0x00);
-	    Reg_Write_CAN3(MCP_RXM1EID8,0x00);
-	    Reg_Write_CAN3(MCP_RXM1EID0,0x00);
+     Reg_Write_CAN3(MCP_RXF1SIDH,0x00);
+     Reg_Write_CAN3(MCP_RXF1SIDL,0x00);
+     Reg_Write_CAN3(MCP_RXF1EID8,0x00);
+     Reg_Write_CAN3(MCP_RXF1EID0,0x00);
+     Reg_Write_CAN3(MCP_RXM1SIDH,0xFF);
+     Reg_Write_CAN3(MCP_RXM1SIDL,0x00);
+     Reg_Write_CAN3(MCP_RXM1EID8,0x00);
+     Reg_Write_CAN3(MCP_RXM1EID0,0x00);
 
-	    Reg_Write_CAN3(MCP_RXF2SIDH,0x00);
-	    Reg_Write_CAN3(MCP_RXF2SIDL,0x00);
-	    Reg_Write_CAN3(MCP_RXF2EID8,0x00);
-	    Reg_Write_CAN3(MCP_RXF2EID0,0x00);
+     Reg_Write_CAN3(MCP_RXF2SIDH,0x00);
+     Reg_Write_CAN3(MCP_RXF2SIDL,0x00);
+     Reg_Write_CAN3(MCP_RXF2EID8,0x00);
+     Reg_Write_CAN3(MCP_RXF2EID0,0x00);
 
-	    Reg_Write_CAN3(MCP_RXF3SIDH,0x00);
-	    Reg_Write_CAN3(MCP_RXF3SIDL,0x00);
-	    Reg_Write_CAN3(MCP_RXF3EID8,0x00);
-	    Reg_Write_CAN3(MCP_RXF3EID0,0x00);
-	    Reg_Write_CAN3(MCP_CANINTE,0x01);
+     Reg_Write_CAN3(MCP_RXF3SIDH,0x00);
+     Reg_Write_CAN3(MCP_RXF3SIDL,0x00);
+     Reg_Write_CAN3(MCP_RXF3EID8,0x00);
+     Reg_Write_CAN3(MCP_RXF3EID0,0x00);
+     Reg_Write_CAN3(MCP_CANINTE,0x01);
 
-	    Reg_Write_CAN3(MCP_TXB0CTRL,0x03);//TXB0 highest priority
-	    Reg_Write_CAN3(MCP_TXB1CTRL,0x02);//TXB1 middle priority
-	    Reg_Write_CAN3(MCP_TXB2CTRL,0x00);//TXB2 lowest priority
+     Reg_Write_CAN3(MCP_TXB0CTRL,0x03);//TXB0 highest priority
+     Reg_Write_CAN3(MCP_TXB1CTRL,0x02);//TXB1 middle priority
+     Reg_Write_CAN3(MCP_TXB2CTRL,0x00);//TXB2 lowest priority
 
-	    Reg_BitModify_CAN3(MCP_CANCTRL,0xE0, 0x00);
-	    ulDataRx= Reg_Read_CAN3(MCP_CANSTAT);
-	    while((ulDataRx & 0xE0) !=0x00)
-	     {
-	    	   CAN_Reset_CAN3();
-	    	   Reg_BitModify_CAN3(MCP_CANCTRL,0xE0, 0x00);
-	    	   ulDataRx=Reg_Read_CAN3(MCP_CANSTAT);
-	     }
+     Reg_BitModify_CAN3(MCP_CANCTRL,0xE0, 0x00);
+     ulDataRx= Reg_Read_CAN3(MCP_CANSTAT);
+     while((ulDataRx & 0xE0) !=0x00)
+     {
+          CAN_Reset_CAN3();
+          Reg_BitModify_CAN3(MCP_CANCTRL,0xE0, 0x00);
+          ulDataRx=Reg_Read_CAN3(MCP_CANSTAT);
+     }
 
 }
 
 void Transmit_Data_CAN3(unsigned long number, unsigned long TX_A[],unsigned long TX_B[],unsigned long TX_C[])
 {
-	unsigned long Tx[1];
-	if(number&0x01 !=0)
-	{
-    Reg_Write_CAN3(MCP_TXB0SIDH,TX_A[0]);
-    Reg_Write_CAN3(MCP_TXB0SIDL,TX_A[1]);
-    Reg_Write_CAN3(MCP_TXB0DLC,TX_A[2]);
-    Reg_Write_CAN3(MCP_TXB0D0,TX_A[3]);
-    Reg_Write_CAN3(MCP_TXB0D1,TX_A[4]);
-    Reg_Write_CAN3(MCP_TXB0D2,TX_A[5]);
-    Reg_Write_CAN3(MCP_TXB0D3,TX_A[6]);
-    Reg_Write_CAN3(MCP_TXB0D4,TX_A[7]);
-    Reg_Write_CAN3(MCP_TXB0D5,TX_A[8]);
-    Reg_Write_CAN3(MCP_TXB0D6,TX_A[9]);
-    Reg_Write_CAN3(MCP_TXB0D7,TX_A[10]);
-	}
-	if(number&0x02 !=0)
-		{
-	    Reg_Write_CAN3(MCP_TXB1SIDH,TX_B[0]);
-	    Reg_Write_CAN3(MCP_TXB1SIDL,TX_B[1]);
-	    Reg_Write_CAN3(MCP_TXB1DLC,TX_B[2]);
-	    Reg_Write_CAN3(MCP_TXB1D0,TX_B[3]);
-	    Reg_Write_CAN3(MCP_TXB1D1,TX_B[4]);
-	    Reg_Write_CAN3(MCP_TXB1D2,TX_B[5]);
-	    Reg_Write_CAN3(MCP_TXB1D3,TX_B[6]);
-	    Reg_Write_CAN3(MCP_TXB1D4,TX_B[7]);
-	    Reg_Write_CAN3(MCP_TXB1D5,TX_B[8]);
-	    Reg_Write_CAN3(MCP_TXB1D6,TX_B[9]);
-	    Reg_Write_CAN3(MCP_TXB1D7,TX_B[10]);
-		}
-	if(number&0x04 !=0)
-		{
-	    Reg_Write_CAN3(MCP_TXB2SIDH,TX_C[0]);
-	    Reg_Write_CAN3(MCP_TXB2SIDL,TX_C[1]);
-	    Reg_Write_CAN3(MCP_TXB2DLC,TX_C[2]);
-	    Reg_Write_CAN3(MCP_TXB2D0,TX_C[3]);
-	    Reg_Write_CAN3(MCP_TXB2D1,TX_C[4]);
-	    Reg_Write_CAN3(MCP_TXB2D2,TX_C[5]);
-	    Reg_Write_CAN3(MCP_TXB2D3,TX_C[6]);
-	    Reg_Write_CAN3(MCP_TXB2D4,TX_C[7]);
-	    Reg_Write_CAN3(MCP_TXB2D5,TX_C[8]);
-	    Reg_Write_CAN3(MCP_TXB2D6,TX_C[9]);
-	    Reg_Write_CAN3(MCP_TXB2D7,TX_C[10]);
-		}
-	Tx[0]=0x80|number;
-	SPI_Send_CAN3(Tx,1);
+     unsigned long Tx[1];
+     if(number&0x01 !=0)
+     {
+          Reg_Write_CAN3(MCP_TXB0SIDH,TX_A[0]);
+          Reg_Write_CAN3(MCP_TXB0SIDL,TX_A[1]);
+          Reg_Write_CAN3(MCP_TXB0DLC,TX_A[2]);
+          Reg_Write_CAN3(MCP_TXB0D0,TX_A[3]);
+          Reg_Write_CAN3(MCP_TXB0D1,TX_A[4]);
+          Reg_Write_CAN3(MCP_TXB0D2,TX_A[5]);
+          Reg_Write_CAN3(MCP_TXB0D3,TX_A[6]);
+          Reg_Write_CAN3(MCP_TXB0D4,TX_A[7]);
+          Reg_Write_CAN3(MCP_TXB0D5,TX_A[8]);
+          Reg_Write_CAN3(MCP_TXB0D6,TX_A[9]);
+          Reg_Write_CAN3(MCP_TXB0D7,TX_A[10]);
+     }
+     if(number&0x02 !=0)
+     {
+          Reg_Write_CAN3(MCP_TXB1SIDH,TX_B[0]);
+          Reg_Write_CAN3(MCP_TXB1SIDL,TX_B[1]);
+          Reg_Write_CAN3(MCP_TXB1DLC,TX_B[2]);
+          Reg_Write_CAN3(MCP_TXB1D0,TX_B[3]);
+          Reg_Write_CAN3(MCP_TXB1D1,TX_B[4]);
+          Reg_Write_CAN3(MCP_TXB1D2,TX_B[5]);
+          Reg_Write_CAN3(MCP_TXB1D3,TX_B[6]);
+          Reg_Write_CAN3(MCP_TXB1D4,TX_B[7]);
+          Reg_Write_CAN3(MCP_TXB1D5,TX_B[8]);
+          Reg_Write_CAN3(MCP_TXB1D6,TX_B[9]);
+          Reg_Write_CAN3(MCP_TXB1D7,TX_B[10]);
+     }
+     if(number&0x04 !=0)
+     {
+          Reg_Write_CAN3(MCP_TXB2SIDH,TX_C[0]);
+          Reg_Write_CAN3(MCP_TXB2SIDL,TX_C[1]);
+          Reg_Write_CAN3(MCP_TXB2DLC,TX_C[2]);
+          Reg_Write_CAN3(MCP_TXB2D0,TX_C[3]);
+          Reg_Write_CAN3(MCP_TXB2D1,TX_C[4]);
+          Reg_Write_CAN3(MCP_TXB2D2,TX_C[5]);
+          Reg_Write_CAN3(MCP_TXB2D3,TX_C[6]);
+          Reg_Write_CAN3(MCP_TXB2D4,TX_C[7]);
+          Reg_Write_CAN3(MCP_TXB2D5,TX_C[8]);
+          Reg_Write_CAN3(MCP_TXB2D6,TX_C[9]);
+          Reg_Write_CAN3(MCP_TXB2D7,TX_C[10]);
+     }
+     Tx[0]=0x80|number;
+     SPI_Send_CAN3(Tx,1);
 }
 
 void CAN_Interrupt_CAN3(void)
 {
-	unsigned long status;
-	status= Reg_Read_CAN3(MCP_CANSTAT);
-	status &=0x0E;
-	switch(status)
-	{
-	case 0x00:
-		break;
-	case 0x02:
-		break;
-	case 0x04:
-		break;
-	case 0x06:
-		break;
-	case 0x08:
-		break;
-	case 0x0A:
-		break;
-	case 0x0C:
-		//Reg_BitModify(MCP_CANINTF,0x01, 0x00);
-		 Read_RX_CAN3(0,DataRx_BUFFER_CAN3);
-		break;
-	case 0x0E:
-		break;
-	}
+     unsigned long status;
+     status= Reg_Read_CAN3(MCP_CANSTAT);
+     status &=0x0E;
+     switch(status)
+     {
+     case 0x00:
+          break;
+     case 0x02:
+          break;
+     case 0x04:
+          break;
+     case 0x06:
+          break;
+     case 0x08:
+          break;
+     case 0x0A:
+          break;
+     case 0x0C:
+          //Reg_BitModify(MCP_CANINTF,0x01, 0x00);
+          Read_RX_CAN3(0,DataRx_BUFFER_CAN3);
+          break;
+     case 0x0E:
+          break;
+     }
 
 }
 
 void Read_RX_CAN3(int number, unsigned long RX[])
 {
-	    unsigned long Tx[14]={0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-		while(HWREG(SSI3_BASE + SSI_O_SR) & SSI_SR_RNE)
-			{
-				SPI_Receive_CAN3(1);
-			}
-		Tx[0]=0x90+2*number;
-		int i;
-		GPIOPinWrite(GPIO_PORTK_BASE, GPIO_PIN_1, 0x00);
-		for(i=0;i<14;i++)
-			{
-			   while(SSIBusy(SSI3_BASE));
-			   SSIDataPut(SSI3_BASE, Tx[i]);
-			   while(SSIBusy(SSI3_BASE));
-			   *(RX++)=SPI_Receive_CAN3(1);
-			}
-		GPIOPinWrite(GPIO_PORTK_BASE, GPIO_PIN_1, GPIO_PIN_1);
+     unsigned long Tx[14]={0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+     while(HWREG(SSI3_BASE + SSI_O_SR) & SSI_SR_RNE)
+     {
+          SPI_Receive_CAN3(1);
+     }
+     Tx[0]=0x90+2*number;
+     int i;
+     GPIOPinWrite(GPIO_PORTK_BASE, GPIO_PIN_1, 0x00);
+     for(i=0;i<14;i++)
+     {
+          while(SSIBusy(SSI3_BASE));
+          SSIDataPut(SSI3_BASE, Tx[i]);
+          while(SSIBusy(SSI3_BASE));
+          *(RX++)=SPI_Receive_CAN3(1);
+     }
+     GPIOPinWrite(GPIO_PORTK_BASE, GPIO_PIN_1, GPIO_PIN_1);
 }

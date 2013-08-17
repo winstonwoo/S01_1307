@@ -67,6 +67,7 @@
 <part id="22"/>
 <part id="23"/>
 <part id="24"/>
+<part id="25"/>
 </presentation>
 </folder>
 </info>
@@ -99,21 +100,13 @@
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/S01_1307/ff.c"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="29924" selectionTopPixel="11535"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="mmc-ek-lm4f232h5qd.c" partName="mmc-ek-lm4f232h5qd.c" path="J:/WorkHouse2013/SW2013/S01_1307_VTDR_Tiva/S01_Repository/S01_1307/mmc-ek-lm4f232h5qd.c" title="mmc-ek-lm4f232h5qd.c" tooltip="S01_1307/mmc-ek-lm4f232h5qd.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/S01_1307/mmc-ek-lm4f232h5qd.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="848" selectionTopPixel="270"/>
-</editor>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="J:/WorkHouse2013/SW2013/S01_1307_VTDR_Tiva/S01_Repository/S01_1307/main.c" title="main.c" tooltip="S01_1307/main.c" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="J:/WorkHouse2013/SW2013/S01_1307_VTDR_Tiva/S01_Repository/S01_1307/main.c" title="main.c" tooltip="S01_1307/main.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/S01_1307/main.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="28013" selectionTopPixel="18030"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="8892" selectionTopPixel="6360"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="uartstdio.c" partName="uartstdio.c" path="J:/WorkHouse2013/SW2013/S01_1307_VTDR_Tiva/S01_Repository/S01_1307/uartstdio.c" title="uartstdio.c" tooltip="S01_1307/uartstdio.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/S01_1307/uartstdio.c"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="42604" selectionTopPixel="19260"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="mycan.c" partName="mycan.c" path="J:/WorkHouse2013/SW2013/S01_1307_VTDR_Tiva/S01_Repository/S01_1307/mycan.c" title="mycan.c" tooltip="S01_1307/mycan.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/S01_1307/mycan.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4675" selectionTopPixel="3791"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="can.h" partName="can.h" title="can.h" tooltip="J:\WorkHouse2013\SWRf2013\StellarisTiVa\TiVa\TivaWare_C_Series-1.0\driverlib\can.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" path="J:\WorkHouse2013\SWRf2013\StellarisTiVa\TiVa\TivaWare_C_Series-1.0\driverlib\can.h" project="S01_1307"/>
@@ -127,13 +120,13 @@
 <input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/C:/ti/bios_6_34_02_18/packages/ti/sysbios/knl/Idle.c"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2262" selectionTopPixel="881"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="Hwi.c" partName="Hwi.c" title="Hwi.c" tooltip="C:\ti\bios_6_34_02_18\packages\ti\sysbios\family\arm\m3\Hwi.c" workbook="DefaultEditorWorkbook">
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="Hwi.c" partName="Hwi.c" title="Hwi.c" tooltip="C:\ti\bios_6_34_02_18\packages\ti\sysbios\family\arm\m3\Hwi.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/C:/ti/bios_6_34_02_18/packages/ti/sysbios/family/arm/m3/Hwi.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="33919" selectionTopPixel="19545"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="33906" selectionTopPixel="19545"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="mutex_pem4f.c" partName="mutex_pem4f.c" path="J:/WorkHouse2013/SW2013/S01_1307_VTDR_Tiva/S01_Repository/S01_1307_configuration/Default/configPkg/package/cfg/mutex_pem4f.c" title="mutex_pem4f.c" tooltip="S01_1307_configuration/Default/configPkg/package/cfg/mutex_pem4f.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/S01_1307_configuration/Default/configPkg/package/cfg/mutex_pem4f.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="81934" selectionTopPixel="43125"/>
+<editorState selectionHorizontalPixel="420" selectionLength="0" selectionOffset="81934" selectionTopPixel="43140"/>
 </editor>
 <editor id="org.eclipse.ui.DefaultTextEditor" name="Hwi_asm.sv7M" partName="Hwi_asm.sv7M" title="Hwi_asm.sv7M" tooltip="C:\ti\bios_6_34_02_18\packages\ti\sysbios\family\arm\m3\Hwi_asm.sv7M" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/C:/ti/bios_6_34_02_18/packages/ti/sysbios/family/arm/m3/Hwi_asm.sv7M"/>
@@ -143,29 +136,41 @@
 <input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/C:/ti/bios_6_34_02_18/packages/ti/sysbios/knl/Swi.c"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="11313" selectionTopPixel="5970"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="myspican.c" partName="myspican.c" path="J:/WorkHouse2013/SW2013/S01_1307_VTDR_Tiva/S01_Repository/S01_1307/myspican.c" title="myspican.c" tooltip="S01_1307/myspican.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/S01_1307/myspican.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="11" selectionOffset="9694" selectionTopPixel="5085"/>
-</editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="hw_gpio.h" partName="hw_gpio.h" title="hw_gpio.h" tooltip="J:\WorkHouse2013\SWRf2013\StellarisTiVa\TiVa\TivaWare_C_Series-1.0\inc\hw_gpio.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" path="J:\WorkHouse2013\SWRf2013\StellarisTiVa\TiVa\TivaWare_C_Series-1.0\inc\hw_gpio.h" project="S01_1307"/>
 <editorState selectionHorizontalPixel="0" selectionLength="13" selectionOffset="6037" selectionTopPixel="1603"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="myspican3.c" partName="myspican3.c" path="J:/WorkHouse2013/SW2013/S01_1307_VTDR_Tiva/S01_Repository/S01_1307/myspican3.c" title="myspican3.c" tooltip="S01_1307/myspican3.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/S01_1307/myspican3.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="9147" selectionTopPixel="4545"/>
+<editorState selectionHorizontalPixel="0" selectionLength="17" selectionOffset="9868" selectionTopPixel="5145"/>
 </editor>
 <editor id="org.eclipse.rtsc.xdctools.ui.editors.XdcScriptEditor" name="mutex.cfg" partName="mutex.cfg" path="J:/WorkHouse2013/SW2013/S01_1307_VTDR_Tiva/S01_Repository/S01_1307_configuration/mutex.cfg" title="mutex.cfg" tooltip="S01_1307_configuration/mutex.cfg" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/S01_1307_configuration/mutex.cfg"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="8458" selectionTopPixel="2850"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="8660" selectionTopPixel="2755"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="gpio.h" partName="gpio.h" title="gpio.h" tooltip="J:\WorkHouse2013\SWRf2013\StellarisTiVa\TiVa\TivaWare_C_Series-1.0\driverlib\gpio.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" path="J:\WorkHouse2013\SWRf2013\StellarisTiVa\TiVa\TivaWare_C_Series-1.0\driverlib\gpio.h" project="S01_1307"/>
 <editorState selectionHorizontalPixel="0" selectionLength="17" selectionOffset="3875" selectionTopPixel="1170"/>
 </editor>
-<editor id="org.eclipse.ui.DefaultTextEditor" name="S01_1307.map" partName="S01_1307.map" path="J:/WorkHouse2013/SW2013/S01_1307_VTDR_Tiva/S01_Repository/S01_1307/Debug/S01_1307.map" title="S01_1307.map" tooltip="S01_1307/Debug/S01_1307.map" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/S01_1307/Debug/S01_1307.map"/>
-<editorState selectionHorizontalPixel="0" selectionLength="8" selectionOffset="65063" selectionTopPixel="9585"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="myfram.c" partName="myfram.c" path="J:/WorkHouse2013/SW2013/S01_1307_VTDR_Tiva/S01_Repository/S01_1307/myfram.c" title="myfram.c" tooltip="S01_1307/myfram.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/S01_1307/myfram.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="763" selectionTopPixel="221"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="mycan.c" partName="mycan.c" path="J:/WorkHouse2013/SW2013/S01_1307_VTDR_Tiva/S01_Repository/S01_1307/mycan.c" title="mycan.c" tooltip="S01_1307/mycan.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/S01_1307/mycan.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="12" selectionOffset="795" selectionTopPixel="390"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="myuart.c" partName="myuart.c" path="J:/WorkHouse2013/SW2013/S01_1307_VTDR_Tiva/S01_Repository/S01_1307/myuart.c" title="myuart.c" tooltip="S01_1307/myuart.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/S01_1307/myuart.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1372" selectionTopPixel="465"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="mysdcard.c" partName="mysdcard.c" path="J:/WorkHouse2013/SW2013/S01_1307_VTDR_Tiva/S01_Repository/S01_1307/mysdcard.c" title="mysdcard.c" tooltip="S01_1307/mysdcard.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/S01_1307/mysdcard.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="25700" selectionTopPixel="12356"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="myspican4.c" partName="myspican4.c" path="J:/WorkHouse2013/SW2013/S01_1307_VTDR_Tiva/S01_Repository/S01_1307/myspican4.c" title="myspican4.c" tooltip="S01_1307/myspican4.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/S01_1307/myspican4.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="12" selectionOffset="10436" selectionTopPixel="5355"/>
 </editor>
 </editors>
 <views>
@@ -192,11 +197,11 @@
 <view id="org.eclipse.ui.views.ContentOutline" partName="Outline">
 <viewState/>
 </view>
-<view id="org.eclipse.ui.navigator.ProjectExplorer" partName="Project Explorer">
-<viewState CommonNavigator.LINKING_ENABLED="0" org.eclipse.cdt.ui.cview.groupincludes="false" org.eclipse.cdt.ui.cview.groupmacros="false" org.eclipse.cdt.ui.editor.CUChildren="true" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0"/>
-</view>
 <view id="org.eclipse.debug.ui.ExpressionView" partName="Expressions">
 <viewState/>
+</view>
+<view id="org.eclipse.ui.navigator.ProjectExplorer" partName="Project Explorer">
+<viewState CommonNavigator.LINKING_ENABLED="0" org.eclipse.cdt.ui.cview.groupincludes="false" org.eclipse.cdt.ui.cview.groupmacros="false" org.eclipse.cdt.ui.editor.CUChildren="true" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0"/>
 </view>
 <view id="com.ti.ccstudio.system.setup.ui.views.TargetConfigurationView" partName="Target Configurations">
 <viewState/>
@@ -210,7 +215,7 @@
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
 <expanded>
-<category IMemento.internal.id="Warnings (40 items)"/>
+<category IMemento.internal.id="Warnings (39 items)"/>
 <category IMemento.internal.id="Warnings"/>
 <category IMemento.internal.id="Errors"/>
 </expanded>
@@ -512,7 +517,7 @@
 </presentation>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@1a1c494" ratio="0.6138934" ratioLeft="380" ratioRight="239" relationship="4" relative="left">
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@1a1c494" ratio="0.62520194" ratioLeft="387" ratioRight="232" relationship="4" relative="left">
 <folder activePageID="org.eclipse.ui.views.ProblemView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
 <page content="org.eclipse.ui.views.PropertySheet" label="Properties"/>
@@ -635,12 +640,12 @@
 <hide_menu_item_id id="referencesSubMenu"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.refactoring.menu"/>
 <hide_menu_item_id id="org.eclipse.jdt.debug.ui.commands.AllInstances"/>
-<hide_menu_item_id id="org.eclipse.cdt.debug.ui.command.reverseResume"/>
 <hide_menu_item_id id="org.eclipse.search.ui.openFileSearchPage"/>
+<hide_menu_item_id id="org.eclipse.cdt.debug.ui.command.reverseResume"/>
 <hide_menu_item_id id="org.eclipse.cdt.ui.edit.text.c.indent"/>
 <hide_menu_item_id id="org.eclipse.search.ui.performTextSearchWorkspace"/>
-<hide_menu_item_id id="showIn"/>
 <hide_menu_item_id id="org.eclipse.jdt.debug.ui.commands.Execute"/>
+<hide_menu_item_id id="showIn"/>
 <hide_menu_item_id id="org.eclipse.debug.internal.ui.actions.ProfileHistoryMenuAction"/>
 <hide_menu_item_id id="org.eclipse.debug.ui.commands.ProfileLast"/>
 <hide_menu_item_id id="org.eclipse.ui.navigate.goToResource"/>
@@ -658,24 +663,24 @@
 <hide_menu_item_id id="org.eclipse.jdt.ui.actions.OpenJavaSearchPage"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.search.references.in.workspace"/>
 <hide_menu_item_id id="org.eclipse.cdt.ui.buildConfigMenuAction"/>
-<hide_menu_item_id id="org.eclipse.cdt.ui.edit.opendecl"/>
 <hide_menu_item_id id="org.eclipse.ui.navigate.up"/>
+<hide_menu_item_id id="org.eclipse.cdt.ui.edit.opendecl"/>
 <hide_menu_item_id id="org.eclipse.cdt.ui.navigate.open.type.in.hierarchy"/>
 <hide_menu_item_id id="org.eclipse.search.ui.performTextSearchWorkingSet"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.search.read.access.in.workspace"/>
-<hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.search.declarations.in.project"/>
 <hide_menu_item_id id="readAccessSubMenu"/>
+<hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.search.declarations.in.project"/>
 <hide_menu_item_id id="org.eclipse.search.ui.performTextSearchFile"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.search.implementors.in.project"/>
 <hide_menu_item_id id="org.eclipse.debug.ui.commands.OpenRunConfigurations"/>
 <hide_menu_item_id id="org.eclipse.cdt.debug.ui.command.reverseStepInto"/>
 <hide_menu_item_id id="org.eclipse.jdt.debug.ui.commands.AddClassPrepareBreakpoint"/>
-<hide_menu_item_id id="org.eclipse.debug.ui.commands.OpenProfileConfigurations"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.search.read.access.in.hierarchy"/>
+<hide_menu_item_id id="org.eclipse.debug.ui.commands.OpenProfileConfigurations"/>
 <hide_menu_item_id id="org.eclipse.jdt.debug.ui.commands.Watch"/>
 <hide_menu_item_id id="org.eclipse.jdt.debug.ui.commands.InstanceCount"/>
-<hide_menu_item_id id="org.eclipse.ui.navigate.goInto"/>
 <hide_menu_item_id id="org.eclipse.cdt.ui.refactor.getters.and.setters"/>
+<hide_menu_item_id id="org.eclipse.ui.navigate.goInto"/>
 <hide_menu_item_id id="org.eclipse.cdt.ui.edit.text.c.add.include"/>
 <hide_menu_item_id id="org.eclipse.ui.edit.text.open.hyperlink"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.search.references.in.working.set"/>
@@ -735,45 +740,45 @@
 <hide_menu_item_id id="org.eclipse.cdt.ui.edit.open.include.browser"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.search.references.in.project"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.navigate.open.type"/>
-<hide_menu_item_id id="org.eclipse.ui.navigate.openResource"/>
 <hide_menu_item_id id="org.eclipse.debug.ui.commands.RunLast"/>
+<hide_menu_item_id id="org.eclipse.ui.navigate.openResource"/>
 <hide_menu_item_id id="org.eclipse.cdt.ui.navigate.opentype"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.search.implementors.in.working.set"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.search.declarations.in.workspace"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.open.call.hierarchy"/>
-<hide_menu_item_id id="org.eclipse.cdt.debug.ui.actions.ResumeAtLine"/>
 <hide_menu_item_id id="org.eclipse.ui.project.closeProject"/>
-<hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.open.external.javadoc"/>
+<hide_menu_item_id id="org.eclipse.cdt.debug.ui.actions.ResumeAtLine"/>
 <hide_menu_item_id id="org.eclipse.jdt.debug.ui.commands.ForceReturn"/>
+<hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.open.external.javadoc"/>
 <hide_menu_item_id id="org.eclipse.ui.edit.text.shiftLeft"/>
-<hide_menu_item_id id="org.eclipse.ui.project.openProject"/>
 <hide_menu_item_id id="org.eclipse.search.ui.openSearchDialog"/>
+<hide_menu_item_id id="org.eclipse.ui.project.openProject"/>
 <hide_menu_item_id id="org.eclipse.cdt.debug.ui.command.reverseToggle"/>
-<hide_menu_item_id id="org.eclipse.debug.internal.ui.actions.ProfileWithConfigurationAction"/>
 <hide_menu_item_id id="org.eclipse.cdt.ui.edit.text.rename.element"/>
-<hide_menu_item_id id="org.eclipse.mylyn.tasks.ui.command.goToPreviousUnread"/>
+<hide_menu_item_id id="org.eclipse.debug.internal.ui.actions.ProfileWithConfigurationAction"/>
 <hide_menu_item_id id="org.eclipse.jdt.debug.ui.commands.AddExceptionBreakpoint"/>
-<hide_menu_item_id id="org.eclipse.jdt.ui.source.menu"/>
+<hide_menu_item_id id="org.eclipse.mylyn.tasks.ui.command.goToPreviousUnread"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.search.references.in.hierarchy"/>
+<hide_menu_item_id id="org.eclipse.jdt.ui.source.menu"/>
 <hide_menu_item_id id="org.eclipse.cdt.ui.edit.text.c.format"/>
-<hide_menu_item_id id="org.eclipse.cdt.debug.ui.command.reverseStepOver"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.search.declarations.in.working.set"/>
+<hide_menu_item_id id="org.eclipse.cdt.debug.ui.command.reverseStepOver"/>
 <hide_menu_item_id id="org.eclipse.cdt.ui.refactor.extract.local.variable"/>
-<hide_menu_item_id id="org.eclipse.ui.navigate.forward"/>
 <hide_menu_item_id id="org.eclipse.cdt.ui.edit.text.c.toggle.comment"/>
-<hide_menu_item_id id="org.eclipse.cdt.ui.edit.open.type.hierarchy"/>
+<hide_menu_item_id id="org.eclipse.ui.navigate.forward"/>
 <hide_menu_item_id id="org.eclipse.search.ui.performTextSearchProject"/>
+<hide_menu_item_id id="org.eclipse.cdt.ui.edit.open.type.hierarchy"/>
 <hide_menu_item_id id="org.eclipse.cdt.ui.edit.text.c.remove.block.comment"/>
 <hide_toolbar_item_id id="org.eclipse.debug.ui.commands.RunToLine"/>
 <hide_toolbar_item_id id="com.ti.dvt.profile.setup.actionSet"/>
 <hide_toolbar_item_id id="org.eclipse.ui.file.print"/>
 <hide_toolbar_item_id id="org.eclipse.ui.externaltools.ExternalToolMenuDelegateToolbar"/>
 <hide_toolbar_item_id id="org.eclipse.debug.ui.commands.Terminate"/>
-<hide_toolbar_item_id id="org.eclipse.mylyn.cdt.ui.editor.folding.auto"/>
 <hide_toolbar_item_id id="org.eclipse.debug.ui.commands.StepReturn"/>
+<hide_toolbar_item_id id="org.eclipse.mylyn.cdt.ui.editor.folding.auto"/>
 <hide_toolbar_item_id id="org.eclipse.debug.ui.commands.SkipAllBreakpoints"/>
-<hide_toolbar_item_id id="org.eclipse.egit.ui.commit.OpenCommitAction"/>
 <hide_toolbar_item_id id="org.eclipse.cdt.ui.edit.text.c.toggleMarkOccurrences"/>
+<hide_toolbar_item_id id="org.eclipse.egit.ui.commit.OpenCommitAction"/>
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowWhitespaceCharacters"/>
 <hide_toolbar_item_id id="org.eclipse.ui.workbench.navigate"/>
 <hide_toolbar_item_id id="org.eclipse.debug.ui.commands.StepOver"/>
@@ -788,11 +793,11 @@
 <hide_toolbar_item_id id="org.eclipse.jdt.ui.actions.OpenProjectWizard"/>
 <hide_toolbar_item_id id="org.eclipse.debug.ui.commands.StepInto"/>
 <hide_toolbar_item_id id="org.eclipse.debug.ui.commands.Disconnect"/>
-<hide_toolbar_item_id id="org.eclipse.ui.navigate.backwardHistory"/>
 <hide_toolbar_item_id id="org.eclipse.debug.ui.commands.ToggleStepFilters"/>
+<hide_toolbar_item_id id="org.eclipse.ui.navigate.backwardHistory"/>
 <hide_toolbar_item_id id="org.eclipse.ui.navigate.previous"/>
-<hide_toolbar_item_id id="org.eclipse.debug.ui.commands.Suspend"/>
 <hide_toolbar_item_id id="com.ti.dvt.profile2.setup.action.enableProfile"/>
+<hide_toolbar_item_id id="org.eclipse.debug.ui.commands.Suspend"/>
 <hide_toolbar_item_id id="com.ti.dvt.profile.setup.action.enableProfile"/>
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
 <hide_toolbar_item_id id="org.eclipse.ui.navigate.next"/>
@@ -882,177 +887,160 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/S01_1307/main.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/S01_1307_configuration/Default/configPkg/package/cfg/mutex_pem4f.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.rtsc.xdctools.ui.editors.XdcScriptEditor" path="/S01_1307_configuration/mutex.cfg"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/S01_1307/Debug/S01_1307.map"/>
-<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" uri="file:/C:/ti/bios_6_34_02_18/packages/ti/sysbios/hal/Hwi_stack.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/S01_1307/ff.h"/>
-<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" uri="file:/J:/WorkHouse2013/SWRf2013/StellarisTiVa/Stellaris/StellarisWare/driverlib/interrupt.c"/>
-<editor factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="J:\WorkHouse2013\SWRf2013\StellarisTiVa\Stellaris\StellarisWare\utils\softi2c.h" project="S01_1307"/>
-<editor factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="J:\WorkHouse2013\SWRf2013\StellarisTiVa\Stellaris\StellarisWare\driverlib\i2c.h" project="S01_1307"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/S01_1307/cmdline.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/S01_1307/ff.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/S01_1307/mmc-ek-lm4f232h5qd.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/S01_1307/main.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/S01_1307/uartstdio.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/S01_1307/mycan.c"/>
-<editor factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="J:\WorkHouse2013\SWRf2013\StellarisTiVa\TiVa\TivaWare_C_Series-1.0\driverlib\can.h" project="S01_1307"/>
-<editor factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="J:\WorkHouse2013\SWRf2013\StellarisTiVa\TiVa\TivaWare_C_Series-1.0\driverlib\i2c.h" project="S01_1307"/>
-<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" uri="file:/C:/ti/bios_6_34_02_18/packages/ti/sysbios/knl/Idle.c"/>
-<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" uri="file:/C:/ti/bios_6_34_02_18/packages/ti/sysbios/family/arm/m3/Hwi.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/S01_1307_configuration/Default/configPkg/package/cfg/mutex_pem4f.c"/>
-<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" uri="file:/C:/ti/bios_6_34_02_18/packages/ti/sysbios/family/arm/m3/Hwi_asm.sv7M"/>
-<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" uri="file:/C:/ti/bios_6_34_02_18/packages/ti/sysbios/knl/Swi.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/S01_1307/myspican.c"/>
-<editor factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="J:\WorkHouse2013\SWRf2013\StellarisTiVa\TiVa\TivaWare_C_Series-1.0\inc\hw_gpio.h" project="S01_1307"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/S01_1307/myspican3.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/S01_1307/myfram.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/S01_1307/myuart.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/S01_1307_configuration/Default/configPkg/package/cfg/mutex_pem4f.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/S01_1307/mysdcard.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.rtsc.xdctools.ui.editors.XdcScriptEditor" path="/S01_1307_configuration/mutex.cfg"/>
-<editor factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="J:\WorkHouse2013\SWRf2013\StellarisTiVa\TiVa\TivaWare_C_Series-1.0\driverlib\gpio.h" project="S01_1307"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.rtsc.xdctools.cfgEditor" path="/S01_1307_configuration/mutex.cfg"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" uri="file:/C:/ti/bios_6_34_02_18/packages/ti/sysbios/family/arm/m3/Hwi.c"/>
 </editors>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="28701" y="0"/>
+<item historyLabel="main.c" index="1">
+<position info="not_deleted" x="25138" y="0"/>
 </item>
-<item historyLabel="mutex.cfg" index="2">
-<position info="not_deleted" x="6544" y="0"/>
+<item historyLabel="myspican3.c" index="2">
+<position info="not_deleted" x="9419" y="0"/>
 </item>
-<item historyLabel="mutex_pem4f.c" index="1">
+<item historyLabel="main.c" index="1">
+<position info="not_deleted" x="24681" y="0"/>
+</item>
+<item historyLabel="myuart.c" index="4">
+<position info="not_deleted" x="915" y="0"/>
+</item>
+<item historyLabel="mysdcard.c" index="6">
+<position info="not_deleted" x="7906" y="0"/>
+</item>
+<item historyLabel="myfram.c" index="3">
+<position info="not_deleted" x="356" y="0"/>
+</item>
+<item historyLabel="mysdcard.c" index="6">
+<position info="not_deleted" x="1341" y="0"/>
+</item>
+<item historyLabel="myfram.c" index="3">
+<position info="not_deleted" x="327" y="0"/>
+</item>
+<item historyLabel="mysdcard.c" index="6">
+<position info="not_deleted" x="1341" y="0"/>
+</item>
+<item historyLabel="S01_1307.map" index="0">
+<position info="not_deleted" x="65063" y="8"/>
+</item>
+<item historyLabel="mutex.cfg" index="7">
+<position info="not_deleted" x="9091" y="0"/>
+</item>
+<item historyLabel="mutex_pem4f.c" index="5">
 <position info="not_deleted" x="81934" y="0"/>
 </item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="28701" y="0"/>
+<item historyLabel="S01_1307.map" index="0">
+<position info="not_deleted" x="65063" y="8"/>
 </item>
-<item historyLabel="S01_1307.map" index="3">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="main.c" index="1">
+<position info="not_deleted" x="19186" y="0"/>
 </item>
-<item historyLabel="Hwi_stack.c" index="4">
-<position info="not_deleted" x="3254" y="0"/>
+<item historyLabel="main.c" index="1">
+<position info="not_deleted" x="19241" y="0"/>
 </item>
-<item historyLabel="ff.h" index="5">
-<position info="not_deleted" x="7312" y="7"/>
+<item historyLabel="main.c" index="1">
+<position info="not_deleted" x="19242" y="0"/>
 </item>
-<item historyLabel="interrupt.c" index="6">
-<position info="not_deleted" x="19072" y="0"/>
+<item historyLabel="main.c" index="1">
+<position info="not_deleted" x="24687" y="0"/>
 </item>
-<item historyLabel="softi2c.h" index="7">
-<position info="not_deleted" x="4189" y="0"/>
+<item historyLabel="myfram.c" index="3">
+<position info="not_deleted" x="327" y="0"/>
 </item>
-<item historyLabel="i2c.h" index="8">
-<position info="not_deleted" x="7869" y="21"/>
+<item historyLabel="myfram.c" index="3">
+<position info="not_deleted" x="1286" y="0"/>
 </item>
-<item historyLabel="cmdline.c" index="9">
-<position info="not_deleted" x="1368" y="62"/>
+<item historyLabel="myfram.c" index="3">
+<position info="not_deleted" x="9980" y="4"/>
 </item>
-<item historyLabel="ff.c" index="10">
-<position info="not_deleted" x="29924" y="0"/>
+<item historyLabel="myfram.c" index="3">
+<position info="not_deleted" x="10913" y="0"/>
 </item>
-<item historyLabel="mmc-ek-lm4f232h5qd.c" index="11">
-<position info="not_deleted" x="848" y="0"/>
+<item historyLabel="myfram.c" index="3">
+<position info="not_deleted" x="1020" y="0"/>
 </item>
-<item historyLabel="main.c" index="12">
-<position info="not_deleted" x="28752" y="0"/>
+<item historyLabel="main.c" index="1">
+<position info="not_deleted" x="25149" y="0"/>
 </item>
-<item historyLabel="uartstdio.c" index="13">
-<position info="not_deleted" x="42604" y="0"/>
+<item historyLabel="main.c" index="1">
+<position info="not_deleted" x="19296" y="0"/>
 </item>
-<item historyLabel="mycan.c" index="14">
-<position info="not_deleted" x="850" y="0"/>
+<item historyLabel="main.c" index="1">
+<position info="not_deleted" x="24571" y="0"/>
 </item>
-<item historyLabel="can.h" index="15">
-<position info="not_deleted" x="13355" y="13"/>
+<item historyLabel="mysdcard.c" index="6">
+<position info="not_deleted" x="1341" y="0"/>
 </item>
-<item historyLabel="i2c.h" index="16">
-<position info="not_deleted" x="7348" y="7"/>
+<item historyLabel="myuart.c" index="4">
+<position info="not_deleted" x="1372" y="0"/>
 </item>
-<item historyLabel="Idle.c" index="17">
-<position info="not_deleted" x="2262" y="0"/>
+<item historyLabel="myfram.c" index="3">
+<position info="not_deleted" x="772" y="9"/>
 </item>
-<item historyLabel="Hwi.c" index="18">
+<item historyLabel="S01_1307.map" index="0">
+<position info="not_deleted" x="65063" y="8"/>
+</item>
+<item historyLabel="myspican3.c" index="2">
+<position info="not_deleted" x="8629" y="0"/>
+</item>
+<item historyLabel="main.c" index="1">
+<position info="not_deleted" x="20198" y="0"/>
+</item>
+<item historyLabel="main.c" index="1">
+<position info="not_deleted" x="21143" y="0"/>
+</item>
+<item historyLabel="main.c" index="1">
+<position info="not_deleted" x="10041" y="14"/>
+</item>
+<item historyLabel="main.c" index="1">
+<position info="not_deleted" x="10124" y="0"/>
+</item>
+<item historyLabel="main.c" index="1">
+<position/>
+</item>
+<item historyLabel="mutex.cfg" index="7">
+<position/>
+</item>
+<item historyLabel="mutex.cfg" index="8">
+<position info="not_deleted" x="490" y="0"/>
+</item>
+<item historyLabel="main.c" index="1">
+<position info="not_deleted" x="20320" y="0"/>
+</item>
+<item historyLabel="main.c" index="1">
+<position info="not_deleted" x="1290" y="15"/>
+</item>
+<item historyLabel="main.c" index="1">
+<position info="not_deleted" x="9417" y="0"/>
+</item>
+<item historyLabel="main.c" index="1">
+<position info="not_deleted" x="18718" y="0"/>
+</item>
+<item historyLabel="main.c" index="1">
+<position info="not_deleted" x="11233" y="0"/>
+</item>
+<item historyLabel="mutex_pem4f.c" index="5">
+<position info="not_deleted" x="81934" y="0"/>
+</item>
+<item historyLabel="main.c" index="1">
+<position info="not_deleted" x="20300" y="0"/>
+</item>
+<item historyLabel="mutex.cfg" index="7">
+<position info="not_deleted" x="490" y="0"/>
+</item>
+<item historyLabel="mutex_pem4f.c" index="5">
+<position info="not_deleted" x="81934" y="0"/>
+</item>
+<item historyLabel="main.c" index="1">
+<position info="not_deleted" x="8892" y="0"/>
+</item>
+<item active="true" historyLabel="Hwi.c" index="9">
 <position info="not_deleted" x="33919" y="0"/>
-</item>
-<item historyLabel="mutex_pem4f.c" index="19">
-<position info="not_deleted" x="81934" y="0"/>
-</item>
-<item historyLabel="Hwi_asm.sv7M" index="20">
-<position info="not_deleted" x="8124" y="0"/>
-</item>
-<item historyLabel="Swi.c" index="21">
-<position info="not_deleted" x="11313" y="0"/>
-</item>
-<item historyLabel="myspican.c" index="22">
-<position info="not_deleted" x="9694" y="11"/>
-</item>
-<item historyLabel="hw_gpio.h" index="23">
-<position info="not_deleted" x="6037" y="13"/>
-</item>
-<item historyLabel="myspican3.c" index="24">
-<position info="not_deleted" x="9147" y="0"/>
-</item>
-<item historyLabel="mutex.cfg" index="25">
-<position info="not_deleted" x="8074" y="0"/>
-</item>
-<item historyLabel="gpio.h" index="26">
-<position info="not_deleted" x="3875" y="17"/>
-</item>
-<item historyLabel="mutex.cfg" index="25">
-<position info="not_deleted" x="8074" y="0"/>
-</item>
-<item historyLabel="mutex_pem4f.c" index="19">
-<position info="not_deleted" x="81934" y="0"/>
-</item>
-<item historyLabel="S01_1307.map" index="3">
-<position info="not_deleted" x="65063" y="8"/>
-</item>
-<item historyLabel="main.c" index="12">
-<position info="not_deleted" x="28752" y="0"/>
-</item>
-<item historyLabel="mutex.cfg" index="25">
-<position info="not_deleted" x="9450" y="0"/>
-</item>
-<item historyLabel="mutex_pem4f.c" index="19">
-<position info="not_deleted" x="81934" y="0"/>
-</item>
-<item historyLabel="S01_1307.map" index="3">
-<position info="not_deleted" x="65063" y="8"/>
-</item>
-<item historyLabel="mutex_pem4f.c" index="19">
-<position info="not_deleted" x="81934" y="0"/>
-</item>
-<item historyLabel="S01_1307.map" index="3">
-<position info="not_deleted" x="65063" y="8"/>
-</item>
-<item historyLabel="mutex_pem4f.c" index="19">
-<position info="not_deleted" x="81934" y="0"/>
-</item>
-<item historyLabel="S01_1307.map" index="3">
-<position info="not_deleted" x="65063" y="8"/>
-</item>
-<item historyLabel="main.c" index="12">
-<position info="not_deleted" x="28752" y="0"/>
-</item>
-<item historyLabel="mutex.cfg" index="25">
-<position info="not_deleted" x="3025" y="0"/>
-</item>
-<item historyLabel="mutex_pem4f.c" index="19">
-<position info="not_deleted" x="81934" y="0"/>
-</item>
-<item historyLabel="main.c" index="12">
-<position info="not_deleted" x="16175" y="0"/>
-</item>
-<item historyLabel="mycan.c" index="14">
-<position info="not_deleted" x="4675" y="0"/>
-</item>
-<item historyLabel="main.c" index="12">
-<position info="not_deleted" x="16175" y="0"/>
-</item>
-<item historyLabel="main.c" index="12">
-<position info="not_deleted" x="16161" y="0"/>
-</item>
-<item historyLabel="mutex_pem4f.c" index="19">
-<position info="not_deleted" x="81934" y="0"/>
-</item>
-<item active="true" historyLabel="S01_1307.map" index="3">
-<position info="not_deleted" x="65063" y="8"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -1075,14 +1063,29 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.rtsc.xdctools.cfgEditor" name="mutex.cfg" tooltip="S01_1307_configuration/mutex.cfg">
+<persistable path="/S01_1307_configuration/mutex.cfg"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="myspican4.c" tooltip="S01_1307/myspican4.c">
+<persistable path="/S01_1307/myspican4.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="mysdcard.c" tooltip="S01_1307/mysdcard.c">
+<persistable path="/S01_1307/mysdcard.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="myuart.c" tooltip="S01_1307/myuart.c">
+<persistable path="/S01_1307/myuart.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="mycan.c" tooltip="S01_1307/mycan.c">
+<persistable path="/S01_1307/mycan.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="myfram.c" tooltip="S01_1307/myfram.c">
+<persistable path="/S01_1307/myfram.c"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="S01_1307.map" tooltip="S01_1307/Debug/S01_1307.map">
 <persistable path="/S01_1307/Debug/S01_1307.map"/>
 </file>
 <file factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="gpio.h" tooltip="J:\WorkHouse2013\SWRf2013\StellarisTiVa\TiVa\TivaWare_C_Series-1.0\driverlib\gpio.h">
 <persistable path="J:\WorkHouse2013\SWRf2013\StellarisTiVa\TiVa\TivaWare_C_Series-1.0\driverlib\gpio.h" project="S01_1307"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.rtsc.xdctools.ui.editors.XdcScriptEditor" name="mutex.cfg" tooltip="S01_1307_configuration/mutex.cfg">
-<persistable path="/S01_1307_configuration/mutex.cfg"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="myspican3.c" tooltip="S01_1307/myspican3.c">
 <persistable path="/S01_1307/myspican3.c"/>
@@ -1098,27 +1101,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="myspican.c" tooltip="S01_1307/myspican.c">
 <persistable path="/S01_1307/myspican.c"/>
-</file>
-<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Swi.c" tooltip="C:\ti\bios_6_34_02_18\packages\ti\sysbios\knl\Swi.c">
-<persistable uri="file:/C:/ti/bios_6_34_02_18/packages/ti/sysbios/knl/Swi.c"/>
-</file>
-<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="Hwi_asm.sv7M" tooltip="C:\ti\bios_6_34_02_18\packages\ti\sysbios\family\arm\m3\Hwi_asm.sv7M">
-<persistable uri="file:/C:/ti/bios_6_34_02_18/packages/ti/sysbios/family/arm/m3/Hwi_asm.sv7M"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="MCP2515.h" tooltip="S01_1307/MCP2515.h">
-<persistable path="/S01_1307/MCP2515.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="mutex_pem4f.c" tooltip="S01_1307_configuration/Default/configPkg/package/cfg/mutex_pem4f.c">
-<persistable path="/S01_1307_configuration/Default/configPkg/package/cfg/mutex_pem4f.c"/>
-</file>
-<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Hwi.c" tooltip="C:\ti\bios_6_34_02_18\packages\ti\sysbios\family\arm\m3\Hwi.c">
-<persistable uri="file:/C:/ti/bios_6_34_02_18/packages/ti/sysbios/family/arm/m3/Hwi.c"/>
-</file>
-<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Idle.c" tooltip="C:\ti\bios_6_34_02_18\packages\ti\sysbios\knl\Idle.c">
-<persistable uri="file:/C:/ti/bios_6_34_02_18/packages/ti/sysbios/knl/Idle.c"/>
-</file>
-<file factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="i2c.h" tooltip="J:\WorkHouse2013\SWRf2013\StellarisTiVa\TiVa\TivaWare_C_Series-1.0\driverlib\i2c.h">
-<persistable path="J:\WorkHouse2013\SWRf2013\StellarisTiVa\TiVa\TivaWare_C_Series-1.0\driverlib\i2c.h" project="S01_1307"/>
 </file>
 </mruList>
 </workbench>

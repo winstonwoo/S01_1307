@@ -40,9 +40,6 @@ extern const ti_sysbios_hal_Hwi_Handle hwi_CAN0_handle;
 #include <ti/sysbios/hal/Hwi.h>
 extern const ti_sysbios_hal_Hwi_Handle hwi_CAN1_handle;
 
-#include <ti/sysbios/hal/Hwi.h>
-extern const ti_sysbios_hal_Hwi_Handle hwi_GPIOB_handle;
-
 #include <ti/sysbios/knl/Swi.h>
 extern const ti_sysbios_knl_Swi_Handle swi_UART2_handle;
 
@@ -67,9 +64,6 @@ extern const ti_sysbios_knl_Swi_Handle swi_CAN0_handle;
 #include <ti/sysbios/knl/Swi.h>
 extern const ti_sysbios_knl_Swi_Handle swi_CAN1_handle;
 
-#include <ti/sysbios/knl/Swi.h>
-extern const ti_sysbios_knl_Swi_Handle swi_GPIOB_handle;
-
 #include <ti/sysbios/knl/Task.h>
 extern const ti_sysbios_knl_Task_Handle tsk_bootloader_handle;
 
@@ -78,9 +72,6 @@ extern const ti_sysbios_knl_Task_Handle tsk_diagnosis_handle;
 
 #include <ti/sysbios/knl/Task.h>
 extern const ti_sysbios_knl_Task_Handle tsk_GPS_handle;
-
-#include <ti/sysbios/knl/Task.h>
-extern const ti_sysbios_knl_Task_Handle tsk_battery_hanlde;
 
 #include <ti/sysbios/knl/Task.h>
 extern const ti_sysbios_knl_Task_Handle tsk_FS_handle;
