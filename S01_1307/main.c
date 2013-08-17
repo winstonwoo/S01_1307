@@ -475,7 +475,7 @@ Void hwi_GPIOB_fxn(UArg arg)
 Void hwi_GPIOE_fxn(UArg arg)
 {
 	long lIntSts ;
-	unsigned long DataRx_BUFFER[14]={0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+
 #if 1
 	//store the interrupt flag into lIntSts
 	lIntSts = GPIOIntStatus(GPIO_PORTE_BASE, false) ;
@@ -513,7 +513,7 @@ Void hwi_GPIOE_fxn(UArg arg)
 		case 0x0C:
 			//Reg_BitModify(MCP_CANINTF,0x01, 0x00);
 			//Read_RX(0,DataRx_BUFFER);
-			 Read_RX_CAN3(0,DataRx_BUFFER);
+
 			break;
 		case 0x0E:
 			break;
@@ -526,7 +526,7 @@ Void hwi_GPIOE_fxn(UArg arg)
 
 #endif
 
-	//Swi_post(swi_GPIOB_handle) ;
+	Swi_post(swi_GPIOB_handle) ;
 }
 
 //*****************************************************************************
@@ -614,6 +614,8 @@ Void swi_CAN1_fxn(UArg arg0, UArg arg1)
 Void swi_GPIOB_fxn(UArg arg0, UArg arg1)
 {
 
+	unsigned long DataRx_BUFFER[14]={0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+	Read_RX_CAN3(0,DataRx_BUFFER);
 
 }
 
@@ -1202,7 +1204,7 @@ Void main()
     //test_fram() ;
 
 
-    sub_spi_main_CAN3() ;
+    //sub_spi_main_CAN3() ;
 
 
     //
