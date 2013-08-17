@@ -4,7 +4,7 @@
 		<item value="273" key="DIALOG_WIDTH"/>
 		<item value="125" key="DIALOG_Y_ORIGIN"/>
 		<item value="399" key="DIALOG_HEIGHT"/>
-		<item value="865" key="DIALOG_X_ORIGIN"/>
+		<item value="410" key="DIALOG_X_ORIGIN"/>
 		<item value="1|微软雅黑|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|微软雅黑" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
@@ -13,16 +13,16 @@
 		<item value="false" key="casesensitive"/>
 		<item value="true" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="sub" key="selection"/>
+		<item value="4f" key="selection"/>
 		<list key="findhistory">
-			<item value="sub"/>
-			<item value="SPI_Receive"/>
-			<item value="hwi_CAN"/>
-			<item value="D_SPICAN3"/>
-			<item value="init_sys"/>
-			<item value="hwi_spi"/>
-			<item value="CAN_Reset"/>
-			<item value="D_SPICAN4"/>
+			<item value="0x20004000"/>
+			<item value="0x20004f70"/>
+			<item value="4f70"/>
+			<item value="CAN4"/>
+			<item value="init_sysi"/>
+			<item value="init_"/>
+			<item value="swi_GPIOE"/>
+			<item value="hwi_GPIO"/>
 		</list>
 		<list key="replacehistory">
 			<item value="SPI_Receive_CAN3"/>

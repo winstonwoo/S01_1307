@@ -51,10 +51,13 @@ extern Swi_Handle swi_SPI2_handle ;
 extern Swi_Handle swi_CAN0_handle ;
 extern Swi_Handle swi_CAN1_handle ;
 extern Swi_Handle swi_GPIOB_handle ;
+extern Swi_Handle swi_GPIOE_handle ;
 
 extern Mailbox_Handle Mb_uart2_handle ;
 
 volatile unsigned long g_ulMsgCount = 0;
+
+Swi_Handle swi0, swi1;
 
 //*****************************************************************************
 //
@@ -475,6 +478,7 @@ Void hwi_GPIOB_fxn(UArg arg)
 Void hwi_GPIOE_fxn(UArg arg)
 {
 	long lIntSts ;
+	unsigned long DataRx_BUFFER[14]={0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
 #if 1
 	//store the interrupt flag into lIntSts
@@ -511,8 +515,11 @@ Void hwi_GPIOE_fxn(UArg arg)
 		case 0x0A:
 			break;
 		case 0x0C:
+			  IntDisable(INT_GPIOE) ;
+			  Swi_post(swi0);
+			 // Swi_post(swi1);
 			//Reg_BitModify(MCP_CANINTF,0x01, 0x00);
-			//Read_RX(0,DataRx_BUFFER);
+			//Read_RX_CAN3(0,DataRx_BUFFER);
 
 			break;
 		case 0x0E:
@@ -525,8 +532,9 @@ Void hwi_GPIOE_fxn(UArg arg)
 	GPIOIntClear(GPIO_PORTE_BASE, GPIO_INT_PIN_6);
 
 #endif
+	//Swi_post(swi0);
+				 // Swi_post(swi1);
 
-	Swi_post(swi_GPIOB_handle) ;
 }
 
 //*****************************************************************************
@@ -614,8 +622,14 @@ Void swi_CAN1_fxn(UArg arg0, UArg arg1)
 Void swi_GPIOB_fxn(UArg arg0, UArg arg1)
 {
 
-	unsigned long DataRx_BUFFER[14]={0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-	Read_RX_CAN3(0,DataRx_BUFFER);
+
+
+}
+
+Void swi_GPIOE_fxn(UArg arg0, UArg arg1)
+{
+
+
 
 }
 
@@ -627,6 +641,8 @@ Void tsk_manage_fxn(UArg arg0, UArg arg1)
 	{
 		// UARTSend((unsigned char *)"tsk_manage_fxn \n ", 20);
 		//Mailbox_pend(Mb_uart2_handle, ucMsg, BIOS_WAIT_FOREVER) ;
+
+
 		UARTprintf("uart output!!!\n") ;
 		Task_sleep(1000) ;
 	}
@@ -946,7 +962,8 @@ Void set_PE6_INT()
 		//PE6 work as interrupt, Low lever trigger, for CAN2
 		SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOE) ;
 		GPIOPinTypeGPIOInput(GPIO_PORTE_BASE, GPIO_PIN_6) ;
-		GPIOIntTypeSet(GPIO_PORTE_BASE, GPIO_PIN_6, GPIO_LOW_LEVEL) ;
+		//GPIOIntTypeSet(GPIO_PORTE_BASE, GPIO_PIN_6, GPIO_LOW_LEVEL) ; GPIO_FALLING_EDGE
+		GPIOIntTypeSet(GPIO_PORTE_BASE, GPIO_PIN_6, GPIO_FALLING_EDGE) ;
 		GPIOIntEnable(GPIO_PORTE_BASE, GPIO_PIN_6) ;
 		IntEnable(INT_GPIOE) ;
 		ROM_IntPrioritySet(INT_GPIOE, 0x00);
@@ -1177,6 +1194,35 @@ Void inter_test()
 	    */
 }
 
+
+/*
+ *  ======== swi0Fxn =======
+ */
+Void swi0Fxn(UArg arg0, UArg arg1)
+{
+
+	unsigned long DataRx_BUFFER[14]={0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+	Read_RX_CAN3(0,DataRx_BUFFER);
+	IntEnable(INT_GPIOE) ;
+
+    System_printf("Enter swi0Fxn, a0 = %d, a1 = %d\n", (Int)arg0, (Int)arg1);
+    System_printf("swi0 trigger = %d\n", Swi_getTrigger());
+    System_printf("swi0 pri = %d\n", Swi_getPri(swi0));
+    System_printf("Exit swi0Fxn\n");
+}
+
+/*
+ *  ======== swi1Fxn =======
+ */
+Void swi1Fxn(UArg arg0, UArg arg1)
+{
+    System_printf("Enter swi1Fxn, a0 = %d, a1 = %d\n", (Int)arg0, (Int)arg1);
+    System_printf("swi1 trigger = %d\n", Swi_getTrigger());
+    System_printf("swi1 pri = %d\n", Swi_getPri(swi1));
+    System_printf("Exit swi1Fxn\n");
+}
+
+
 /*
  *  ======== main ========
  */
@@ -1184,6 +1230,23 @@ Void main()
 { 
     Task_Handle task;
     Error_Block eb;
+
+    Swi_Params swiParams;
+
+    Swi_Params_init(&swiParams);
+    swiParams.arg0 = 1;
+    swiParams.arg1 = 0;
+    swiParams.priority = 2;
+    swiParams.trigger = 0;
+
+    swi0 = Swi_create(swi0Fxn, &swiParams, NULL);
+
+    swiParams.arg0 = 2;
+    swiParams.arg1 = 0;
+    swiParams.priority = 1;
+    swiParams.trigger = 3;
+
+    swi1 = Swi_create(swi1Fxn, &swiParams, NULL);
 
     ROM_FPULazyStackingEnable();
 

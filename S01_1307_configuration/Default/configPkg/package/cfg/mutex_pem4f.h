@@ -109,6 +109,9 @@ extern const ti_sysbios_knl_Mailbox_Handle Mb_uart2_handle;
 #include <ti/sysbios/hal/Hwi.h>
 extern const ti_sysbios_hal_Hwi_Handle hwi_GPIOE_handle;
 
+#include <ti/sysbios/knl/Swi.h>
+extern const ti_sysbios_knl_Swi_Handle swi_GPIOE_handle;
+
 extern int xdc_runtime_Startup__EXECFXN__C;
 
 extern int xdc_runtime_Startup__RESETFXN__C;
